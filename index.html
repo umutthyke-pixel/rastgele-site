@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bilgi Hazinesi âœ¨</title>
+<title>Bilgi Hazinesi ✨</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -18,38 +18,27 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
 @keyframes floatOrb{0%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,-40px) scale(1.15)}100%{transform:translate(-30px,50px) scale(.95)}}
 #particles{position:fixed;inset:0;z-index:1;pointer-events:none}
 #confetti{position:fixed;inset:0;z-index:999;pointer-events:none}
-
 .app{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:16px 16px 60px;min-height:100vh}
 .container{width:100%;max-width:600px}
-
-/* NAV */
 .top-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:8px}
 .nav-brand{font-weight:900;font-size:1.3rem;background:linear-gradient(135deg,var(--accent1),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-actions{display:flex;gap:6px}
 .nav-btn{width:38px;height:38px;border-radius:12px;border:1px solid var(--card-border);background:var(--card);color:rgba(255,255,255,.6);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s}
 .nav-btn:hover{background:rgba(255,255,255,.12);color:#fff;transform:translateY(-1px)}
 .nav-btn.active-nav{color:var(--accent3);border-color:rgba(255,200,55,.3);background:rgba(255,200,55,.08)}
-
-/* STATS */
 .stats-bar{display:flex;justify-content:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
 .stat{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:7px 14px;text-align:center;min-width:75px;transition:transform .2s}
 .stat:hover{transform:translateY(-2px)}
 .stat .num{font-size:1.2rem;font-weight:800;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .stat .label{font-size:.6rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-top:1px}
-
-/* PROGRESS */
 .progress-wrap{margin-bottom:14px}
 .progress-bar{height:4px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--accent1),var(--accent2),var(--accent3));border-radius:4px;transition:width .5s;width:0}
 .progress-label{font-size:.6rem;color:var(--text3);text-align:right;margin-top:2px}
-
-/* CATEGORIES */
 .categories{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:14px}
 .cat-pill{padding:5px 12px;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:rgba(255,255,255,.5);font-size:.7rem;cursor:pointer;transition:all .25s;user-select:none;white-space:nowrap}
 .cat-pill:hover{background:rgba(255,255,255,.08);color:#fff;transform:translateY(-1px)}
 .cat-pill.active{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;border-color:transparent;box-shadow:0 3px 12px rgba(108,99,255,.3)}
-
-/* FACT CARD */
 .fact-card{background:var(--card);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:24px;border:1px solid var(--card-border);padding:30px 26px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.3);transition:transform .4s,box-shadow .4s;position:relative;overflow:hidden;margin-bottom:14px}
 .fact-card:hover{transform:translateY(-3px);box-shadow:0 14px 50px rgba(0,0,0,.4)}
 .fact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent2),var(--accent3))}
@@ -62,8 +51,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
 .fact-category-badge{display:inline-block;padding:3px 10px;border-radius:8px;font-size:.6rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;font-weight:600}
 .fact-text{font-weight:300;font-size:1.05rem;line-height:1.7;min-height:50px;transition:opacity .35s;color:var(--text)}
 .fact-number{margin-top:12px;font-size:.65rem;color:var(--text3)}
-
-/* ACTIONS */
 .actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
 .btn{padding:11px 20px;border-radius:13px;border:none;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px}
 .btn-primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;box-shadow:0 4px 18px rgba(108,99,255,.3)}
@@ -75,19 +62,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
 .btn-secondary.active-toggle{color:var(--accent3);border-color:rgba(255,200,55,.3);background:rgba(255,200,55,.08)}
 .btn:active{transform:translateY(1px) scale(.97)}
 .actions-row2{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-
-/* TOAST */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:rgba(108,99,255,.92);backdrop-filter:blur(10px);color:#fff;padding:10px 24px;border-radius:13px;font-size:.82rem;font-weight:600;z-index:1000;transition:transform .35s,opacity .35s;opacity:0;pointer-events:none}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-
-/* MILESTONE */
 .milestone{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);z-index:800;background:rgba(15,15,35,.96);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:36px 46px;text-align:center;transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s;opacity:0;pointer-events:none}
 .milestone.show{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto}
 .milestone-emoji{font-size:3.5rem;margin-bottom:10px;display:block}
 .milestone h2{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--accent3),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
 .milestone p{color:var(--text2);font-size:.85rem}
-
-/* â”€â”€ MODAL â”€â”€ */
 .modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:none;justify-content:center;align-items:flex-start;padding:30px 16px;overflow-y:auto}
 .modal-overlay.open{display:flex}
 .modal{background:#111128;border:1px solid rgba(255,255,255,.1);border-radius:22px;width:100%;max-width:620px;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.6);animation:fadeUp .35s ease}
@@ -98,11 +79,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
 .modal-body{padding:16px 24px 24px;overflow-y:auto;flex:1}
 .modal-body::-webkit-scrollbar{width:5px}
 .modal-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
-.modal-search{width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:#fff;font-size:.85rem;font-family:'Inter',sans-serif;margin-bottom:14px;outline:none;transition:border-color .3s}
-.modal-search::placeholder{color:rgba(255,255,255,.2)}
-.modal-search:focus{border-color:rgba(108,99,255,.4)}
-
-/* Fav items */
 .fav-item{padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:13px;margin-bottom:8px;font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.6;display:flex;align-items:flex-start;gap:10px;transition:all .25s;position:relative}
 .fav-item:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.1)}
 .fav-emoji-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
@@ -114,8 +90,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
 .fav-empty{text-align:center;padding:30px 16px;color:var(--text3)}
 .fav-empty-icon{font-size:2.5rem;margin-bottom:10px;display:block}
 .cnt-badge{font-size:.8rem;color:var(--text3);font-weight:400}
-
-/* QUIZ MODE */
 .quiz-card{background:var(--card);backdrop-filter:blur(20px);border-radius:24px;border:1px solid var(--card-border);padding:30px 26px;text-align:center;margin-bottom:14px;position:relative;overflow:hidden}
 .quiz-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ffc837,#ff6584)}
 .quiz-q{font-size:1.05rem;font-weight:400;line-height:1.6;margin-bottom:20px;color:var(--text)}
@@ -129,36 +103,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
 .quiz-stat{text-align:center}
 .quiz-stat .q-num{font-size:1.8rem;font-weight:800}
 .quiz-stat .q-label{font-size:.6rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
-.quiz-result{font-size:1rem;font-weight:600;margin:12px 0;color:var(--text)}
-
-/* HISTORY */
 .hist-item{padding:10px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.04);border-radius:11px;margin-bottom:6px;font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.5;display:flex;gap:8px;align-items:flex-start}
 .hist-item .h-emoji{font-size:1.1rem;flex-shrink:0}
 .hist-time{font-size:.6rem;color:var(--text3);margin-top:2px}
-
-/* TABS in modals */
-.modal-tabs{display:flex;gap:4px;margin-bottom:14px;background:rgba(255,255,255,.04);border-radius:12px;padding:3px}
-.modal-tab{flex:1;padding:8px;border-radius:10px;border:none;font-size:.75rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;color:rgba(255,255,255,.4);background:transparent;transition:all .25s}
-.modal-tab.active{background:rgba(255,255,255,.1);color:#fff}
-.modal-tab:hover{color:rgba(255,255,255,.7)}
-
-/* SHARE CARD */
 #share-canvas{display:none}
-
 @keyframes bounceIn{0%{transform:scale(.3);opacity:0}50%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 .animate-in{animation:fadeUp .5s ease forwards}
-.pulse{animation:pulse 1.5s ease-in-out infinite}
-
-@media(max-width:500px){
-.nav-brand{font-size:1.1rem}
-.fact-card{padding:22px 16px}
-.fact-text{font-size:.95rem}
-.btn{padding:9px 14px;font-size:.78rem}
-.btn-sm{padding:8px 12px;font-size:.72rem}
-.modal{border-radius:16px}
-}
+@media(max-width:500px){.nav-brand{font-size:1.1rem}.fact-card{padding:22px 16px}.fact-text{font-size:.95rem}.btn{padding:9px 14px;font-size:.78rem}.btn-sm{padding:8px 12px;font-size:.72rem}.modal{border-radius:16px}}
 </style>
 </head>
 <body>
@@ -167,999 +119,560 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
 <canvas id="confetti"></canvas>
 <canvas id="share-canvas" width="600" height="400"></canvas>
 <div class="toast" id="toast"></div>
+<div class="milestone" id="milestone"><span class="milestone-emoji" id="ms-emoji">🏆</span><h2 id="ms-title">Harika!</h2><p id="ms-text">İlerliyorsun!</p></div>
 
-<div class="milestone" id="milestone">
-<span class="milestone-emoji" id="ms-emoji">ğŸ†</span>
-<h2 id="ms-title">Harika!</h2>
-<p id="ms-text">Ä°lerliyorsun!</p>
-</div>
+<div class="modal-overlay" id="fav-modal"><div class="modal"><div class="modal-header"><h2>⭐ Favorilerim <span class="cnt-badge" id="fav-modal-count"></span></h2><button class="modal-close" onclick="closeModal('fav-modal')">✕</button></div><div class="modal-body" id="fav-list"></div></div></div>
 
-<!-- FAVS MODAL -->
-<div class="modal-overlay" id="fav-modal">
-<div class="modal">
-<div class="modal-header"><h2>â­ Favorilerim <span class="cnt-badge" id="fav-modal-count"></span></h2><button class="modal-close" onclick="closeFavModal()">âœ•</button></div>
-<div class="modal-body">
-<input type="text" class="modal-search" id="fav-search" placeholder="ğŸ” Favorilerde ara..." oninput="renderFavList()">
-<div id="fav-list"></div>
-</div>
-</div>
-</div>
+<div class="modal-overlay" id="hist-modal"><div class="modal"><div class="modal-header"><h2>🕐 Geçmiş <span class="cnt-badge" id="hist-count"></span></h2><button class="modal-close" onclick="closeModal('hist-modal')">✕</button></div><div class="modal-body" id="hist-list"></div></div></div>
 
-<!-- HISTORY MODAL -->
-<div class="modal-overlay" id="hist-modal">
-<div class="modal">
-<div class="modal-header"><h2>ğŸ• GeÃ§miÅŸ <span class="cnt-badge" id="hist-count"></span></h2><button class="modal-close" onclick="closeHistModal()">âœ•</button></div>
-<div class="modal-body">
-<input type="text" class="modal-search" id="hist-search" placeholder="ğŸ” GeÃ§miÅŸte ara..." oninput="renderHistory()">
-<div id="hist-list"></div>
-</div>
-</div>
-</div>
+<div class="modal-overlay" id="quiz-modal"><div class="modal"><div class="modal-header"><h2>🧩 Bilgi Yarışması</h2><button class="modal-close" onclick="closeModal('quiz-modal')">✕</button></div><div class="modal-body" id="quiz-body"></div></div></div>
 
-<!-- QUIZ MODAL -->
-<div class="modal-overlay" id="quiz-modal">
-<div class="modal">
-<div class="modal-header"><h2>ğŸ§© Bilgi YarÄ±ÅŸmasÄ±</h2><button class="modal-close" onclick="closeQuizModal()">âœ•</button></div>
-<div class="modal-body" id="quiz-body"></div>
-</div>
-</div>
-
-<!-- STATS MODAL -->
-<div class="modal-overlay" id="stats-modal">
-<div class="modal">
-<div class="modal-header"><h2>ğŸ“Š Ä°statistikler</h2><button class="modal-close" onclick="closeStatsModal()">âœ•</button></div>
-<div class="modal-body" id="stats-body"></div>
-</div>
-</div>
+<div class="modal-overlay" id="stats-modal"><div class="modal"><div class="modal-header"><h2>📊 İstatistikler</h2><button class="modal-close" onclick="closeModal('stats-modal')">✕</button></div><div class="modal-body" id="stats-body"></div></div></div>
 
 <div class="app">
 <div class="container">
-
-<!-- NAV -->
 <div class="top-nav animate-in">
-<div class="nav-brand">âœ¨ Bilgi Hazinesi</div>
+<div class="nav-brand">✨ Bilgi Hazinesi</div>
 <div class="nav-actions">
-<button class="nav-btn" onclick="openStatsModal()" title="Ä°statistikler">ğŸ“Š</button>
-<button class="nav-btn" onclick="openHistModal()" title="GeÃ§miÅŸ">ğŸ•</button>
-<button class="nav-btn" onclick="openQuizModal()" title="Quiz">ğŸ§©</button>
-<button class="nav-btn" id="auto-nav" onclick="toggleAutoPlay()" title="Otomatik">â–¶ï¸</button>
+<button class="nav-btn" onclick="openModal('stats-modal');renderStats()" title="İstatistikler">📊</button>
+<button class="nav-btn" onclick="openModal('hist-modal');renderHistoryModal()" title="Geçmiş">🕐</button>
+<button class="nav-btn" onclick="openModal('quiz-modal');generateQuiz()" title="Quiz">🧩</button>
+<button class="nav-btn" id="auto-nav" onclick="toggleAutoPlay()" title="Otomatik Oynat">▶️</button>
 </div>
 </div>
 
-<!-- STATS -->
-<div class="stats-bar animate-in" style="animation-delay:.05s">
-<div class="stat"><div class="num" id="seen-count">0</div><div class="label">GÃ¶rÃ¼len</div></div>
+<div class="stats-bar animate-in" style="animation-delay:.08s">
+<div class="stat"><div class="num" id="seen-count">0</div><div class="label">Görülen</div></div>
 <div class="stat"><div class="num" id="total-count">0</div><div class="label">Toplam</div></div>
 <div class="stat"><div class="num" id="fav-count">0</div><div class="label">Favori</div></div>
 <div class="stat"><div class="num" id="streak-count">0</div><div class="label">Seri</div></div>
-<div class="stat"><div class="num" id="quiz-score-top">0</div><div class="label">Quiz Skoru</div></div>
+<div class="stat"><div class="num" id="best-streak">0</div><div class="label">En İyi</div></div>
 </div>
-
 <div class="progress-wrap animate-in" style="animation-delay:.1s">
 <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-<div class="progress-label" id="progress-label">0% keÅŸfedildi</div>
+<div class="progress-label" id="progress-label">0% keşfedildi</div>
 </div>
+<div class="categories animate-in" style="animation-delay:.12s" id="categories"></div>
 
-<div class="categories animate-in" style="animation-delay:.15s" id="categories"></div>
-
-<!-- FACT CARD -->
-<div class="fact-card animate-in" style="animation-delay:.2s" id="fact-card">
+<div class="fact-card animate-in" style="animation-delay:.15s" id="fact-card">
 <div class="rarity-badge rarity-common" id="rarity-badge" style="display:none">COMMON</div>
-<span class="fact-emoji" id="fact-emoji">ğŸ§ </span>
+<span class="fact-emoji" id="fact-emoji">🧠</span>
 <div class="fact-category-badge" id="fact-badge" style="background:rgba(108,99,255,.2);color:#a29bfe">HAZIR MISIN?</div>
-<p class="fact-text" id="fact-text">Butona bas ve binlerce ilginÃ§ bilginin dÃ¼nyasÄ±na dal! ğŸš€</p>
+<p class="fact-text" id="fact-text">Butona bas ve binlerce ilginç bilginin dünyasına dal! 🚀</p>
 <div class="fact-number" id="fact-number"></div>
 </div>
 
-<!-- ACTIONS -->
-<div class="actions animate-in" style="animation-delay:.25s">
-<button class="btn btn-primary" onclick="nextFact()" id="next-btn">ğŸ² Yeni Bilgi</button>
-<button class="btn btn-sm btn-secondary" id="like-btn" onclick="toggleLike()">â¤ï¸ BeÄŸen</button>
-<button class="btn btn-sm btn-secondary" onclick="copyFact()">ğŸ“‹</button>
-<button class="btn btn-sm btn-secondary" onclick="shareAsImage()">ğŸ–¼ï¸</button>
+<div class="actions animate-in" style="animation-delay:.18s">
+<button class="btn btn-primary" onclick="nextFact()" id="next-btn">🎲 Yeni Bilgi</button>
+<button class="btn btn-sm btn-secondary" id="like-btn" onclick="toggleLike()">❤️ Beğen</button>
+<button class="btn btn-sm btn-secondary" onclick="copyFact()">📋</button>
+<button class="btn btn-sm btn-secondary" onclick="shareAsImage()">🖼️</button>
 </div>
-<div class="actions-row2 animate-in" style="animation-delay:.3s">
-<button class="btn btn-sm btn-secondary" onclick="openFavModal()">â­ Favoriler</button>
-<button class="btn btn-sm btn-secondary" onclick="shareFact()">ğŸ“¤ PaylaÅŸ</button>
+<div class="actions-row2 animate-in" style="animation-delay:.2s">
+<button class="btn btn-sm btn-secondary" onclick="openModal('fav-modal');openFavModal()">⭐ Favoriler</button>
+<button class="btn btn-sm btn-secondary" onclick="shareFact()">📤 Paylaş</button>
 </div>
-
 </div>
 </div>
 
 <script>
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-//  MEGA FACTS DATABASE â€” 1000+ UNIQUE FACTS
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// 1000+ Facts Data (Old state)
 const factsDB={
-"ğŸ¾ Hayvanlar":[
-"AhtapotlarÄ±n Ã¼Ã§ kalbi vardÄ±r ve kanlarÄ± bakÄ±r bazlÄ± olduÄŸu iÃ§in mavidir.",
-"Deniz atlarÄ±nda hamile kalan erkektir, diÅŸi deÄŸil.",
-"Kelebekler tatlarÄ± ayaklarÄ±yla alÄ±r.",
-"Bir sÃ¼mÃ¼klÃ¼bÃ¶ceÄŸin dÃ¶rt burnu vardÄ±r.",
-"Penguenler eÅŸlerine Ã§akÄ±l taÅŸÄ± hediye ederek evlilik teklif eder.",
-"Yunuslar uyurken beyinlerinin sadece yarÄ±sÄ±nÄ± kapatÄ±r.",
-"Flamingolar doÄŸduklarÄ±nda beyazdÄ±r; yedikleri onlarÄ± pembe yapar.",
-"Koalalar gÃ¼nde 22 saat uyuyabilir.",
-"Timsahlar 100 milyon yÄ±ldan fazladÄ±r DÃ¼nya'da yaÅŸÄ±yor.",
-"ArÄ±lar dans ederek yiyecek kaynaÄŸÄ±nÄ±n yerini anlatÄ±r.",
-"DenizyÄ±ldÄ±zlarÄ±nÄ±n beyni yoktur.",
-"Su aygÄ±rlarÄ±nÄ±n teri kÄ±rmÄ±zÄ±dÄ±r ve gÃ¼neÅŸ kremi gÃ¶revi gÃ¶rÃ¼r.",
-"Ä°neklerin en yakÄ±n arkadaÅŸlarÄ± vardÄ±r; ayrÄ±lÄ±nca strese girerler.",
-"ZÃ¼rafalarÄ±n dili 50 cm'dir ve rengi siyahÄ±msÄ± mordur.",
-"KarÄ±ncalar vÃ¼cut aÄŸÄ±rlÄ±klarÄ±nÄ±n 50 katÄ±nÄ± taÅŸÄ±yabilir.",
-"KÃ¶pekbalÄ±klarÄ± dinozorlardan 200 milyon yÄ±l Ã¶nce ortaya Ã§Ä±ktÄ±.",
-"PapaÄŸanlar birbirlerine isim verir ve o isimle Ã§aÄŸÄ±rÄ±r.",
-"KaplanlarÄ±n derisi de tÄ±pkÄ± kÃ¼rkleri gibi Ã§izgilidir.",
-"Bir kedi hayatÄ±nÄ±n %70'ini uyuyarak geÃ§irir.",
-"Deve kuÅŸunun gÃ¶zÃ¼ beyninden bÃ¼yÃ¼ktÃ¼r.",
-"DenizanalarÄ± %95 oranÄ±nda sudan oluÅŸur.",
-"Filler atlayamaz; atlayamayan tek memeli hayvandÄ±r.",
-"Hamam bÃ¶ceÄŸi kafasÄ± olmadan haftalarca yaÅŸayabilir.",
-"Kargalar insan yÃ¼zlerini hatÄ±rlar ve yÄ±llarca unutmaz.",
-"Kolibri kuÅŸu geriye doÄŸru uÃ§abilen tek kuÅŸtur.",
-"Deniz kaplumbaÄŸalarÄ± 150 yÄ±ldan fazla yaÅŸayabilir.",
-"Bir balarÄ±sÄ± hayatÄ±nda sadece bir Ã§ay kaÅŸÄ±ÄŸÄ±nÄ±n 12'de biri kadar bal Ã¼retir.",
-"Aslanlar gÃ¼nde 20 saate kadar uyuyabilir.",
-"Bir kanguru doÄŸduÄŸunda bir arÄ± kadar kÃ¼Ã§Ã¼ktÃ¼r.",
-"Ahtapotlar stres altÄ±nda kendi kollarÄ±nÄ± yiyebilir.",
-"Delfin yavrularÄ±na anneleri isim Ä±slÄ±ÄŸÄ± verir.",
-"Bukalemunlar dillerini vÃ¼cutlarÄ±nÄ±n iki katÄ± uzunluÄŸunda fÄ±rlatabilir.",
-"Bir salyangoz Ã¼Ã§ yÄ±l boyunca uyuyabilir.",
-"KÃ¶pekler 1.000 kata kadar daha iyi koku alabilir.",
-"BaykuÅŸlar gÃ¶zlerini oynatamaz; kafalarÄ±nÄ± 270Â° Ã§evirirler.",
-"DiÅŸi kangurular Ã¼Ã§ farklÄ± yavruyu aynÄ± anda taÅŸÄ±yabilir.",
-"Fil hortumunda yaklaÅŸÄ±k 40.000 kas bulunur.",
-"Deniz samurlarÄ± uyurken el ele tutuÅŸur.",
-"Karides kalbi kafasÄ±nda bulunur.",
-"Turritopsis dohrnii denizanasÄ± biyolojik olarak Ã¶lÃ¼msÃ¼zdÃ¼r.",
-"Kurt sÃ¼rÃ¼leri gÃ¼nde 50 km'den fazla yol kat edebilir.",
-"Okapi diliyle kendi kulaÄŸÄ±nÄ± temizleyebilir.",
-"Tavus kuÅŸlarÄ± 11 farklÄ± ses Ã§Ä±karabilir.",
-"YengeÃ§lerin diÅŸleri midelerinin iÃ§indedir.",
-"Bir inek gÃ¼nde yaklaÅŸÄ±k 200 litre tÃ¼kÃ¼rÃ¼k Ã¼retir.",
-"Sincaplar fÄ±ndÄ±klarÄ± gÃ¶mer ama Ã§oÄŸunun yerini unutarak ormanlara aÄŸaÃ§ eker.",
-"Yarasalar uÃ§abilen tek memelidir.",
-"Kutup ayÄ±larÄ±nÄ±n kÃ¼rkleri aslÄ±nda saydamdÄ±r, beyaz deÄŸil.",
-"Bir arÄ±nÄ±n kanatlarÄ± saniyede 200 kez Ã§Ä±rpar.",
-"Penguenler sualtÄ±nda saatte 36 km hÄ±za ulaÅŸabilir.",
-"MÃ¼rekkep balÄ±klarÄ±nÄ±n Ã¼Ã§ kalbi ve mavi kanÄ± vardÄ±r.",
-"Goril gruplarÄ±na 'band' denir.",
-"KÃ¶pekler sahiplerinin duygularÄ±nÄ± koklayarak anlayabilir.",
-"Bir papaÄŸan 800'den fazla kelime Ã¶ÄŸrenebilir.",
-"Yunuslar birbirlerini isimleriyle Ã§aÄŸÄ±rÄ±r.",
-"DiÅŸi sivrisinekler kan emer; erkekler Ã§iÃ§ek nektarÄ±yla beslenir.",
-"Bir Ã§ekirge vÃ¼cut uzunluÄŸunun 20 katÄ± kadar zÄ±playabilir.",
-"Balina kÃ¶pekbalÄ±ÄŸÄ±nÄ±n aÄŸzÄ±nda 3.000'den fazla diÅŸ bulunur.",
-"Kuzgun kuÅŸlarÄ± alet kullanabilir ve problem Ã§Ã¶zebilir.",
-"Fil yavrularÄ±na sÃ¼rÃ¼ birlikte bakar; 'teyze' sistemi vardÄ±r.",
+"🐾 Hayvanlar":[
+"Ahtapotların üç kalbi vardır ve kanları bakır bazlı olduğu için mavidir.",
+"Deniz atlarında hamile kalan erkektir, dişi değil.",
+"Kelebekler tatları ayaklarıyla alır.",
+"Bir sümüklüböceğin dört burnu vardır.",
+"Penguenler eşlerine çakıl taşı hediye ederek evlilik teklif eder.",
+"Yunuslar uyurken beyinlerinin sadece yarısını kapatır.",
+"Flamingolar doğduklarında beyazdır; yedikleri onları pembe yapar.",
+"Koalalar günde 22 saat uyuyabilir.",
+"Timsahlar 100 milyon yıldan fazladır Dünya'da yaşıyor.",
+"Arılar dans ederek yiyecek kaynağının yerini anlatır.",
+"Denizyıldızlarının beyni yoktur.",
+"Su aygırlarının teri kırmızıdır ve güneş kremi görevi görür.",
+"İneklerin en yakın arkadaşları vardır; ayrılınca strese girerler.",
+"Zürafaların dili 50 cm'dir ve rengi siyahımsı mordur.",
+"Karıncalar vücut ağırlıklarının 50 katını taşıyabilir.",
+"Köpekbalıkları dinozorlardan 200 milyon yıl önce ortaya çıktı.",
+"Papağanlar birbirlerine isim verir ve o isimle çağırır.",
+"Kaplanların derisi de tıpkı kürkleri gibi çizgilidir.",
+"Bir kedi hayatının %70'ini uyuyarak geçirir.",
+"Deve kuşunun gözü beyninden büyüktür.",
+"Denizanaları %95 oranında sudan oluşur.",
+"Filler atlayamaz; atlayamayan tek memeli hayvandır.",
+"Hamam böceği kafası olmadan haftalarca yaşayabilir.",
+"Kargalar insan yüzlerini hatırlar ve yıllarca unutmaz.",
+"Kolibri kuşu geriye doğru uçabilen tek kuştur.",
+"Deniz kaplumbağaları 150 yıldan fazla yaşayabilir.",
+"Bir balarısı hayatında sadece bir çay kaşığının 12'de biri kadar bal üretir.",
+"Aslanlar günde 20 saate kadar uyuyabilir.",
+"Bir kanguru doğduğunda bir arı kadar küçüktür.",
+"Ahtapotlar stres altında kendi kollarını yiyebilir.",
+"Delfin yavrularına anneleri isim ıslığı verir.",
+"Bukalemunlar dillerini vücutlarının iki katı uzunluğunda fırlatabilir.",
+"Bir salyangoz üç yıl boyunca uyuyabilir.",
+"Köpekler 1.000 kata kadar daha iyi koku alabilir.",
+"Baykuşlar gözlerini oynatamaz; kafalarını 270° çevirirler.",
+"Dişi kangurular üç farklı yavruyu aynı anda taşıyabilir.",
+"Fil hortumunda yaklaşık 40.000 kas bulunur.",
+"Deniz samurları uyurken el ele tutuşur.",
+"Karides kalbi kafasında bulunur.",
+"Turritopsis dohrnii denizanası biyolojik olarak ölümsüzdür.",
+"Kurt sürüleri günde 50 km'den fazla yol kat edebilir.",
+"Okapi diliyle kendi kulağını temizleyebilir.",
+"Tavus kuşları 11 farklı ses çıkarabilir.",
+"Yengeçlerin dişleri midelerinin içindedir.",
+"Bir inek günde yaklaşık 200 litre tükürük üretir.",
+"Sincaplar fındıkları gömer ama çoğunun yerini unutarak ormanlara ağaç eker.",
+"Yarasalar uçabilen tek memelidir.",
+"Kutup ayılarının kürkleri aslında saydamdır, beyaz değil.",
+"Bir arının kanatları saniyede 200 kez çırpar.",
+"Penguenler sualtında saatte 36 km hıza ulaşabilir."
 ],
-"ğŸŒŒ Uzay":[
-"VenÃ¼s'te bir gÃ¼n, VenÃ¼s'te bir yÄ±ldan daha uzundur.",
-"Uzayda iki metal birbirine deÄŸerse kalÄ±cÄ± olarak kaynaÅŸÄ±r.",
-"GÃ¼neÅŸ Ä±ÅŸÄ±ÄŸÄ±nÄ±n DÃ¼nya'ya ulaÅŸmasÄ± 8 dakika 20 saniye sÃ¼rer.",
-"Uzay tamamen sessizdir Ã§Ã¼nkÃ¼ ses taÅŸÄ±yacak hava yoktur.",
-"JÃ¼piter'in BÃ¼yÃ¼k KÄ±rmÄ±zÄ± Lekesi DÃ¼nya'dan bÃ¼yÃ¼ktÃ¼r.",
-"Ay her yÄ±l 3.8 cm DÃ¼nya'dan uzaklaÅŸÄ±yor.",
-"GÃ¶zlemlenebilir evrende yaklaÅŸÄ±k 2 trilyon galaksi var.",
-"Bir Ã§ay kaÅŸÄ±ÄŸÄ± nÃ¶tron yÄ±ldÄ±zÄ± maddesi 6 milyar ton aÄŸÄ±rlÄ±ÄŸÄ±ndadÄ±r.",
-"ISS saatte 27.600 km hÄ±zla DÃ¼nya etrafÄ±nda dÃ¶ner.",
-"Mars'taki gÃ¼n batÄ±mÄ± mavi renktedir.",
-"SatÃ¼rn suya bÄ±rakÄ±lsa yÃ¼zerdi (yoÄŸunluÄŸu sudan az).",
-"Samanyolu'nda 100â€“400 milyar yÄ±ldÄ±z var.",
-"PlÃ¼ton henÃ¼z GÃ¼neÅŸ etrafÄ±nda tam bir tur atmadÄ±.",
-"Uzayda aÄŸlarsanÄ±z gÃ¶zyaÅŸlarÄ± yÃ¼zÃ¼nÃ¼zden akmaz.",
-"NeptÃ¼n ve UranÃ¼s'te elmas yaÄŸmuru yaÄŸÄ±yor olabilir.",
-"GÃ¼neÅŸ, GÃ¼neÅŸ Sistemi kÃ¼tlesinin %99.86'sÄ±dÄ±r.",
-"MerkÃ¼r'de gÃ¼ndÃ¼z 430Â°C, gece -180Â°C olur.",
-"Astronotlar uzayda boy uzar; yerÃ§ekimi yok omurga serbest.",
-"Kara deliklerden Ä±ÅŸÄ±k bile kaÃ§amaz.",
-"Voyager 1 insanlÄ±ÄŸÄ±n en uzak yapay nesnesidir.",
-"Ay'da ayak izleri milyonlarca yÄ±l bozulmadan kalabilir.",
-"GÃ¼neÅŸ 5 milyar yÄ±l sonra kÄ±rmÄ±zÄ± dev olacak.",
-"Uzay istasyonunda her 90 dk bir gÃ¼n doÄŸumu gÃ¶rÃ¼lÃ¼r.",
-"JÃ¼piter'in 95 bilinen uydusu var.",
-"Andromeda 4.5 milyar yÄ±l sonra Samanyolu ile Ã§arpÄ±ÅŸacak.",
-"Bir Ä±ÅŸÄ±k yÄ±lÄ± yaklaÅŸÄ±k 9.46 trilyon km'dir.",
-"GÃ¼neÅŸ saniyede 600 milyon ton hidrojeni helyuma dÃ¶nÃ¼ÅŸtÃ¼rÃ¼r.",
-"En yakÄ±n yÄ±ldÄ±z sistemi Proxima Centauri 4.24 Ä±ÅŸÄ±k yÄ±lÄ± uzakta.",
-"Olympus Mons Mars'taki en bÃ¼yÃ¼k yanardaÄŸ; Everest'in 3 katÄ±.",
-"ISS futbol sahasÄ± bÃ¼yÃ¼klÃ¼ÄŸÃ¼ndedir.",
-"Uzay 100 km yÃ¼kseklikte baÅŸlar (KÃ¡rmÃ¡n Ã§izgisi).",
-"SatÃ¼rn halkalarÄ±nÄ±n kalÄ±nlÄ±ÄŸÄ± sadece 10 m, Ã§apÄ± 282.000 km.",
-"Ã‡Ä±plak gÃ¶zle yaklaÅŸÄ±k 9.000 yÄ±ldÄ±z gÃ¶rÃ¼lebilir.",
-"Bir nÃ¶tron yÄ±ldÄ±zÄ± saniyede 716 kez dÃ¶nebilir.",
-"Evren yaklaÅŸÄ±k 13.8 milyar yaÅŸÄ±ndadÄ±r.",
-"DÃ¼nya'nÄ±n GÃ¼neÅŸ etrafÄ±ndaki hÄ±zÄ± saatte 107.000 km'dir.",
-"JÃ¼piter'de bir gÃ¼n sadece 10 saat sÃ¼rer.",
-"Uzayda terlediÄŸinizde ter buharlaÅŸmaz, vÃ¼cutta birikir.",
-"EÄŸer DÃ¼nya bezelye bÃ¼yÃ¼klÃ¼ÄŸÃ¼nde olsaydÄ± JÃ¼piter futbol topu kadar olurdu.",
-"Uzay boÅŸluÄŸunun sÄ±caklÄ±ÄŸÄ± -270.45Â°C'dir.",
-"KaranlÄ±k madde evrenin %27'sini oluÅŸturur ama hiÃ§ gÃ¶rÃ¼nmez.",
-"Bir yÄ±ldÄ±z Ã¶ldÃ¼ÄŸÃ¼nde nÃ¶tron yÄ±ldÄ±zÄ±, beyaz cÃ¼ce veya kara delik olabilir.",
-"Hubble teleskobu 13 milyar Ä±ÅŸÄ±k yÄ±lÄ± uzaktaki galaksileri gÃ¶rebilir.",
-"Mars'Ä±n atmosferi %96 karbondioksittir.",
-"Io (JÃ¼piter uydusu) GÃ¼neÅŸ Sistemi'ndeki en aktif volkanik gÃ¶vdedir.",
+"🌌 Uzay":[
+"Venüs'te bir gün, Venüs'te bir yıldan daha uzundur.",
+"Uzayda iki metal birbirine değerse kalıcı olarak kaynaşır.",
+"Güneş ışığının Dünya'ya ulaşması 8 dakika 20 saniye sürer.",
+"Uzay tamamen sessizdir çünkü ses taşıyacak hava yoktur.",
+"Jüpiter'in Büyük Kırmızı Lekesi Dünya'dan büyüktür.",
+"Ay her yıl 3.8 cm Dünya'dan uzaklaşıyor.",
+"Gözlemlenebilir evrende yaklaşık 2 trilyon galaksi var.",
+"Bir çay kaşığı nötron yıldızı maddesi 6 milyar ton ağırlığındadır.",
+"ISS saatte 27.600 km hızla Dünya etrafında döner.",
+"Mars'taki gün batımı mavi renktedir.",
+"Satürn suya bırakılsa yüzerdi.",
+"Samanyolu'nda 100–400 milyar yıldız var.",
+"Plüton henüz Güneş etrafında tam bir tur atmadı.",
+"Uzayda ağlarsanız gözyaşları yüzünüzden akmaz.",
+"Neptün ve Uranüs'te elmas yağmuru yağıyor olabilir.",
+"Güneş, Güneş Sistemi kütlesinin %99.86'sıdır.",
+"Merkür'de gündüz 430°C, gece -180°C olur.",
+"Astronotlar uzayda boy uzar.",
+"Kara deliklerden ışık bile kaçamaz.",
+"Voyager 1 insanlığın en uzak yapay nesnesidir.",
+"Ay'da ayak izleri milyonlarca yıl bozulmadan kalabilir.",
+"Güneş 5 milyar yıl sonra kırmızı dev olacak.",
+"Uzay istasyonunda her 90 dk bir gün doğumu görülür.",
+"Jüpiter'in 95 bilinen uydusu var.",
+"Andromeda 4.5 milyar yıl sonra Samanyolu ile çarpışacak.",
+"Güneş saniyede 600 milyon ton hidrojeni helyuma dönüştürür.",
+"Olympus Mons Mars'taki yanardağ; Everest'in 3 katı.",
+"ISS futbol sahası büyüklüğündedir.",
+"Uzay 100 km yükseklikte başlar (Kármán çizgisi).",
+"Satürn halkalarının kalınlığı sadece 10 m, çapı 282.000 km.",
+"Bir nötron yıldızı saniyede 716 kez dönebilir.",
+"Evren yaklaşık 13.8 milyar yaşındadır.",
+"Dünya'nın Güneş etrafındaki hızı saatte 107.000 km.",
+"Jüpiter'de bir gün sadece 10 saat sürer.",
+"Karanlık madde evrenin %27'sini oluşturur ama görünmez.",
+"Hubble teleskobu 13 milyar ışık yılı uzaktaki galaksileri görebilir.",
+"Mars atmosferi %96 karbondioksittir.",
+"Io Güneş Sistemi'nin en aktif volkanik gövdesidir.",
+"Uzayda pizza sipariş eden ilk kişi bir Rus kozmonauttu (2001)."
 ],
-"ğŸ”¬ Bilim":[
-"Ä°nsan vÃ¼cudunda yaklaÅŸÄ±k 37.2 trilyon hÃ¼cre bulunur.",
-"DNA Ã§Ã¶zÃ¼lse GÃ¼neÅŸ'e gidip geri dÃ¶necek kadar uzun olur.",
-"Ä°nsan beyni gÃ¼nde yaklaÅŸÄ±k 70.000 dÃ¼ÅŸÃ¼nce Ã¼retir.",
-"AtomlarÄ±nÄ±zÄ±n Ã§oÄŸu milyarlarca yÄ±l Ã¶nce patlayan yÄ±ldÄ±zlardan gelir.",
-"Ä°nsan gÃ¶zÃ¼ 10 milyon renk tonu ayÄ±rt edebilir.",
-"SÄ±cak su bazÄ± koÅŸullarda soÄŸuk sudan daha hÄ±zlÄ± donar (Mpemba).",
-"Ä°nsan vÃ¼cudu Ã§ok az da olsa biyolÃ¼minesans Ä±ÅŸÄ±k yayar.",
-"Beyin %75 oranÄ±nda sudan oluÅŸur.",
-"Ä°nsan burnu 1 trilyon farklÄ± kokuyu ayÄ±rt edebilir.",
-"YÄ±ldÄ±rÄ±m GÃ¼neÅŸ yÃ¼zeyinden 5 kat daha sÄ±caktÄ±r.",
-"TÃ¼m kan damarlarÄ± uÃ§ uca 100.000 km eder.",
-"Ä°nsan iskeleti her 10 yÄ±lda bir tamamen yenilenir.",
-"Ses Ã§elikte havadan 15 kat hÄ±zlÄ± yayÄ±lÄ±r.",
-"Ä°nsan beyni 86 milyar nÃ¶ron iÃ§erir.",
-"VÃ¼cuttaki demir atomlarÄ±yla 7.5 cm'lik Ã§ivi yapÄ±labilir.",
-"Elmas ve grafit aynÄ± elementten (karbon) oluÅŸur.",
-"Bir cam bardak suda 6.7 sextilyon su molekÃ¼lÃ¼ var.",
-"Ä°nsan kalbi Ã¶mÃ¼r boyu 2.5 milyar kez atar.",
-"Mutlak sÄ±fÄ±r -273.15Â°C'dir.",
-"VÃ¼cutta 60.000 km sinir lifi var.",
-"Ä°nsanlar ve muzlar DNA'nÄ±n %60'Ä±nÄ± paylaÅŸÄ±r.",
-"GÃ¶kkuÅŸaÄŸÄ± tam daire ama yerden yarÄ±sÄ±nÄ± gÃ¶rÃ¼rÃ¼z.",
-"Bir kiÅŸi Ã¶mrÃ¼nde yaklaÅŸÄ±k 35 ton yemek yer.",
-"Ä°nsan gÃ¶zÃ¼ karanlÄ±kta 48 km uzaktaki mum Ä±ÅŸÄ±ÄŸÄ±nÄ± gÃ¶rebilir.",
-"Atomun %99.9'u boÅŸ alandan oluÅŸur.",
-"Ä°nsan teni yaklaÅŸÄ±k her 27 gÃ¼nde bir yenilenir.",
-"1 gram madde 21.5 kiloton TNT'ye eÅŸdeÄŸer enerji Ã¼retebilir (E=mcÂ²).",
-"AÄŸÄ±zda yaklaÅŸÄ±k 700 farklÄ± bakteri tÃ¼rÃ¼ yaÅŸar.",
-"Beyindeki elektriksel aktivite kÃ¼Ã§Ã¼k bir ampulÃ¼ yakacak kadar gÃ¼Ã§ Ã¼retir.",
-"VÃ¼cuttaki bakteri sayÄ±sÄ± insan hÃ¼cre sayÄ±sÄ±ndan fazladÄ±r.",
-"Su mikrodalgada aÅŸÄ±rÄ± Ä±sÄ±tÄ±lÄ±rsa 'sÃ¼per Ä±sÄ±nma' yaÅŸanabilir.",
-"Cam aslÄ±nda amorf bir katÄ±dÄ±r, yavaÅŸ akan sÄ±vÄ± deÄŸil.",
-"VÃ¼cuttaki karbon tek baÅŸÄ±na 9.000 kurÅŸun kalem yapmaya yeter.",
-"Ä°nsan DNA'sÄ±nÄ±n %8'i eski virÃ¼s kalÄ±ntÄ±larÄ±ndan oluÅŸur.",
-"Bir insanÄ±n toplam kemik iliÄŸi yaklaÅŸÄ±k 2.6 kg'dÄ±r.",
-"Plazma, katÄ±-sÄ±vÄ±-gaz dÄ±ÅŸÄ±nda maddenin dÃ¶rdÃ¼ncÃ¼ halidir.",
-"Kuantum tÃ¼nelleme sayesinde parÃ§acÄ±klar duvarlarÄ± 'geÃ§ebilir'.",
-"Bir foton (Ä±ÅŸÄ±k parÃ§acÄ±ÄŸÄ±) kendi bakÄ±ÅŸ aÃ§Ä±sÄ±ndan hiÃ§ zaman geÃ§irmez.",
-"Entropi evrenin kaÃ§Ä±nÄ±lmaz dÃ¼zensizliÄŸe doÄŸru gidiÅŸidir.",
-"Helyum o kadar hafiftir ki DÃ¼nya'nÄ±n yerÃ§ekiminden kaÃ§abilir.",
+"🔬 Bilim":[
+"İnsan vücudunda yaklaşık 37.2 trilyon hücre bulunur.",
+"DNA çözülse Güneş'e gidip geri dönecek kadar uzun olur.",
+"İnsan beyni günde yaklaşık 70.000 düşünce üretir.",
+"Atomlarınızın çoğu milyarlarca yıl önce patlayan yıldızlardan gelir.",
+"İnsan gözü 10 milyon renk tonu ayırt edebilir.",
+"Sıcak su bazı koşullarda soğuk sudan daha hızlı donar (Mpemba).",
+"İnsan vücudu çok az da olsa biyolüminesans ışık yayar.",
+"Beyin %75 oranında sudan oluşur.",
+"İnsan burnu 1 trilyon farklı kokuyu ayırt edebilir.",
+"Yıldırım Güneş yüzeyinden 5 kat daha sıcaktır.",
+"Tüm kan damarları uç uca 100.000 km eder.",
+"İnsan iskeleti her 10 yılda bir tamamen yenilenir.",
+"Ses çelikte havadan 15 kat hızlı yayılır.",
+"İnsan beyni 86 milyar nöron içerir.",
+"Vücuttaki demir atomlarıyla 7.5 cm'lik çivi yapılabilir.",
+"Elmas ve grafit aynı elementten (karbon) oluşur.",
+"İnsan kalbi ömür boyu 2.5 milyar kez atar.",
+"Mutlak sıfır -273.15°C'dir.",
+"İnsanlar ve muzlar DNA'nın %60'ını paylaşır.",
+"Gökkuşağı tam daire ama yerden yarısını görürüz.",
+"İnsan gözü karanlıkta 48 km uzaktaki mum ışığını görebilir.",
+"Atomun %99.9'u boş alandan oluşur.",
+"İnsan teni yaklaşık her 27 günde bir yenilenir.",
+"1 gram madde 21.5 kiloton TNT enerjisi üretebilir (E=mc²).",
+"Beyindeki elektrik küçük bir ampulü yakabilir.",
+"Vücuttaki bakteri sayısı insan hücre sayısından fazladır.",
+"Cam amorf bir katıdır, yavaş akan sıvı değil.",
+"Vücuttaki karbon 9.000 kurşun kalem yapmaya yeter.",
+"İnsan DNA'sının %8'i eski virüs kalıntılarından oluşur.",
+"Plazma maddenin dördüncü halidir."
 ],
-"ğŸŒ DÃ¼nya":[
-"DÃ¼nyadaki insanlarÄ±n %50'si hiÃ§ kar gÃ¶rmemiÅŸtir.",
-"OkyanuslarÄ±n sadece %5'i keÅŸfedilmiÅŸtir.",
-"DÃ¼nya'da 3 trilyon aÄŸaÃ§ var â€” galaksimizdeki yÄ±ldÄ±zlardan fazla.",
-"Everest her yÄ±l 4 mm yÃ¼kseliyor.",
-"Rusya yÃ¼zÃ¶lÃ§Ã¼mÃ¼ PlÃ¼ton'dan bÃ¼yÃ¼ktÃ¼r.",
-"DÃ¼nya Ã§ekirdeÄŸi yaklaÅŸÄ±k 6.000Â°C sÄ±caktÄ±r.",
-"Atacama Ã‡Ã¶lÃ¼'nÃ¼n bazÄ± bÃ¶lgelerinde hiÃ§ yaÄŸmur kaydedilmedi.",
-"Ä°zlanda'da sivrisinek yoktur.",
+"🌍 Dünya":[
+"Dünyadaki insanların %50'si hiç kar görmemiştir.",
+"Okyanusların sadece %5'i keşfedilmiştir.",
+"Dünya'da 3 trilyon ağaç var — galaksimizdeki yıldızlardan fazla.",
+"Everest her yıl 4 mm yükseliyor.",
+"Rusya yüzölçümü Plüton'dan büyüktür.",
+"Dünya çekirdeği yaklaşık 6.000°C sıcaktır.",
+"Atacama Çölü'nde hiç yağmur kaydedilmemiş bölgeler var.",
+"İzlanda'da sivrisinek yoktur.",
 "Finlandiya'da 3.3 milyon sauna var.",
-"Pasifik Okyanusu tÃ¼m kÄ±talarÄ±n toplamÄ±ndan bÃ¼yÃ¼ktÃ¼r.",
-"Avustralya'da insanlardan Ã§ok kanguru yaÅŸar.",
-"Kanada'da gÃ¶l sayÄ±sÄ± diÄŸer Ã¼lkelerin toplamÄ±ndan fazladÄ±r.",
-"Mariana Ã‡ukuru yaklaÅŸÄ±k 11.034 m derinliÄŸindedir.",
-"Antarktika aslÄ±nda bir Ã§Ã¶ldÃ¼r; Ã§ok az yaÄŸÄ±ÅŸ alÄ±r.",
-"Ã–lÃ¼ Deniz deniz seviyesinin 430 m altÄ±ndadÄ±r.",
-"Ä°stanbul iki kÄ±taya yayÄ±lan tek ÅŸehirdir.",
-"Sahara en bÃ¼yÃ¼k sÄ±cak Ã§Ã¶ldÃ¼r ama en bÃ¼yÃ¼k Ã§Ã¶l Antarktika'dÄ±r.",
-"Åili kuzey-gÃ¼ney 4.300 km ile dÃ¼nyanÄ±n en uzun Ã¼lkesidir.",
-"Amazon'da 3.000'den fazla balÄ±k tÃ¼rÃ¼ yaÅŸar.",
-"GrÃ¶nland dÃ¼nyanÄ±n en bÃ¼yÃ¼k adasÄ±dÄ±r.",
-"BÃ¼yÃ¼k Set Resifi uzaydan gÃ¶rÃ¼lebilir.",
-"VolkanlarÄ±n %75'i Pasifik AteÅŸ Ã‡emberi'ndedir.",
-"Baykal GÃ¶lÃ¼ dÃ¼nyadaki tatlÄ± suyun %20'sini barÄ±ndÄ±rÄ±r.",
-"Hawaii yÄ±lda 7.5 cm Asya'ya doÄŸru kayÄ±yor.",
-"DÃ¼nya eksen eÄŸikliÄŸi 23.5Â° olmasaydÄ± mevsimler olmazdÄ±.",
-"Gotthard TÃ¼neli 57 km ile dÃ¼nyanÄ±n en uzun tÃ¼nelidir.",
-"TÃ¼m buz erise deniz seviyesi 65 m yÃ¼kselir.",
-"Afrika; ABD, Ã‡in, Hindistan ve Avrupa'nÄ±n Ã§oÄŸunu iÃ§ine alacak kadar bÃ¼yÃ¼ktÃ¼r.",
-"En eski aÄŸaÃ§ 'Methuselah': yaklaÅŸÄ±k 4.850 yaÅŸÄ±nda.",
-"BÃ¼yÃ¼k Okyanus'a ikinci bir DÃ¼nya sÄ±ÄŸar.",
-"TÃ¼m altÄ±n eritilse 20 metrelik bir kÃ¼p oluÅŸturur.",
-"DÃ¼nya'nÄ±n manyetik kutbu yÄ±lda 55 km hÄ±zla hareket ediyor.",
-"Sahara'da yÄ±lda birkaÃ§ kez kar yaÄŸar.",
-"Yer kabuÄŸu okyanuslarÄ±n altÄ±nda sadece 5-10 km kalÄ±nlÄ±ÄŸÄ±ndadÄ±r.",
-"Karadeniz'in derinliklerinde oksijensiz alan vardÄ±r; 2000 yÄ±llÄ±k gemi batÄ±klarÄ± korunmuÅŸtur.",
-"DÃ¼nya'daki su miktarÄ± 4.5 milyar yÄ±ldÄ±r neredeyse aynÄ±dÄ±r.",
-"AteÅŸ Ã‡emberi'ndeki depremler dÃ¼nyadaki tÃ¼m depremlerin %90'Ä±nÄ± oluÅŸturur.",
-"Amazon yaÄŸmur ormanÄ±nÄ±n bir kÄ±smÄ± 55 milyon yaÅŸÄ±ndadÄ±r.",
-"Ä°sviÃ§re Alpleri yÄ±lda 1-2 mm yÃ¼kselmektedir.",
-"GÃ¼neÅŸ Ä±ÅŸÄ±ÄŸÄ± okyanusun sadece ilk 200 metresine ulaÅŸÄ±r.",
+"Pasifik Okyanusu tüm kıtaların toplamından büyüktür.",
+"Avustralya'da insanlardan çok kanguru yaşar.",
+"Kanada'da göl sayısı diğer ülkelerin toplamından fazladır.",
+"Mariana Çukuru yaklaşık 11.034 m derinliğindedir.",
+"Antarktika aslında bir çöldür.",
+"İstanbul iki kıtaya yayılan tek şehirdir.",
+"Şili 4.300 km ile dünyanın en uzun ülkesidir.",
+"Amazon'da 3.000'den fazla balık türü yaşar.",
+"Grönland dünyanın en büyük adasıdır.",
+"Büyük Set Resifi uzaydan görülebilir.",
+"Volkanların %75'i Pasifik Ateş Çemberi'ndedir.",
+"Baykal Gölü tatlı suyun %20'sini barındırır.",
+"Hawaii yılda 7.5 cm Asya'ya kayıyor.",
+"Gotthard Tüneli 57 km ile en uzun tünel.",
+"Tüm buz erise deniz seviyesi 65 m yükselir.",
+"Afrika; ABD, Çin ve Avrupa'nın çoğunu kaplar.",
+"En eski ağaç 'Methuselah': 4.850 yaşında.",
+"Dünya'nın manyetik kutbu yılda 55 km kayıyor."
 ],
-"ğŸ“š Tarih":[
-"Kleopatra piramitlerden Ã§ok bize daha yakÄ±n yaÅŸamÄ±ÅŸtÄ±r.",
-"Oxford Ãœniversitesi Aztek Ä°mparatorluÄŸu'ndan eskidir.",
-"Vikinglerin kasklarÄ± boynuzsuzdu; Hollywood uydurmacasÄ±.",
-"Ä°lk bilgisayar programcÄ±sÄ± Ada Lovelace'tir (1843).",
-"BÃ¼yÃ¼k Ã‡in Seddi'nin harcÄ±nda pirinÃ§ unu var.",
-"Napolyon aslÄ±nda kÄ±sa deÄŸildi; 1.70 m ile ortalamaydÄ±.",
-"Antik MÄ±sÄ±r'da kedileri Ã¶ldÃ¼rmenin cezasÄ± Ã¶lÃ¼mdÃ¼.",
-"Ä°lk fotoÄŸraf 1826'da Ã§ekildi; pozlama 8 saat sÃ¼rdÃ¼.",
-"OsmanlÄ± Ä°mparatorluÄŸu 6 kÄ±tada toprak sahibi oldu.",
-"HavuÃ§larÄ±n gece gÃ¶rÃ¼ÅŸÃ¼nÃ¼ iyileÅŸtirdiÄŸi yalanÄ± radarÄ± gizlemek iÃ§indi.",
-"Antik Yunan OlimpiyatlarÄ±'nda sporcular Ã§Ä±plak yarÄ±ÅŸÄ±rdÄ±.",
-"Gutenberg matbaayÄ± 1440'ta icat etti.",
-"Ä°lk emoji 1999'da Shigetaka Kurita tasarladÄ±.",
-"1914 Noel'inde cephede askerler futbol oynadÄ±.",
-"Antik MÄ±sÄ±rlÄ±lar kÃ¼flÃ¼ ekmekle antibiyotik etkisi elde ediyordu.",
-"Titanik batarken orkestra Ã§almaya devam etti.",
-"Ä°lk metro 1863'te Londra'da aÃ§Ä±ldÄ±.",
-"Ã‡in barutu havai fiÅŸek iÃ§in icat etti.",
-"Ä°lk e-posta 1971'de Ray Tomlinson tarafÄ±ndan gÃ¶nderildi.",
-"Ä°lk gazete 1605'te Strasbourg'da basÄ±ldÄ±.",
-"Kleopatra aslÄ±nda Yunan kÃ¶kenli Ptolemaios hanedanÄ±ndandÄ±.",
-"Stonehenge MÄ±sÄ±r piramitlerinden 500 yÄ±l daha eskidir.",
-"MÃ¼ttefikler 2. DÃ¼nya SavaÅŸÄ±'nda ÅŸiÅŸme tanklar kullandÄ±.",
-"SÃ¼merler MÃ– 3500'de Ã§ivi yazÄ±sÄ±nÄ± icat etti.",
-"Vikingler Amerika'yÄ± Kolomb'dan 500 yÄ±l Ã¶nce keÅŸfetti.",
-"Ä°lk cep telefonu aramasÄ± 1973'te Martin Cooper tarafÄ±ndan yapÄ±ldÄ±.",
-"Antik Roma'da beton kullanÄ±lÄ±yordu; bazÄ± yapÄ±lar hÃ¢lÃ¢ ayakta.",
-"Ä°lk kalp nakli 1967'de yapÄ±ldÄ±.",
-"BÃ¼yÃ¼k Ä°skender 30 yaÅŸÄ±nda dÃ¼nyanÄ±n bÃ¼yÃ¼k kÄ±smÄ±nÄ± fethetmiÅŸti.",
-"Antik Yunan'da 'idiot' siyasetle ilgilenmeyen kiÅŸi demekti.",
-"Ä°lk modern olimpiyatlar 1896'da Atina'da dÃ¼zenlendi.",
-"Aztek Ä°mparatorluÄŸu'nda kakao Ã§ekirdekleri para birimiydi.",
-"Napolyon SavaÅŸlarÄ± sÄ±rasÄ±nda konserve kutu icat edildi ama aÃ§acak 48 yÄ±l sonra geldi.",
-"Abraham Lincoln gÃ¼reÅŸÃ§iydi; 300'den fazla maÃ§ kazandÄ±.",
-"Antik Roma'da gladyatÃ¶r oyunlarÄ± 50.000 kiÅŸilik arenalarda yapÄ±lÄ±rdÄ±.",
-"Ä°lk baskÄ±lÄ± kitap Elmas Sutra (868, Ã‡in).",
-"Maraton 42.195 km olarak 1908 Londra OlimpiyatlarÄ±'nda belirlendi.",
-"Ä°lk selfie 1839'da Robert Cornelius tarafÄ±ndan Ã§ekildi.",
-"SÃ¼merlerin bira tarifi MÃ– 1800'e dayanÄ±r.",
-"Ä°lk kadÄ±n astronot Valentina Tereshkova 1963'te uzaya Ã§Ä±ktÄ±.",
+"📚 Tarih":[
+"Kleopatra piramitlerden çok bize daha yakın yaşamıştır.",
+"Oxford Üniversitesi Aztek İmparatorluğu'ndan eskidir.",
+"Vikinglerin kaskları boynuzsuzdu.",
+"İlk bilgisayar programcısı Ada Lovelace (1843).",
+"Büyük Çin Seddi'nin harcında pirinç unu var.",
+"Napolyon aslında kısa değildi; 1.70 m.",
+"Antik Mısır'da kedileri öldürmenin cezası ölümdü.",
+"İlk fotoğraf 1826'da çekildi; pozlama 8 saat.",
+"Osmanlı İmparatorluğu 6 kıtada toprak sahibi oldu.",
+"Havuç-gece görüşü yalanı radarı gizlemek içindi.",
+"Gutenberg matbaayı 1440'ta icat etti.",
+"İlk emoji 1999'da Shigetaka Kurita tasarladı.",
+"1914 Noel'inde cephede askerler futbol oynadı.",
+"Titanik batarken orkestra çalmaya devam etti.",
+"İlk metro 1863'te Londra'da açıldı.",
+"İlk e-posta 1971'de Ray Tomlinson gönderdi.",
+"Stonehenge Mısır piramitlerinden 500 yıl eskidir.",
+"Müttefikler 2. Dünya Savaşı'nda şişme tanklar kullandı.",
+"Sümerler MÖ 3500'de çivi yazısını icat etti.",
+"Vikingler Amerika'yı Kolomb'dan 500 yıl önce keşfetti.",
+"İlk cep telefonu araması 1973'te yapıldı.",
+"Antik Roma'da beton kullanılıyordu; bazı yapılar hâlâ ayakta."
 ],
-"ğŸ• Yiyecek":[
-"Bal asla bozulmaz; 3.000 yÄ±llÄ±k bal yenilebilir durumda bulundu.",
+"🍕 Yiyecek":[
+"Bal asla bozulmaz; 3.000 yıllık bal yenilebilir bulundu.",
 "Muzlar radyasyon yayar (potasyum-40).",
-"Ã‡ikolata Aztek ve Maya'da para birimiydi.",
-"Safran kilosu 10.000$'Ä± aÅŸan en pahalÄ± baharat.",
-"FÄ±stÄ±k ezmesi yÃ¼ksek basÄ±nÃ§ta elmasa dÃ¶nÃ¼ÅŸtÃ¼rÃ¼lebilir.",
-"Bir ananas 2â€“3 yÄ±lda olgunlaÅŸÄ±r.",
-"Carolina Reaper 2.2 milyon Scoville ile en acÄ± biber.",
-"Domates botanik olarak bir meyvedir.",
+"Çikolata Aztek ve Maya'da para birimiydi.",
+"Safran kilosu 10.000$+ en pahalı baharat.",
+"Fıstık ezmesi yüksek basınçta elmasa dönüştürülebilir.",
+"Carolina Reaper 2.2 milyon Scoville en acı biber.",
+"Domates botanik olarak meyvedir.",
 "Vanilya orkide ailesinden elde edilir.",
-"Brokoli portakaldan daha fazla C vitamini iÃ§erir.",
-"En eski makarna 4.000 yaÅŸÄ±nda, Ã‡in'de bulundu.",
-"Hindistan cevizi suyu acilde serum olarak kullanÄ±labilir.",
-"Kaju kabuÄŸu zehirlidir, iÅŸlenmeden yenmez.",
-"Ã‡ilek aslÄ±nda meyve deÄŸil; tohumlarÄ± gerÃ§ek meyvedir.",
-"1 litre bal iÃ§in arÄ±lar 2 milyon Ã§iÃ§eÄŸi ziyaret eder.",
-"Ã‡oÄŸu restoranda wasabi aslÄ±nda boyalÄ± yaban turpudur.",
-"Beyaz Ã§ikolata teknik olarak Ã§ikolata deÄŸildir.",
-"Kopi Luwak dÃ¼nyanÄ±n en pahalÄ± kahvesidir.",
-"Pizza Margherita Ä°talyan bayraÄŸÄ± renklerini temsil eder.",
-"HavuÃ§ aslen mordu; turuncu 17. yy Hollanda'sÄ±nda geliÅŸtirildi.",
-"Peynir dÃ¼nyanÄ±n en Ã§ok Ã§alÄ±nan gÄ±da Ã¼rÃ¼nÃ¼dÃ¼r.",
-"Bir elma sabah kahveden daha fazla enerji verebilir.",
-"Ã‡ikolata kÃ¶pekler iÃ§in zehirli olan teobromin iÃ§erir.",
-"SoÄŸanÄ± keserken gÃ¶zÃ¼ yaÅŸartan madde syn-propanethial-S-oxide.",
-"Japon mutfaÄŸÄ±nda umami beÅŸinci tat olarak kabul edilir.",
-"Ä°lk Ã§ikolata bar 1847'de Ä°ngiltere'de Ã¼retildi.",
-"TarÃ§Ä±n aslÄ±nda bir aÄŸaÃ§ kabuÄŸudur.",
+"Brokoli portakaldan daha fazla C vitamini içerir.",
+"En eski makarna 4.000 yaşında, Çin'de.",
+"Hindistan cevizi suyu acilde serum olarak kullanılabilir.",
+"Kaju kabuğu zehirlidir, işlenmeden yenmez.",
+"Çilek aslında meyve değil; tohumları gerçek meyve.",
+"1 litre bal için arılar 2 milyon çiçeği ziyaret eder.",
+"Beyaz çikolata teknik olarak çikolata değil.",
+"Kopi Luwak dünyanın en pahalı kahvesi.",
+"Havuç aslen mordu; turuncu 17. yy Hollanda'sında geliştirildi.",
+"Peynir dünyanın en çok çalınan gıdası.",
+"Çikolata köpekler için zehirli (teobromin).",
+"Umami Japonca'da beşinci tat.",
+"Tarçın bir ağaç kabuğudur.",
 "Avokado botanik olarak bir 'berry'dir.",
-"Ä°lk dondurma MÃ– 200'de Ã‡in'de yapÄ±ldÄ±.",
-"Portakal tropikal bÃ¶lgelerde aslÄ±nda yeÅŸil kalÄ±r.",
-"Bir cam ÅŸarap iÃ§in yaklaÅŸÄ±k 600 Ã¼zÃ¼m tanesi gerekir.",
-"Patates MÃ– 8000'e dayanan en eski kÃ¼ltÃ¼r bitkilerinden biridir.",
-"Zencefil mide bulantÄ±sÄ±nÄ± azaltmada bilimsel olarak kanÄ±tlanmÄ±ÅŸ.",
-"Ä°lk hamburger 1900'lerde ABD'de ortaya Ã§Ä±ktÄ±.",
-"DÃ¼nyanÄ±n en bÃ¼yÃ¼k pizza rekoru 1.300 metredir.",
-"Naneli sakÄ±z Ã§iÄŸnerken soÄŸan kessek gÃ¶z kÄ±smen yaÅŸarmaz.",
-"Soya sosu 2.000 yÄ±llÄ±k bir fermantasyon geleneÄŸine dayanÄ±r.",
-"Karabiber Orta Ã‡aÄŸ'da altÄ±n kadar deÄŸerliydi.",
-"Bir fincan kahvede yaklaÅŸÄ±k 1.000 farklÄ± kimyasal bileÅŸik var.",
-"Ä°lk Ã§iklet antik Maya'lar tarafÄ±ndan Ã§iÄŸnendi (sapodilla aÄŸacÄ±).",
+"İlk dondurma MÖ 200'de Çin'de yapıldı."
 ],
-"ğŸ’¡ Teknoloji":[
-"Ä°lk iPhone'da kopyala-yapÄ±ÅŸtÄ±r yoktu.",
-"Google'Ä±n ilk depolama alanÄ± Lego kasasÄ±ydÄ±.",
-"YouTube'un ilk videosu 'Me at the zoo' (18 sn, 2005).",
-"QWERTY daktilo kollarÄ±nÄ±n takÄ±lmasÄ±nÄ± Ã¶nlemek iÃ§in tasarlandÄ±.",
-"Ä°nternetteki sitelerin %90'Ä± hiÃ§ ziyaretÃ§i almaz.",
-"Nintendo 1889'da oyun kaÄŸÄ±dÄ± ÅŸirketiydi.",
-"Ä°lk bilgisayar virÃ¼sÃ¼ 1986 Pakistan'da yaratÄ±ldÄ± (Brain).",
-"E-posta World Wide Web'den Ã¶nce icat edildi.",
-"AkÄ±llÄ± telefon sayÄ±sÄ± diÅŸ fÄ±rÃ§asÄ± sayÄ±sÄ±ndan fazladÄ±r.",
-"Ä°lk 1 GB sabit disk 1980'de 250 kg'dÄ±.",
-"Wi-Fi bir kÄ±saltma deÄŸildir.",
-"SpaceX roketleri Linux ile Ã§alÄ±ÅŸÄ±r.",
-"GPS gÃ¶relilik kuramÄ±na gÃ¶re dÃ¼zeltme yapar.",
-"Ä°lk web sitesi 1991'de Tim Berners-Lee tarafÄ±ndan oluÅŸturuldu.",
-"Amazon baÅŸta sadece kitap satan bir siteydi.",
-"ENIAC ilk programlanabilir bilgisayar: 27 ton.",
-"Bluetooth adÄ±nÄ± Viking KralÄ± Harald Bluetooth'tan alÄ±r.",
-"Ä°lk SMS 1992'de gÃ¶nderildi: 'Merry Christmas'.",
-"Netflix baÅŸta DVD kiralama hizmetiydi.",
-"Bitcoin yaratÄ±cÄ±sÄ± Satoshi Nakamoto'nun kimliÄŸi bilinmiyor.",
-"Ä°lk Apple bilgisayarÄ± garajda yapÄ±ldÄ±; fiyatÄ± 666.66$.",
-"Her gÃ¼n 500 milyondan fazla tweet atÄ±lÄ±yor.",
-"Ä°lk selfie 1839'da Robert Cornelius tarafÄ±ndan Ã§ekildi.",
-"Bir Google aramasÄ± 0.2 watt enerji tÃ¼ketir.",
-"Ä°nternet trafiÄŸinin %60'Ä±ndan fazlasÄ± botlardan gelir.",
-"Ä°lk video oyunu Pong (1972, Atari).",
-"Facebook'un orijinal adÄ± 'TheFacebook'tu.",
-"Ä°lk alan adÄ± 1985'te kaydedildi: symbolics.com.",
-"USB'yi ilk seferde doÄŸru takma ÅŸansÄ± aslÄ±nda %50.",
-"AkÄ±llÄ± telefon Apollo 11 bilgisayarÄ±ndan milyonlarca kat gÃ¼Ã§lÃ¼.",
-"3D yazÄ±cÄ±larla organ Ã¼retimi baÅŸladÄ± (biyoyazÄ±cÄ±).",
-"Ä°lk emoji seti sadece 176 simgeden oluÅŸuyordu.",
-"Her dakika YouTube'a 500+ saat video yÃ¼kleniyor.",
-"Ä°nternet kablolarÄ±nÄ±n %97'si deniz altÄ±ndan geÃ§er.",
-"Yapay zekÃ¢ 2016'da Go'da dÃ¼nya ÅŸampiyonunu yendi (AlphaGo).",
-"Moore YasasÄ±: transistÃ¶r sayÄ±sÄ± her 2 yÄ±lda bir iki katÄ±na Ã§Ä±kar.",
-"Ä°lk bilgisayar bug'Ä± gerÃ§ek bir bÃ¶cekti (Harvard, 1947).",
-"Linux Ã§ekirdeÄŸi 30 milyondan fazla satÄ±r kod iÃ§erir.",
-"QR kod 1994'te Japonya'da icat edildi.",
-"DÃ¼nya genelinde 5 milyardan fazla internet kullanÄ±cÄ±sÄ± var.",
+"💡 Teknoloji":[
+"İlk iPhone'da kopyala-yapıştır yoktu.",
+"Google'ın ilk depolama alanı Lego kasasıydı.",
+"YouTube'un ilk videosu 'Me at the zoo' (18 sn).",
+"QWERTY daktilo kollarının takılmasını önlemek için tasarlandı.",
+"İnternetteki sitelerin %90'ı hiç ziyaretçi almaz.",
+"Nintendo 1889'da oyun kağıdı şirketiydi.",
+"İlk bilgisayar virüsü 1986 Pakistan (Brain).",
+"E-posta World Wide Web'den önce icat edildi.",
+"Akıllı telefon sayısı diş fırçası sayısından fazladır.",
+"İlk 1 GB sabit disk 1980'de 250 kg.",
+"Wi-Fi bir kısaltma değildir.",
+"SpaceX roketleri Linux ile çalışır.",
+"GPS görelilik kuramına göre düzeltme yapar.",
+"İlk web sitesi 1991'de Tim Berners-Lee oluşturdu.",
+"Amazon başta sadece kitap satan siteydi.",
+"Bluetooth Viking Kralı Harald Bluetooth'tan gelir.",
+"İlk SMS 1992: 'Merry Christmas'.",
+"Netflix başta DVD kiralama hizmetiydi.",
+"Bitcoin yaratıcısı Satoshi Nakamoto'nun kimliği bilinmiyor.",
+"İlk Apple bilgisayarı garajda yapıldı; 666.66$.",
+"İnternet trafiğinin %60'ından fazlası botlardan.",
+"İlk video oyunu Pong (1972, Atari)."
 ],
-"ğŸ§  Psikoloji":[
-"Ä°nsanlar 7Â±2 bilgiyi kÄ±sa sÃ¼reli bellekte tutabilir.",
-"GÃ¼lmek baÄŸÄ±ÅŸÄ±klÄ±k sistemini gÃ¼Ã§lendirir.",
-"MÃ¼zik dopamin salgÄ±latÄ±r; yemekle aynÄ± Ã¶dÃ¼l yolu.",
-"Ä°lk izlenim 7 saniyede oluÅŸur.",
-"Ä°nsanlar gÃ¼nde 35.000 karar verir.",
-"YalnÄ±zlÄ±k fiziksel aÄŸrÄ±yla aynÄ± beyin bÃ¶lgesini aktive eder.",
-"Mavi sakinleÅŸtirir; kÄ±rmÄ±zÄ± kalp atÄ±ÅŸÄ±nÄ± hÄ±zlandÄ±rÄ±r.",
-"Beyin olumsuz deneyimleri daha gÃ¼Ã§lÃ¼ hatÄ±rlar (negativity bias).",
-"YardÄ±m etmek yardÄ±m edenin de mutluluk hormonlarÄ±nÄ± artÄ±rÄ±r.",
-"Ä°nsanlar simetrik yÃ¼zleri daha Ã§ekici bulur.",
-"Multitasking beyni yavaÅŸlatÄ±r.",
-"Esnemek bulaÅŸÄ±cÄ±dÄ±r ve empati ile iliÅŸkilidir.",
-"RÃ¼yalar 2 sn ile 20 dk arasÄ± sÃ¼rer.",
-"Ä°nsanlar kendi adlarÄ±nÄ± gÃ¼rÃ¼ltÃ¼de bile duyar (kokteyl parti etkisi).",
-"Korkutucu anlarda zaman yavaÅŸlamÄ±ÅŸ gibi hissedilir.",
-"Nostalji psikolojik olarak yararlÄ±dÄ±r.",
-"SÄ±cak iÃ§ecek tutarken karÅŸÄ±dakini daha sÄ±cakkanlÄ± algÄ±larÄ±z.",
-"Beyin gerÃ§ek ve hayali olayÄ± ayÄ±rt etmekte zorlanÄ±r.",
-"Elle not almak dijitalden daha iyi Ã¶ÄŸretir.",
-"Ä°nsanlar baÅŸkalarÄ±nÄ±n kendilerini ne kadar izlediÄŸini abartÄ±r.",
-"Merak dopamin salgÄ±latÄ±r ve Ã¶ÄŸrenmeyi kolaylaÅŸtÄ±rÄ±r.",
-"Orman yÃ¼rÃ¼yÃ¼ÅŸÃ¼ stres hormonlarÄ±nÄ± Ã¶lÃ§Ã¼lebilir ÅŸekilde azaltÄ±r.",
-"KÄ±zgÄ±nken 10'a kadar saymak gerÃ§ekten iÅŸe yarar.",
-"Ä°nsanlar gÃ¼nde 200 kez yÃ¼zlerine dokunur.",
-"SarÄ± renk aÃ§lÄ±k hissini tetikler (fast food logolarÄ±).",
-"ParfÃ¼m kokusu anÄ±larÄ± en gÃ¼Ã§lÃ¼ tetikleyen uyarandÄ±r.",
-"Plasebo etkisi gerÃ§ek fiziksel deÄŸiÅŸiklik yaratÄ±r.",
-"Sosyal medya dopamin dÃ¶ngÃ¼sÃ¼ yaratÄ±r ve baÄŸÄ±mlÄ±lÄ±k yapabilir.",
-"Zor elde edilen ÅŸeyler daha deÄŸerli algÄ±lanÄ±r.",
-"DÃ¼zenli uyku eksikliÄŸi IQ'yu Ã¶lÃ§Ã¼lebilir ÅŸekilde dÃ¼ÅŸÃ¼rÃ¼r.",
-"YeÅŸil renk yaratÄ±cÄ±lÄ±ÄŸÄ± artÄ±rÄ±r; doÄŸada vakit geÃ§irmek odaklanmayÄ± iyileÅŸtirir.",
-"Bebek kokusu annelerde dopamin salgÄ±latÄ±r.",
-"Ä°nsanlar belirsizlikten belirsizliÄŸin sonucundan daha Ã§ok korkar.",
-"GÃ¼lÃ¼mseyen insanlar daha gÃ¼venilir algÄ±lanÄ±r.",
-"Dunning-Kruger etkisi: bilgisi az olanlar yetkinliklerini abartÄ±r.",
+"🧠 Psikoloji":[
+"İnsanlar 7±2 bilgiyi kısa süreli bellekte tutar.",
+"Gülmek bağışıklık sistemini güçlendirir.",
+"Müzik dopamin salgılatır; yemekle aynı ödül yolu.",
+"İlk izlenim 7 saniyede oluşur.",
+"İnsanlar günde 35.000 karar verir.",
+"Yalnızlık fiziksel ağrıyla aynı beyin bölgesini aktive eder.",
+"Mavi sakinleştirir; kırmızı kalp atışını hızlandırır.",
+"Beyin olumsuz deneyimleri daha güçlü hatırlar.",
+"Yardım etmek yardım edenin mutluluk hormonlarını artırır.",
+"İnsanlar simetrik yüzleri daha çekici bulur.",
+"Multitasking beyni yavaşlatır.",
+"Esnemek bulaşıcıdır ve empati ile ilişkili.",
+"İnsanlar kendi adlarını gürültüde bile duyar (kokteyl etkisi).",
+"Korkutucu anlarda zaman yavaşlamış hissedilir.",
+"Nostalji psikolojik olarak yararlıdır.",
+"Sıcak içecek tutarken karşıdakini daha sıcakkanlı algılarız.",
+"Beyin gerçek ve hayali olayı ayırt etmekte zorlanır.",
+"Elle not almak dijitalden daha iyi öğretir.",
+"Merak dopamin salgılatır ve öğrenmeyi kolaylaştırır.",
+"Orman yürüyüşü stres hormonlarını ölçülebilir azaltır.",
+"İnsanlar günde 200 kez yüzlerine dokunur."
 ],
-"ğŸ¨ Sanat & KÃ¼ltÃ¼r":[
-"Mona Lisa'nÄ±n kaÅŸlarÄ± yoktur; RÃ¶nesans modasÄ±ydÄ±.",
-"Van Gogh hayattayken sadece bir tablo sattÄ±.",
-"Picasso'nun tam adÄ± 23 kelimeden oluÅŸur.",
-"Shakespeare Ä°ngilizceye 1.700 yeni kelime kazandÄ±rdÄ±.",
-"'YÄ±ldÄ±zlÄ± Gece' akÄ±l hastanesinde Ã§izildi.",
-"Eiffel Kulesi yazÄ±n 15 cm uzar.",
-"Leonardo da Vinci iki eliyle aynÄ± anda yazabilirdi.",
-"Beethoven saÄŸÄ±r olduktan sonra en Ã¼nlÃ¼ eserlerini besteledi.",
-"Frida Kahlo 55 tablosunun 33'Ã¼nde kendini resmetmiÅŸtir.",
-"Hermitage mÃ¼zesindeki tÃ¼m eserlere 1 dk baksa 11 yÄ±l sÃ¼rer.",
-"Mozart 5 yaÅŸÄ±nda ilk bestesini yaptÄ±.",
-"Oscar heykeli 24 ayar altÄ±n kaplama, kalay-bakÄ±r alaÅŸÄ±mdÄ±r.",
-"Ä°lk animasyon film 1908'de yapÄ±ldÄ± (Ã‰mile Cohl).",
-"Kintsugi'de kÄ±rÄ±k seramikler altÄ±nla onarÄ±lÄ±r.",
-"Banksy'nin kimliÄŸi hÃ¢lÃ¢ bilinmiyor.",
-"Antik Yunan heykelleri aslÄ±nda rengÃ¢renk boyalÄ±ydÄ±.",
-"'Ã‡Ä±ÄŸlÄ±k' tablosu doÄŸanÄ±n Ã§Ä±ÄŸlÄ±ÄŸÄ±nÄ± duyduÄŸunu tasvir eder.",
-"Stradivarius kemanlarÄ± 300 yÄ±l sonra hÃ¢lÃ¢ en deÄŸerli.",
-"Harry Potter 80'den fazla dile Ã§evrildi.",
-"Bob Ross 30.000'den fazla aÄŸaÃ§ boyamÄ±ÅŸtÄ±r.",
-"Origami tek kÃ¢ÄŸÄ±ttan 10.000+ farklÄ± ÅŸekil yapÄ±labilir.",
-"Michelangelo Sistine Åapeli tavanÄ±nÄ± 4 yÄ±l boyunca boyamÄ±ÅŸtÄ±.",
-"LEGO dÃ¼nyanÄ±n en bÃ¼yÃ¼k lastik Ã¼reticisidir (minyatÃ¼r).",
-"Gotik gargoyle heykelleri aslÄ±nda yaÄŸmur oluÄŸudur.",
-"Hollywood tabelasÄ± ilk konulduÄŸunda 'Hollywoodland' yazÄ±yordu.",
-"Mona Lisa yÄ±lda 6 milyon kiÅŸi tarafÄ±ndan ziyaret edilir.",
-"Antik MÄ±sÄ±r hiyeroglifleri 700'den fazla sembol iÃ§erir.",
-"DÃ¼nya'daki en eski maÄŸara resimleri 40.000 yaÅŸÄ±nda.",
-"Ä°lk roman Murasaki Shikibu'nun Genji'nin HikÃ¢yesi'dir (1010).",
-"DÃ¼nya'da 7.000'den fazla dil konuÅŸulur.",
+"🎨 Sanat & Kültür":[
+"Mona Lisa'nın kaşları yoktur; Rönesans modası.",
+"Van Gogh hayattayken sadece bir tablo sattı.",
+"Shakespeare İngilizceye 1.700 yeni kelime kazandırdı.",
+"'Yıldızlı Gece' akıl hastanesinde çizildi.",
+"Eiffel Kulesi yazın 15 cm uzar.",
+"Leonardo da Vinci iki eliyle aynı anda yazabilirdi.",
+"Beethoven sağır olduktan sonra en ünlü eserlerini besteledi.",
+"Hermitage müzesine 1 dk baksa 11 yıl sürer.",
+"Mozart 5 yaşında ilk bestesini yaptı.",
+"Kintsugi'de kırık seramikler altınla onarılır.",
+"Banksy'nin kimliği hâlâ bilinmiyor.",
+"Antik Yunan heykelleri aslında rengârenk boyalıydı.",
+"Harry Potter 80'den fazla dile çevrildi.",
+"Bob Ross 30.000'den fazla ağaç boyamıştır.",
+"Michelangelo Sistine Şapeli tavanını 4 yıl boyamıştı.",
+"LEGO dünyanın en büyük lastik üreticisi (minyatür).",
+"Hollywood tabelası ilk 'Hollywoodland' yazıyordu.",
+"Antik Mısır hiyeroglifleri 700+ sembol içerir."
 ],
-"âš½ Spor":[
-"Olimpiyat altÄ±n madalyalarÄ± %92.5 gÃ¼mÃ¼ÅŸten yapÄ±lÄ±r.",
-"Basketbol ÅŸeftali sepeti ve futbol topuyla baÅŸladÄ±.",
-"Usain Bolt 100m rekoru 9.58 saniye (2009).",
-"FIFA kupasÄ± saf 18 ayar altÄ±ndan, 6.1 kg.",
-"Golf Ay yÃ¼zeyinde oynanan tek spordur (1971).",
-"Bir maratonda yaklaÅŸÄ±k 2.600 kalori yakÄ±lÄ±r.",
-"F1 direksiyonunda 20'den fazla dÃ¼ÄŸme var.",
-"Sumo gÃ¼reÅŸÃ§ileri gÃ¼nde 7.000-8.000 kalori tÃ¼ketir.",
-"Tenis toplarÄ± TV iÃ§in beyazdan sarÄ±ya deÄŸiÅŸti.",
-"Michael Jordan 6 kez NBA ÅŸampiyonu ve her seferinde MVP.",
-"DÃ¼nyanÄ±n en Ã§ok izlenen etkinliÄŸi FIFA finalidir.",
-"Tour de France'ta gÃ¼nde 8.000 kalori yakÄ±labilir.",
-"Havuzdaki klor kokusu aslÄ±nda klor-ter birleÅŸimi.",
-"Ä°lk FIFA DÃ¼nya KupasÄ± 1930'da Uruguay'da dÃ¼zenlendi.",
-"DÃ¼nyanÄ±n en eski spor mÃ¼sabakasÄ± gÃ¼reÅŸtir (MÃ– 3000).",
-"Voleybol baÅŸta 'mintonette' olarak adlandÄ±rÄ±lÄ±yordu.",
-"Jai alai dÃ¼nyanÄ±n en hÄ±zlÄ± sporudur; top saatte 300 km.",
-"OkÃ§uluk Ä°ngiliz yasalarÄ±nda zorunlu beceriydi.",
-"Kriket maÃ§larÄ± 5 gÃ¼n sÃ¼rebilir.",
-"Masa tenisi topunun hÄ±zÄ± smash'te 112 km/s'ye ulaÅŸÄ±r.",
-"Buz hokeyi diski sÄ±Ã§ramayÄ± azaltmak iÃ§in dondurucuda saklanÄ±r.",
-"LeBron James NBA'de en Ã§ok sayÄ± atan oyuncu rekorunu kÄ±rdÄ±.",
-"Golf topundaki Ã§ukur sayÄ±sÄ± genellikle 300-500 arasÄ±.",
-"Beyzbol toplarÄ± inek derisiyle kaplanÄ±r ve 108 dikiÅŸ iÃ§erir.",
-"Futbolda orta saha oyuncularÄ± maÃ§ baÅŸÄ±na 10-13 km koÅŸar.",
-"Olimpiyat meÅŸalesi uzayda bile taÅŸÄ±ndÄ± (2013).",
-"DÃ¼nyanÄ±n en uzun tenis maÃ§Ä± 11 saat 5 dakika sÃ¼rdÃ¼.",
-"Bir NBA basketbol sahasÄ±nÄ±n uzunluÄŸu 28.65 metredir.",
-"Ä°lk kadÄ±nlar OlimpiyatÄ± 1900 Paris'te dÃ¼zenlendi.",
-"Bir boksÃ¶rÃ¼n yumruÄŸu 400 kg kuvvetle vurabilir.",
+"⚽ Spor":[
+"Olimpiyat altın madalyaları %92.5 gümüşten yapılır.",
+"Basketbol şeftali sepeti ve futbol topuyla başladı.",
+"Usain Bolt 100m rekoru 9.58 sn.",
+"FIFA kupası saf 18 ayar altın, 6.1 kg.",
+"Golf Ay'da oynanan tek spor (1971).",
+"Maratonda 2.600 kalori yakılır.",
+"F1 direksiyonunda 20+ düğme var.",
+"Sumo güreşçileri günde 7-8.000 kalori tüketir.",
+"Tenis topları TV için beyazdan sarıya değişti.",
+"Dünyanın en çok izlenen etkinliği FIFA finali.",
+"Tour de France'ta günde 8.000 kalori yakılabilir.",
+"İlk FIFA 1930'da Uruguay'da düzenlendi.",
+"En eski spor güreştir (MÖ 3000).",
+"Voleybol başta 'mintonette' idi.",
+"Jai alai en hızlı spor; top saatte 300 km."
 ],
-"ğŸµ MÃ¼zik":[
-"'Happy Birthday' 2016'ya kadar telif haklÄ±ydÄ±.",
-"Piyano 88 tuÅŸ ve 230 tele sahiptir.",
-"Metallica her kÄ±tada (Antarktika dahil) konser verdi.",
-"MÃ¼zik kalp atÄ±ÅŸ hÄ±zÄ±nÄ± etkileyebilir.",
-"Elvis Presley hiÃ§bir ÅŸarkÄ±sÄ±nÄ± kendisi yazmadÄ±.",
-"Bir keman 70 farklÄ± ahÅŸap parÃ§adan oluÅŸur.",
-"Ä°nsanlar 20 Hzâ€“20.000 Hz arasÄ± frekanslarÄ± duyabilir.",
-"Beatles hiÃ§bir Ã¼yesi nota okuyamazdÄ±.",
-"Caz New Orleans'ta 19. yy sonlarÄ±nda doÄŸdu.",
-"Rap 'Rhythm and Poetry' kÄ±saltmasÄ±dÄ±r.",
-"En eski enstrÃ¼man 40.000 yÄ±llÄ±k kemik flÃ¼ttÃ¼r.",
-"Freddie Mercury'nin ses aralÄ±ÄŸÄ± 4 oktavdÄ±.",
+"🎵 Müzik":[
+"'Happy Birthday' 2016'ya kadar telif haklıydı.",
+"Piyano 88 tuş ve 230 tele sahip.",
+"Metallica her kıtada (Antarktika dahil) konser verdi.",
+"Elvis Presley hiçbir şarkısını kendisi yazmadı.",
+"Beatles nota okuyamazdı.",
+"En eski enstrüman 40.000 yıllık kemik flüt.",
+"Freddie Mercury'nin ses aralığı 4 oktav.",
 "Bach 1.100'den fazla eser besteledi.",
-"Beethoven'Ä±n 9. Senfonisi CD uzunluÄŸunu belirledi: 74 dk.",
-"En pahalÄ± gitar 3.9 milyon dolara satÄ±ldÄ±.",
-"Plak sesi iÄŸneyle oluÄŸun titreÅŸimlerinden Ã¼retilir.",
-"K-pop GÃ¼ney Kore'nin en bÃ¼yÃ¼k kÃ¼ltÃ¼rel ihracatÄ±.",
-"MÃ¼zik terapi Alzheimer'da hafÄ±za geri Ã§aÄŸÄ±rmayÄ± iyileÅŸtirir.",
-"Gitar dÃ¼nyanÄ±n en popÃ¼ler enstrÃ¼manÄ±dÄ±r.",
-"KulaklÄ±kla yÃ¼ksek ses 30 dk'da kalÄ±cÄ± iÅŸitme kaybÄ±na yol aÃ§abilir.",
-"Ä°lk kaydedilen ses 1860'ta Ã‰douard-LÃ©on Scott tarafÄ±ndan yapÄ±ldÄ±.",
-"Mozart'Ä±n Ã¶lÃ¼m nedeni hÃ¢lÃ¢ tartÄ±ÅŸmalÄ±dÄ±r.",
-"Autotune 1997'de Cher'in 'Believe' ÅŸarkÄ±sÄ±yla popÃ¼ler oldu.",
-"DÃ¼nya'da en Ã§ok satÄ±lan albÃ¼m Michael Jackson'Ä±n Thriller'Ä±dÄ±r.",
-"Konser piyanolarÄ±nÄ±n fiyatÄ± 100.000$'Ä± aÅŸabilir.",
+"Beethoven'ın 9. Senfonisi CD uzunluğunu belirledi: 74 dk.",
+"En pahalı gitar 3.9 milyon$'a satıldı.",
+"Gitar dünyanın en popüler enstrümanı.",
+"Kulaklıkla yüksek ses 30 dk'da kalıcı işitme kaybı yapabilir.",
+"İlk kaydedilen ses 1860'ta yapıldı.",
+"Autotune 1997'de Cher'in Believe'iyle popüler oldu."
 ],
-"ğŸ”¢ Matematik":[
-"SÄ±fÄ±r ne pozitif ne negatiftir.",
-"Pi sonsuzdur ve tekrar etmeyen ondalÄ±ktÄ±r.",
-"Bir yÄ±lda 31.536.000 saniye vardÄ±r.",
-"Fibonacci: her sayÄ± Ã¶nceki ikisinin toplamÄ± (1,1,2,3,5,8...).",
-"Googol 10^100'dÃ¼r; Google'Ä±n adÄ± buradan gelir.",
-"Rubik kÃ¼pÃ¼nÃ¼n 43 kentilyondan fazla dizilimi var.",
-"Roma rakamlarÄ±nda sÄ±fÄ±r yoktur.",
-"111.111.111 Ã— 111.111.111 = 12.345.678.987.654.321",
-"0.999... matematiksel olarak 1'e eÅŸittir.",
-"52 kartlÄ±k deste 52! farklÄ± ÅŸekilde karÄ±labilir â€” evrendeki atomlardan fazla.",
-"AltÄ±n oran Ï† â‰ˆ 1.618 doÄŸada sÃ¼rekli karÅŸÄ±mÄ±za Ã§Ä±kar.",
-"Ä°kiz asallarÄ±n sonsuzluÄŸu hÃ¢lÃ¢ Ã§Ã¶zÃ¼lmemiÅŸ bir problemdir.",
-"MÃ¼kemmel sayÄ±lar kendi bÃ¶lenlerinin toplamÄ±na eÅŸittir: 6=1+2+3.",
-"MÃ¶bius ÅŸeridinin tek yÃ¼zeyi ve tek kenarÄ± vardÄ±r.",
-"Graham sayÄ±sÄ± evrendeki atomlarla bile yazÄ±lamaz.",
-"4, Ä°ngilizce'de harf sayÄ±sÄ± kelimeyle eÅŸleÅŸen tek sayÄ±dÄ±r.",
-"Euler sayÄ±sÄ± eâ‰ˆ2.718 doÄŸada sÃ¼rekli bÃ¼yÃ¼meyi modeller.",
-"Sonsuz otel paradoksu: dolu sonsuz odale hep yer aÃ§Ä±lÄ±r.",
-"Palindrom sayÄ±lar iki yÃ¶nden aynÄ± okunur: 12321.",
-"Bayesian istatistik yeni kanÄ±tlarla inanÃ§larÄ± gÃ¼nceller.",
-"Bir dairenin alanÄ± Ï€Ã—rÂ² formÃ¼lÃ¼yle hesaplanÄ±r.",
-"ÃœÃ§genin iÃ§ aÃ§Ä±larÄ± toplamÄ± her zaman 180Â°'dir.",
-"Sonsuzluk bir sayÄ± deÄŸil, bir kavramdÄ±r.",
-"Asal sayÄ±larÄ±n daÄŸÄ±lÄ±mÄ± hÃ¢lÃ¢ tam olarak anlaÅŸÄ±lamamÄ±ÅŸtÄ±r.",
-"Fermat'Ä±n son teoremi 350 yÄ±l sonra 1995'te kanÄ±tlandÄ±.",
+"🔢 Matematik":[
+"Pi sonsuzdur ve tekrar etmeyen ondalıktır.",
+"Fibonacci: her sayı önceki ikisinin toplamı.",
+"Googol 10^100'dür; Google'ın adı buradan.",
+"Rubik küpünün 43 kentilyondan fazla dizilimi var.",
+"111.111.111 × 111.111.111 = 12.345.678.987.654.321",
+"0.999... matematiksel olarak 1'e eşittir.",
+"52 kartlık deste 52! farklı karılabilir — evrendeki atomlardan fazla.",
+"Altın oran φ≈1.618 doğada sürekli karşımıza çıkar.",
+"Möbius şeridinin tek yüzeyi ve tek kenarı var.",
+"Graham sayısı evrendeki atomlarla yazılamaz.",
+"Euler sayısı e≈2.718 sürekli büyümeyi modeller.",
+"Sonsuz otel paradoksu: dolu sonsuz otele hep yer açılır.",
+"Fermat'ın son teoremi 350 yıl sonra kanıtlandı (1995)."
 ],
-"ğŸ¥ SaÄŸlÄ±k":[
-"GÃ¼lmek 15 dk'da 10-40 kalori yaktÄ±rabilir.",
-"VÃ¼cut gÃ¼nde 1-1.5 litre tÃ¼kÃ¼rÃ¼k Ã¼retir.",
-"Ortalama insan 25 yÄ±l uyur.",
-"HapÅŸÄ±rma sÄ±rasÄ±nda kalp durmaz; efsanedir.",
-"Ä°nsan kemikleri aÄŸÄ±rlÄ±k oranÄ±na gÃ¶re Ã§elikten gÃ¼Ã§lÃ¼dÃ¼r.",
-"Ã–mÃ¼r boyu yaklaÅŸÄ±k 100.000 km yÃ¼rÃ¼rÃ¼z.",
-"Dil izi parmak izi gibi herkeste benzersizdir.",
-"Bebeklerin 300 kemiÄŸi var ama yetiÅŸkinde 206'ya dÃ¼ÅŸer.",
-"AksÄ±rÄ±k saatte 160 km hÄ±za ulaÅŸÄ±r.",
-"VÃ¼cut her saniye 3.8 milyon hÃ¼cre Ã¼retir.",
-"Kafein dÃ¼nyanÄ±n en Ã§ok tÃ¼ketilen psikoaktif maddesi.",
-"Stres beyni fiziksel olarak kÃ¼Ã§Ã¼ltebilir.",
-"Uyku eksikliÄŸi sarhoÅŸluÄŸa benzer biliÅŸsel bozulma yaratÄ±r.",
-"Kalp Ã¶mÃ¼r boyu 200 milyon litre kan pompalar.",
-"D vitamini aslÄ±nda hormon gibi davranÄ±r.",
-"VÃ¼cuttaki su oranÄ± yaklaÅŸÄ±k %60'tÄ±r.",
-"DÃ¼zenli egzersiz antidepresan kadar etkili olabilir.",
-"Mide iÃ§ zarÄ± her 3-4 gÃ¼nde bir tamamen yenilenir.",
-"SakÄ±z Ã§iÄŸnemek belleÄŸi gÃ¼Ã§lendirebilir.",
-"Meditasyon beyinde gri madde yoÄŸunluÄŸunu artÄ±rÄ±r.",
-"VÃ¼cut gÃ¼nde 200-300 g Ã¶lÃ¼ hÃ¼cre dÃ¶ker.",
-"TÄ±rnaklar Ã¶lÃ¼mden sonra uzamaz; deri Ã§ekilir.",
-"BaÄŸÄ±rsak mikrobiyomu ruh halini etkiler (ikinci beyin).",
-"Kronik stres baÄŸÄ±ÅŸÄ±klÄ±k sistemini zayÄ±flatÄ±r.",
-"Ä°nsan vÃ¼cudu geceleri ortalama 1 cm kÄ±salÄ±r (omurga basÄ±ncÄ±).",
+"🏥 Sağlık":[
+"Gülmek 15 dk'da 10-40 kalori yaktırır.",
+"Vücut günde 1-1.5 litre tükürük üretir.",
+"Ortalama insan 25 yıl uyur.",
+"Hapşırma sırasında kalp durmaz; efsane.",
+"İnsan kemikleri ağırlık oranına göre çelikten güçlü.",
+"Ömür boyu 100.000 km yürürüz.",
+"Dil izi parmak izi gibi benzersiz.",
+"Bebeklerin 300 kemiği var; yetişkinde 206.",
+"Aksırık saatte 160 km hıza ulaşır.",
+"Vücut her saniye 3.8 milyon hücre üretir.",
+"Kafein en çok tüketilen psikoaktif madde.",
+"Stres beyni fiziksel olarak küçültebilir.",
+"Uyku eksikliği sarhoşluğa benzer bozulma yaratır.",
+"Kalp ömür boyu 200 milyon litre kan pompalar."
 ],
-"ğŸ¬ Sinema":[
-"Ä°lk film LumiÃ¨re KardeÅŸler'in 'Trenin VarÄ±ÅŸÄ±' (1895).",
-"Titanic filmi Titanik'in inÅŸasÄ±ndan daha pahalÄ±ya mal oldu.",
-"Star Wars'taki Ä±ÅŸÄ±n kÄ±lÄ±cÄ± sesi TV arÄ±zasÄ±ndan esinlenildi.",
-"Shrek filmi baÅŸta korku filmi olarak tasarlandÄ±.",
-"E.T.'nin yÃ¼zÃ¼ Albert Einstein'dan esinlenildi.",
-"Jurassic Park'taki dinozor kÃ¼kremeleri gerÃ§ek hayvan seslerinin karÄ±ÅŸÄ±mÄ±dÄ±r.",
-"Ä°lk tamamen bilgisayar animasyonlu film Toy Story (1995).",
-"Psycho filmi bir sifonlu tuvaletin gÃ¶sterildiÄŸi ilk filmdir.",
-"Matrix'teki yeÅŸil kod aslÄ±nda suÅŸi tariflerinin Japonca karakterleri.",
-"Avatar (2009) 2.9 milyar$ ile en Ã§ok hasÄ±lat yapan filmdi.",
-"Alfred Hitchcock kendi filmlerinde kÄ±sa sÃ¼re gÃ¶rÃ¼nÃ¼rdÃ¼ (cameo).",
-"Wizard of Oz renkli Ã§ekilen ilk bÃ¼yÃ¼k yapÄ±m deÄŸildir ama en Ã¼nlÃ¼sÃ¼dÃ¼r.",
-"James Bond 6 farklÄ± aktÃ¶r tarafÄ±ndan canlandÄ±rÄ±ldÄ±.",
-"Godfather filmindeki at kafasÄ± gerÃ§ekti (mezbahadan).",
-"Rocky filminin senaryosu Sylvester Stallone tarafÄ±ndan 3 gÃ¼nde yazÄ±ldÄ±.",
-"Inception'daki totem sahnesi finale kasÄ±tlÄ± olarak belirsiz bÄ±rakÄ±ldÄ±.",
-"Frozen'daki 'Let It Go' Oscar kazanan ilk Disney ÅŸarkÄ±larÄ±ndan biri.",
-"Lord of the Rings Ã¼Ã§lemesi 438 Oscar adaylÄ±ÄŸÄ± ve 17 Ã¶dÃ¼l aldÄ±.",
-"Pixar'Ä±n her filminde Pizza Planet kamyonu gizli olarak gÃ¶rÃ¼nÃ¼r.",
-"Ä°lk Oscar tÃ¶reni 1929'da dÃ¼zenlendi ve sadece 15 dakika sÃ¼rdÃ¼.",
-"Jaws filmi yÃ¼zÃ¼nden kÃ¶pekbalÄ±ÄŸÄ± korkusu dÃ¼nya Ã§apÄ±nda arttÄ±.",
-"Back to the Future'da zaman makinesi baÅŸta buzdolabÄ±ydÄ±.",
-"Wilhelm Scream adlÄ± Ã§Ä±ÄŸlÄ±k sesi 200'den fazla filmde kullanÄ±ldÄ±.",
-"Marvel Cinematic Universe 30+ filmle en bÃ¼yÃ¼k film serisi.",
-"Bir Hollywood filminin ortalama prodÃ¼ksiyon sÃ¼resi 2-3 yÄ±ldÄ±r.",
+"🎬 Sinema":[
+"İlk film Lumière Kardeşler 'Trenin Varışı' (1895).",
+"Titanic filmi geminin inşasından pahalıya mal oldu.",
+"Star Wars ışın kılıcı sesi TV arızasından esinlenildi.",
+"Matrix yeşil kodu suşi tariflerinin Japonca karakterleri.",
+"Avatar (2009) 2.9 milyar$ hasılat yaptı.",
+"Hitchcock kendi filmlerinde kısa süre görünürdü.",
+"James Bond 6 farklı aktör canlandırdı.",
+"Rocky senaryosu 3 günde yazıldı.",
+"Pixar her filminde Pizza Planet kamyonu gizler.",
+"İlk Oscar töreni 1929'da 15 dakika sürdü.",
+"Jaws köpekbalığı korkusunu dünya çapında artırdı.",
+"Wilhelm Scream 200+ filmde kullanıldı.",
+"İlk tamamen CGI film Toy Story (1995).",
+"Shrek başta korku filmi olarak tasarlandı.",
+"E.T.'nin yüzü Einstein'dan esinlenildi."
 ],
-"ğŸ—£ï¸ Dil":[
-"DÃ¼nya'da 7.000'den fazla dil konuÅŸulur.",
-"'Set' Ä°ngilizce'de en fazla anlama sahip kelimedir (430+).",
-"Mandarin Ã‡ince dÃ¼nyanÄ±n en Ã§ok konuÅŸulan ana dilidir.",
-"KamboÃ§ya dili (Khmer) dÃ¼nyanÄ±n en uzun alfabesine sahiptir (74 harf).",
-"'Bookkeeper' Ä°ngilizce'de ardÄ±ÅŸÄ±k Ã§ift harf iÃ§eren tek kelimedir.",
-"BaskÃ§a (Euskara) bilinen hiÃ§bir dille akraba deÄŸildir.",
-"PirahÃ£ dili sadece 3 sesli ve 8 sessiz harf kullanÄ±r.",
-"Esperanto 1887'de yaratÄ±lmÄ±ÅŸ yapay bir dildir.",
-"Japonca'da yaÄŸmur iÃ§in 50'den fazla kelime var.",
-"Ä°nuit dillerinde kar iÃ§in onlarca farklÄ± kelime olduÄŸu efsanedir ama gerÃ§ekte birkaÃ§ kÃ¶k kelime var.",
-"TÃ¼rkÃ§e sondan eklemeli (aglÃ¼tinatif) bir dildir.",
-"'Typewriter' Ä°ngilizce klavyenin Ã¼st satÄ±rÄ±yla yazÄ±labilen en uzun kelimedir.",
-"Ã‡ince'de alfabe yoktur; logografik bir yazÄ± sistemi kullanÄ±lÄ±r.",
-"'Strengths' Ä°ngilizce'de tek sesli harfli en uzun kelimelerden biridir.",
-"'Saudade' Portekizce'de Ã§evirisi zor olan derin Ã¶zlem anlamÄ±na gelir.",
-"Tonal dillerde aynÄ± hece farklÄ± tonlarla farklÄ± anlam taÅŸÄ±r.",
-"Papua Yeni Gine 840+ dille dÃ¼nyanÄ±n en Ã§ok dilli Ã¼lkesidir.",
-"Her 14 gÃ¼nde bir dil yok oluyor.",
-"'OK' dÃ¼nyanÄ±n en yaygÄ±n anlaÅŸÄ±lan kelimesidir.",
-"Braille alfabesi 1824'te Louis Braille tarafÄ±ndan icat edildi.",
-"Sign language (iÅŸaret dili) her Ã¼lkede farklÄ±dÄ±r.",
-"Latin alfabesi dÃ¼nyada en yaygÄ±n kullanÄ±lan yazÄ± sistemidir.",
-"DÃ¼nyanÄ±n en kÄ±sa cÃ¼mlesi 'Go!' veya 'I am.' olabilir.",
-"Palindrom kelimeler her iki yÃ¶nden aynÄ± okunur: kayak, aba.",
-"GÃ¼rcÃ¼ alfabesi dÃ¼nyanÄ±n en benzersiz yazÄ± sistemlerinden biridir.",
+"🗣️ Dil":[
+"Dünya'da 7.000'den fazla dil konuşulur.",
+"'Set' İngilizce'de en fazla anlama sahip kelime (430+).",
+"Mandarin en çok konuşulan ana dili.",
+"Khmer dünyanın en uzun alfabesi (74 harf).",
+"Baskça bilinen hiçbir dille akraba değil.",
+"Esperanto 1887'de yaratılan yapay dil.",
+"Japonca'da yağmur için 50+ kelime var.",
+"Türkçe sondan eklemeli (aglütinatif) bir dil.",
+"'Typewriter' klavye üst satırıyla yazılabilir.",
+"'Saudade' Portekizce'de derin özlem anlamına gelir.",
+"Papua Yeni Gine 840+ dille en çok dilli ülke.",
+"Her 14 günde bir dil yok oluyor.",
+"'OK' dünyanın en yaygın anlaşılan kelimesi.",
+"Braille 1824'te Louis Braille icat etti."
 ],
-"ğŸ’° Ekonomi":[
-"DÃ¼nyanÄ±n en eski bilinen para birimi Lidya sikkesidir (MÃ– 600).",
-"Apple'Ä±n piyasa deÄŸeri birÃ§ok Ã¼lkenin GDP'sinden bÃ¼yÃ¼ktÃ¼r.",
-"Monopoly oyununun parasÄ± her yÄ±l gerÃ§ek ABD dolarÄ±ndan daha fazla basÄ±lÄ±r.",
-"Japonya'da 'yen' aslÄ±nda 'yuvarlak nesne' anlamÄ±na gelir.",
-"DÃ¼nyanÄ±n en kÃ¼Ã§Ã¼k banknotu 1 kuruÅŸluk OsmanlÄ± parasÄ±.",
-"Kripto paralarÄ±n toplam piyasa deÄŸeri trilyon dolarlarÄ± aÅŸtÄ±.",
-"Warren Buffett ilk hissesini 11 yaÅŸÄ±nda satÄ±n aldÄ±.",
-"Bir dolarlÄ±k banknotun ortalama Ã¶mrÃ¼ 6.6 yÄ±ldÄ±r.",
-"Ä°sviÃ§re Frank'Ä± dÃ¼nyanÄ±n en istikrarlÄ± para birimlerinden biridir.",
-"DÃ¼nyanÄ±n en pahalÄ± ÅŸehri yaÅŸam maliyeti aÃ§Ä±sÄ±ndan sÃ¼rekli deÄŸiÅŸir.",
-"Zimbabwe bir dÃ¶nem 100 trilyon dolarlÄ±k banknot bastÄ±.",
-"AltÄ±n insanlÄ±k tarihinde yaklaÅŸÄ±k 190.000 ton Ã§Ä±karÄ±lmÄ±ÅŸtÄ±r.",
-"Coca-Cola dÃ¼nyada hemen her Ã¼lkede satÄ±lan tek Ã¼rÃ¼ndÃ¼r.",
-"Ä°lk kredi kartÄ± 1950'de Diners Club tarafÄ±ndan Ã§Ä±karÄ±ldÄ±.",
-"Amazon'un adÄ± Jeff Bezos tarafÄ±ndan 'dÃ¼nyanÄ±n en bÃ¼yÃ¼k nehri' olarak seÃ§ildi.",
-"DÃ¼nyanÄ±n en deÄŸerli markasÄ± genellikle Apple veya Google'dÄ±r.",
-"Ä°lk ATM 1967'de Londra'da kuruldu.",
-"DÃ¼nya ekonomisinin yaklaÅŸÄ±k %60'Ä± hizmet sektÃ¶rÃ¼nden gelir.",
-"Ä°lk borsa 1602'de Amsterdam'da kuruldu.",
-"NorveÃ§'in devlet varlÄ±k fonu 1 trilyon dolarÄ± aÅŸan dÃ¼nyanÄ±n en bÃ¼yÃ¼ÄŸÃ¼.",
+"💰 Ekonomi":[
+"En eski bilinen para Lidya sikkesi (MÖ 600).",
+"Apple piyasa değeri birçok ülkenin GDP'sinden büyük.",
+"Monopoly parası her yıl gerçek dolardan fazla basılır.",
+"Japonya'da 'yen' 'yuvarlak nesne' demek.",
+"Zimbabwe 100 trilyon dolarlık banknot bastı.",
+"İnsanlık tarihinde ~190.000 ton altın çıkarıldı.",
+"İlk kredi kartı 1950 Diners Club.",
+"Amazon adı 'dünyanın en büyük nehri'nden.",
+"İlk ATM 1967 Londra'da kuruldu.",
+"İlk borsa 1602 Amsterdam.",
+"Norveç varlık fonu 1 trilyon$+ dünyanın en büyüğü.",
+"Kripto paraların piyasa değeri trilyon dolarları aştı.",
+"Warren Buffett ilk hissesini 11 yaşında aldı.",
+"1 dolarlık banknotun ömrü ortalama 6.6 yıl."
 ],
-"ğŸ® Oyunlar":[
-"Minecraft 300 milyon kopya ile en Ã§ok satan video oyunu.",
-"Ä°lk video oyunu 'Tennis for Two' (1958).",
-"Mario karakterinin adÄ± Nintendo'nun ABD'deki depo sahibinden gelir.",
+"🎮 Oyunlar":[
+"Minecraft 300M kopya ile en çok satan oyun.",
+"İlk video oyunu 'Tennis for Two' (1958).",
+"Mario'nun adı Nintendo'nun ABD depo sahibinden.",
 "Pac-Man pizza diliminden esinlenildi.",
-"Tetris 1984'te Sovyet bilim insanÄ± Alexey Pajitnov tarafÄ±ndan yaratÄ±ldÄ±.",
-"GTA V ilk 3 gÃ¼nde 1 milyar$ gelir elde etti.",
-"PokÃ©mon'un yaratÄ±cÄ±sÄ± Satoshi Tajiri bÃ¶cek toplamaktan ilham aldÄ±.",
-"The Sims'te Simlish dili gerÃ§ek bir dil deÄŸildir.",
-"Fortnite'Ä±n bir konserini 12 milyon kiÅŸi canlÄ± izledi.",
-"Zelda'nÄ±n adÄ± F. Scott Fitzgerald'Ä±n eÅŸinden gelir.",
-"Space Invaders 1978'de Japonya'da madeni para kÄ±tlÄ±ÄŸÄ±na neden oldu.",
-"Atari'nin anlamÄ± Japonca'da 'hedef' demektir.",
-"E-spor pazarÄ± milyar dolarlÄ±k bir endÃ¼stri haline geldi.",
-"Wii Sports dÃ¼nyanÄ±n en Ã§ok satan konsol oyunlarÄ±ndan biri.",
-"Sonic the Hedgehog baÅŸta tavÅŸan olarak tasarlanmÄ±ÅŸtÄ±.",
-"DÃ¼nya'daki aktif oyuncu sayÄ±sÄ± 3 milyarÄ± aÅŸtÄ±.",
-"Ä°lk PlayStation 1994'te Japonya'da piyasaya sÃ¼rÃ¼ldÃ¼.",
-"Candy Crush gÃ¼nde milyonlarca dolar gelir elde eder.",
-"Counter-Strike bir Half-Life mod'u olarak baÅŸladÄ±.",
-"Roblox platformunda 40 milyondan fazla kullanÄ±cÄ± yapÄ±mÄ± oyun var.",
-"Doom (1993) FPS tÃ¼rÃ¼nÃ¼n Ã¶ncÃ¼sÃ¼dÃ¼r.",
-"Super Mario Bros. speedrun dÃ¼nya rekoru sÃ¼rekli kÄ±rÄ±lÄ±yor.",
-"Oyun endÃ¼strisi film ve mÃ¼zik endÃ¼strisinin toplamÄ±ndan bÃ¼yÃ¼k.",
-"Ä°lk renkli taÅŸÄ±nabilir konsol Sega Game Gear'dÄ±r (1990).",
-"Oyun baÄŸÄ±mlÄ±lÄ±ÄŸÄ± 2018'de WHO tarafÄ±ndan resmi olarak tanÄ±ndÄ±.",
+"Tetris 1984'te Sovyet bilim insanı yarattı.",
+"GTA V ilk 3 günde 1 milyar$ gelir elde etti.",
+"Pokémon yaratıcısı böcek toplamaktan ilham aldı.",
+"Fortnite konserini 12 milyon kişi canlı izledi.",
+"Zelda'nın adı F. Scott Fitzgerald'ın eşinden.",
+"Space Invaders 1978'de Japonya'da madeni para kıtlığı yarattı.",
+"E-spor milyar dolarlık endüstri.",
+"Dünya'daki aktif oyuncu sayısı 3 milyarı aştı.",
+"Counter-Strike bir Half-Life mod'u olarak başladı.",
+"Doom (1993) FPS türünün öncüsü.",
+"Oyun endüstrisi film+müzik endüstrisinden büyük."
 ],
-"ğŸŒŠ Okyanus":[
-"OkyanuslarÄ±n %95'inden fazlasÄ± henÃ¼z keÅŸfedilmedi.",
-"En derin nokta Mariana Ã‡ukuru: 11.034 metre.",
-"Okyanuslar DÃ¼nya'nÄ±n oksijeninin %50-80'ini Ã¼retir (fitoplankton).",
-"BÃ¼yÃ¼k Set Resifi uzaydan gÃ¶rÃ¼lebilecek kadar bÃ¼yÃ¼ktÃ¼r.",
-"Okyanus tabanÄ±nda 3 milyon gemi batÄ±ÄŸÄ± olduÄŸu tahmin ediliyor.",
-"En bÃ¼yÃ¼k canlÄ± mavi balinadÄ±r: 30 metre, 180 ton.",
-"Deniz yÃ¼zeyi altÄ±nda 'brine havuzlarÄ±' adÄ± verilen tuzlu gÃ¶ller var.",
-"Pasifik Okyanusu tÃ¼m karalarÄ±n toplamÄ±ndan geniÅŸtir.",
-"Mercan resifleri okyanusun %1'ini kaplar ama tÃ¼rlerin %25'ine ev sahipliÄŸi yapar.",
-"Orta Atlantik SÄ±rtÄ± dÃ¼nyanÄ±n en uzun daÄŸ sÄ±rasÄ±dÄ±r (65.000 km).",
-"Derin deniz canlÄ±larÄ±nÄ±n Ã§oÄŸu kendi Ä±ÅŸÄ±ÄŸÄ±nÄ± Ã¼retir (biyolÃ¼minesans).",
-"DalgalarÄ±n enerjisi rÃ¼zgÃ¢rdan gelir; bazÄ± dalgalar okyanuslarÄ± geÃ§ebilir.",
-"Deniz suyundaki tuz Ã§Ä±karÄ±lsa karalarÄ± 150 m kalÄ±nlÄ±ÄŸÄ±nda kaplardÄ±.",
-"Derin deniz basÄ±ncÄ± bir insanÄ± anÄ±nda ezecek kadar yÃ¼ksektir.",
-"BÃ¼yÃ¼k Mavi Delik (Belize) 300 m Ã§apÄ±nda ve 125 m derinliÄŸinde.",
-"Okyanus akÄ±ntÄ±larÄ± iklimi dÃ¼zenler; Gulf Stream Avrupa'yÄ± Ä±sÄ±tÄ±r.",
-"Deniz yosunlarÄ± dÃ¼nyadaki oksijenin Ã¶nemli bir kÄ±smÄ±nÄ± Ã¼retir.",
-"Kraken efsanesi muhtemelen dev mÃ¼rekkep balÄ±ÄŸÄ±ndan esinlenildi.",
-"DÃ¼nyanÄ±n en uzun hayvanÄ± aslan yelesi denizanasÄ±: tentakÃ¼lleri 37 m.",
-"Okyanus ortalama derinliÄŸi 3.688 metredir.",
+"🌊 Okyanus":[
+"Okyanusların %95'i henüz keşfedilmedi.",
+"En derin nokta Mariana Çukuru: 11.034 m.",
+"Okyanuslar oksijenin %50-80'ini üretir.",
+"Okyanus tabanında tahminen 3 milyon batık var.",
+"En büyük canlı mavi balina: 30 m, 180 ton.",
+"Deniz yüzeyinin altında tuzlu göller var (brine havuzları).",
+"Mercan resifleri %1 alanla türlerin %25'ine ev sahipliği yapar.",
+"Orta Atlantik Sırtı 65.000 km ile en uzun dağ sırası.",
+"Derin deniz canlılarının çoğu kendi ışığını üretir.",
+"Deniz suyundaki tuz çıkarılsa karaları 150 m kaplardı.",
+"Büyük Mavi Delik 300 m çap, 125 m derinlik.",
+"Gulf Stream Avrupa'yı ısıtır.",
+"Kraken efsanesi dev mürekkep balığından esinlenildi."
 ],
-"ğŸ§¬ Evrim":[
-"YaÅŸam yaklaÅŸÄ±k 3.8 milyar yÄ±l Ã¶nce baÅŸladÄ±.",
-"Ä°nsanlar ve ÅŸempanzeler DNA'nÄ±n %98.7'sini paylaÅŸÄ±r.",
-"GÃ¶zler baÄŸÄ±msÄ±z olarak 40'tan fazla kez evrimleÅŸti.",
-"Balinalar karada yaÅŸayan memelilerden evrimleÅŸti.",
-"Antibiyotik direnci bakterilerin hÄ±zlÄ± evrimine bir Ã¶rnektir.",
-"Ä°nsan apandisi bir zamanlar bitki sindirmeye yardÄ±mcÄ± oluyordu.",
-"KuÅŸlar dinozorlardan evrimleÅŸti; teknik olarak dinozordurlar.",
-"Kambriyen PatlamasÄ± 540 milyon yÄ±l Ã¶nce canlÄ± Ã§eÅŸitliliÄŸini patlattÄ±.",
-"DÃ¼nyadaki tÃ¼m kÃ¶pek Ä±rklarÄ± kurttan evrimleÅŸti (son 15.000 yÄ±l).",
-"Ä°nsanÄ±n kuyruk sokumu kemiÄŸi eski kuyruk kalÄ±ntÄ±sÄ±dÄ±r.",
-"BazÄ± maÄŸara balÄ±klarÄ± karanlÄ±kta gÃ¶zlerini kaybetmiÅŸtir.",
-"YetiÅŸkinlerde laktoz toleransÄ± sadece ~10.000 yÄ±l Ã¶nce evrimleÅŸti.",
-"Mitokondri bir zamanlar baÄŸÄ±msÄ±z bir bakteriydi (endosimbiyoz).",
-"Ä°nsanÄ±n 'tÃ¼yler diken diken olma' refleksi eski kÃ¼rk kabarma davranÄ±ÅŸÄ±nÄ±n kalÄ±ntÄ±sÄ±dÄ±r.",
-"YakÄ±nsak evrim: yarasa ve kuÅŸ kanatlarÄ± baÄŸÄ±msÄ±z olarak evrimleÅŸti.",
-"Koelakanth balÄ±ÄŸÄ± 400 milyon yÄ±ldÄ±r neredeyse deÄŸiÅŸmedi.",
-"Ä°nsanlarÄ±n bilgelik diÅŸleri evrimsel bir kalÄ±ntÄ±dÄ±r.",
-"Evrimsel silahlanma yarÄ±ÅŸÄ±: avcÄ± ve av sÃ¼rekli birbirine adapte olur.",
-"Viral DNA insan genomumuzun %8'ini oluÅŸturur.",
-"CanlÄ± tÃ¼rlerinin %99'undan fazlasÄ± tÃ¼kenmÄ±ÅŸtÄ±r.",
-],
+"🧬 Evrim":[
+"Yaşam yaklaşık 3.8 milyar yıl önce başladı.",
+"İnsanlar ve şempanzeler DNA'nın %98.7'sini paylaşır.",
+"Gözler bağımsız olarak 40+ kez evrimleşti.",
+"Balinalar karada yaşayan memelilerden evrimleşti.",
+"Antibiyotik direnci hızlı evrim örneği.",
+"Apandis eski bitki sindirme kalıntısı.",
+"Kuşlar dinozorlardan evrimleşti; teknik olarak dinozor.",
+"Kambriyen Patlaması 540M yıl önce canlı çeşitliliğini patlattı.",
+"Tüm köpek ırkları kurttan evrimleşti (15.000 yıl).",
+"Kuyruk sokumu kemiği eski kuyruk kalıntısı.",
+"Bazı mağara balıkları karanlıkta gözlerini kaybetti.",
+"Laktoz toleransı ~10.000 yıl önce evrimleşti.",
+"Mitokondri bir zamanlar bağımsız bakteriydi."
+]
 };
 
-// â”€â”€â”€ STATE â”€â”€â”€
-let allFacts=[],seenFacts=new Set(),favorites=JSON.parse(localStorage.getItem('bh_fav')||'[]'),currentFact=null,currentFactIndex=-1,categoryFilter='all',streak=0,autoInt=null,history=[],quizScore=parseInt(localStorage.getItem('bh_quiz')||'0'),quizTotal=parseInt(localStorage.getItem('bh_quizT')||'0');
+let allFacts=[],seenFacts=new Set(),favorites=JSON.parse(localStorage.getItem('bh_fav')||'[]'),currentFact=null,currentFactIndex=-1,categoryFilter='all',streak=0,bestStreak=parseInt(localStorage.getItem('bh_best')||'0'),autoInt=null,history=[],quizScore=parseInt(localStorage.getItem('bh_quiz')||'0'),quizTotal=parseInt(localStorage.getItem('bh_quizT')||'0');
 
 function buildFacts(){allFacts=[];for(const[c,fs]of Object.entries(factsDB))for(const f of fs)allFacts.push({text:f,category:c})}
 buildFacts();
 
-// Rarity system
-function getRarity(idx){
-    const hash=(idx*2654435761)>>>0;
-    const r=hash%100;
-    if(r<50)return{name:'SÄ±radan',cls:'rarity-common'};
-    if(r<80)return{name:'Nadir',cls:'rarity-rare'};
-    if(r<95)return{name:'Epik',cls:'rarity-epic'};
-    return{name:'Efsanevi',cls:'rarity-legendary'};
-}
+function getRarity(idx){const h=(idx*2654435761)>>>0,r=h%100;if(r<45)return{name:'Sıradan',cls:'rarity-common'};if(r<75)return{name:'Nadir',cls:'rarity-rare'};if(r<93)return{name:'Epik',cls:'rarity-epic'};return{name:'Efsanevi',cls:'rarity-legendary'}}
 
-// â”€â”€â”€ INIT â”€â”€â”€
 document.getElementById('total-count').textContent=allFacts.length;
 document.getElementById('fav-count').textContent=favorites.length;
-document.getElementById('quiz-score-top').textContent=quizScore;
+document.getElementById('best-streak').textContent=bestStreak;
 
-function renderCats(){
-    const el=document.getElementById('categories');
-    const cats=['all',...Object.keys(factsDB)];
-    el.innerHTML=cats.map(k=>{
-        const label=k==='all'?'ğŸŒ€ TÃ¼mÃ¼':k;
-        const n=k==='all'?allFacts.length:factsDB[k].length;
-        return `<div class="cat-pill ${categoryFilter===k?'active':''}" onclick="setCat('${k}')">${label} <small>(${n})</small></div>`;
-    }).join('');
-}
+function renderCats(){const el=document.getElementById('categories');const cats=['all',...Object.keys(factsDB)];el.innerHTML=cats.map(k=>{const l=k==='all'?'🌀 Tümü':k;const n=k==='all'?allFacts.length:factsDB[k].length;return`<div class="cat-pill ${categoryFilter===k?'active':''}" onclick="setCat('${k.replace(/'/g,"\\'")}')">${l} <small>(${n})</small></div>`}).join('')}
 renderCats();
 function setCat(c){categoryFilter=c;renderCats()}
 function getPool(){return categoryFilter==='all'?allFacts:allFacts.filter(f=>f.category===categoryFilter)}
 
-// â”€â”€â”€ MILESTONES â”€â”€â”€
-const MS=[{n:10,e:'ğŸŒŸ',t:'Ä°lk AdÄ±m!',m:'10 bilgi!'},{n:25,e:'ğŸ”¥',t:'AteÅŸlisin!',m:'25 bilgi!'},{n:50,e:'ğŸ†',t:'YarÄ± Yol!',m:'50 bilgi!'},{n:100,e:'ğŸ’',t:'YÃ¼zÃ¼ncÃ¼!',m:'100 bilgi!'},{n:200,e:'ğŸš€',t:'Roket!',m:'200 bilgi!'},{n:300,e:'ğŸ‘‘',t:'Kral!',m:'300 bilgi!'},{n:500,e:'ğŸŒŒ',t:'Efsane!',m:'500 bilgi!'},{n:750,e:'ğŸŒ ',t:'Galaktik!',m:'750 bilgi!'},{n:1000,e:'ğŸ…',t:'BÄ°NÄ°NCÄ°!',m:'1000 bilgi!'}];
+const MS=[{n:10,e:'🌟',t:'İlk Adım!',m:'10 bilgi!'},{n:25,e:'🔥',t:'Ateşlisin!',m:'25!'},{n:50,e:'🏆',t:'Yarı Yol!',m:'50!'},{n:100,e:'💎',t:'Yüzüncü!',m:'100!'},{n:200,e:'🚀',t:'Roket!',m:'200!'},{n:300,e:'👑',t:'Kral!',m:'300!'},{n:500,e:'🌌',t:'Efsane!',m:'500!'}];
 let shownMS=new Set();
-function checkMS(){const n=seenFacts.size;for(const m of MS)if(n===m.n&&!shownMS.has(m.n)){shownMS.add(m.n);showMS(m);launchConfetti();break}}
-function showMS(m){const el=document.getElementById('milestone');document.getElementById('ms-emoji').textContent=m.e;document.getElementById('ms-title').textContent=m.t;document.getElementById('ms-text').textContent=m.m;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),3500)}
+function checkMS(){const n=seenFacts.size;for(const m of MS)if(n===m.n&&!shownMS.has(m.n)){shownMS.add(m.n);showMilestone(m);launchConfetti();break}}
+function showMilestone(m){const el=document.getElementById('milestone');document.getElementById('ms-emoji').textContent=m.e;document.getElementById('ms-title').textContent=m.t;document.getElementById('ms-text').textContent=m.m;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),3500)}
 
-// â”€â”€â”€ NEXT FACT â”€â”€â”€
-function nextFact(){
-    const pool=getPool();if(!pool.length)return;
-    const unseen=pool.filter(f=>!seenFacts.has(f.text));
-    const src=unseen.length?unseen:pool;
-    const fact=src[Math.floor(Math.random()*src.length)];
-    if(!seenFacts.has(fact.text))streak++;else streak=0;
-    currentFact=fact;currentFactIndex=allFacts.indexOf(fact);seenFacts.add(fact.text);
-    history.unshift({...fact,time:new Date().toLocaleTimeString('tr-TR')});
-    if(history.length>200)history.pop();
+function nextFact(){const pool=getPool();if(!pool.length)return;const unseen=pool.filter(f=>!seenFacts.has(f.text));const src=unseen.length?unseen:pool;const fact=src[Math.floor(Math.random()*src.length)];if(!seenFacts.has(fact.text))streak++;else streak=0;if(streak>bestStreak){bestStreak=streak;localStorage.setItem('bh_best',bestStreak)}currentFact=fact;currentFactIndex=allFacts.indexOf(fact);seenFacts.add(fact.text);history.unshift({...fact,time:new Date().toLocaleTimeString('tr-TR')});if(history.length>100)history.pop();renderFactCard();checkMS()}
 
-    const t=document.getElementById('fact-text'),em=document.getElementById('fact-emoji'),bg=document.getElementById('fact-badge'),nm=document.getElementById('fact-number'),rb=document.getElementById('rarity-badge');
-    t.style.opacity=0;
-    setTimeout(()=>{
-        const ce=fact.category.split(' ')[0];
-        em.textContent=ce;em.style.animation='none';em.offsetHeight;em.style.animation='bounceIn .5s ease';
-        const cn=fact.category.split(' ').slice(1).join(' ');
-        bg.textContent=cn;bg.style.background=catCol(fact.category,.2);bg.style.color=catCol(fact.category,1);
-        t.textContent=fact.text;t.style.opacity=1;
-        nm.textContent=`#${currentFactIndex+1} / ${allFacts.length}`;
-        const rarity=getRarity(currentFactIndex);
-        rb.textContent=rarity.name;rb.className='rarity-badge '+rarity.cls;rb.style.display='block';
-        updateLikeBtn();
-        document.getElementById('seen-count').textContent=seenFacts.size;
-        document.getElementById('streak-count').textContent=streak;
-        const pct=((seenFacts.size/allFacts.length)*100).toFixed(1);
-        document.getElementById('progress-fill').style.width=pct+'%';
-        document.getElementById('progress-label').textContent=`${pct}% keÅŸfedildi (${seenFacts.size}/${allFacts.length})`;
-        checkMS();
-    },300);
-}
+function renderFactCard(){const fact=currentFact;if(!fact)return;const t=document.getElementById('fact-text'),em=document.getElementById('fact-emoji'),bg=document.getElementById('fact-badge'),nm=document.getElementById('fact-number'),rb=document.getElementById('rarity-badge');t.style.opacity=0;setTimeout(()=>{const ce=fact.category.split(' ')[0];em.textContent=ce;em.style.animation='none';em.offsetHeight;em.style.animation='bounceIn .5s ease';const cn=fact.category.split(' ').slice(1).join(' ');bg.textContent=cn;bg.style.background=catCol(fact.category,.2);bg.style.color=catCol(fact.category,1);t.textContent=fact.text;t.style.opacity=1;nm.textContent=`#${currentFactIndex+1} / ${allFacts.length}`;const rarity=getRarity(currentFactIndex);rb.textContent=rarity.name;rb.className='rarity-badge '+rarity.cls;rb.style.display='block';updateLikeBtn();document.getElementById('seen-count').textContent=seenFacts.size;document.getElementById('streak-count').textContent=streak;document.getElementById('best-streak').textContent=bestStreak;const pct=((seenFacts.size/allFacts.length)*100).toFixed(1);document.getElementById('progress-fill').style.width=pct+'%';document.getElementById('progress-label').textContent=`${pct}% keşfedildi (${seenFacts.size}/${allFacts.length})`;},300)}
 
-const CC={"ğŸ¾ Hayvanlar":"0,210,255","ğŸŒŒ Uzay":"108,99,255","ğŸ”¬ Bilim":"0,230,118","ğŸŒ DÃ¼nya":"76,175,80","ğŸ“š Tarih":"255,183,77","ğŸ• Yiyecek":"255,101,132","ğŸ’¡ Teknoloji":"41,182,246","ğŸ§  Psikoloji":"186,85,255","ğŸ¨ Sanat & KÃ¼ltÃ¼r":"255,138,101","âš½ Spor":"129,199,132","ğŸµ MÃ¼zik":"233,30,99","ğŸ”¢ Matematik":"38,198,218","ğŸ¥ SaÄŸlÄ±k":"102,187,106","ğŸ¬ Sinema":"255,167,38","ğŸ—£ï¸ Dil":"77,208,225","ğŸ’° Ekonomi":"255,215,64","ğŸ® Oyunlar":"156,39,176","ğŸŒŠ Okyanus":"0,150,136","ğŸ§¬ Evrim":"139,195,74"};
-function catCol(c,a){return `rgba(${CC[c]||'255,255,255'},${a})`}
+const CC={"🐾 Hayvanlar":"0,210,255","🌌 Uzay":"108,99,255","🔬 Bilim":"0,230,118","🌍 Dünya":"76,175,80","📚 Tarih":"255,183,77","🍕 Yiyecek":"255,101,132","💡 Teknoloji":"41,182,246","🧠 Psikoloji":"186,85,255","🎨 Sanat & Kültür":"255,138,101","⚽ Spor":"129,199,132","🎵 Müzik":"233,30,99","🔢 Matematik":"38,198,218","🏥 Sağlık":"102,187,106","🎬 Sinema":"255,167,38","🗣️ Dil":"77,208,225","💰 Ekonomi":"255,215,64","🎮 Oyunlar":"156,39,176","🌊 Okyanus":"0,150,136","🧬 Evrim":"139,195,74"};
+function catCol(c,a){return`rgba(${CC[c]||'255,255,255'},${a})`}
 
-// â”€â”€â”€ LIKE â”€â”€â”€
-function toggleLike(){if(!currentFact)return;const i=favorites.findIndex(f=>f.text===currentFact.text);if(i>=0){favorites.splice(i,1);showToast('ğŸ’” KaldÄ±rÄ±ldÄ±')}else{favorites.push(currentFact);showToast('â¤ï¸ Favorilere eklendi!')}saveFav();updateLikeBtn()}
+function toggleLike(){if(!currentFact)return;const i=favorites.findIndex(f=>f.text===currentFact.text);if(i>=0){favorites.splice(i,1);showToast('💔 Kaldırıldı')}else{favorites.push(currentFact);showToast('❤️ Eklendi!')}saveFav();updateLikeBtn()}
 function saveFav(){localStorage.setItem('bh_fav',JSON.stringify(favorites));document.getElementById('fav-count').textContent=favorites.length}
-function updateLikeBtn(){const b=document.getElementById('like-btn');if(!currentFact){b.classList.remove('liked');return}const l=favorites.some(f=>f.text===currentFact.text);b.classList.toggle('liked',l);b.innerHTML=l?'ğŸ’– BeÄŸenildi':'â¤ï¸ BeÄŸen'}
+function updateLikeBtn(){const b=document.getElementById('like-btn');if(!currentFact){b.classList.remove('liked');return}const l=favorites.some(f=>f.text===currentFact.text);b.classList.toggle('liked',l);b.innerHTML=l?'💖 Beğenildi':'❤️ Beğen'}
 
-// â”€â”€â”€ FAV MODAL â”€â”€â”€
-function openFavModal(){document.getElementById('fav-modal').classList.add('open');document.getElementById('fav-modal-count').textContent=`(${favorites.length})`;renderFavList()}
-function closeFavModal(){document.getElementById('fav-modal').classList.remove('open')}
-function renderFavList(){
-    const c=document.getElementById('fav-list'),q=(document.getElementById('fav-search').value||'').toLowerCase();
-    let list=favorites;if(q)list=list.filter(f=>f.text.toLowerCase().includes(q)||f.category.toLowerCase().includes(q));
-    if(!list.length){c.innerHTML=`<div class="fav-empty"><span class="fav-empty-icon">${q?'ğŸ”':'â­'}</span><p>${q?'EÅŸleÅŸen favori yok.':'HenÃ¼z favori eklemedin!'}</p></div>`;return}
-    c.innerHTML=list.map(f=>{const e=f.category.split(' ')[0],cn=f.category.split(' ').slice(1).join(' '),ri=favorites.indexOf(f);return`<div class="fav-item"><span class="fav-emoji-icon">${e}</span><div class="fav-content"><div class="fav-cat-label">${cn}</div>${f.text}</div><button class="fav-remove" onclick="removeFav(${ri})">âœ•</button></div>`}).join('')}
+function openModal(id){document.getElementById(id).classList.add('open')}
+function closeModal(id){document.getElementById(id).classList.remove('open')}
+document.querySelectorAll('.modal-overlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===e.currentTarget)e.target.classList.remove('open')}));
+
+function openFavModal(){document.getElementById('fav-modal-count').textContent=`(${favorites.length})`;renderFavList()}
+function renderFavList(){const c=document.getElementById('fav-list');if(!favorites.length){c.innerHTML='<div class="fav-empty"><span class="fav-empty-icon">⭐</span><p>Henüz favori eklemedin!</p></div>';return}c.innerHTML=favorites.map(f=>{const e=f.category.split(' ')[0],cn=f.category.split(' ').slice(1).join(' '),ri=favorites.indexOf(f);return`<div class="fav-item"><span class="fav-emoji-icon">${e}</span><div class="fav-content"><div class="fav-cat-label">${cn}</div>${f.text}</div><button class="fav-remove" onclick="removeFav(${ri})">✕</button></div>`}).join('')}
 function removeFav(i){favorites.splice(i,1);saveFav();renderFavList();document.getElementById('fav-modal-count').textContent=`(${favorites.length})`;updateLikeBtn()}
 
-// â”€â”€â”€ HISTORY MODAL â”€â”€â”€
-function openHistModal(){document.getElementById('hist-modal').classList.add('open');document.getElementById('hist-count').textContent=`(${history.length})`;renderHistory()}
-function closeHistModal(){document.getElementById('hist-modal').classList.remove('open')}
-function renderHistory(){
-    const c=document.getElementById('hist-list'),q=(document.getElementById('hist-search').value||'').toLowerCase();
-    let list=history;if(q)list=list.filter(f=>f.text.toLowerCase().includes(q));
-    if(!list.length){c.innerHTML='<div class="fav-empty"><span class="fav-empty-icon">ğŸ•</span><p>HenÃ¼z bilgi gÃ¶rmedin!</p></div>';return}
-    c.innerHTML=list.map(f=>{const e=f.category.split(' ')[0];return`<div class="hist-item"><span class="h-emoji">${e}</span><div><div style="margin-bottom:2px">${f.text}</div><div class="hist-time">${f.time}</div></div></div>`}).join('')}
+function renderHistoryModal(){document.getElementById('hist-count').textContent=`(${history.length})`;renderHistory()}
+function renderHistory(){const c=document.getElementById('hist-list');if(!history.length){c.innerHTML='<div class="fav-empty"><span class="fav-empty-icon">🕐</span><p>Henüz bilgi görmedin!</p></div>';return}c.innerHTML=history.map(f=>{const e=f.category.split(' ')[0];return`<div class="hist-item"><span class="h-emoji">${e}</span><div><div style="margin-bottom:2px">${f.text}</div><div class="hist-time">${f.time}</div></div></div>`}).join('')}
 
-// â”€â”€â”€ QUIZ â”€â”€â”€
-let quizQ=null,quizAnswered=false;
-function openQuizModal(){document.getElementById('quiz-modal').classList.add('open');generateQuiz()}
-function closeQuizModal(){document.getElementById('quiz-modal').classList.remove('open')}
-function generateQuiz(){
-    if(seenFacts.size<4){document.getElementById('quiz-body').innerHTML='<div class="fav-empty"><span class="fav-empty-icon">ğŸ§©</span><p>Quiz iÃ§in en az 4 bilgi gÃ¶rmen gerekiyor!</p></div>';return}
-    const seen=[...seenFacts];const correctText=seen[Math.floor(Math.random()*seen.length)];
-    const correctFact=allFacts.find(f=>f.text===correctText);
-    // Create a fill-in-the-blank style or true/false
-    const qType=Math.random();
-    if(qType<0.5){
-        // Which category?
-        const wrongCats=Object.keys(factsDB).filter(c=>c!==correctFact.category);
-        const shuffled=wrongCats.sort(()=>Math.random()-.5).slice(0,3);
-        const options=[correctFact.category,...shuffled].sort(()=>Math.random()-.5);
-        quizQ={correct:correctFact.category,options};quizAnswered=false;
-        document.getElementById('quiz-body').innerHTML=`
-        <div class="quiz-score"><div class="quiz-stat"><div class="q-num" style="color:#69f0ae">${quizScore}</div><div class="q-label">DoÄŸru</div></div><div class="quiz-stat"><div class="q-num" style="color:#ff5252">${quizTotal-quizScore}</div><div class="q-label">YanlÄ±ÅŸ</div></div><div class="quiz-stat"><div class="q-num" style="color:var(--accent4)">${quizTotal}</div><div class="q-label">Toplam</div></div></div>
-        <div class="quiz-card"><div class="quiz-q">Bu bilgi hangi kategoriye ait?<br><br><em>"${correctFact.text}"</em></div>
-        <div class="quiz-options">${options.map(o=>`<button class="quiz-opt" onclick="answerQuiz(this,'${o.replace(/'/g,"\\'")}','${correctFact.category.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div></div>
-        <div style="text-align:center;margin-top:12px"><button class="btn btn-secondary btn-sm" onclick="generateQuiz()">â­ï¸ Sonraki Soru</button></div>`;
-    } else {
-        // True or False
-        const isTrue=Math.random()>.5;
-        let displayCat=correctFact.category;
-        if(!isTrue){const wrongCats=Object.keys(factsDB).filter(c=>c!==correctFact.category);displayCat=wrongCats[Math.floor(Math.random()*wrongCats.length)]}
-        quizQ={correct:isTrue?'DoÄŸru':'YanlÄ±ÅŸ'};quizAnswered=false;
-        document.getElementById('quiz-body').innerHTML=`
-        <div class="quiz-score"><div class="quiz-stat"><div class="q-num" style="color:#69f0ae">${quizScore}</div><div class="q-label">DoÄŸru</div></div><div class="quiz-stat"><div class="q-num" style="color:#ff5252">${quizTotal-quizScore}</div><div class="q-label">YanlÄ±ÅŸ</div></div><div class="quiz-stat"><div class="q-num" style="color:var(--accent4)">${quizTotal}</div><div class="q-label">Toplam</div></div></div>
-        <div class="quiz-card"><div class="quiz-q">Bu bilgi <strong>${displayCat}</strong> kategorisine mi ait?<br><br><em>"${correctFact.text}"</em></div>
-        <div class="quiz-options"><button class="quiz-opt" onclick="answerQuiz(this,'DoÄŸru','${quizQ.correct}')">âœ… DoÄŸru</button><button class="quiz-opt" onclick="answerQuiz(this,'YanlÄ±ÅŸ','${quizQ.correct}')">âŒ YanlÄ±ÅŸ</button></div></div>
-        <div style="text-align:center;margin-top:12px"><button class="btn btn-secondary btn-sm" onclick="generateQuiz()">â­ï¸ Sonraki Soru</button></div>`;
-    }
-}
-function answerQuiz(btn,answer,correct){
-    if(quizAnswered)return;quizAnswered=true;quizTotal++;
-    const isCorrect=answer===correct;if(isCorrect)quizScore++;
-    localStorage.setItem('bh_quiz',quizScore);localStorage.setItem('bh_quizT',quizTotal);
-    document.getElementById('quiz-score-top').textContent=quizScore;
-    btn.parentElement.querySelectorAll('.quiz-opt').forEach(b=>{b.classList.add('disabled');if(b.textContent.includes(correct)||b.innerText===correct)b.classList.add('correct');});
-    if(!isCorrect)btn.classList.add('wrong');
-    if(isCorrect){showToast('âœ… DoÄŸru!');launchConfetti()}else showToast('âŒ YanlÄ±ÅŸ!')
-}
+let quizAnswered=false;
+function generateQuiz(){if(seenFacts.size<4){document.getElementById('quiz-body').innerHTML='<div class="fav-empty"><span class="fav-empty-icon">🧩</span><p>Quiz için en az 4 bilgi gör!</p></div>';return}const seen=[...seenFacts];const ct=seen[Math.floor(Math.random()*seen.length)];const cf=allFacts.find(f=>f.text===ct);if(!cf){generateQuiz();return}const wrongCats=Object.keys(factsDB).filter(c=>c!==cf.category).sort(()=>Math.random()-.5).slice(0,3);const options=[cf.category,...wrongCats].sort(()=>Math.random()-.5);quizAnswered=false;document.getElementById('quiz-body').innerHTML=`<div class="quiz-score"><div class="quiz-stat"><div class="q-num" style="color:#69f0ae">${quizScore}</div><div class="q-label">Doğru</div></div><div class="quiz-stat"><div class="q-num" style="color:#ff5252">${quizTotal-quizScore}</div><div class="q-label">Yanlış</div></div><div class="quiz-stat"><div class="q-num" style="color:var(--accent4)">${quizTotal?((quizScore/quizTotal)*100).toFixed(0):0}%</div><div class="q-label">Başarı</div></div></div><div class="quiz-card"><div class="quiz-q">Bu bilgi hangi kategoriye ait?<br><br><em>"${cf.text}"</em></div><div class="quiz-options">${options.map(o=>`<button class="quiz-opt" onclick="answerQuiz(this,'${o.replace(/'/g,"\\'")}','${cf.category.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div></div><div style="text-align:center;margin-top:12px"><button class="btn btn-secondary btn-sm" onclick="generateQuiz()">⏭️ Sonraki Soru</button></div>`}
+function answerQuiz(btn,ans,correct){if(quizAnswered)return;quizAnswered=true;quizTotal++;const ok=ans===correct;if(ok)quizScore++;localStorage.setItem('bh_quiz',quizScore);localStorage.setItem('bh_quizT',quizTotal);btn.parentElement.querySelectorAll('.quiz-opt').forEach(b=>{b.classList.add('disabled');if(b.textContent===correct)b.classList.add('correct')});if(!ok)btn.classList.add('wrong');if(ok){showToast('✅ Doğru!');launchConfetti()}else showToast('❌ Yanlış!')}
 
-// â”€â”€â”€ STATS MODAL â”€â”€â”€
-function openStatsModal(){
-    document.getElementById('stats-modal').classList.add('open');
-    const cats=Object.keys(factsDB);
-    let rows=cats.map(c=>{
-        const total=factsDB[c].length;
-        const seen=factsDB[c].filter(f=>seenFacts.has(f)).length;
-        const pct=total?((seen/total)*100).toFixed(0):0;
-        const faved=favorites.filter(f=>f.category===c).length;
-        const emoji=c.split(' ')[0];
-        const name=c.split(' ').slice(1).join(' ');
-        return`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04)">
-        <span style="font-size:1.4rem">${emoji}</span>
-        <div style="flex:1"><div style="font-size:.85rem;font-weight:600;margin-bottom:4px">${name}</div>
-        <div class="progress-bar" style="height:3px;margin-bottom:3px"><div class="progress-fill" style="width:${pct}%"></div></div>
-        <div style="font-size:.65rem;color:rgba(255,255,255,.3)">${seen}/${total} gÃ¶rÃ¼ldÃ¼ Â· ${faved} favori</div></div>
-        <div style="font-size:.85rem;font-weight:700;color:rgba(255,255,255,.5)">${pct}%</div></div>`;
-    }).join('');
-    const totalSeen=seenFacts.size,totalAll=allFacts.length;
-    document.getElementById('stats-body').innerHTML=`
-    <div style="text-align:center;margin-bottom:20px">
-    <div style="font-size:3rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">${((totalSeen/totalAll)*100).toFixed(1)}%</div>
-    <div style="font-size:.8rem;color:var(--text2)">Toplam KeÅŸif OranÄ±</div>
-    <div style="font-size:.7rem;color:var(--text3);margin-top:4px">${totalSeen} / ${totalAll} bilgi Â· ${favorites.length} favori Â· Seri: ${streak}</div>
-    </div>
-    <h3 style="font-size:.85rem;font-weight:600;margin-bottom:12px;color:var(--text2)">Kategori BazlÄ± Ä°lerleme</h3>${rows}`;
-}
-function closeStatsModal(){document.getElementById('stats-modal').classList.remove('open')}
+function renderStats(){const cats=Object.keys(factsDB);let rows=cats.map(c=>{const total=factsDB[c].length;const seen=factsDB[c].filter(f=>seenFacts.has(f)).length;const pct=total?((seen/total)*100).toFixed(0):0;const faved=favorites.filter(f=>f.category===c).length;const emoji=c.split(' ')[0];const name=c.split(' ').slice(1).join(' ');return`<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:1.3rem">${emoji}</span><div style="flex:1"><div style="font-size:.8rem;font-weight:600;margin-bottom:3px">${name}</div><div class="progress-bar" style="height:3px;margin-bottom:2px"><div class="progress-fill" style="width:${pct}%"></div></div><div style="font-size:.6rem;color:var(--text3)">${seen}/${total} · ${faved} ❤️</div></div><div style="font-size:.8rem;font-weight:700;color:var(--text2)">${pct}%</div></div>`}).join('');const ts=seenFacts.size,ta=allFacts.length;document.getElementById('stats-body').innerHTML=`<div style="text-align:center;margin-bottom:16px"><div style="font-size:3rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">${((ts/ta)*100).toFixed(1)}%</div><div style="font-size:.75rem;color:var(--text2)">Toplam Keşif</div><div style="font-size:.65rem;color:var(--text3);margin-top:4px">${ts}/${ta} bilgi · ${favorites.length} ❤️ · Seri: ${streak} · En iyi: ${bestStreak} · Quiz: ${quizScore}/${quizTotal}</div></div><h3 style="font-size:.8rem;font-weight:600;margin-bottom:10px;color:var(--text2)">Kategori Bazlı</h3>${rows}`}
 
-// â”€â”€â”€ COPY â”€â”€â”€
-function copyFact(){if(!currentFact)return;navigator.clipboard.writeText(currentFact.text).then(()=>showToast('ğŸ“‹ KopyalandÄ±!')).catch(()=>showToast('âŒ Hata'))}
+function copyFact(){if(!currentFact)return;navigator.clipboard.writeText(currentFact.text).then(()=>showToast('📋 Kopyalandı!')).catch(()=>showToast('❌ Hata'))}
+function shareFact(){if(!currentFact)return;if(navigator.share)navigator.share({title:'Bilgi Hazinesi',text:currentFact.text}).catch(()=>{});else{copyFact();showToast('📤 Kopyalandı!')}}
+function shareAsImage(){if(!currentFact)return;const c=document.getElementById('share-canvas'),ctx=c.getContext('2d');c.width=600;c.height=400;const g=ctx.createLinearGradient(0,0,600,400);g.addColorStop(0,'#1a1a3e');g.addColorStop(1,'#0a0a1a');ctx.fillStyle=g;ctx.fillRect(0,0,600,400);const g2=ctx.createLinearGradient(0,0,600,0);g2.addColorStop(0,'#6c63ff');g2.addColorStop(.5,'#ff6584');g2.addColorStop(1,'#ffc837');ctx.fillStyle=g2;ctx.fillRect(0,0,600,4);ctx.font='600 14px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.4)';ctx.textAlign='center';ctx.fillText(currentFact.category,300,50);ctx.font='300 18px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.9)';const words=currentFact.text.split(' ');let lines=[],line='';words.forEach(w=>{if(ctx.measureText(line+w).width>480){lines.push(line.trim());line=''}line+=w+' '});lines.push(line.trim());lines.forEach((l,i)=>ctx.fillText(l,300,160+i*30));ctx.font='800 12px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.3)';ctx.fillText('✨ Bilgi Hazinesi',300,370);c.toBlob(blob=>{const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='bilgi.png';a.click();URL.revokeObjectURL(url);showToast('🖼️ İndirildi!')})}
 
-// â”€â”€â”€ SHARE â”€â”€â”€
-function shareFact(){if(!currentFact)return;if(navigator.share){navigator.share({title:'Bilgi Hazinesi',text:currentFact.text}).catch(()=>{})}else{copyFact();showToast('ğŸ“¤ KopyalandÄ±!')}}
+function toggleAutoPlay(){const b=document.getElementById('auto-nav');if(autoInt){clearInterval(autoInt);autoInt=null;b.classList.remove('active-nav');b.textContent='▶️';showToast('⏸️ Durduruldu')}else{nextFact();autoInt=setInterval(nextFact,4000);b.classList.add('active-nav');b.textContent='⏸️';showToast('▶️ Otomatik mod!')}}
 
-// â”€â”€â”€ SHARE AS IMAGE â”€â”€â”€
-function shareAsImage(){
-    if(!currentFact)return;
-    const c=document.getElementById('share-canvas'),ctx=c.getContext('2d');
-    c.width=600;c.height=400;
-    const g=ctx.createLinearGradient(0,0,600,400);g.addColorStop(0,'#1a1a3e');g.addColorStop(1,'#0a0a1a');
-    ctx.fillStyle=g;ctx.fillRect(0,0,600,400);
-    const g2=ctx.createLinearGradient(0,0,600,0);g2.addColorStop(0,'#6c63ff');g2.addColorStop(.5,'#ff6584');g2.addColorStop(1,'#ffc837');
-    ctx.fillStyle=g2;ctx.fillRect(0,0,600,4);
-    ctx.font='600 14px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.4)';ctx.textAlign='center';
-    ctx.fillText(currentFact.category,300,50);
-    ctx.font='300 18px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.9)';ctx.textAlign='center';
-    const words=currentFact.text.split(' ');let lines=[],line='';
-    words.forEach(w=>{if(ctx.measureText(line+w).width>480){lines.push(line.trim());line=''}line+=w+' '});lines.push(line.trim());
-    lines.forEach((l,i)=>ctx.fillText(l,300,160+i*30));
-    ctx.font='800 12px Inter,sans-serif';
-    const tg=ctx.createLinearGradient(200,0,400,0);tg.addColorStop(0,'#6c63ff');tg.addColorStop(1,'#ff6584');
-    ctx.fillStyle=tg;ctx.fillText('âœ¨ Bilgi Hazinesi',300,370);
-    c.toBlob(blob=>{const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='bilgi.png';a.click();URL.revokeObjectURL(url);showToast('ğŸ–¼ï¸ GÃ¶rsel indirildi!')});
-}
+let toastTimer;function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2200)}
 
-// â”€â”€â”€ AUTO PLAY â”€â”€â”€
-function toggleAutoPlay(){
-    const b=document.getElementById('auto-nav');
-    if(autoInt){clearInterval(autoInt);autoInt=null;b.classList.remove('active-nav');b.textContent='â–¶ï¸';showToast('â¸ï¸ Durduruldu')}
-    else{nextFact();autoInt=setInterval(nextFact,4000);b.classList.add('active-nav');b.textContent='â¸ï¸';showToast('â–¶ï¸ Otomatik mod!')}
-}
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.code==='Space'){e.preventDefault();nextFact()}if(e.code==='KeyL')toggleLike();if(e.code==='KeyC')copyFact();if(e.code==='KeyF'){openModal('fav-modal');openFavModal()}if(e.code==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));if(e.code==='KeyH'){openModal('hist-modal');renderHistoryModal()}if(e.code==='KeyQ'){openModal('quiz-modal');generateQuiz()}});
 
-// â”€â”€â”€ TOAST â”€â”€â”€
-function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+const pCv=document.getElementById('particles'),pCx=pCv.getContext('2d');let pts=[];function rC(){pCv.width=innerWidth;pCv.height=innerHeight}rC();addEventListener('resize',rC);class P{constructor(){this.r()}r(){this.x=Math.random()*pCv.width;this.y=Math.random()*pCv.height;this.s=Math.random()*1.5+.5;this.sx=(Math.random()-.5)*.3;this.sy=(Math.random()-.5)*.3;this.o=Math.random()*.3+.05}u(){this.x+=this.sx;this.y+=this.sy;if(this.x<0||this.x>pCv.width||this.y<0||this.y>pCv.height)this.r()}d(){pCx.beginPath();pCx.arc(this.x,this.y,this.s,0,Math.PI*2);pCx.fillStyle=`rgba(255,255,255,${this.o})`;pCx.fill()}}for(let i=0;i<60;i++)pts.push(new P);function aP(){pCx.clearRect(0,0,pCv.width,pCv.height);pts.forEach(p=>{p.u();p.d()});for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<90){pCx.beginPath();pCx.strokeStyle=`rgba(255,255,255,${.04*(1-d/90)})`;pCx.lineWidth=.5;pCx.moveTo(pts[i].x,pts[i].y);pCx.lineTo(pts[j].x,pts[j].y);pCx.stroke()}}requestAnimationFrame(aP)}aP();
+const cC=document.getElementById('confetti'),cx=cC.getContext('2d');function rCC(){cC.width=innerWidth;cC.height=innerHeight}rCC();addEventListener('resize',rCC);let cPs=[];function launchConfetti(){cPs=[];const cols=['#6c63ff','#ff6584','#ffc837','#00d2ff','#ff9a9e','#a29bfe','#55efc4','#fd79a8'];for(let i=0;i<120;i++)cPs.push({x:cC.width/2+(Math.random()-.5)*200,y:cC.height/2,vx:(Math.random()-.5)*14,vy:Math.random()*-16-5,sz:Math.random()*7+3,c:cols[Math.floor(Math.random()*cols.length)],rot:Math.random()*360,rs:(Math.random()-.5)*10,l:1});aCf()}function aCf(){cx.clearRect(0,0,cC.width,cC.height);let a=false;cPs.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.35;p.rot+=p.rs;p.l-=.009;if(p.l>0){a=true;cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot*Math.PI/180);cx.fillStyle=p.c;cx.globalAlpha=p.l;cx.fillRect(-p.sz/2,-p.sz/2,p.sz,p.sz);cx.restore()}});if(a)requestAnimationFrame(aCf);else cx.clearRect(0,0,cC.width,cC.height)}
 
-// â”€â”€â”€ KEYBOARD â”€â”€â”€
-document.addEventListener('keydown',e=>{
-    if(e.target.tagName==='INPUT')return;
-    if(e.code==='Space'){e.preventDefault();nextFact()}
-    if(e.code==='KeyL')toggleLike();if(e.code==='KeyC')copyFact();
-    if(e.code==='KeyF')openFavModal();if(e.code==='Escape'){closeFavModal();closeHistModal();closeQuizModal();closeStatsModal()}
-    if(e.code==='KeyH')openHistModal();if(e.code==='KeyQ')openQuizModal();
-});
-// Close modals on overlay click
-['fav-modal','hist-modal','quiz-modal','stats-modal'].forEach(id=>{document.getElementById(id).addEventListener('click',e=>{if(e.target===e.currentTarget)e.target.classList.remove('open')})});
-
-// â”€â”€â”€ PARTICLES â”€â”€â”€
-const pCv=document.getElementById('particles'),pCx=pCv.getContext('2d');let pts=[];
-function rC(){pCv.width=innerWidth;pCv.height=innerHeight}rC();addEventListener('resize',rC);
-class P{constructor(){this.r()}r(){this.x=Math.random()*pCv.width;this.y=Math.random()*pCv.height;this.s=Math.random()*1.5+.5;this.sx=(Math.random()-.5)*.3;this.sy=(Math.random()-.5)*.3;this.o=Math.random()*.3+.05}u(){this.x+=this.sx;this.y+=this.sy;if(this.x<0||this.x>pCv.width||this.y<0||this.y>pCv.height)this.r()}d(){pCx.beginPath();pCx.arc(this.x,this.y,this.s,0,Math.PI*2);pCx.fillStyle=`rgba(255,255,255,${this.o})`;pCx.fill()}}
-for(let i=0;i<60;i++)pts.push(new P);
-function aP(){pCx.clearRect(0,0,pCv.width,pCv.height);pts.forEach(p=>{p.u();p.d()});for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<90){pCx.beginPath();pCx.strokeStyle=`rgba(255,255,255,${.04*(1-d/90)})`;pCx.lineWidth=.5;pCx.moveTo(pts[i].x,pts[i].y);pCx.lineTo(pts[j].x,pts[j].y);pCx.stroke()}}requestAnimationFrame(aP)}aP();
-
-// â”€â”€â”€ CONFETTI â”€â”€â”€
-const cC=document.getElementById('confetti'),cx=cC.getContext('2d');
-function rCC(){cC.width=innerWidth;cC.height=innerHeight}rCC();addEventListener('resize',rCC);
-let cPs=[];
-function launchConfetti(){cPs=[];const cols=['#6c63ff','#ff6584','#ffc837','#00d2ff','#ff9a9e','#a29bfe','#55efc4','#fd79a8'];for(let i=0;i<120;i++)cPs.push({x:cC.width/2+(Math.random()-.5)*200,y:cC.height/2,vx:(Math.random()-.5)*14,vy:Math.random()*-16-5,sz:Math.random()*7+3,c:cols[Math.floor(Math.random()*cols.length)],rot:Math.random()*360,rs:(Math.random()-.5)*10,l:1});aCf()}
-function aCf(){cx.clearRect(0,0,cC.width,cC.height);let a=false;cPs.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.35;p.rot+=p.rs;p.l-=.009;if(p.l>0){a=true;cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot*Math.PI/180);cx.fillStyle=p.c;cx.globalAlpha=p.l;cx.fillRect(-p.sz/2,-p.sz/2,p.sz,p.sz);cx.restore()}});if(a)requestAnimationFrame(aCf);else cx.clearRect(0,0,cC.width,cC.height)}
-
-// â”€â”€â”€ TOUCH SWIPE â”€â”€â”€
-let touchX=0;
-document.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX},{passive:true});
-document.addEventListener('touchend',e=>{const diff=e.changedTouches[0].clientX-touchX;if(Math.abs(diff)>80)nextFact()},{passive:true});
+let touchX=0;document.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX},{passive:true});document.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-touchX;if(Math.abs(d)>80)nextFact()},{passive:true});
 </script>
 </body>
 </html>
-
