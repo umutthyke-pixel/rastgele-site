@@ -281,15 +281,7 @@ body.theme-blood { --bg:#110000; --text:#ffcccc; --text2:rgba(255,100,100,0.7); 
     <div class="progress-label" id="progress-label">0% kesfedildi</div>
   </div>
 
-  <div class="categories animate-in" style="animation-delay:.12s" id="categories"></div>
-
-    <div class="level-wrap animate-in" style="animation-delay:.1s; background:var(--card); padding:10px 16px; border-radius:12px; margin-bottom:12px; border:1px solid var(--card-border);">
-    <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text2); margin-bottom:6px;">
-      <span id="rank-name" style="font-weight:900; color:var(--accent3); text-transform:uppercase; letter-spacing:1px">ACEMI</span>
-      <span id="level-display" style="font-weight:700">Seviye 1</span>
-    </div>
-    <div class="progress-bar" style="height:6px"><div class="progress-fill" id="xp-fill" style="width:0%"></div></div>
-    <div style="text-align:right; font-size:0.6rem; color:var(--text3); margin-top:4px;" id="xp-label">0 / 100 XP</div>
+  <div style="text-align:right; font-size:0.6rem; color:var(--text3); margin-top:4px;" id="xp-label">0 / 100 XP</div>
   </div>
   <div class="fact-card animate-in" style="animation-delay:.15s" id="fact-card">
     <div class="rarity-badge rarity-common" id="rarity-badge" style="display:none"></div>
@@ -313,7 +305,16 @@ body.theme-blood { --bg:#110000; --text:#ffcccc; --text2:rgba(255,100,100,0.7); 
     <button class="btn btn-sm btn-secondary" onclick="randomCategory()">&#127920; Rastgele</button>
   </div>
 
-  <div class="footer animate-in" style="animation-delay:.22s">
+  
+  <div class="categories animate-in" style="animation-delay:.12s" id="categories"></div>
+
+    <div class="level-wrap animate-in" style="animation-delay:.1s; background:var(--card); padding:10px 16px; border-radius:12px; margin-bottom:12px; border:1px solid var(--card-border);">
+    <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text2); margin-bottom:6px;">
+      <span id="rank-name" style="font-weight:900; color:var(--accent3); text-transform:uppercase; letter-spacing:1px">ACEMI</span>
+      <span id="level-display" style="font-weight:700">Seviye 1</span>
+    </div>
+    <div class="progress-bar" style="height:6px"><div class="progress-fill" id="xp-fill" style="width:0%"></div></div>
+    <div class="footer animate-in" style="animation-delay:.22s">
     <div class="footer-line"></div>
     <div class="footer-brand">Made with &#10084;&#65039; by <span>THYKE</span></div>
     <div class="footer-sub">Bilgi Hazinesi v3.0</div>
@@ -1335,10 +1336,10 @@ function generateQuiz(){var seenKeys=Object.keys(seenFacts);if(seenKeys.length<4
 function answerQuiz(btn,ans,correct){if(quizAnswered)return;quizAnswered=true;quizTotal++;var ok=ans===correct;if(ok){quizScore++;playSound(523,.1);setTimeout(function(){playSound(784,.15)},100)}else{playSound(300,.15,'square')}localStorage.setItem('bh_quiz3',quizScore);localStorage.setItem('bh_quizT3',quizTotal);var opts=btn.parentElement.querySelectorAll('.quiz-opt');for(var i=0;i<opts.length;i++){opts[i].classList.add('disabled');if(opts[i].textContent.indexOf(correct)>=0)opts[i].classList.add('correct')}if(!ok)btn.classList.add('wrong');if(ok){showToast('Dogru!');launchConfetti()}else showToast('Yanlis!');checkAchievements()}
 
 // ===== STATS =====
-function renderStats(){var cats=Object.keys(factsDB);var rows='';for(var i=0;i<cats.length;i++){var c=cats[i],cat=factsDB[c],total=cat.facts.length;var seen=cat.facts.filter(function(f){return seenFacts[f]}).length;var pct=total?((seen/total)*100).toFixed(0):0;var faved=favorites.filter(function(f){return f.category===c}).length;rows+='<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:1.2rem">'+cat.emoji+'</span><div style="flex:1"><div style="font-size:.75rem;font-weight:600;margin-bottom:3px">'+c+'</div><div class="progress-bar" style="height:3px;margin-bottom:2px"><div class="progress-fill" style="width:'+pct+'%"></div></div><div style="font-size:.55rem;color:var(--text3)">'+seen+'/'+total+' - '+faved+' fav</div></div><div style="font-size:.75rem;font-weight:700;color:var(--text2)">'+pct+'%</div></div>'}var ts=Object.keys(seenFacts).length,ta=allFacts.length;document.getElementById('stats-body').innerHTML='<div style="text-align:center;margin-bottom:16px"><div style="font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+((ts/ta)*100).toFixed(1)+'%</div><div style="font-size:.7rem;color:var(--text2)">Toplam Kesif</div><div style="font-size:.6rem;color:var(--text3);margin-top:4px">'+ts+'/'+ta+' bilgi - '+favorites.length+' fav - Seri: '+streak+' - En iyi: '+bestStreak+' - Quiz: '+quizScore+'/'+quizTotal+'</div></div><h3 style="font-size:.75rem;font-weight:600;margin-bottom:10px;color:var(--text2)">Kategori Bazli</h3>'+rows+'<div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>'; var eggIds = ['secret_404', 'secret_illu', 'secret_thyke', 'god_mode', 'emoji_master', 'true_love', 'konami', 'time_traveler', 'boss_mode', 'earthquake', 'secret_song', 'barrel_roll', 'cat_paw', 'math_pi', 'hidden_eye', 'matrix_rain', 'zero_gravity', 'disco_mode', 'mirror_world', 'the_vault', 'dexter_blood', 'jumpscare', 'magic_trick', 'retro_gamer', 'invisibility', 'black_hole', 'alien_abduction', 'meteor_strike', 'jackpot_win', 'broken_glass'];
+function renderStats(){var cats=Object.keys(factsDB);var rows='';for(var i=0;i<cats.length;i++){var c=cats[i],cat=factsDB[c],total=cat.facts.length;var seen=cat.facts.filter(function(f){return seenFacts[f]}).length;var pct=total?((seen/total)*100).toFixed(0):0;var faved=favorites.filter(function(f){return f.category===c}).length;rows+='<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:1.2rem">'+cat.emoji+'</span><div style="flex:1"><div style="font-size:.75rem;font-weight:600;margin-bottom:3px">'+c+'</div><div class="progress-bar" style="height:3px;margin-bottom:2px"><div class="progress-fill" style="width:'+pct+'%"></div></div><div style="font-size:.55rem;color:var(--text3)">'+seen+'/'+total+' - '+faved+' fav</div></div><div style="font-size:.75rem;font-weight:700;color:var(--text2)">'+pct+'%</div></div>'}var ts=Object.keys(seenFacts).length,ta=allFacts.length;document.getElementById('stats-body').innerHTML='<div style="text-align:center;margin-bottom:16px"><div style="font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+((ts/ta)*100).toFixed(1)+'%</div><div style="font-size:.7rem;color:var(--text2)">Toplam Kesif</div><div style="font-size:.6rem;color:var(--text3);margin-top:4px">'+ts+'/'+ta+' bilgi - '+favorites.length+' fav - Seri: '+streak+' - En iyi: '+bestStreak+' - Quiz: '+quizScore+'/'+quizTotal+'</div></div><h3 style="font-size:.75rem;font-weight:600;margin-bottom:10px;color:var(--text2)">Kategori Bazli</h3>'+rows+'<div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>'; var eggIds = ['secret_404', 'secret_illu', 'secret_thyke', 'god_mode', 'emoji_master', 'true_love', 'konami', 'time_traveler', 'boss_mode', 'earthquake', 'secret_song', 'barrel_roll', 'cat_paw', 'math_pi', 'hidden_eye', 'matrix_rain', 'zero_gravity', 'disco_mode', 'mirror_world', 'the_vault', 'dexter_blood', 'jumpscare', 'magic_trick', 'retro_gamer', 'invisibility', 'black_hole', 'alien_abduction', 'meteor_strike', 'jackpot_win', 'broken_glass', 'illuminati_conf', 'hacker_mode', 'warp_speed', 'cat_apoc', 'on_fire'];
 var foundEggs = 0;
 eggIds.forEach(function(id){ if(unlockedAch.indexOf(id)>-1) foundEggs++; });
-document.getElementById('stats-body').innerHTML += '<div style="margin-top:20px;padding:15px;background:var(--card-hover);border-radius:12px;border:1px dashed var(--accent2)"><div style="font-size:1.1rem;font-weight:bold;margin-bottom:10px;">\uD83D\uDD75\uFE0F Gizem Avcisi (Sirlar)</div><div style="font-size:1.8rem;color:var(--accent1);font-weight:900;">' + foundEggs + ' / 30</div><div style="font-size:0.85rem;color:var(--text2);">Sitedeki bulmacalari cozerek tum sirlari bul!</div></div><div style="text-align:center;margin-top:20px"><button class="btn btn-primary" style="background:#e74c3c" onclick="if(confirm(\'DIKKAT! Tum seviyen, XP puanlarin, basarimlarin ve buldugun Easter Eggler tamamen SIFIRLANACAK! Emin misin?\')){localStorage.clear();location.reload();}">\u26A0\uFE0F Tum Ilerlemeyi Sifirla</button></div>';
+document.getElementById('stats-body').innerHTML += '<div style="margin-top:20px;padding:15px;background:var(--card-hover);border-radius:12px;border:1px dashed var(--accent2)"><div style="font-size:1.1rem;font-weight:bold;margin-bottom:10px;">\uD83D\uDD75\uFE0F Gizem Avcisi (Sirlar)</div><div style="font-size:1.8rem;color:var(--accent1);font-weight:900;">' + foundEggs + ' / 35</div><div style="font-size:0.85rem;color:var(--text2);">Sitedeki bulmacalari cozerek tum sirlari bul!</div></div><div style="text-align:center;margin-top:20px"><button class="btn btn-primary" style="background:#e74c3c" onclick="if(confirm(\'DIKKAT! Tum seviyen, XP puanlarin, basarimlarin ve buldugun Easter Eggler tamamen SIFIRLANACAK! Emin misin?\')){localStorage.clear();location.reload();}">\u26A0\uFE0F Tum Ilerlemeyi Sifirla</button></div>';
 }
 
 // ===== COPY / SHARE / SPEAK =====
@@ -1670,7 +1671,95 @@ document.getElementById('global-search').addEventListener('keydown', function(e)
             setTimeout(function(){ document.querySelector('.container').style.opacity = '1'; setTimeout(function(){document.querySelector('.container').style.transition='';},1500); }, 3000);
             this.value=''; return;
         }
-                // Kara Delik (Black Hole)
+                        // Illuminati
+        if(v==='illuminati' || v==='ucgen' || v==='gizli orgut') {
+            if(unlockedAch.indexOf('illuminati_conf')<0) {
+                unlockedAch.push('illuminati_conf'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(333); showToast('\u25B3 Illuminati Onaylandi! +333 XP');
+            }
+            document.body.style.background = '#0a1a0a';
+            var eye = document.createElement('div'); eye.innerHTML = '\uD83D\uDC41\uFE0F'; eye.style.position='fixed'; eye.style.left='50%'; eye.style.top='50%'; eye.style.transform='translate(-50%,-50%) scale(0)'; eye.style.fontSize='150px'; eye.style.zIndex='99999'; eye.style.transition='transform 2s'; eye.style.filter='drop-shadow(0 0 20px #0f0)';
+            document.body.appendChild(eye);
+            playSound(300, 0.5, 'triangle'); setTimeout(function(){playSound(400,0.5,'triangle');}, 500); setTimeout(function(){playSound(350,1,'triangle');}, 1000);
+            setTimeout(function(){ eye.style.transform='translate(-50%,-50%) scale(1.5)'; }, 50);
+            setTimeout(function(){ document.body.style.background=''; eye.remove(); }, 4000);
+            this.value=''; return;
+        }
+
+        // Hacker Mode
+        if(v==='hacker' || v==='cmd' || v==='hack') {
+            if(unlockedAch.indexOf('hacker_mode')<0) {
+                unlockedAch.push('hacker_mode'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(1337); showToast('\uD83D\uDCBB Sisteme Sizildi! +1337 XP');
+            }
+            document.body.style.background = '#000';
+            var card = document.getElementById('fact-card'); card.style.background = '#000'; card.style.border = '1px solid #0f0'; card.style.color = '#0f0'; card.style.fontFamily = 'monospace';
+            document.getElementById('fact-emoji').textContent = '\uD83D\uDCBB';
+            var tEl = document.getElementById('fact-text'); tEl.textContent = '';
+            var txt = "ACCESS GRANTED... BYPASSING MAINFRAME SECURITY... DOWNLOADING THYKE_DB... 100% COMPLETE. WELCOME, ADMIN.";
+            var idx = 0;
+            var hInt = setInterval(function(){
+                tEl.textContent += txt[idx]; idx++; playSound(800, 0.05, 'square');
+                if(idx >= txt.length) clearInterval(hInt);
+            }, 50);
+            setTimeout(function(){ document.body.style.background = ''; card.style.background=''; card.style.border=''; card.style.color=''; card.style.fontFamily=''; nextFact(); }, 5000);
+            this.value=''; return;
+        }
+
+        // Warp Speed
+        if(v==='isik hizi' || v==='warp' || v==='uzay') {
+            if(unlockedAch.indexOf('warp_speed')<0) {
+                unlockedAch.push('warp_speed'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(900); showToast('\uD83D\uDE80 Isik Hizina Gecildi! +900 XP');
+            }
+            document.body.style.background = '#000';
+            document.querySelector('.container').style.transition='transform 2s cubic-bezier(0.5,0,1,1)'; document.querySelector('.container').style.transform='scaleY(5) scaleX(0.1)';
+            playSound(100, 0.8, 'sawtooth');
+            for(var i=0;i<50;i++) {
+                var l = document.createElement('div'); l.style.position='fixed'; l.style.background='#fff'; l.style.width='2px'; l.style.height=(Math.random()*100+20)+'px'; l.style.left=(Math.random()*100)+'vw'; l.style.top='50vh'; l.style.zIndex='-1'; l.style.transition='transform 1s linear'; l.style.transform='scaleY(0)';
+                document.body.appendChild(l);
+                setTimeout((function(el){ return function(){ el.style.transform='translateY('+(Math.random()>0.5?1:-1)*150+'vh) scaleY(5)'; }; })(l), 50);
+                setTimeout((function(el){ return function(){ el.remove(); }; })(l), 1050);
+            }
+            setTimeout(function(){ document.body.style.background=''; document.querySelector('.container').style.transition=''; document.querySelector('.container').style.transform=''; }, 1500);
+            this.value=''; return;
+        }
+
+        // Cat Apocalypse
+        if(v==='kedi ordusu' || v==='miyav miyav') {
+            if(unlockedAch.indexOf('cat_apoc')<0) {
+                unlockedAch.push('cat_apoc'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(750); showToast('\uD83D\uDC31 Istila Basladi! +750 XP');
+            }
+            var int = setInterval(function(){ playSound(600+Math.random()*300, 0.1, 'sine'); }, 200);
+            for(var i=0;i<40;i++) {
+                var c = document.createElement('div'); c.innerHTML = '\uD83D\uDC31'; c.style.position='fixed'; c.style.fontSize='40px'; c.style.zIndex='9999'; c.style.left=(Math.random()*100)+'vw'; c.style.top='-50px'; c.style.transition='top '+(Math.random()*2+1)+'s cubic-bezier(0.2, 0.8, 0.4, 1)';
+                document.body.appendChild(c);
+                setTimeout((function(el){ return function(){ el.style.top='110vh'; }; })(c), 50);
+                setTimeout((function(el){ return function(){ el.remove(); }; })(c), 3000);
+            }
+            setTimeout(function(){ clearInterval(int); }, 3000);
+            this.value=''; return;
+        }
+
+        // On Fire
+        if(v==='ates' || v==='yangin') {
+            if(unlockedAch.indexOf('on_fire')<0) {
+                unlockedAch.push('on_fire'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(600); showToast('\uD83D\uDD25 Yaniyoruz! +600 XP');
+            }
+            document.body.style.background = '#300000';
+            var fb = setInterval(function(){ playSound(100+Math.random()*100, 0.2, 'square'); }, 150);
+            for(var i=0;i<30;i++) {
+                var f = document.createElement('div'); f.innerHTML = '\uD83D\uDD25'; f.style.position='fixed'; f.style.fontSize=(Math.random()*50+30)+'px'; f.style.zIndex='9998'; f.style.left=(Math.random()*100)+'vw'; f.style.bottom='-50px'; f.style.transition='bottom '+(Math.random()*2+1.5)+'s linear';
+                document.body.appendChild(f);
+                setTimeout((function(el){ return function(){ el.style.bottom='120vh'; el.style.opacity='0'; }; })(f), 50);
+                setTimeout((function(el){ return function(){ el.remove(); }; })(f), 3500);
+            }
+            setTimeout(function(){ document.body.style.background=''; clearInterval(fb); }, 3500);
+            this.value=''; return;
+        }
+        // Kara Delik (Black Hole)
         if(v==='kara delik' || v==='black hole') {
             if(unlockedAch.indexOf('black_hole')<0) {
                 unlockedAch.push('black_hole'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
@@ -1926,6 +2015,7 @@ nextFact();
 </script>
 </body>
 </html>
+
 
 
 
