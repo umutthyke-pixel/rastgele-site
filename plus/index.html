@@ -65,8 +65,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;min-he
 .progress-label{font-size:.6rem;color:var(--text3);text-align:right;margin-top:2px}
 
 .categories-wrapper{position:relative;margin-bottom:24px;text-align:center}
-.categories{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-height:48px;overflow:hidden;transition:max-height 0.4s ease}
-.categories.expanded{max-height:500px}
+.categories{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-height:0;opacity:0;overflow:hidden;transition:all 0.4s ease}
+.categories.expanded{max-height:500px;opacity:1;margin-top:16px}
 .cat-toggle-btn{display:inline-block;margin-top:12px;font-size:0.75rem;color:var(--accent1);background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);padding:6px 16px;border-radius:20px;cursor:pointer;transition:all 0.2s}
 .cat-toggle-btn:hover{background:rgba(212,175,55,0.2)}
 .cat-pill{padding:8px 18px;border-radius:100px;border:1px solid var(--card-border);background:var(--card);color:var(--text2);font-size:.85rem;cursor:pointer;transition:all .25s;user-select:none;white-space:nowrap;-webkit-tap-highlight-color:transparent}
@@ -237,7 +237,7 @@ body.theme-blood { --bg:#110000; --text:#ffcccc; --text2:rgba(255,100,100,0.7); 
 </div>
 
 <!-- MODALS -->
-<div class="modal-overlay" id="tm-modal"><div class="modal"><div class="modal-header"><h2>&#9201;&#65039; Zaman Makinesi</h2><button class="modal-close" onclick="closeModal('tm-modal')">&#10005;</button></div><div class="modal-body" style="text-align:center;padding:40px 20px"><div id="tm-year" style="font-size:4rem;font-weight:900;font-family:monospace;margin-bottom:20px;color:var(--accent3)">2026</div><div id="tm-fact" style="font-size:1.1rem;color:var(--text);margin-bottom:20px;min-height:80px">Gecmise yolculuk basliyor...</div><button class="btn btn-primary" onclick="spinTimeMachine()">Zamani Geri Sar</button></div></div></div>
+<div class="modal-overlay" id="Kategorileri Goruntulei Sar</button></div></div></div>
 
 <div class="modal-overlay" id="hist-modal"><div class="modal"><div class="modal-header"><h2>&#128336; Gecmis <span class="cnt-badge" id="hist-count"></span></h2><button class="modal-close" onclick="closeModal('hist-modal')">&#10005;</button></div><div class="modal-body" id="hist-list"></div></div></div>
 
@@ -317,7 +317,7 @@ body.theme-blood { --bg:#110000; --text:#ffcccc; --text2:rgba(255,100,100,0.7); 
 
   <div class="categories-wrapper animate-in" style="animation-delay:.12s">
     <div class="categories" id="categories"></div>
-    <button class="cat-toggle-btn" onclick="document.getElementById('categories').classList.toggle('expanded'); this.textContent = this.textContent === 'Tümünü Gör' ? 'Daralt' : 'Tümünü Gör';">Tümünü Gör</button>
+    <button class="cat-toggle-btn" onclick="document.getElementById('categories').classList.toggle('expanded'); this.textContent = this.textContent === 'Kategorileri Goruntule' ? 'Gizle' : 'Kategorileri Goruntule';">Kategorileri Goruntule</button>
   </div>
 
   <div class="footer animate-in" style="animation-delay:.22s">
@@ -343,7 +343,7 @@ var factsDB = {
     "Timsahlar 100 milyon yildan fazladir Dunya'da yasiyor.",
     "Arilar dans ederek yiyecek kaynaginin yerini anlatir.",
     "Denizyildizlarinin beyni yoktur.",
-    "Su aygirlarin teri kirmizidir ve gunes kremi gorevi gorur.",
+    "Su aygirlarin Kategorileri Goruntuleevi gorur.",
     "Ineklerin en yakin arkadaslari vardir; ayrilinca strese girerler.",
     "Zurafalarin dili 50 cm'dir ve rengi siyahimsi mordur.",
     "Karincalar vucut agirliklarinin 50 katini tasiyabilir.",
@@ -434,7 +434,7 @@ var factsDB = {
     "Insan vucudunda yaklasik 37.2 trilyon hucre bulunur.",
     "DNA cozulse Gunes'e gidip geri donecek kadar uzun olur.",
     "Insan beyni gunde yaklasik 70.000 dusunce uretir.",
-    "Atomlarinizin cogu milyarlarca yil once patlayan yildizlardan gelir.",
+    "AKategorileri Goruntule.",
     "Insan gozu 10 milyon renk tonu ayirt edebilir.",
     "Sicak su bazi kosullarda soguk sudan daha hizli donar (Mpemba).",
     "Insan vucudu cok az da olsa biyoluminesans isik yayar.",
@@ -450,8 +450,8 @@ var factsDB = {
     "Insan kalbi omur boyu 2.5 milyar kez atar.",
     "Mutlak sifir -273.15 derecedir.",
     "Insanlar ve muzlar DNA'nin %60'ini paylasir.",
-    "Gokkusagi tam daire ama yerden yarisini goruruz.",
-    "Insan gozu karanlikta 48 km uzaktaki mum isigini gorebilir.",
+    "Gokkusagi Kategorileri Goruntuleuruz.",
+    "Insan gozu karanlikKategorileri Goruntuleebilir.",
     "Atomun %99.9'u bos alandan olusur.",
     "1 gram madde 21.5 kiloton TNT enerjisi uretebilir (E=mc2).",
     "Beyindeki elektrik kucuk bir ampulu yakabilir.",
@@ -459,7 +459,7 @@ var factsDB = {
     "Cam amorf bir katidir, yavas akan sivi degil.",
     "Insan DNA'sinin %8'i eski virus kalintilarindan olusur.",
     "Plazma maddenin dorduncu halidir.",
-    "Kuantum tunelleme sayesinde parcaciklar duvarlari gecebilir.",
+    "KuanKategorileri Goruntule.",
     "Suyun 4 derecede en yogun olmasi gollerin alttan donmamasini saglar.",
     "Lazer isigi Ay'a 1.3 saniyede ulasir.",
     "Bir bardak suda yaklasik 8 septilyon atom var.",
@@ -512,7 +512,7 @@ var factsDB = {
     "1914 Noel'inde cephede askerler futbol oynadi.",
     "Titanik batarken orkestra calmaya devam etti.",
     "Ilk metro 1863'te Londra'da acildi.",
-    "Ilk e-posta 1971'de Ray Tomlinson gonderdi.",
+    "Ilk e-posKategorileri Goruntuledi.",
     "Stonehenge Misir piramitlerinden 500 yil eskidir.",
     "Sumerler MO 3500'de civi yazisini icat etti.",
     "Vikingler Amerika'yi Kolomb'dan 500 yil once kesfetti.",
@@ -595,7 +595,7 @@ var factsDB = {
   ]},
   "Psikoloji": { emoji: "\uD83E\uDDE0", color: "186,85,255", facts: [
     "Insanlar 7 arti eksi 2 bilgiyi kisa sureli bellekte tutar.",
-    "Gulmek bagisiklik sistemini guclendirir.",
+    "Gulmek bagisiklik sisKategorileri Goruntuleir.",
     "Muzik dopamin salgilatir; yemekle ayni odul yolu.",
     "Ilk izlenim 7 saniyede olusur.",
     "Insanlar gunde 35.000 karar verir.",
@@ -723,7 +723,7 @@ var factsDB = {
     "Stres beyni fiziksel olarak kucultebilir.",
     "Uyku eksikligi sarhosluga benzer bozulma yaratir.",
     "Kalp omur boyu 200 milyon litre kan pompalar.",
-    "D vitamini aslinda hormon gibi davranir.",
+    "D viKategorileri Goruntuleanir.",
     "Duzenli egzersiz antidepresan kadar etkili olabilir.",
     "Mide ic zari 3-4 gunde tamamen yenilenir.",
     "Meditasyon beyinde gri madde artirir.",
@@ -736,10 +736,10 @@ var factsDB = {
     "Star Wars isin kilici sesi TV arizasindan esinlenildi.",
     "Matrix yesil kodu susi tariflerinin Japonca karakterleri.",
     "Avatar (2009) 2.9 milyar$ hasilat yapti.",
-    "Hitchcock kendi filmlerinde kisa sure gorunurdu.",
+    "HiKategorileri Goruntuleunurdu.",
     "James Bond 6 farkli aktor canlandirdi.",
     "Rocky senaryosu 3 gunde yazildi.",
-    "Pixar her filminde Pizza Planet kamyonu gizler.",
+    "Pixar her filminde Pizza PlaneKategorileri Goruntule.",
     "Jaws kopekbaligi korkusunu dunya capinda artirdi.",
     "Wilhelm Scream 200+ filmde kullanildi.",
     "Ilk tamamen CGI film Toy Story (1995).",
@@ -867,7 +867,7 @@ var factsDB = {
     "Dunyanin en hizli treni Maglev: 603 km/s (Japonya).",
     "Ilk bisiklet 1817'de icat edildi.",
     "Titanik batarken gemi 269 m uzunlugundaydi.",
-    "Otomobillerin %95'i omurlerinin cogunu park halinde gecirir.",
+    "OKategorileri Goruntuleir.",
     "Elektrikli arabalar benzinli arabalardan once icat edildi (1832).",
     "Ilk trafik lambasi 1868'de Londra'da kuruldu.",
     "Airbus A380 dunyanin en buyuk yolcu ucagi: 853 kisilik.",
@@ -898,12 +898,12 @@ var factsDB = {
     "YouTube'da gunde 1 milyar saatten fazla video izleniyor.",
     "LinkedIn'de 900 milyondan fazla profesyonel profil var.",
     "Reddit'te 100.000'den fazla aktif topluluk var.",
-    "WhatsApp'ta gunde 100 milyardan fazla mesaj gonderiliyor.",
+    "WhaKategorileri Goruntuleiliyor.",
     "Ilk hashtag (#) 2007'de Twitter'da Chris Messina tarafindan onerildi.",
     "Sosyal medya kullanicilari gunde ortalama 2.5 saat harciyor.",
-    "Ortalama bir kisi hayatinda 5+ yilini sosyal medyada gecirir.",
+    "OrKategorileri Goruntuleir.",
     "En cok begenilen Instagram fotografi bir yumurta fotografiydi.",
-    "TikTok'un algoritmasi icerigi izleme surenize gore onerir.",
+    "Kategorileri Goruntulee onerir.",
     "Ilk Facebook kullanicisi Mark Zuckerberg (profil ID: 4).",
     "Discord basta oyuncular icin tasarlandi ama simdi her alanda kullaniliyor."
   ]}
@@ -918,15 +918,15 @@ var factsDB = {
 "Vampir mitlerinin kökeni, Antik Yunan'daki 'Vrykolakas' efsanelerine kadar uzanır.",
 "Aşil, Truva Savaşı'nın en büyük kahramanıydı, tek zayıf noktası topuğuydu.",
 "Pegasus, Medusa'nın kesilen başından doğan kanatlı beyaz bir attır.",
-"Herakles (Herkül), Hera'nın öfkesini yatıştırmak için 12 zorlu görevi tamamlamak zorundaydı.",
+"Herakles (Herkül), Hera'nın öfkesini yaKategorileri Goruntuleevi tamamlamak zorundaydı.",
 "Prometheus, tanrılardan ateşi çalıp insanlara verdiği için sonsuz bir işkenceyle cezalandırılmıştır.",
-"Kelt mitolojisinde Morrigan, savaş ve yıkım tanrıçasıdır ve genellikle bir karga formunda görünür.",
-"Japon mitolojisinde Amaterasu, evreni aydınlatan güneş tanrıçasıdır.",
+"KelKategorileri Goruntule karga formunda görünür.",
+"Japon miKategorileri Goruntuleıçasıdır.",
 "Hint mitolojisinde Şiva, yaratılışın ve yıkımın dengesini sağlayan büyük tanrıdır."
 ]},
 "Psikoloji": { emoji: "🧠", color: "155,89,182", facts: [
 "Plasebo etkisi, insanların sahte bir tedaviye inanarak gerçekten iyileşme belirtileri göstermesidir.",
-"Mandela Etkisi, büyük bir insan grubunun yaşanmamış bir olayı yaşanmış gibi hatırlamasıdır.",
+"Mandela EKategorileri Goruntulelamasıdır.",
 "Baader-Meinhof Fenomeni, yeni öğrendiğiniz bir kelimenin veya nesnenin aniden her yerde karşınıza çıkması hissidir.",
 "Dunning-Kruger Etkisi, yetersiz insanların yeteneklerini aşırı abartma eğiliminde olmasıdır.",
 "Bilişsel Çelişki (Cognitive Dissonance), birbiriyle çelişen iki inanca sahip olmanın yarattığı zihinsel rahatsızlıktır.",
@@ -935,25 +935,25 @@ var factsDB = {
 "Pygmalion Etkisi, yüksek beklentilerin insanların performansını artırması durumudur.",
 "Gelişme Korkusu (Jonah Kompleksi), kişinin kendi potansiyelinden ve büyük başarılar elde etmekten korkmasıdır.",
 "Yabancı Dil Etkisi, insanların yabancı bir dilde düşünürken daha mantıklı ve daha az duygusal kararlar almasıdır.",
-"Tetris Etkisi, bir aktiviteye çok fazla zaman ayırdıktan sonra, insanların rüyalarında veya düşüncelerinde o aktiviteyi görmeye devam etmesidir.",
+"Kategorileri Goruntulemeye devam etmesidir.",
 "Ayna Nöronlar, bir başkasının bir eylemini izlediğimizde, o eylemi biz yapıyormuşuz gibi beynimizde aktifleşen hücrelerdir.",
-"Zeygarnik Etkisi, yarım kalan işlerin, tamamlananlara göre akılda daha fazla yer etmesi durumudur.",
+"Zeygarnik EKategorileri Goruntulee akılda daha fazla yer etmesi durumudur.",
 "Stokholm Sendromu, rehinelerin kendilerini rehin alan kişilere sempati veya şefkat duymaya başlamasıdır.",
 "FOMO (Fear Of Missing Out), başkalarının sizden daha iyi veya eğlenceli şeyler yaşadığı korkusudur."
 ]},
 "Gizemli Olaylar": { emoji: "🕵️", color: "52,73,94", facts: [
-"Dyatlov Geçidi Vakası'nda, 9 deneyimli dağcı 1959'da Ural Dağları'nda gizemli bir şekilde hayatını kaybetmiştir.",
+"DyaKategorileri Goruntule şekilde hayatını kaybetmiştir.",
 "Bermuda Şeytan Üçgeni, yüzlerce uçak ve geminin pusulalarının bozularak kaybolduğu iddia edilen bölgedir.",
 "Tunguska Olayı, 1908'de Sibirya'da hiçbir çarpma krateri olmadan devasa bir ormanı yok eden dev patlamadır.",
 "Voynich El Yazması, bugüne kadar dünyanın en yetenekli kriptologları tarafından bile çözülememiş, bilinmeyen bir dilde yazılmış bir kitaptır.",
-"Mary Celeste, 1872'de okyanusun ortasında tamamen sağlam ama içinde hiçbir mürettebatı olmadan bulunan hayalet gemidir.",
+"Mary CelesKategorileri Goruntule.",
 "Nazca Çizgileri, Peru'da sadece gökyüzünden bakıldığında ne olduğu anlaşılabilen devasa yer şekilleridir.",
 "Roswell Olayı, 1950'de ABD'nin New Mexico eyaletine düşen ve uzaylı bir UFO olduğuna inanılan en ünlü kazadır.",
 "Zodiac Katili, 1960'larda Kaliforniya'da insanları öldürüp gazetelere şifreli mesajlar gönderen ve asla bulunamayan seri katildir.",
-"Wow! Sinyali, 1977'de uzaydan gelen ve dünya dışı bir zeka tarafından gönderilmiş olabilecek, kaynağı hala belirsiz güçlü radyo sinyalidir.",
+"Wow! Sinyali, 1977'de uzaydan gelen ve dünya dışı bir zeka Kategorileri Goruntuleadyo sinyalidir.",
 "Jack the Ripper (Karındeşen Jack), 1888'de Londra'da terör estiren ve kimliği hiçbir zaman tespit edilemeyen efsanevi katildir.",
 "Stonehenge, İngiltere'de bulunan devasa taşların binlerce yıl önce o bölgeye nasıl ve neden taşındığı hala tam olarak bilinemeyen bir yapıdır.",
-"Piri Reis Haritası, 1513 yılında çizilmiş olmasına rağmen Antarktika'nın buzsuz halini son derece isabetli bir şekilde göstermektedir.",
+"Piri Reis HariKategorileri Goruntulemektedir.",
 "Roanoke Kolonisi, 1590'da Amerika'ya yerleşen koca bir İngiliz kolonisinin arkalarında sadece bir ağaca kazınmış 'CROATOAN' kelimesini bırakarak yok olmasıdır.",
 "Kayıp Kıta Atlantis, Platon'un bahsettiği ve bir gecede sulara gömüldüğü iddia edilen efsanevi ileri uygarlıktır.",
 "Elisa Lam Vakası, 2013 yılında Cecil Oteli'nin su tankında ölü bulunan kadının asansördeki son anlarının son derece gizemli ve ürkütücü olmasıdır."
@@ -965,15 +965,15 @@ var factsDB = {
 "Ransomware (Fidye Yazılımı), bilgisayarınızdaki tüm dosyaları şifreleyerek açmak için sizden kripto para ile fidye isteyen yazılımlardır.",
 "Kevin Mitnick, 1990'larda ABD'nin en çok aranan bilgisayar korsanıydı ve FBI, Pentagon ve dev şirketleri hacklemişti.",
 "Dünyadaki e-postaların yaklaşık %45'i spam veya kimlik avı (phishing) postalarıdır.",
-"İki Faktörlü Doğrulama (2FA), şifreniz çalınsa bile hesabınızın ele geçirilmesini %99 oranında engeller.",
+"İki FakKategorileri Goruntuleilmesini %99 oranında engeller.",
 "Stuxnet, İran'ın nükleer tesislerini sabote etmek için özel olarak tasarlanmış, dünyanın bilinen ilk dijital silahıdır.",
-"Sıfır Gün (Zero-Day) açıkları, yazılım geliştiricilerin henüz bilmediği veya yamasını yayınlamadığı güvenlik açıklarına verilen addır.",
-"Dark Web, normal arama motorlarıyla (Google) bulunamayan ve çoğunlukla yasadışı faaliyetlerin yürütüldüğü internetin gizli kısmıdır.",
+"Sıfır Gün (Zero-Day) açıkları, yazılım gelişKategorileri Goruntuleına verilen addır.",
+"Dark Web, normal arama moKategorileri Goruntule.",
 "Kaba Kuvvet (Brute Force) saldırısı, bir şifreyi bulmak için milyonlarca farklı kombinasyonun otomatik olarak arka arkaya denenmesidir.",
-"Biyometrik verileriniz (parmak izi, yüz tanıma) çalındığında, şifreniz gibi değiştirilemediği için çok büyük bir risk oluşturur.",
-"Dünyanın en güvenli şifreleme algoritması olan AES-256'yı kırmak, mevcut en güçlü bilgisayarlarla bile milyarlarca yıl sürer.",
+"BiyomeKategorileri Goruntuleilemediği için çok büyük bir risk oluşturur.",
+"Dünyanın en güvenli şifreleme algoriKategorileri Goruntulelarla bile milyarlarca yıl sürer.",
 "Hackerlar genellikle ağlara sızmak yerine, şifresi '123456' olan veya güncellenmemiş sistemleri tespit ederek içeri girerler.",
-"IoT (Nesnelerin İnterneti) cihazları olan akıllı buzdolapları veya kameralar, genellikle çok zayıf güvenlikli oldukları için devasa siber saldırılarda 'zombi bot' olarak kullanılırlar."
+"IoKategorileri Goruntuleı için devasa siber saldırılarda 'zombi bot' olarak kullanılırlar."
 ]},"Futbol": { emoji: "\u26BD", color: "39,174,96", facts: [
 // ESKILER
 "Futbol maclarinda kullanilan topun cevresinin uzunlugu yaklasik 68-70 cm'dir.",
@@ -981,18 +981,18 @@ var factsDB = {
 "Pele, Dunya Kupasi'ni 3 kez kazanan tek futbolcudur.",
 "Tarihteki ilk uluslararasi futbol maci 1872'de Iskocya ve Ingiltere arasinda oynanmis ve 0-0 bitmistir.",
 "Futbol tarihindeki en hizli gol, baslama vurusundan sadece 2.8 saniye sonra Ricardo Olivera tarafindan atilmistir.",
-"Aslinda futbol toplari 1970'lere kadar genellikle tek renk (kahverengi veya beyaz) idi. Siyah-beyaz tasarim, televizyonda daha iyi gorunmesi icin Adidas tarafindan uretilmistir.",
+"Aslinda fuKategorileri Goruntuleunmesi icin Adidas tarafindan uretilmistir.",
 "Bir futbol macinda bir oyuncunun kostugu ortalama mesafe 9.5 ile 11 kilometre arasindadir.",
 "Futbol tarihinde en cok resmi gol atan oyuncu unvanini Cristiano Ronaldo elinde bulundurmaktadir.",
 "Dunya Kupasi tarihinde en cok gol atan oyuncu 16 golle Miroslav Klose'dir.",
 "Sampiyonlar Ligi kupasini kazanan ilk Ingiliz takimi Manchester United'dir (1968).",
-"Lionel Messi, bir takvim yilinda en cok gol atma rekorunu elinde tutar (2012 yilinda 91 gol).",
-"Futbol tarihindeki en farkli milli mac skoru 31-0 ile Avustralya - Amerikan Samoasi arasinda gerceklesmistir.",
+"Lionel Messi, bir Kategorileri Goruntuleekorunu elinde tutar (2012 yilinda 91 gol).",
+"FuKategorileri Goruntuleceklesmistir.",
 "Kirmizi ve sari kart uygulamasi ilk kez 1970 Dunya Kupasi'nda kullanilmistir.",
 "Real Madrid, Sampiyonlar Ligi'ni art arda 3 kez kazanarak (2016, 2017, 2018) modern formatta bunu basaran tek takimdir.",
 "Dunya futbol tarihinde stadyumda en fazla seyirci rekoru, 1950 Dunya Kupasi finalinde Brezilya ile Uruguay arasinda Maracana Stadyumu'nda (yaklasik 200.000 kisi) yasanmistir.",
-"Ingiltere Premier Ligi, dunya genelinde en cok izlenen ve en cok gelir elde eden futbol ligidir.",
-"Kalecilerin topa ceza sahasi disinda elle dokunmasi kesinlikle yasaktir, dokundugu takdirde kirmizi kart gorurler.",
+"IngilKategorileri Goruntule elde eden futbol ligidir.",
+"Kalecilerin Kategorileri Goruntuleurler.",
 "Futbol kelimesinin kokeni aslinda Ingiltere'ye dayansa da topa ayakla vurulan benzer oyunlarin kokeni Antik Cin'e (Cuju) kadar uzanir.",
 "Turkiye Milli Takimi, 2002 FIFA Dunya Kupasi'nda dunya 3.su olarak tarihinin en buyuk basarisini elde etmistir.",
 "Hakan Sukur, 2002 Dunya Kupasi'nda G.Kore'ye 10.8 saniyede attigi golle Dunya Kupasi tarihinin en hizli golunu atmistir.",
@@ -1003,23 +1003,23 @@ var factsDB = {
 "Futbolda VAR (Video Yardimci Hakem) sistemi resmi olarak ilk kez 2018 Dunya Kupasi'nda dunya capinda kullanilmistir.",
 "Zinedine Zidane, 2006 Dunya Kupasi finalinde Marco Materazzi'ye attigi kafa ile kirmizi kart gorerek kariyerini noktalamistir.",
 "Tarihteki en yasli profesyonel futbolcu, 56 yasinda hala aktif futbol oynayan Japon oyuncu Kazuyoshi Miura'dir.",
-"Futbol sahasinin cimleri, goz yanilsamasi yaratmak degil, hakemlerin ofsayt cizgisini daha rahat gormesi icin iki farkli yone bicilir.",
+"FuKategorileri Goruntulemesi icin iki farkli yone bicilir.",
 "Pele'nin gercek tam adi Edson Arantes do Nascimento'dur ve adini unlu mucit Thomas Edison'dan almistir.",
 "Avrupa Futbol Sampiyonasi (EURO) kupasi, kupanin fikir babasi olan Henri Delaunay'in adini tasir.",
 // YENILER
 "Sampiyonlar Ligi'nin efsanevi muzigi aslinda unlu besteci Handel'in 'Zadok the Priest' adli eserinin uyarlamasidir.",
-"Gianluigi Buffon, Italya milli takimi formasiyla 176 maca cikarak Avrupa'da milli formayi en cok giyen kaleci olmustur.",
+"Gianluigi Buffon, IKategorileri Goruntule.",
 "Futbol maclarinda oyuncu degisikligi kurali ilk kez 1958 yilinda uygulanmaya baslamistir.",
 "Brezilyali efsane Ronaldinho, futbol kariyeri boyunca oynadigi takimlarda ve milli takimda hem Dunya Kupasi, hem Copa America, hem de Sampiyonlar Ligi kazanabilen nadir oyunculardan biridir.",
-"Turk derbilerinden Galatasaray-Fenerbahce rekabetinde, ilk karsilasma 1909 yilinda oynanmis ve Galatasaray'in 2-0 ustunlugu ile bitmistir.",
-"Futbolda 10 numara formasi genellikle takimin en yaratici ve oyun kurucu oyuncusuna verilir; bu gelenek Pele ile populerlesmistir.",
+"Kategorileri Goruntuleay'in 2-0 ustunlugu ile bitmistir.",
+"FuKategorileri Goruntulelesmistir.",
 "Dunya Kupasi kupasi aslinda iki tanedir. Ilki olan 'Jules Rimet Kupasi' 1970'de ucuncu kez sampiyon olan Brezilya'ya kalici olarak verilmis, ancak 1983'te calinmistir.",
-"Tarihin en gollu gecen Dunya Kupasi maci, 1954'te Isvicre ile Avusturya arasinda oynanmis ve 7-5 Avusturya'nin galibiyetiyle (toplam 12 gol) sonuclanmistir.",
+"Kategorileri Goruntule.",
 "Futbol sahalarindaki korner direkleri en az 1.5 metre boyunda olmalidir ki oyuncular uzerine dustugunde yaralanmasinlar.",
 "Cristiano Ronaldo, hem Sampiyonlar Ligi, hem Avrupa Sampiyonasi, hem Ingiltere, Ispanya ve Italya liglerinde sampiyonluk yasayan tek oyuncudur.",
-"Norvec Milli Takimi, dunya futbol tarihinde Brezilya ile karsilasip hic yenilmemiş (2 galibiyet, 2 beraberlik) tek milli takimdir.",
+"Norvec Milli Kategorileri Goruntuleaberlik) tek milli takimdir.",
 "Dunya Kupasi maclarinda atilan en uzak mesafe golu, 2010 yilinda İspanyol David Villa tarafindan Şili'ye yaklasik 45 metreden atilmistir.",
-"Futbolda 'Hat-trick' terimi, aslinda kriket sporundan gelmis olup, art arda uc vurusu basaran oyuncuya hediye edilen sapkadan (hat) turer.",
+"FuKategorileri Goruntulet arda uc vurusu basaran oyuncuya hediye edilen sapkadan (hat) turer.",
 "1998 Dunya Kupasi'na kadar ev sahibi ulkenin milli takimi otomatik olarak turnuvaya katilma hakkina sahip degildi.",
 "Lev Yasin, 'Kara Orumcek' lakabiyla bilinir ve Ballon d'Or (Altin Top) odulunu kazanan tarihteki ilk ve tek kalecidir.",
 "Futbol kalesinin direkleri arasindaki genislik tam olarak 7.32 metre, yuksekligi ise 2.44 metredir.",
@@ -1029,7 +1029,7 @@ var factsDB = {
 "Lionel Messi, 13 yasinda Barcelona ile imzaladigi ilk sozlesmesini resmi bir kagit bulunamadigi icin bir pecete uzerine imzalamistir.",
 "Dunya Kupasi muzesinde yer alan en ilginc objelerden biri, 2010 Dunya Kupasi kuralarini dogru bilen 'Ahtapot Paul'un minyaturudur.",
 "Milli takimlar duzeyinde arka arkaya 3 buyuk turnuva kazanan tek takim, 2008-2010-2012 yillarindaki inanilmaz serisiyle Ispanya'dir.",
-"Bir futbolcu takim degistirdiginde eski takimina karsi gol atip sevinmemesi, yazili olmayan bir saygi kuralidir.",
+"Bir fuKategorileri Goruntule saygi kuralidir.",
 "Ingiltere'nin Sheffield FC kulubu, 1857 yilinda kurulmus olup dunya uzerindeki en eski futbol kulubu unvanini tasir."
 ]},
 "Tarih": { emoji: "\uD83C\uDFDB\uFE0F", color: "230,126,34", facts: [
@@ -1037,7 +1037,7 @@ var factsDB = {
 "1453'te Fatih Sultan Mehmet'in Istanbul'u fethiyle Orta Cag kapanmis, Yeni Cag baslamistir.",
 "Mete Han, M.O. 209'da tarihteki ilk duzenli ordu sistemi olan 'Onluk Sistem'i kurmustur.",
 "Orhun Yazitlari, Turk adinin gectigi ilk Turkce tas yazili eserlerdir (732-735).",
-"Piri Reis'in 1513 tarihli dunya haritasi, Amerika kitasinin dogu kiyilarini olaganustu bir dogrulukla gosterir.",
+"Piri Reis'in 1513 Kategorileri Goruntuleir.",
 "Gokturkler, tarihte Turk adiyla kurulan ilk devlettir.",
 "Hezarfen Ahmed Celebi, 1632 yilinda Galata Kulesi'nden Uskudar'a kanat takarak ucmayi basaran ilk insanlardan biridir.",
 "Kanuni Sultan Suleyman, 46 yil ile Osmanli Imparatorlugu'nda en uzun sure tahtta kalan padisahtir.",
@@ -1049,31 +1049,31 @@ var factsDB = {
 "Canakkale Savasi (1915), I. Dunya Savasi'nin en kanli ve en buyuk kahramanlik destanlarinin yazildigi cephedir.",
 "Avrupa Hun Imparatoru Attila, 'Tanri'nin Kirbaci' olarak anilirdi ve Roma Imparatorlugu'na diz cokturmustu.",
 "1040 Dandanakan Meydan Muharebesi ile Buyuk Selcuklu Devleti resmen kurulmustur.",
-"Anadolu Selcuklu Devleti, Mevlana, Yunus Emre ve Haci Bektas Veli gibi buyuk dusunurlerin yetistigi donemdir.",
-"Osmanli Devleti'nin kurucusu Osman Gazi, devletin temellerini 1299'da Sogut'te atmistir.",
+"Anadolu Selcuklu DevleKategorileri Goruntulelerin yetistigi donemdir.",
+"Osmanli DevleKategorileri Goruntuleini 1299'da Sogut'te atmistir.",
 "Kipcaklar (Kumanlar), Karadeniz'in kuzeyinde yasamis, sarisin ve mavi gozlu bir Turk boyudur.",
 "1526 Mohac Meydan Muharebesi, sadece 2 saat surmus ve Dunya tarihinin en kisa suren meydan savaslarindan biri olmustur.",
 "Turkler, tarihte ati ehlilestiren ve pantolonu icat eden ilk milletlerden biridir.",
 "Kizilelma, Turk mitolojisinde ulasilmasi hedeflenen ufuk, buyuk ve kutlu bir ulkudur.",
 "Barbaros Hayreddin Pasa, denizcilik tarihinin en buyuk amirallerinden biri olarak Osmanli donanmasini zirveye tasimistir.",
-"Kose Dag Savasi (1243), Anadolu Selcuklu Devleti'nin Mogollara karsi kaybettigi ve yikilis surecine girdigi savastir.",
+"Kose Dag Savasi (1243), Anadolu Selcuklu DevleKategorileri Goruntuledigi savastir.",
 "1915 Canakkale Savasi'nda Ataturk'un 'Ben size taarruzu emretmiyorum, olmeyi emrediyorum' sozu savasin seyrini degistirmistir.",
 "Mustafa Kemal'e 'Ataturk' soyadi, 1934 yilinda TBMM tarafindan oybirliyle verilmistir.",
 "Ataturk, 1928'de Harf Inkilabi'ni gerceklestirerek Yeni Turk Alfabesi'ni basogretmen sifatiyla bizzat halka ogretmistir.",
 "Ataturk, 1934 yilinda Turk kadinina secme ve secilme hakkini taniyarak, Avrupa'daki bircok ulkeden once bu hakki vermistir.",
 "Ataturk, doga sevgisiyle bilindigi icin Yalova'daki koskunun insasi sirasinda bir cinar agacinin dalinin kesilmemesi icin kosku raylar uzerinde kaydirtmistir (Yuruyen Kosk).",
-"Ataturk, askeri dehasinin yani sira 'Geometri' adli bir kitap yazarak bugun kullandigimiz ucgen, aci, uzay gibi terimleri Turkceye kazandirmistir.",
+"AKategorileri Goruntuleimleri Turkceye kazandirmistir.",
 "1923'te Cumhuriyet'in ilani ile birlikte Ataturk, Turkiye Cumhuriyeti'nin ilk Cumhurbaskani olmustur.",
 "Ataturk'un okudugu kitap sayisi yaklasik 4 bin civarindadir ve cogunun altini cizerek, kenarlarina notlar alarak okumustur.",
 "Ataturk, 1926 yilinda 'Yurtta sulh, cihanda sulh' ilkesini benimseyerek Turk dis politikasinin temelini atmistir.",
 "Savas yillarinda bile cephede kitap okumayi ihmal etmemis, hatta develerle kitap sandiklari tasitmistir.",
-"1919'da Samsun'a cikarak Kurtulus Savasi'ni baslattigi gun olan 19 Mayis'i daha sonra Turk gencligine armagan etmistir.",
+"1919'da Samsun'a cikarak KurKategorileri Goruntulemagan etmistir.",
 "Ataturk, spora ve sporcuya verdigi onemi 'Ben sporcunun zeki, cevik ve ayni zamanda ahlaklisini severim' sozuyle ozetlemistir.",
 "Anitkabir'in insasi 9 yil surmus ve Ataturk'un naasi 1953 yilinda Etnografya Muzesi'nden buraya tasinmistir.",
 "Dunyada cocuklara bayram hediye eden ilk ve tek lider Ataturk'tur (23 Nisan Ulusal Egemenlik ve Cocuk Bayrami).",
 "Ataturk'un annesi Zubeyde Hanim, babasi Ali Riza Efendi'dir.",
 "Sakarya Meydan Muharebesi'nde Ataturk 'Hatt-i mudafaa yoktur, sath-i mudafaa vardir' emrini vermistir.",
-"Ataturk, giyim tarzina cok onem vermis, doneminin en sik ve zevkli giyinen dunya liderlerinden biri olmustur.",
+"AKategorileri Goruntulelerinden biri olmustur.",
 "Buyuk Taarruz (26 Agustos 1922), Ataturk'un basakumandanliginda Dumlupinar'da dusmani kesin bozguna ugratmistir.",
 "Ataturk 57 yillik yasamina 11 savas, 24 madalya, 7 nisan, 13 kitap, 1 ulke ve milyonlarca ozgur insan sigdirmistir.",
 "Ataturk, muzige ve sanata deger vermis, 'Sanatsiz kalan bir milletin hayat damarlarindan biri kopmus demektir' demistir.",
@@ -1084,14 +1084,14 @@ var factsDB = {
 "Tarihteki en kisa savas 1896'da Ingiltere ve Zanzibar arasinda yasanmis ve sadece 38 dakika surmustur.",
 "Julius Sezar M.O. 44 yilinda Roma Senatosu'nda suikaste ugrayarak 23 defa bicaklanmistir.",
 "1666'daki Buyuk Londra Yangini sehrin buyuk bolumunu yok etmis ancak sadece 6 kisinin olumuyle sonuclanmistir.",
-"Napolyon Bonapart sanildigi kadar kisa degildi; 1.69 boyundaydi, bu donemine gore ortalama bir boydur.",
+"Napolyon BonaparKategorileri Goruntulee ortalama bir boydur.",
 "I. Dunya Savasi sirasinda Noel ateskesi ilan edilmis, Ingiliz ve Alman askerleri siperlerden cikip futbol oynamistir.",
 "Leonardo da Vinci Mona Lisa tablosunu cizmeye baslamis fakat eserini 14 yil boyunca tam olarak bitirememistir.",
 "Babil'in Asma Bahceleri, Antik Dunyanin Yedi Harikasi arasinda gercekten var olup olmadigi kesin olmayan tek eserdir.",
 "Vikingler miyferlerinde boynuz kullanmazlardi, bu sadece 19. yuzyil opera kostumlerinin yarattigi bir efsanedir.",
 "Dunyada kurulan ilk matbaa, Johannes Gutenberg tarafindan 1440 yilinda Almanya'da icat edilmistir.",
 "Dunyadaki ilk yazili antlasma, M.O. 1259'da Misirlilar ve Hititler arasinda imzalanan Kades Antlasmasi'dir.",
-"Edison, ampulu icat etmemis, mevcut ampul tasarimini gelistirerek uzun sure dayanmasini saglamistir.",
+"Edison, ampulu icaKategorileri Goruntuleerek uzun sure dayanmasini saglamistir.",
 "Amerika Kitasini Kristof Kolomb'dan yaklasik 500 yil once Viking kasifi Leif Erikson kesfetmistir.",
 "Dunya uzerindeki ilk universitelerden biri, M.S. 859'da Fas'ta Fatima al-Fihri adli bir kadin tarafindan kurulmustur.",
 "Ronesans, Italya'nin Floransa sehrinde baslamis ve tum Avrupa'yi bilim, sanat ve felsefede donusturmustur.",
@@ -1112,7 +1112,7 @@ var factsDB = {
 "Buyuk Cin Seddi, uzaydan ciplak gozle gorulemez, bu bir sehir efsanesidir.",
 "Eski Misirlilar, olen kisinin beynini burun deliklerinden bir kanca ile cikararak mumyalama islemine baslarlardi.",
 "Bati Roma Imparatorlugu M.S. 506'da yikilmis, Dogu Roma (Bizans) ise 1000 yil daha ayakta kalmistir.",
-"M.S. 79'da Vezuv Yanardagi patlamasi, Pompeii sehrini kuller altina gomerek binlerce yil bozulmadan kalmasini saglamistir.",
+"M.S. 79'da Vezuv Yanardagi paKategorileri Goruntuleek binlerce yil bozulmadan kalmasini saglamistir.",
 "Cikolata, antik Mesoamerika uygarliklarinda bir icecek olarak tuketilir ve bazen para birimi olarak kullanilirdi.",
 "Dunyadaki ilk tekerlek M.O. 3500 yillarinda Mezopotamya'da (Sumerler) tasimadan ziyade comlek yapiminda kullanilmistir.",
 "Romalilar gladyator dovuslerinde bazen Kolezyum'u suyla doldurup gemi savaslari (Naumachia) duzenlerdi.",
@@ -1122,14 +1122,14 @@ var factsDB = {
 "Ilk olimpiyat oyunlari M.O. 776'da Antik Yunan'da Zeus onuruna duzenlenmistir.",
 "Pusula, barut, kagit ve matbaa 'Cin'in Dort Buyuk Icadi' olarak bilinir.",
 "Eski Roma'da, curumus idrar camasir yikamak ve dis fircalamak icin ticari olarak satiliyordu, amonyak temizleyiciydi.",
-"Giyotinin mucidi Dr. Joseph-Ignace Guillotin idi ve asil amaci daha insani bir infaz yontemi yaratmakti.",
+"GiyoKategorileri Goruntule infaz yontemi yaratmakti.",
 "Hitler'in gercek soyadi 'Schicklgruber' olacakti ancak babasi sonradan Hitler soyadini aldi.",
 "Inka Imparatorlugu yazi sistemine sahip degildi, onun yerine Quipu adi verilen dugumlu iplerle kayit tutarlardi.",
 "Gunumuzde hala bazi bolumleri ayakta olan Kolezyum'un yapiminda Yahudi esirler calistirilmistir.",
 "I. Dunya Savasi'nda tanklar, cepheye goturulurken sifre adi olarak 'Water Tank' (Su Deposu) adini kullandiklari icin 'Tank' ismini almislardir.",
-"Abraham Lincoln 1865 yilinda suikaste kurban gitmeden hemen once, ABD'de Kuresel Isinma hakkinda gizli hizmet projesini imzalayacakti (Mit).",
+"Abraham Lincoln 1865 yilinda suikasKategorileri Goruntuleojesini imzalayacakti (Mit).",
 "Eski Caglarda, Sparta'li cocuklar 7 yasinda ailelerinden alinarak cok sert bir askeri egitime (Agoge) tabi tutulurlardi.",
-"Gunumuzdeki takvim sisteminin temeli olan Julyen takvimi, Julius Sezar tarafindan getirilmistir.",
+"Gunumuzdeki Kategorileri Goruntuleilmistir.",
 "II. Dunya Savasi sirasinda Almanlarin Enigma sifreleme makinesi, Alan Turing'in liderligindeki ekip tarafindan kirilmistir.",
 "M.O. 221'de Cin Imparatoru Qin Shi Huang, olumsuzlugu ararken yanlislikla civa icerek hayatini kaybetmistir.",
 "Amerika Birlesik Devletleri 1776'da bagimsizligini ilan ettiginde sadece 13 eyaletten olusuyordu.",
@@ -1137,16 +1137,16 @@ var factsDB = {
 "Galileo Galilei, Dunya'nin Gunes etrafinda dondugunu savundugu icin Engizisyon mahkemesince omur boyu ev hapsine carptirilmistir.",
 "Tarihteki en buyuk depremlerden biri 1556'da Cin'in Shaanxi bolgesinde olmus ve 830.000 kisinin hayatini kaybetmesine neden olmustur.",
 "Dunyadaki ilk baris gucu misyonu, antik Yunan'da tapinaklari korumak icin kurulmustur.",
-"Kral Tutankamon'un mezari, 1922'de Howard Carter tarafindan hic bozulmamis sekilde bulunana kadar 3000 yil gizli kalmistir.",
+"Kral Kategorileri Goruntule.",
 "Roma Imparatoru Caligula, favori ati Incitatus'u konsul (Roma'daki en yuksek rutbelerden biri) yapmak istemistir.",
-"Spartakus, Roma Imparatorlugu'nda karsi durulmaz devasa bir kole isyani baslatan ve yillarca imparatorlugu sarsan bir gladyatordur.",
+"SparKategorileri Goruntuledur.",
 "Misir Piramitleri sanildigi gibi koleler tarafindan degil, ucret karsiligi calisan iyi beslenen isci sinifi tarafindan insa edilmistir.",
 "I. Dunya Savasi'nda kimyasal silah olarak ilk kez klor gazi, Ypres Savasi'nda Almanlar tarafindan kullanilmistir.",
 "1986 Cernobil Nukleer Felaketi, Hirosima'ya atilan atom bombasindan 400 kat daha fazla radyasyon yaymistir.",
 "Orta Cag'da, hastaliklarin kotu kokudan bulastigina inanilirdi; bu inanca 'Miasma Teorisi' denilirdi.",
-"Osmanli'da yeniceriler isyan ettiklerinde, memnuniyetsizliklerini gostermek icin 'Kazan Kaldirirlardi'.",
+"Osmanli'da yeniceriler isyan eKategorileri Goruntulemek icin 'Kazan Kaldirirlardi'.",
 "Eski Yunan'da demokrasi sadece ozgur erkek vatandaslar icindi; kadinlar, koleler ve yabancilarin oy hakki yoktu.",
-"Amerika kita kesfini kutlayan 'Kolomb Gunu', gunumuzde Kolomb'un yerli halklara yaptiklari yuzunden bircok eyalette kutlanmamaktadir.",
+"Amerika kiKategorileri Goruntuleli halklara yaptiklari yuzunden bircok eyalette kutlanmamaktadir.",
 "Buyuk Iskendire ders veren felsefeci, antik Yunan felsefesinin en buyuk isimlerinden biri olan Aristoteles'tir.",
 "Avrupa'da cadi avlari sirasinda binlerce kadin, genellikle tibbi bilgileri veya kucuk tuhafliklari nedeniyle yakilmistir.",
 "Berlin Duvari 1961'de orulmus, 1989'da yikilmis ve Dogu ile Bati Almanya 1990'da resmi olarak birlesmistir.",
@@ -1176,18 +1176,18 @@ var factsDB = {
 "Pele, Dunya Kupasi'ni 3 kez kazanan tek futbolcudur.",
 "Tarihteki ilk uluslararasi futbol maci 1872'de Iskocya ve Ingiltere arasinda oynanmis ve 0-0 bitmistir.",
 "Futbol tarihindeki en hizli gol, baslama vurusundan sadece 2.8 saniye sonra Ricardo Olivera tarafindan atilmistir.",
-"Aslinda futbol toplari 1970'lere kadar genellikle tek renk (kahverengi veya beyaz) idi. Siyah-beyaz tasarim, televizyonda daha iyi gorunmesi icin Adidas tarafindan uretilmistir.",
+"Aslinda fuKategorileri Goruntuleunmesi icin Adidas tarafindan uretilmistir.",
 "Bir futbol macinda bir oyuncunun kostugu ortalama mesafe 9.5 ile 11 kilometre arasindadir.",
 "Futbol tarihinde en cok resmi gol atan oyuncu unvanini Cristiano Ronaldo elinde bulundurmaktadir.",
 "Dunya Kupasi tarihinde en cok gol atan oyuncu 16 golle Miroslav Klose'dir.",
 "Sampiyonlar Ligi kupasini kazanan ilk Ingiliz takimi Manchester United'dir (1968).",
-"Lionel Messi, bir takvim yilinda en cok gol atma rekorunu elinde tutar (2012 yilinda 91 gol).",
-"Futbol tarihindeki en farkli milli mac skoru 31-0 ile Avustralya - Amerikan Samoasi arasinda gerceklesmistir.",
+"Lionel Messi, bir Kategorileri Goruntuleekorunu elinde tutar (2012 yilinda 91 gol).",
+"FuKategorileri Goruntuleceklesmistir.",
 "Kirmizi ve sari kart uygulamasi ilk kez 1970 Dunya Kupasi'nda kullanilmistir.",
 "Real Madrid, Sampiyonlar Ligi'ni art arda 3 kez kazanarak (2016, 2017, 2018) modern formatta bunu basaran tek takimdir.",
 "Dunya futbol tarihinde stadyumda en fazla seyirci rekoru, 1950 Dunya Kupasi finalinde Brezilya ile Uruguay arasinda Maracana Stadyumu'nda (yaklasik 200.000 kisi) yasanmistir.",
-"Ingiltere Premier Ligi, dunya genelinde en cok izlenen ve en cok gelir elde eden futbol ligidir.",
-"Kalecilerin topa ceza sahasi disinda elle dokunmasi kesinlikle yasaktir, dokundugu takdirde kirmizi kart gorurler.",
+"IngilKategorileri Goruntule elde eden futbol ligidir.",
+"Kalecilerin Kategorileri Goruntuleurler.",
 "Futbol kelimesinin kokeni aslinda Ingiltere'ye dayansa da topa ayakla vurulan benzer oyunlarin kokeni Antik Cin'e (Cuju) kadar uzanir.",
 "Turkiye Milli Takimi, 2002 FIFA Dunya Kupasi'nda dunya 3.su olarak tarihinin en buyuk basarisini elde etmistir.",
 "Hakan Sukur, 2002 Dunya Kupasi'nda G.Kore'ye 10.8 saniyede attigi golle Dunya Kupasi tarihinin en hizli golunu atmistir.",
@@ -1198,23 +1198,23 @@ var factsDB = {
 "Futbolda VAR (Video Yardimci Hakem) sistemi resmi olarak ilk kez 2018 Dunya Kupasi'nda dunya capinda kullanilmistir.",
 "Zinedine Zidane, 2006 Dunya Kupasi finalinde Marco Materazzi'ye attigi kafa ile kirmizi kart gorerek kariyerini noktalamistir.",
 "Tarihteki en yasli profesyonel futbolcu, 56 yasinda hala aktif futbol oynayan Japon oyuncu Kazuyoshi Miura'dir.",
-"Futbol sahasinin cimleri, goz yanilsamasi yaratmak degil, hakemlerin ofsayt cizgisini daha rahat gormesi icin iki farkli yone bicilir.",
+"FuKategorileri Goruntulemesi icin iki farkli yone bicilir.",
 "Pele'nin gercek tam adi Edson Arantes do Nascimento'dur ve adini unlu mucit Thomas Edison'dan almistir.",
 "Avrupa Futbol Sampiyonasi (EURO) kupasi, kupanin fikir babasi olan Henri Delaunay'in adini tasir.",
 // YENILER
 "Sampiyonlar Ligi'nin efsanevi muzigi aslinda unlu besteci Handel'in 'Zadok the Priest' adli eserinin uyarlamasidir.",
-"Gianluigi Buffon, Italya milli takimi formasiyla 176 maca cikarak Avrupa'da milli formayi en cok giyen kaleci olmustur.",
+"Gianluigi Buffon, IKategorileri Goruntule.",
 "Futbol maclarinda oyuncu degisikligi kurali ilk kez 1958 yilinda uygulanmaya baslamistir.",
 "Brezilyali efsane Ronaldinho, futbol kariyeri boyunca oynadigi takimlarda ve milli takimda hem Dunya Kupasi, hem Copa America, hem de Sampiyonlar Ligi kazanabilen nadir oyunculardan biridir.",
-"Turk derbilerinden Galatasaray-Fenerbahce rekabetinde, ilk karsilasma 1909 yilinda oynanmis ve Galatasaray'in 2-0 ustunlugu ile bitmistir.",
-"Futbolda 10 numara formasi genellikle takimin en yaratici ve oyun kurucu oyuncusuna verilir; bu gelenek Pele ile populerlesmistir.",
+"Kategorileri Goruntuleay'in 2-0 ustunlugu ile bitmistir.",
+"FuKategorileri Goruntulelesmistir.",
 "Dunya Kupasi kupasi aslinda iki tanedir. Ilki olan 'Jules Rimet Kupasi' 1970'de ucuncu kez sampiyon olan Brezilya'ya kalici olarak verilmis, ancak 1983'te calinmistir.",
-"Tarihin en gollu gecen Dunya Kupasi maci, 1954'te Isvicre ile Avusturya arasinda oynanmis ve 7-5 Avusturya'nin galibiyetiyle (toplam 12 gol) sonuclanmistir.",
+"Kategorileri Goruntule.",
 "Futbol sahalarindaki korner direkleri en az 1.5 metre boyunda olmalidir ki oyuncular uzerine dustugunde yaralanmasinlar.",
 "Cristiano Ronaldo, hem Sampiyonlar Ligi, hem Avrupa Sampiyonasi, hem Ingiltere, Ispanya ve Italya liglerinde sampiyonluk yasayan tek oyuncudur.",
-"Norvec Milli Takimi, dunya futbol tarihinde Brezilya ile karsilasip hic yenilmemiş (2 galibiyet, 2 beraberlik) tek milli takimdir.",
+"Norvec Milli Kategorileri Goruntuleaberlik) tek milli takimdir.",
 "Dunya Kupasi maclarinda atilan en uzak mesafe golu, 2010 yilinda İspanyol David Villa tarafindan Şili'ye yaklasik 45 metreden atilmistir.",
-"Futbolda 'Hat-trick' terimi, aslinda kriket sporundan gelmis olup, art arda uc vurusu basaran oyuncuya hediye edilen sapkadan (hat) turer.",
+"FuKategorileri Goruntulet arda uc vurusu basaran oyuncuya hediye edilen sapkadan (hat) turer.",
 "1998 Dunya Kupasi'na kadar ev sahibi ulkenin milli takimi otomatik olarak turnuvaya katilma hakkina sahip degildi.",
 "Lev Yasin, 'Kara Orumcek' lakabiyla bilinir ve Ballon d'Or (Altin Top) odulunu kazanan tarihteki ilk ve tek kalecidir.",
 "Futbol kalesinin direkleri arasindaki genislik tam olarak 7.32 metre, yuksekligi ise 2.44 metredir.",
@@ -1224,7 +1224,7 @@ var factsDB = {
 "Lionel Messi, 13 yasinda Barcelona ile imzaladigi ilk sozlesmesini resmi bir kagit bulunamadigi icin bir pecete uzerine imzalamistir.",
 "Dunya Kupasi muzesinde yer alan en ilginc objelerden biri, 2010 Dunya Kupasi kuralarini dogru bilen 'Ahtapot Paul'un minyaturudur.",
 "Milli takimlar duzeyinde arka arkaya 3 buyuk turnuva kazanan tek takim, 2008-2010-2012 yillarindaki inanilmaz serisiyle Ispanya'dir.",
-"Bir futbolcu takim degistirdiginde eski takimina karsi gol atip sevinmemesi, yazili olmayan bir saygi kuralidir.",
+"Bir fuKategorileri Goruntule saygi kuralidir.",
 "Ingiltere'nin Sheffield FC kulubu, 1857 yilinda kurulmus olup dunya uzerindeki en eski futbol kulubu unvanini tasir."
 ]},
 "Tarih": { emoji: "\uD83C\uDFDB\uFE0F", color: "230,126,34", facts: [
@@ -1232,7 +1232,7 @@ var factsDB = {
 "1453'te Fatih Sultan Mehmet'in Istanbul'u fethiyle Orta Cag kapanmis, Yeni Cag baslamistir.",
 "Mete Han, M.O. 209'da tarihteki ilk duzenli ordu sistemi olan 'Onluk Sistem'i kurmustur.",
 "Orhun Yazitlari, Turk adinin gectigi ilk Turkce tas yazili eserlerdir (732-735).",
-"Piri Reis'in 1513 tarihli dunya haritasi, Amerika kitasinin dogu kiyilarini olaganustu bir dogrulukla gosterir.",
+"Piri Reis'in 1513 Kategorileri Goruntuleir.",
 "Gokturkler, tarihte Turk adiyla kurulan ilk devlettir.",
 "Hezarfen Ahmed Celebi, 1632 yilinda Galata Kulesi'nden Uskudar'a kanat takarak ucmayi basaran ilk insanlardan biridir.",
 "Kanuni Sultan Suleyman, 46 yil ile Osmanli Imparatorlugu'nda en uzun sure tahtta kalan padisahtir.",
@@ -1244,31 +1244,31 @@ var factsDB = {
 "Canakkale Savasi (1915), I. Dunya Savasi'nin en kanli ve en buyuk kahramanlik destanlarinin yazildigi cephedir.",
 "Avrupa Hun Imparatoru Attila, 'Tanri'nin Kirbaci' olarak anilirdi ve Roma Imparatorlugu'na diz cokturmustu.",
 "1040 Dandanakan Meydan Muharebesi ile Buyuk Selcuklu Devleti resmen kurulmustur.",
-"Anadolu Selcuklu Devleti, Mevlana, Yunus Emre ve Haci Bektas Veli gibi buyuk dusunurlerin yetistigi donemdir.",
-"Osmanli Devleti'nin kurucusu Osman Gazi, devletin temellerini 1299'da Sogut'te atmistir.",
+"Anadolu Selcuklu DevleKategorileri Goruntulelerin yetistigi donemdir.",
+"Osmanli DevleKategorileri Goruntuleini 1299'da Sogut'te atmistir.",
 "Kipcaklar (Kumanlar), Karadeniz'in kuzeyinde yasamis, sarisin ve mavi gozlu bir Turk boyudur.",
 "1526 Mohac Meydan Muharebesi, sadece 2 saat surmus ve Dunya tarihinin en kisa suren meydan savaslarindan biri olmustur.",
 "Turkler, tarihte ati ehlilestiren ve pantolonu icat eden ilk milletlerden biridir.",
 "Kizilelma, Turk mitolojisinde ulasilmasi hedeflenen ufuk, buyuk ve kutlu bir ulkudur.",
 "Barbaros Hayreddin Pasa, denizcilik tarihinin en buyuk amirallerinden biri olarak Osmanli donanmasini zirveye tasimistir.",
-"Kose Dag Savasi (1243), Anadolu Selcuklu Devleti'nin Mogollara karsi kaybettigi ve yikilis surecine girdigi savastir.",
+"Kose Dag Savasi (1243), Anadolu Selcuklu DevleKategorileri Goruntuledigi savastir.",
 "1915 Canakkale Savasi'nda Ataturk'un 'Ben size taarruzu emretmiyorum, olmeyi emrediyorum' sozu savasin seyrini degistirmistir.",
 "Mustafa Kemal'e 'Ataturk' soyadi, 1934 yilinda TBMM tarafindan oybirliyle verilmistir.",
 "Ataturk, 1928'de Harf Inkilabi'ni gerceklestirerek Yeni Turk Alfabesi'ni basogretmen sifatiyla bizzat halka ogretmistir.",
 "Ataturk, 1934 yilinda Turk kadinina secme ve secilme hakkini taniyarak, Avrupa'daki bircok ulkeden once bu hakki vermistir.",
 "Ataturk, doga sevgisiyle bilindigi icin Yalova'daki koskunun insasi sirasinda bir cinar agacinin dalinin kesilmemesi icin kosku raylar uzerinde kaydirtmistir (Yuruyen Kosk).",
-"Ataturk, askeri dehasinin yani sira 'Geometri' adli bir kitap yazarak bugun kullandigimiz ucgen, aci, uzay gibi terimleri Turkceye kazandirmistir.",
+"AKategorileri Goruntuleimleri Turkceye kazandirmistir.",
 "1923'te Cumhuriyet'in ilani ile birlikte Ataturk, Turkiye Cumhuriyeti'nin ilk Cumhurbaskani olmustur.",
 "Ataturk'un okudugu kitap sayisi yaklasik 4 bin civarindadir ve cogunun altini cizerek, kenarlarina notlar alarak okumustur.",
 "Ataturk, 1926 yilinda 'Yurtta sulh, cihanda sulh' ilkesini benimseyerek Turk dis politikasinin temelini atmistir.",
 "Savas yillarinda bile cephede kitap okumayi ihmal etmemis, hatta develerle kitap sandiklari tasitmistir.",
-"1919'da Samsun'a cikarak Kurtulus Savasi'ni baslattigi gun olan 19 Mayis'i daha sonra Turk gencligine armagan etmistir.",
+"1919'da Samsun'a cikarak KurKategorileri Goruntulemagan etmistir.",
 "Ataturk, spora ve sporcuya verdigi onemi 'Ben sporcunun zeki, cevik ve ayni zamanda ahlaklisini severim' sozuyle ozetlemistir.",
 "Anitkabir'in insasi 9 yil surmus ve Ataturk'un naasi 1953 yilinda Etnografya Muzesi'nden buraya tasinmistir.",
 "Dunyada cocuklara bayram hediye eden ilk ve tek lider Ataturk'tur (23 Nisan Ulusal Egemenlik ve Cocuk Bayrami).",
 "Ataturk'un annesi Zubeyde Hanim, babasi Ali Riza Efendi'dir.",
 "Sakarya Meydan Muharebesi'nde Ataturk 'Hatt-i mudafaa yoktur, sath-i mudafaa vardir' emrini vermistir.",
-"Ataturk, giyim tarzina cok onem vermis, doneminin en sik ve zevkli giyinen dunya liderlerinden biri olmustur.",
+"AKategorileri Goruntulelerinden biri olmustur.",
 "Buyuk Taarruz (26 Agustos 1922), Ataturk'un basakumandanliginda Dumlupinar'da dusmani kesin bozguna ugratmistir.",
 "Ataturk 57 yillik yasamina 11 savas, 24 madalya, 7 nisan, 13 kitap, 1 ulke ve milyonlarca ozgur insan sigdirmistir.",
 "Ataturk, muzige ve sanata deger vermis, 'Sanatsiz kalan bir milletin hayat damarlarindan biri kopmus demektir' demistir.",
@@ -1279,14 +1279,14 @@ var factsDB = {
 "Tarihteki en kisa savas 1896'da Ingiltere ve Zanzibar arasinda yasanmis ve sadece 38 dakika surmustur.",
 "Julius Sezar M.O. 44 yilinda Roma Senatosu'nda suikaste ugrayarak 23 defa bicaklanmistir.",
 "1666'daki Buyuk Londra Yangini sehrin buyuk bolumunu yok etmis ancak sadece 6 kisinin olumuyle sonuclanmistir.",
-"Napolyon Bonapart sanildigi kadar kisa degildi; 1.69 boyundaydi, bu donemine gore ortalama bir boydur.",
+"Napolyon BonaparKategorileri Goruntulee ortalama bir boydur.",
 "I. Dunya Savasi sirasinda Noel ateskesi ilan edilmis, Ingiliz ve Alman askerleri siperlerden cikip futbol oynamistir.",
 "Leonardo da Vinci Mona Lisa tablosunu cizmeye baslamis fakat eserini 14 yil boyunca tam olarak bitirememistir.",
 "Babil'in Asma Bahceleri, Antik Dunyanin Yedi Harikasi arasinda gercekten var olup olmadigi kesin olmayan tek eserdir.",
 "Vikingler miyferlerinde boynuz kullanmazlardi, bu sadece 19. yuzyil opera kostumlerinin yarattigi bir efsanedir.",
 "Dunyada kurulan ilk matbaa, Johannes Gutenberg tarafindan 1440 yilinda Almanya'da icat edilmistir.",
 "Dunyadaki ilk yazili antlasma, M.O. 1259'da Misirlilar ve Hititler arasinda imzalanan Kades Antlasmasi'dir.",
-"Edison, ampulu icat etmemis, mevcut ampul tasarimini gelistirerek uzun sure dayanmasini saglamistir.",
+"Edison, ampulu icaKategorileri Goruntuleerek uzun sure dayanmasini saglamistir.",
 "Amerika Kitasini Kristof Kolomb'dan yaklasik 500 yil once Viking kasifi Leif Erikson kesfetmistir.",
 "Dunya uzerindeki ilk universitelerden biri, M.S. 859'da Fas'ta Fatima al-Fihri adli bir kadin tarafindan kurulmustur.",
 "Ronesans, Italya'nin Floransa sehrinde baslamis ve tum Avrupa'yi bilim, sanat ve felsefede donusturmustur.",
@@ -1307,7 +1307,7 @@ var factsDB = {
 "Buyuk Cin Seddi, uzaydan ciplak gozle gorulemez, bu bir sehir efsanesidir.",
 "Eski Misirlilar, olen kisinin beynini burun deliklerinden bir kanca ile cikararak mumyalama islemine baslarlardi.",
 "Bati Roma Imparatorlugu M.S. 506'da yikilmis, Dogu Roma (Bizans) ise 1000 yil daha ayakta kalmistir.",
-"M.S. 79'da Vezuv Yanardagi patlamasi, Pompeii sehrini kuller altina gomerek binlerce yil bozulmadan kalmasini saglamistir.",
+"M.S. 79'da Vezuv Yanardagi paKategorileri Goruntuleek binlerce yil bozulmadan kalmasini saglamistir.",
 "Cikolata, antik Mesoamerika uygarliklarinda bir icecek olarak tuketilir ve bazen para birimi olarak kullanilirdi.",
 "Dunyadaki ilk tekerlek M.O. 3500 yillarinda Mezopotamya'da (Sumerler) tasimadan ziyade comlek yapiminda kullanilmistir.",
 "Romalilar gladyator dovuslerinde bazen Kolezyum'u suyla doldurup gemi savaslari (Naumachia) duzenlerdi.",
@@ -1317,14 +1317,14 @@ var factsDB = {
 "Ilk olimpiyat oyunlari M.O. 776'da Antik Yunan'da Zeus onuruna duzenlenmistir.",
 "Pusula, barut, kagit ve matbaa 'Cin'in Dort Buyuk Icadi' olarak bilinir.",
 "Eski Roma'da, curumus idrar camasir yikamak ve dis fircalamak icin ticari olarak satiliyordu, amonyak temizleyiciydi.",
-"Giyotinin mucidi Dr. Joseph-Ignace Guillotin idi ve asil amaci daha insani bir infaz yontemi yaratmakti.",
+"GiyoKategorileri Goruntule infaz yontemi yaratmakti.",
 "Hitler'in gercek soyadi 'Schicklgruber' olacakti ancak babasi sonradan Hitler soyadini aldi.",
 "Inka Imparatorlugu yazi sistemine sahip degildi, onun yerine Quipu adi verilen dugumlu iplerle kayit tutarlardi.",
 "Gunumuzde hala bazi bolumleri ayakta olan Kolezyum'un yapiminda Yahudi esirler calistirilmistir.",
 "I. Dunya Savasi'nda tanklar, cepheye goturulurken sifre adi olarak 'Water Tank' (Su Deposu) adini kullandiklari icin 'Tank' ismini almislardir.",
-"Abraham Lincoln 1865 yilinda suikaste kurban gitmeden hemen once, ABD'de Kuresel Isinma hakkinda gizli hizmet projesini imzalayacakti (Mit).",
+"Abraham Lincoln 1865 yilinda suikasKategorileri Goruntuleojesini imzalayacakti (Mit).",
 "Eski Caglarda, Sparta'li cocuklar 7 yasinda ailelerinden alinarak cok sert bir askeri egitime (Agoge) tabi tutulurlardi.",
-"Gunumuzdeki takvim sisteminin temeli olan Julyen takvimi, Julius Sezar tarafindan getirilmistir.",
+"Gunumuzdeki Kategorileri Goruntuleilmistir.",
 "II. Dunya Savasi sirasinda Almanlarin Enigma sifreleme makinesi, Alan Turing'in liderligindeki ekip tarafindan kirilmistir.",
 "M.O. 221'de Cin Imparatoru Qin Shi Huang, olumsuzlugu ararken yanlislikla civa icerek hayatini kaybetmistir.",
 "Amerika Birlesik Devletleri 1776'da bagimsizligini ilan ettiginde sadece 13 eyaletten olusuyordu.",
@@ -1332,16 +1332,16 @@ var factsDB = {
 "Galileo Galilei, Dunya'nin Gunes etrafinda dondugunu savundugu icin Engizisyon mahkemesince omur boyu ev hapsine carptirilmistir.",
 "Tarihteki en buyuk depremlerden biri 1556'da Cin'in Shaanxi bolgesinde olmus ve 830.000 kisinin hayatini kaybetmesine neden olmustur.",
 "Dunyadaki ilk baris gucu misyonu, antik Yunan'da tapinaklari korumak icin kurulmustur.",
-"Kral Tutankamon'un mezari, 1922'de Howard Carter tarafindan hic bozulmamis sekilde bulunana kadar 3000 yil gizli kalmistir.",
+"Kral Kategorileri Goruntule.",
 "Roma Imparatoru Caligula, favori ati Incitatus'u konsul (Roma'daki en yuksek rutbelerden biri) yapmak istemistir.",
-"Spartakus, Roma Imparatorlugu'nda karsi durulmaz devasa bir kole isyani baslatan ve yillarca imparatorlugu sarsan bir gladyatordur.",
+"SparKategorileri Goruntuledur.",
 "Misir Piramitleri sanildigi gibi koleler tarafindan degil, ucret karsiligi calisan iyi beslenen isci sinifi tarafindan insa edilmistir.",
 "I. Dunya Savasi'nda kimyasal silah olarak ilk kez klor gazi, Ypres Savasi'nda Almanlar tarafindan kullanilmistir.",
 "1986 Cernobil Nukleer Felaketi, Hirosima'ya atilan atom bombasindan 400 kat daha fazla radyasyon yaymistir.",
 "Orta Cag'da, hastaliklarin kotu kokudan bulastigina inanilirdi; bu inanca 'Miasma Teorisi' denilirdi.",
-"Osmanli'da yeniceriler isyan ettiklerinde, memnuniyetsizliklerini gostermek icin 'Kazan Kaldirirlardi'.",
+"Osmanli'da yeniceriler isyan eKategorileri Goruntulemek icin 'Kazan Kaldirirlardi'.",
 "Eski Yunan'da demokrasi sadece ozgur erkek vatandaslar icindi; kadinlar, koleler ve yabancilarin oy hakki yoktu.",
-"Amerika kita kesfini kutlayan 'Kolomb Gunu', gunumuzde Kolomb'un yerli halklara yaptiklari yuzunden bircok eyalette kutlanmamaktadir.",
+"Amerika kiKategorileri Goruntuleli halklara yaptiklari yuzunden bircok eyalette kutlanmamaktadir.",
 "Buyuk Iskendire ders veren felsefeci, antik Yunan felsefesinin en buyuk isimlerinden biri olan Aristoteles'tir.",
 "Avrupa'da cadi avlari sirasinda binlerce kadin, genellikle tibbi bilgileri veya kucuk tuhafliklari nedeniyle yakilmistir.",
 "Berlin Duvari 1961'de orulmus, 1989'da yikilmis ve Dogu ile Bati Almanya 1990'da resmi olarak birlesmistir.",
@@ -1370,7 +1370,7 @@ var factsDB = {
 "Sovyetler Birligi'nin ilk uzay araci Sputnik 1, 1957 yilinda yorungeye firlatilarak Uzay Yarisi'ni baslatmistir.",
 "Antik Roma'da zengin asiller yatarken yemek yeme aliskanligina sahipti.",
 "Tarihin en olumcul savasi olan II. Dunya Savasi'nda yaklasik 70 ila 85 milyon insan hayatini kaybetmistir.",
-"Gordion Dugumu, Buyuk Iskender tarafindan kiliciyla bir vurusta kesilerek 'Asya'nin Hakimi Olacak' kehaneti gerceklestirilmistir."
+"Gordion Dugumu, Buyuk Iskender Kategorileri Goruntuleceklestirilmistir."
 ]}};
 
 // ===== STATE =====
@@ -1430,9 +1430,6 @@ function toggleSound(){soundOn=!soundOn;localStorage.setItem('bh_snd',soundOn?'o
 document.getElementById('sound-btn').textContent=soundOn?'\uD83D\uDD0A':'\uD83D\uDD07';
 
 // ===== INIT =====
-document.getElementById('total-count').textContent=allFacts.length;
-document.getElementById('fav-count').textContent=favorites.length;
-document.getElementById('best-streak').textContent=bestStreak;
 
 function renderCats(){var el=document.getElementById('categories');var cats=Object.keys(factsDB);var html='<div class="cat-pill '+(categoryFilter==='all'?'active':'')+'" onclick="setCat(\'all\')">'+allFacts.length+' Tumu</div>';for(var i=0;i<cats.length;i++){var c=cats[i],cat=factsDB[c];html+='<div class="cat-pill '+(categoryFilter===c?'active':'')+'" onclick="setCat(\''+c+'\')">'+cat.emoji+' '+c+' ('+cat.facts.length+')</div>'}el.innerHTML=html}
 renderCats();
@@ -1455,14 +1452,13 @@ function getPool(){if(categoryFilter==='all')return allFacts;return allFacts.fil
 
 // ===== ACHIEVEMENTS =====
 var achievements=[
-  {id:'first',icon:'\uD83C\uDF31',name:'Ilk Adim',desc:'Ilk bilgini gor',check:function(){return totalEverSeen>=1}},
+  {id:'firsKategorileri Goruntule',check:function(){return totalEverSeen>=1}},
   {id:'ten',icon:'\u2B50',name:'Merakli',desc:'10 bilgi gor',check:function(){return totalEverSeen>=10}},
   {id:'fifty',icon:'\uD83D\uDD25',name:'Ates Topu',desc:'50 bilgi gor',check:function(){return totalEverSeen>=50}},
   {id:'hundred',icon:'\uD83D\uDC8E',name:'Elmas Kafa',desc:'100 bilgi gor',check:function(){return totalEverSeen>=100}},
   {id:'twohundred',icon:'\uD83D\uDE80',name:'Roket',desc:'200 bilgi gor',check:function(){return totalEverSeen>=200}},
   {id:'fivehundred',icon:'\uD83C\uDF0C',name:'Galaktik',desc:'500 bilgi gor',check:function(){return totalEverSeen>=500}},
-  {id:'fav5',icon:'\u2764\uFE0F',name:'Koleksiyoncu',desc:'5 favori ekle',check:function(){return favorites.length>=5}},
-  {id:'fav20',icon:'\uD83D\uDC96',name:'Super Fan',desc:'20 favori ekle',check:function(){return favorites.length>=20}},
+
   {id:'streak5',icon:'\uD83D\uDD17',name:'Seri Baslangici',desc:'5 seri yap',check:function(){return bestStreak>=5}},
   {id:'streak15',icon:'\u26D3\uFE0F',name:'Zincir Ustasi',desc:'15 seri yap',check:function(){return bestStreak>=15}},
   {id:'quiz10',icon:'\uD83E\uDDE9',name:'Quiz Ciragi',desc:'10 quiz dogru cevapla',check:function(){return quizScore>=10}},
@@ -1487,15 +1483,20 @@ var eggAnimLock = false;
 function lockEggAnim(ms) { if(eggAnimLock) return false; eggAnimLock = true; setTimeout(function(){ eggAnimLock = false; document.body.style.filter=''; document.body.style.transform=''; document.body.style.transition=''; }, ms || 10000); return true; }
 function handleSearch(){var q=document.getElementById('global-search').value.trim().toLowerCase();
 if(eggAnimLock) { showToast('\u23F3 Bir animasyon devam ediyor, bekle!'); return; }
-if(q==='thyke' && unlockedAch.indexOf('secret_thyke')<0) {
-    unlockedAch.push('secret_thyke'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-    addXp(1000); launchConfetti(); showToast('\uD83D\uDC51 THYKE GIZEMI BULUNDU! +1000 XP');
+if(q==='thyke') {
+    if(unlockedAch.indexOf('secret_thyke')<0) {
+        unlockedAch.push('secret_thyke'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(1000); showToast('\uD83D\uDC51 THYKE GIZEMI BULUNDU! +1000 XP');
+    }
+    launchConfetti();
     document.getElementById('global-search').value=''; return;
 }
-if((q==='yildirim' || q==='thor') && unlockedAch.indexOf('easter_thor')<0) {
+if(q==='yildirim' || q==='thor') {
     if(!lockEggAnim(10000)) return;
-    unlockedAch.push('easter_thor'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-    addXp(1200); showToast('\u26A1 Thor un Cekici! +1200 XP');
+    if(unlockedAch.indexOf('easter_thor')<0) {
+        unlockedAch.push('easter_thor'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(1200); showToast('\u26A1 Thor un Cekici! +1200 XP');
+    }
     var thorOv = document.createElement('div'); thorOv.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:999999;pointer-events:none;';
     document.body.appendChild(thorOv);
     var flashCount=0; var thorInt = setInterval(function(){
@@ -1507,62 +1508,119 @@ if((q==='yildirim' || q==='thor') && unlockedAch.indexOf('easter_thor')<0) {
     setTimeout(function(){ thorOv.style.transition='opacity 2s'; thorOv.style.opacity='0'; setTimeout(function(){thorOv.remove();},2000); },10000);
     document.getElementById('global-search').value=''; return;
 }
-if((q==='zombi' || q==='vampir') && unlockedAch.indexOf('easter_zombie')<0) {
+if(q==='zombi' || q==='vampir') {
     if(!lockEggAnim(10000)) return;
-    unlockedAch.push('easter_zombie'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-    addXp(850); showToast('\uD83E\uDDDF Zombi Istilasi! +850 XP');
+    if(unlockedAch.indexOf('easter_zombie')<0) {
+        unlockedAch.push('easter_zombie'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(850); showToast('\uD83E\uDDDF Zombi Istilasi! +850 XP');
+    }
     document.body.style.filter = 'sepia(1) hue-rotate(90deg) saturate(3)';
     var zombInt = setInterval(function(){ playSound(100+Math.random()*100, 0.3, 'sawtooth'); }, 800);
     setTimeout(function(){ document.body.style.filter=''; clearInterval(zombInt); }, 10000);
     document.getElementById('global-search').value=''; return;
 }
-if((q==='karanlik' || q==='siyah') && unlockedAch.indexOf('easter_dark')<0) {
-    unlockedAch.push('easter_dark'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-    addXp(750); showToast('\uD83C\uDF11 Zifiri Karanlik! +750 XP');
+if(q==='karanlik' || q==='siyah') {
+    if(unlockedAch.indexOf('easter_dark')<0) {
+        unlockedAch.push('easter_dark'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(750); showToast('\uD83C\uDF11 Zifiri Karanlik! +750 XP');
+    }
     document.body.style.filter = 'brightness(0.1)';
     setTimeout(function(){ document.body.style.filter=''; }, 10000);
     document.getElementById('global-search').value=''; return;
 }
-if((q==='gokkusagi' || q==='rainbow') && unlockedAch.indexOf('easter_rainbow')<0) {
-    unlockedAch.push('easter_rainbow'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-    addXp(1100); showToast('\uD83C\uDF08 Renkler Cildirdi! +1100 XP');
+if(q==='gokkusagi' || q==='rainbow') {
+    if(unlockedAch.indexOf('easter_rainbow')<0) {
+        unlockedAch.push('easter_rainbow'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(1100); showToast('\uD83C\uDF08 Renkler Cildirdi! +1100 XP');
+    }
     var st = document.createElement('style');
     st.innerHTML = '@keyframes rainbow { 0%{filter:hue-rotate(0deg);} 100%{filter:hue-rotate(360deg);} } body { animation: rainbow 2s linear 5; }';
     document.head.appendChild(st);
     setTimeout(function(){ st.remove(); }, 10000);
-document.getElementById('global-search').value=''; return;
+    document.getElementById('global-search').value=''; return;
 }
-if((q==='batman' || q==='yarasa') && unlockedAch.indexOf('secret_batman')<0) { unlockedAch.push('secret_batman'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(800); showToast('\uD83E\uDD87 Gecenin Sovalyesi! +800 XP'); var bat = document.createElement('div'); bat.style.position = 'fixed'; bat.style.top = '0'; bat.style.left = '0'; bat.style.width = '100vw'; bat.style.height = '100vh'; bat.style.background = 'radial-gradient(circle at 50% 50%, rgba(255,255,200,0.8) 0%, rgba(0,0,0,0.9) 15%, black 100%)'; bat.style.zIndex = '999999'; bat.style.pointerEvents = 'none'; bat.style.opacity = '0'; bat.style.transition = 'opacity 2s'; bat.innerHTML = '<div style="position:absolute; top:50%; left:-20%; transform:translateY(-50%); font-size:10rem; animation: flyRight 3s linear forwards;">\uD83E\uDD87</div><style>@keyframes flyRight { to { left: 120%; } }</style>'; document.body.appendChild(bat); setTimeout(function(){ bat.style.opacity = '1'; playSound(100, 2, 'sine'); }, 50); setTimeout(function(){ bat.style.opacity = '0'; setTimeout(function(){ bat.remove(); }, 2000); }, 5000); document.getElementById('global-search').value=''; return; }
-if((q==='spiderman' || q==='orumcek adam') && unlockedAch.indexOf('secret_spidey')<0) { unlockedAch.push('secret_spidey'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(750); showToast('\uD83D\uDD77\uFE0F Dost Canlisi Komsunuz! +750 XP'); var spid = document.createElement('div'); spid.style.position = 'fixed'; spid.style.top = '0'; spid.style.left = '0'; spid.style.width = '100vw'; spid.style.height = '100vh'; spid.style.zIndex = '999999'; spid.style.pointerEvents = 'none'; document.body.appendChild(spid); var wInt = setInterval(function(){ var line = document.createElement('div'); line.style.position = 'absolute'; line.style.background = 'white'; line.style.height = '2px'; line.style.boxShadow = '0 0 5px white'; var x1 = Math.random()>0.5 ? -100 : window.innerWidth+100; var y1 = -100; var x2 = Math.random()*window.innerWidth; var y2 = Math.random()*window.innerHeight; var len = Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1)); var ang = Math.atan2(y2-y1, x2-x1)*180/Math.PI; line.style.width = '0px'; line.style.left = x1+'px'; line.style.top = y1+'px'; line.style.transformOrigin = 'left center'; line.style.transform = 'rotate('+ang+'deg)'; line.style.transition = 'width 0.2s linear'; spid.appendChild(line); setTimeout(function(){ line.style.width = len+'px'; playSound(800, 0.05, 'sawtooth'); }, 10); document.body.style.transform = 'translate('+(Math.random()*4-2)+'px, '+(Math.random()*4-2)+'px)'; setTimeout(function(){document.body.style.transform='';}, 100); }, 300); setTimeout(function(){ clearInterval(wInt); spid.style.transition='opacity 2s'; spid.style.opacity='0'; setTimeout(function(){spid.remove();}, 2000); }, 5000); document.getElementById('global-search').value=''; return; }
-if((q==='ironman' || q==='demir adam') && unlockedAch.indexOf('secret_ironman')<0) { unlockedAch.push('secret_ironman'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(3000); showToast('\uD83E\uDD16 Seni 3000 Kere Seviyorum! +3000 XP'); var hud = document.createElement('div'); hud.style.position = 'fixed'; hud.style.top = '0'; hud.style.left = '0'; hud.style.width = '100vw'; hud.style.height = '100vh'; hud.style.boxShadow = 'inset 0 0 100px rgba(255,0,0,0.5)'; hud.style.border = '5px solid rgba(255,215,0,0.5)'; hud.style.zIndex = '999999'; hud.style.pointerEvents = 'none'; hud.innerHTML = '<div style="position:absolute; top:50%; left:50%; width:200px; height:200px; border:2px dashed rgba(255,255,255,0.7); border-radius:50%; transform:translate(-50%,-50%); animation: spin 4s linear infinite;"></div><style>@keyframes spin { 100% { transform: translate(-50%,-50%) rotate(360deg); } }</style>'; document.body.appendChild(hud); var i = 0; var ironInt = setInterval(function(){ playSound(200+i*10, 0.1, 'square'); i++; }, 100); setTimeout(function(){ clearInterval(ironInt); playSound(1000, 0.5, 'square'); }, 2000); setTimeout(function(){ hud.style.transition='opacity 1s'; hud.style.opacity='0'; setTimeout(function(){hud.remove();}, 1000); }, 5000); document.getElementById('global-search').value=''; return; }
-if((q==='superman' || q==='clark kent') && unlockedAch.indexOf('secret_superman')<0) { unlockedAch.push('secret_superman'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(1000); showToast('\uD83D\uDE80 Ucak mi? Kus mu? +1000 XP'); var sup = document.createElement('div'); sup.style.position = 'fixed'; sup.style.bottom = '-100px'; sup.style.left = '-100px'; sup.style.width = '300px'; sup.style.height = '50px'; sup.style.background = 'linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,0.8), rgba(0,0,255,1))'; sup.style.borderRadius = '25px'; sup.style.filter = 'blur(10px)'; sup.style.zIndex = '999999'; sup.style.pointerEvents = 'none'; sup.style.transition = 'all 0.5s ease-in'; document.body.appendChild(sup); setTimeout(function(){ playSound(100, 1, 'sawtooth'); sup.style.bottom = '120vh'; sup.style.left = '120vw'; document.body.style.background = 'white'; setTimeout(function(){document.body.style.background = '';}, 100); }, 100); setTimeout(function(){ sup.remove(); }, 2000); document.getElementById('global-search').value=''; return; }
-if((q==='hiz treni' || q==='rollercoaster') && unlockedAch.indexOf('easter_coaster')<0) {
-    unlockedAch.push('easter_coaster'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-    addXp(950); showToast('\uD83C\uDFA2 Sikica Tutun! +950 XP');
+if(q==='batman' || q==='yarasa') { 
+    if(unlockedAch.indexOf('secret_batman')<0) {
+        unlockedAch.push('secret_batman'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(800); showToast('\uD83E\uDD87 Gecenin Sovalyesi! +800 XP'); 
+    }
+    var bat = document.createElement('div'); bat.style.position = 'fixed'; bat.style.top = '0'; bat.style.left = '0'; bat.style.width = '100vw'; bat.style.height = '100vh'; bat.style.background = 'radial-gradient(circle at 50% 50%, rgba(255,255,200,0.8) 0%, rgba(0,0,0,0.9) 15%, black 100%)'; bat.style.zIndex = '999999'; bat.style.pointerEvents = 'none'; bat.style.opacity = '0'; bat.style.transition = 'opacity 2s'; bat.innerHTML = '<div style="position:absolute; top:50%; left:-20%; transform:translateY(-50%); font-size:10rem; animation: flyRight 3s linear forwards;">\uD83E\uDD87</div><style>@keyframes flyRight { to { left: 120%; } }</style>'; document.body.appendChild(bat); setTimeout(function(){ bat.style.opacity = '1'; playSound(100, 2, 'sine'); }, 50); setTimeout(function(){ bat.style.opacity = '0'; setTimeout(function(){ bat.remove(); }, 2000); }, 5000); document.getElementById('global-search').value=''; return; 
+}
+if(q==='spiderman' || q==='orumcek adam') { 
+    if(unlockedAch.indexOf('secret_spidey')<0) {
+        unlockedAch.push('secret_spidey'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(750); showToast('\uD83D\uDD77\uFE0F Dost Canlisi Komsunuz! +750 XP'); 
+    }
+    var spid = document.createElement('div'); spid.style.position = 'fixed'; spid.style.top = '0'; spid.style.left = '0'; spid.style.width = '100vw'; spid.style.height = '100vh'; spid.style.zIndex = '999999'; spid.style.pointerEvents = 'none'; document.body.appendChild(spid); var wInt = setInterval(function(){ var line = document.createElement('div'); line.style.position = 'absolute'; line.style.background = 'white'; line.style.height = '2px'; line.style.boxShadow = '0 0 5px white'; var x1 = Math.random()>0.5 ? -100 : window.innerWidth+100; var y1 = -100; var x2 = Math.random()*window.innerWidth; var y2 = Math.random()*window.innerHeight; var len = Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1)); var ang = Math.atan2(y2-y1, x2-x1)*180/Math.PI; line.style.width = '0px'; line.style.left = x1+'px'; line.style.top = y1+'px'; line.style.transformOrigin = 'left center'; line.style.transform = 'rotate('+ang+'deg)'; line.style.transition = 'width 0.2s linear'; spid.appendChild(line); setTimeout(function(){ line.style.width = len+'px'; playSound(800, 0.05, 'sawtooth'); }, 10); document.body.style.transform = 'translate('+(Math.random()*4-2)+'px, '+(Math.random()*4-2)+'px)'; setTimeout(function(){document.body.style.transform='';}, 100); }, 300); setTimeout(function(){ clearInterval(wInt); spid.style.transition='opacity 2s'; spid.style.opacity='0'; setTimeout(function(){spid.remove();}, 2000); }, 5000); document.getElementById('global-search').value=''; return; 
+}
+if(q==='ironman' || q==='demir adam') { 
+    if(unlockedAch.indexOf('secret_ironman')<0) {
+        unlockedAch.push('secret_ironman'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(3000); showToast('\uD83E\uDD16 Seni 3000 Kere Seviyorum! +3000 XP'); 
+    }
+    var hud = document.createElement('div'); hud.style.position = 'fixed'; hud.style.top = '0'; hud.style.left = '0'; hud.style.width = '100vw'; hud.style.height = '100vh'; hud.style.boxShadow = 'inset 0 0 100px rgba(255,0,0,0.5)'; hud.style.border = '5px solid rgba(255,215,0,0.5)'; hud.style.zIndex = '999999'; hud.style.pointerEvents = 'none'; hud.innerHTML = '<div style="position:absolute; top:50%; left:50%; width:200px; height:200px; border:2px dashed rgba(255,255,255,0.7); border-radius:50%; transform:translate(-50%,-50%); animation: spin 4s linear infinite;"></div><style>@keyframes spin { 100% { transform: translate(-50%,-50%) rotate(360deg); } }</style>'; document.body.appendChild(hud); var i = 0; var ironInt = setInterval(function(){ playSound(200+i*10, 0.1, 'square'); i++; }, 100); setTimeout(function(){ clearInterval(ironInt); playSound(1000, 0.5, 'square'); }, 2000); setTimeout(function(){ hud.style.transition='opacity 1s'; hud.style.opacity='0'; setTimeout(function(){hud.remove();}, 1000); }, 5000); document.getElementById('global-search').value=''; return; 
+}
+if(q==='superman' || q==='clark kent') { 
+    if(unlockedAch.indexOf('secret_superman')<0) {
+        unlockedAch.push('secret_superman'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(1000); showToast('\uD83D\uDE80 Ucak mi? Kus mu? +1000 XP'); 
+    }
+    var sup = document.createElement('div'); sup.style.position = 'fixed'; sup.style.bottom = '-100px'; sup.style.left = '-100px'; sup.style.width = '300px'; sup.style.height = '50px'; sup.style.background = 'linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,0.8), rgba(0,0,255,1))'; sup.style.borderRadius = '25px'; sup.style.filter = 'blur(10px)'; sup.style.zIndex = '999999'; sup.style.pointerEvents = 'none'; sup.style.transition = 'all 0.5s ease-in'; document.body.appendChild(sup); setTimeout(function(){ playSound(100, 1, 'sawtooth'); sup.style.bottom = '120vh'; sup.style.left = '120vw'; document.body.style.background = 'white'; setTimeout(function(){document.body.style.background = '';}, 100); }, 100); setTimeout(function(){ sup.remove(); }, 2000); document.getElementById('global-search').value=''; return; 
+}
+if(q==='hiz treni' || q==='rollercoaster') {
+    if(unlockedAch.indexOf('easter_coaster')<0) {
+        unlockedAch.push('easter_coaster'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(950); showToast('\uD83C\uDFA2 Sikica Tutun! +950 XP');
+    }
     var card = document.getElementById('fact-card');
     card.style.transition = 'transform 0.5s ease-in-out';
     var steps = [ {x:100,y:-100,r:15}, {x:-100,y:100,r:-15}, {x:0,y:-200,r:30}, {x:0,y:0,r:0} ];
     var i=0; var totalSteps=20; var cInt = setInterval(function(){ if(i>=totalSteps) { clearInterval(cInt); card.style.transition=''; card.style.transform=''; return; } var step = steps[i%steps.length]; card.style.transform = 'translate('+step.x+'px, '+step.y+'px) rotate('+step.r+'deg)'; i++; }, 500);
     document.getElementById('global-search').value=''; return;
 }
-if(q==='404' && unlockedAch.indexOf('secret_404')<0) {
-    unlockedAch.push('secret_404'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-    addXp(404); showToast('\u26A0\uFE0F Hata 404: Bilgi Bulunamadi! Saka saka +404 XP');
-    var st = document.createElement('style'); st.innerHTML='@keyframes glitch { 0% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 2px); } 20% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); } 40% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 2px); } 60% { clip-path: inset(5% 0 80% 0); transform: translate(2px, -2px); } 80% { clip-path: inset(20% 0 50% 0); transform: translate(-2px, 2px); } 100% { clip-path: inset(40% 0 40% 0); transform: translate(2px, -2px); } } .glitched { animation: glitch 0.2s linear infinite, glitch-color 0.3s steps(2) infinite; filter: contrast(2) saturate(0) sepia(1) hue-rotate(180deg); }'; document.head.appendChild(st); document.body.classList.add('glitched'); var sndInt = setInterval(function(){playSound(100,0.1,'sawtooth');}, 50); setTimeout(function(){ document.body.classList.remove('glitched'); st.remove(); clearInterval(sndInt); }, 10000);
+if(q==='404') {
+    if(unlockedAch.indexOf('secret_404')<0) {
+        unlockedAch.push('secret_404'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(404); showToast('\u26A0\uFE0F Hata 404: Bilgi Bulunamadi! Saka saka +404 XP');
+    }
+    var sKategorileri Goruntuleansform: Kategorileri Goruntule infinite, glitch-color 0.3s steps(2) infinite; filter: contrast(2) saturate(0) sepia(1) hue-rotate(180deg); }'; document.head.appendChild(st); document.body.classList.add('glitched'); var sndInt = setInterval(function(){playSound(100,0.1,'sawtooth');}, 50); setTimeout(function(){ document.body.classList.remove('glitched'); st.remove(); clearInterval(sndInt); }, 10000);
     document.getElementById('global-search').value=''; return;
 }
-if((q==='illuminati' || q==='uzayli') && unlockedAch.indexOf('secret_illu')<0) {
-    unlockedAch.push('secret_illu'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-    addXp(333); showToast('\uD83D\uDD75\uFE0F Onlar aramizda... +333 XP');
+if(q==='illuminati' || q==='uzayli') {
+    if(unlockedAch.indexOf('secret_illu')<0) {
+        unlockedAch.push('secret_illu'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(333); showToast('\uD83D\uDD75\uFE0F Onlar aramizda... +333 XP');
+    }
     playSound(200, 0.5, 'triangle'); setTimeout(function(){playSound(150, 0.5, 'triangle');}, 500);
     document.body.className='theme-matrix'; localStorage.setItem('bh_theme','theme-matrix');
     document.getElementById('global-search').value=''; return;
 }
-if((q==='bomba' || q==='patlama') && unlockedAch.indexOf('egg_bomb')<0) { unlockedAch.push('egg_bomb'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(999); showToast('\uD83D\uDCA3 Bombaci Mulayim! +999 XP'); document.body.style.transform = 'scale(0.5)'; setTimeout(function(){ document.body.style.transform = 'scale(1)'; }, 100); document.getElementById('global-search').value=''; return; }
-if((q==='ayna' || q==='mirror') && unlockedAch.indexOf('egg_mirror')<0) { unlockedAch.push('egg_mirror'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(500); showToast('\uD83E\uDE9E Ayna Ayna Soyle Bana! +500 XP'); document.body.style.transform = 'scaleX(-1)'; setTimeout(function(){ document.body.style.transform = 'scaleX(1)'; }, 10000); document.getElementById('global-search').value=''; return; }
-if((q==='ters' || q==='flip') && unlockedAch.indexOf('egg_flip')<0) { unlockedAch.push('egg_flip'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(500); showToast('\uD83E\uDE9E Dunya Tersine Dondu! +500 XP'); document.body.style.transform = 'rotate(180deg)'; setTimeout(function(){ document.body.style.transform = 'rotate(0deg)'; }, 10000); document.getElementById('global-search').value=''; return; }
-if((q==='kar' || q==='snow') && unlockedAch.indexOf('egg_snow')<0) { unlockedAch.push('egg_snow'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(600); showToast('\u2744\uFE0F Kis Geldi! +600 XP'); document.body.style.background = '#e0f7fa'; setTimeout(function(){ document.body.style.background = ''; }, 10000); document.getElementById('global-search').value=''; return; }
-if((q==='uzay' || q==='space') && unlockedAch.indexOf('egg_space')<0) { unlockedAch.push('egg_space'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(1200); showToast('\uD83D\uDE80 Uzay Boslugu! +1200 XP'); document.body.style.filter = 'invert(1)'; setTimeout(function(){ document.body.style.filter = ''; }, 10000); document.getElementById('global-search').value=''; return; }
+if(q==='bomba' || q==='patlama') { 
+    if(unlockedAch.indexOf('egg_bomb')<0) { 
+        unlockedAch.push('egg_bomb'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(999); showToast('\uD83D\uDCA3 Bombaci Mulayim! +999 XP'); 
+    }
+    document.body.style.transform = 'scale(0.5)'; setTimeout(function(){ document.body.style.transform = 'scale(1)'; }, 100); document.getElementById('global-search').value=''; return; 
+}
+if(q==='ayna' || q==='mirror') { 
+    if(unlockedAch.indexOf('egg_mirror')<0) { 
+        unlockedAch.push('egg_mirror'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(500); showToast('\uD83E\uDE9E Ayna Ayna Soyle Bana! +500 XP'); 
+    }
+    document.body.style.transform = 'scaleX(-1)'; setTimeout(function(){ document.body.style.transform = 'scaleX(1)'; }, 10000); document.getElementById('global-search').value=''; return; 
+}
+if(q==='ters' || q==='flip') { 
+    if(unlockedAch.indexOf('egg_flip')<0) { 
+        unlockedAch.push('egg_flip'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(500); showToast('\uD83E\uDE9E Dunya Tersine Dondu! +500 XP'); 
+    }
+    document.body.style.transform = 'rotate(180deg)'; setTimeout(function(){ document.body.style.transform = 'rotate(0deg)'; }, 10000); document.getElementById('global-search').value=''; return; 
+}
+if(q==='kar' || q==='snow') { 
+    if(unlockedAch.indexOf('egg_snow')<0) { 
+        unlockedAch.push('egg_snow'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(600); showToast('\u2744\uFE0F Kis Geldi! +600 XP'); 
+    }
+    document.body.style.background = '#e0f7fa'; setTimeout(function(){ document.body.style.background = ''; }, 10000); document.getElementById('global-search').value=''; return; 
+}
+if(q==='uzay' || q==='space') { 
+    if(unlockedAch.indexOf('egg_space')<0) { 
+        unlockedAch.push('egg_space'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(1200); showToast('\uD83D\uDE80 Uzay Boslugu! +1200 XP'); 
+    }
+    document.body.style.filter = 'invert(1)'; setTimeout(function(){ document.body.style.filter = ''; }, 10000); document.getElementById('global-search').value=''; return; 
+}
 
 var box=document.getElementById('search-results');if(!q||q.length<2){box.style.display='none';return}var results=allFacts.filter(function(f){return f.text.toLowerCase().indexOf(q)>=0}).slice(0,15);if(!results.length){box.style.display='block';box.innerHTML='<div style="padding:12px;color:var(--text3);text-align:center;font-size:.8rem">Sonuc bulunamadi</div>';return}box.style.display='block';box.innerHTML=results.map(function(f){var idx=allFacts.indexOf(f);var highlighted=f.text.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<strong style="color:var(--accent3)">$1</strong>');return'<div class="sr-item" onclick="jumpToFact('+idx+')"><span style="font-size:1rem;flex-shrink:0">'+f.emoji+'</span><div>'+highlighted+'</div></div>'}).join('')}
 function jumpToFact(idx){var f=allFacts[idx];currentFact=f;currentFactIndex=idx;seenFacts[f.text]=true;totalEverSeen++;localStorage.setItem('bh_ts2',totalEverSeen);factHistory.unshift({text:f.text,category:f.category,emoji:f.emoji,color:f.color,time:new Date().toLocaleTimeString('tr-TR')});document.getElementById('global-search').value='';document.getElementById('search-results').style.display='none';renderFactCard();sndClick();checkMS();checkAchievements()}
@@ -1602,7 +1660,7 @@ document.querySelectorAll('.modal-overlay').forEach(function(m){m.addEventListen
 // ===== LEVEL MODAL =====
 function openLvlModal() {
     var b = document.getElementById('lvl-body');
-    var html = '<div style="margin-bottom:15px; font-size:0.8rem; color:var(--text3); text-align:center;">Seviyeni yukseltmek icin bilgi oku, gizemleri coz ve aktif kal!</div>';
+    var hKategorileri Goruntulei coz ve aktif kal!</div>';
     html += '<div style="display:flex; flex-direction:column; gap:8px;">';
     var ranks = [
         {l:1, n:'Acemi'}, {l:3, n:'Ogrenci'}, {l:6, n:'Cirak'}, 
@@ -1628,25 +1686,25 @@ function openLvlModal() {
 
 // ===== HISTORY =====
 function renderHistoryModal(){document.getElementById('hist-count').textContent='('+factHistory.length+')';renderHistory()}
-function renderHistory(){var c=document.getElementById('hist-list');if(!factHistory.length){c.innerHTML='<div class="fav-empty"><span class="fav-empty-icon">&#128336;</span><p>Henuz bilgi gormedin!</p></div>';return}c.innerHTML=factHistory.map(function(f){return'<div class="hist-item"><span class="h-emoji">'+f.emoji+'</span><div><div style="margin-bottom:2px">'+f.text+'</div><div class="hist-time">'+f.time+'</div></div></div>'}).join('')}
+funcKategorileri Goruntulemedin!</p></div>';return}c.innerHTML=factHistory.map(function(f){return'<div class="hist-item"><span class="h-emoji">'+f.emoji+'</span><div><div style="margin-bottom:2px">'+f.text+'</div><div class="hist-time">'+f.time+'</div></div></div>'}).join('')}
 
 // ===== QUIZ =====
 var quizAnswered=false;
-function generateQuiz(){var seenKeys=Object.keys(seenFacts);if(seenKeys.length<4){document.getElementById('quiz-body').innerHTML='<div class="fav-empty"><span class="fav-empty-icon">&#129513;</span><p>Quiz icin en az 4 bilgi gor!</p></div>';return}var ct=seenKeys[Math.floor(Math.random()*seenKeys.length)];var cf=allFacts.find(function(f){return f.text===ct});if(!cf){generateQuiz();return}var wrongCats=Object.keys(factsDB).filter(function(c){return c!==cf.category}).sort(function(){return Math.random()-.5}).slice(0,3);var options=[cf.category].concat(wrongCats).sort(function(){return Math.random()-.5});quizAnswered=false;var sp=quizTotal?((quizScore/quizTotal)*100).toFixed(0):0;var html='<div class="quiz-score"><div class="quiz-stat"><div class="q-num" style="color:#69f0ae">'+quizScore+'</div><div class="q-label">Dogru</div></div><div class="quiz-stat"><div class="q-num" style="color:#ff5252">'+(quizTotal-quizScore)+'</div><div class="q-label">Yanlis</div></div><div class="quiz-stat"><div class="q-num" style="color:var(--accent4)">'+sp+'%</div><div class="q-label">Basari</div></div></div>';html+='<div class="quiz-card"><div class="quiz-q">Bu bilgi hangi kategoriye ait?<br><br><em>"'+cf.text+'"</em></div><div class="quiz-options">';for(var i=0;i<options.length;i++){var o=options[i];html+='<button class="quiz-opt" onclick="answerQuiz(this,\''+o.replace(/'/g,"\\'")+'\',\''+cf.category.replace(/'/g,"\\'")+'\')">'+factsDB[o].emoji+' '+o+'</button>'}html+='</div></div><div style="text-align:center;margin-top:12px"><button class="btn btn-secondary btn-sm" onclick="generateQuiz()">Sonraki Soru</button></div>';document.getElementById('quiz-body').innerHTML=html}
+funcKategorileri Goruntule!</p></div>';return}var ct=seenKeys[Math.floor(Math.random()*seenKeys.length)];var cf=allFacts.find(function(f){return f.text===ct});if(!cf){generateQuiz();return}var wrongCats=Object.keys(factsDB).filter(function(c){return c!==cf.category}).sort(function(){return Math.random()-.5}).slice(0,3);var options=[cf.category].concat(wrongCats).sort(function(){return Math.random()-.5});quizAnswered=false;var sp=quizTotal?((quizScore/quizTotal)*100).toFixed(0):0;var html='<div class="quiz-score"><div class="quiz-stat"><div class="q-num" style="color:#69f0ae">'+quizScore+'</div><div class="q-label">Dogru</div></div><div class="quiz-stat"><div class="q-num" style="color:#ff5252">'+(quizTotal-quizScore)+'</div><div class="q-label">Yanlis</div></div><div class="quiz-stat"><div class="q-num" style="color:var(--accent4)">'+sp+'%</div><div class="q-label">Basari</div></div></div>';html+='<div class="quiz-card"><div class="quiz-q">Bu bilgi hangi kategoriye ait?<br><br><em>"'+cf.text+'"</em></div><div class="quiz-options">';for(var i=0;i<options.length;i++){var o=options[i];html+='<button class="quiz-opt" onclick="answerQuiz(this,\''+o.replace(/'/g,"\\'")+'\',\''+cf.category.replace(/'/g,"\\'")+'\')">'+factsDB[o].emoji+' '+o+'</button>'}html+='</div></div><div style="text-align:center;margin-top:12px"><button class="btn btn-secondary btn-sm" onclick="generateQuiz()">Sonraki Soru</button></div>';document.getElementById('quiz-body').innerHTML=html}
 function answerQuiz(btn,ans,correct){if(quizAnswered)return;quizAnswered=true;quizTotal++;var ok=ans===correct;if(ok){quizScore++;playSound(523,.1);setTimeout(function(){playSound(784,.15)},100)}else{playSound(300,.15,'square')}localStorage.setItem('bh_quiz3',quizScore);localStorage.setItem('bh_quizT3',quizTotal);var opts=btn.parentElement.querySelectorAll('.quiz-opt');for(var i=0;i<opts.length;i++){opts[i].classList.add('disabled');if(opts[i].textContent.indexOf(correct)>=0)opts[i].classList.add('correct')}if(!ok)btn.classList.add('wrong');if(ok){showToast('Dogru!');launchConfetti()}else showToast('Yanlis!');checkAchievements()}
 
 // ===== STATS =====
 function renderStats(){var cats=Object.keys(factsDB);var rows='';for(var i=0;i<cats.length;i++){var c=cats[i],cat=factsDB[c],total=cat.facts.length;var seen=cat.facts.filter(function(f){return seenFacts[f]}).length;var pct=total?((seen/total)*100).toFixed(0):0;rows+='<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:1.2rem">'+cat.emoji+'</span><div style="flex:1"><div style="font-size:.75rem;font-weight:600;margin-bottom:3px">'+c+'</div><div class="progress-bar" style="height:3px;margin-bottom:2px"><div class="progress-fill" style="width:'+pct+'%"></div></div><div style="font-size:.55rem;color:var(--text3)">'+seen+'/'+total+'</div></div><div style="font-size:.75rem;font-weight:700;color:var(--text2)">'+pct+'%</div></div>'}var ts=Object.keys(seenFacts).length,ta=allFacts.length;document.getElementById('stats-body').innerHTML='<div style="text-align:center;margin-bottom:16px"><div style="font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+((ts/ta)*100).toFixed(1)+'%</div><div style="font-size:.7rem;color:var(--text2)">Toplam Kesif</div><div style="font-size:.6rem;color:var(--text3);margin-top:4px">'+ts+'/'+ta+' bilgi - Seri: '+streak+' - En iyi: '+bestStreak+' - Quiz: '+quizScore+'/'+quizTotal+'</div></div><h3 style="font-size:.75rem;font-weight:600;margin-bottom:10px;color:var(--text2)">Kategori Bazli</h3>'+rows+'<div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>'; var eggIds = ['secret_404', 'secret_illu', 'secret_thyke', 'god_mode', 'emoji_master', 'true_love', 'konami', 'time_traveler', 'boss_mode', 'earthquake', 'secret_song', 'barrel_roll', 'cat_paw', 'math_pi', 'hidden_eye', 'matrix_rain', 'zero_gravity', 'disco_mode', 'mirror_world', 'the_vault', 'dexter_blood', 'jumpscare', 'magic_trick', 'retro_gamer', 'invisibility', 'black_hole', 'alien_abduction', 'meteor_strike', 'jackpot_win', 'broken_glass', 'illuminati_conf', 'hacker_mode', 'warp_speed', 'cat_apoc', 'on_fire', 'dev_mode', 'easter_thor', 'easter_zombie', 'easter_dark', 'easter_rainbow', 'easter_coaster', 'easter_thyke_type', 'easter_resize', 'easter_selection', 'easter_double_click', 'easter_sound_spam', 'easter_drag_card', 'easter_idle', 'easter_mouse_leave', 'easter_scroll', 'secret_batman', 'secret_spidey', 'secret_ironman', 'secret_superman', 'egg_logo_spin', 'egg_pixel_hunter', 'egg_card_flip', 'egg_painter', 'egg_corner_runner', 'egg_long_press', 'egg_crazy_clicker', 'egg_shake_master', 'egg_sos', 'egg_piano', 'egg_ghost', 'egg_fire_dance', 'egg_night_owl', 'egg_low_battery', 'egg_weekend', 'egg_early_bird', 'egg_speed_typer', 'egg_scroll_monster', 'egg_tab_traveler', 'egg_paste_master', 'egg_konami', 'egg_dark_matter', 'egg_composer', 'egg_ninja', 'egg_time_lord', 'egg_math', 'egg_rebel', 'egg_copy_machine', 'egg_lucky7', 'egg_middle_click', 'egg_back_gear', 'egg_half_century', 'egg_bullseye', 'egg_impatient', 'egg_speaker', 'egg_sharer', 'egg_indecisive', 'egg_traveler', 'egg_serial_killer'];
 var foundEggs = 0;
 eggIds.forEach(function(id){ if(unlockedAch.indexOf(id)>-1) foundEggs++; });
-document.getElementById('stats-body').innerHTML += '<div style="margin-top:20px;padding:15px;background:var(--card-hover);border-radius:12px;border:1px dashed var(--accent2)"><div style="font-size:1.1rem;font-weight:bold;margin-bottom:10px;">\uD83D\uDD75\uFE0F Gizem Avcisi (Sirlar)</div><div style="font-size:1.8rem;color:var(--accent1);font-weight:900;">' + foundEggs + ' / 93</div><div style="font-size:0.85rem;color:var(--text2);">Sitedeki bulmacalari cozerek tum sirlari bul!</div></div><div style="text-align:center;margin-top:20px"><button class="btn btn-primary" style="background:#e74c3c;border-radius:12px;padding:10px 16px;font-size:0.9rem;" onclick="if(confirm(\'DIKKAT! Tum seviyen, XP puanlarin, basarimlarin ve buldugun Easter Eggler tamamen SIFIRLANACAK! Emin misin?\')){localStorage.clear();location.reload();}">\u26A0\uFE0F Tum Ilerlemeyi Sifirla</button></div>';
+documenKategorileri Goruntulelar)</div><div style="font-size:1.8rem;color:var(--accent1);font-weight:900;">' + foundEggs + ' / 93</div><div style="font-size:0.85rem;color:var(--text2);">Sitedeki bulmacalari cozerek tum sirlari bul!</div></div><div style="text-align:center;margin-top:20px"><button class="btn btn-primary" style="background:#e74c3c;border-radius:12px;padding:10px 16px;font-size:0.9rem;" onclick="if(confirm(\'DIKKAT! Tum seviyen, XP puanlarin, basarimlarin ve buldugun Easter Eggler tamamen SIFIRLANACAK! Emin misin?\')){localStorage.clear();location.reload();}">\u26A0\uFE0F Tum Ilerlemeyi Sifirla</button></div>';
 }
 
 // ===== COPY / SHARE / SPEAK =====
 function speakFact(){if(!currentFact||!window.speechSynthesis)return;window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(currentFact.text);u.lang='tr-TR';u.rate=0.95;document.getElementById('speak-btn').style.color='var(--accent3)';u.onend=function(){document.getElementById('speak-btn').style.color=''};window.speechSynthesis.speak(u)}
 function copyFact(){if(!currentFact)return;navigator.clipboard.writeText(currentFact.text+' - Bilgi Hazinesi by THYKE').then(function(){showToast('Kopyalandi!')}).catch(function(){showToast('Hata')})}
 function shareFact(){if(!currentFact)return;if(navigator.share)navigator.share({title:'Bilgi Hazinesi by THYKE',text:currentFact.text+'\n\n- Bilgi Hazinesi by THYKE'}).catch(function(){});else{copyFact();showToast('Kopyalandi!')}}
-function shareAsImage(){if(!currentFact)return;var c=document.getElementById('share-canvas'),ctx=c.getContext('2d');c.width=600;c.height=400;var g=ctx.createLinearGradient(0,0,600,400);g.addColorStop(0,'#1a1a3e');g.addColorStop(1,'#0a0a1a');ctx.fillStyle=g;ctx.fillRect(0,0,600,400);var g2=ctx.createLinearGradient(0,0,600,0);g2.addColorStop(0,'#6c63ff');g2.addColorStop(.5,'#ff6584');g2.addColorStop(1,'#ffc837');ctx.fillStyle=g2;ctx.fillRect(0,0,600,4);ctx.font='600 14px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.4)';ctx.textAlign='center';ctx.fillText(currentFact.emoji+' '+currentFact.category,300,50);ctx.font='300 18px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.9)';var words=currentFact.text.split(' '),lines=[],line='';words.forEach(function(w){if(ctx.measureText(line+w).width>480){lines.push(line.trim());line=''}line+=w+' '});lines.push(line.trim());lines.forEach(function(l,i){ctx.fillText(l,300,150+i*28)});ctx.font='800 11px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.2)';ctx.fillText('Bilgi Hazinesi by THYKE',300,375);c.toBlob(function(blob){var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='bilgi_thyke.png';a.click();URL.revokeObjectURL(url);showToast('Indirildi!')})}
+funcKategorileri GoruntuleeateLinearGradient(0,0,600,400);g.addColorStop(0,'#1a1a3e');g.addColorStop(1,'#0a0a1a');ctx.fillStyle=g;ctx.fillRect(0,0,600,400);var g2=ctx.createLinearGradient(0,0,600,0);g2.addColorStop(0,'#6c63ff');g2.addColorStop(.5,'#ff6584');g2.addColorStop(1,'#ffc837');ctx.fillStyle=g2;ctx.fillRect(0,0,600,4);ctx.font='600 14px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.4)';ctx.textAlign='center';ctx.fillText(currentFact.emoji+' '+currentFact.category,300,50);ctx.font='300 18px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.9)';var words=currentFact.text.split(' '),lines=[],line='';words.forEach(function(w){if(ctx.measureText(line+w).width>480){lines.push(line.trim());line=''}line+=w+' '});lines.push(line.trim());lines.forEach(function(l,i){ctx.fillText(l,300,150+i*28)});ctx.font='800 11px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.2)';ctx.fillText('Bilgi Hazinesi by THYKE',300,375);c.toBlob(function(blob){var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='bilgi_thyke.png';a.click();URL.revokeObjectURL(url);showToast('Indirildi!')})}
 
 // ===== AUTO PLAY =====
 function toggleAutoPlay(){var b=document.getElementById('auto-nav');if(autoInt){clearInterval(autoInt);autoInt=null;b.classList.remove('active-nav');b.textContent='\u25B6\uFE0F';showToast('Durduruldu')}else{nextFact();autoInt=setInterval(nextFact,4000);b.classList.add('active-nav');b.textContent='\u23F8\uFE0F';showToast('Otomatik mod!');checkAchievements()}}
@@ -1683,7 +1741,7 @@ function showToast(m){
     var parts = m.split(' ');
     var em = parts[0];
     var title = parts.slice(1).join(' ').replace(/ \+\d+ XP/,'').trim();
-    var exp = eggExplanations[em+' '+title] || 'Neden?: Gizli bir etkileşimi tetikledin!';
+    var exp = eggExplanaKategorileri Goruntule etkileşimi tetikledin!';
     
     var mEl = document.getElementById('milestone');
     document.getElementById('ms-emoji').textContent = em;
@@ -1841,7 +1899,7 @@ document.addEventListener('keydown', function(e){
     if(statsBtn) {
         var triggerCreator = function() {
             if(unlockedAch.indexOf('dev_mode')<0) {
-                var ans = prompt("Sistemin Gelistiricisi kim?");
+                var ans = prompKategorileri Goruntuleicisi kim?");
                 if(ans && ans.trim().toLowerCase() === 'thyke') {
                     unlockedAch.push('dev_mode'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
                     addXp(10000); 
@@ -1917,9 +1975,11 @@ document.getElementById('sound-btn').addEventListener('click', function(){
     soundClicks++;
     clearTimeout(soundTimerBtn);
     soundTimerBtn = setTimeout(function(){ soundClicks=0; }, 2000);
-    if(soundClicks === 8 && unlockedAch.indexOf('easter_sound_spam')<0) {
-        unlockedAch.push('easter_sound_spam'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-        showToast('\uD83C\uDFA7 DJ THYKE! +600 XP'); addXp(600);
+    if(soundClicks === 8) {
+        if(unlockedAch.indexOf('easter_sound_spam')<0) {
+            unlockedAch.push('easter_sound_spam'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            showToast('\uD83C\uDFA7 DJ THYKE! +600 XP'); addXp(600);
+        }
         playSound(800, 0.1); setTimeout(function(){playSound(1200, 0.1)},100);
     }
 });
@@ -1930,19 +1990,21 @@ fcard.addEventListener('dragstart', function(e){
     if(unlockedAch.indexOf('easter_drag_card')<0){
         unlockedAch.push('easter_drag_card'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
         showToast('\uD83D\uDE45 Bilgiyi Calamazsin! +450 XP'); addXp(450);
-        fcard.style.transition='transform 0.1s'; var dgInt = setInterval(function(){ fcard.style.transform='translate('+(Math.random()*20-10)+'px, '+(Math.random()*20-10)+'px)'; playSound(100+Math.random()*50, 0.1, 'sawtooth'); }, 100); setTimeout(function(){ clearInterval(dgInt); fcard.style.transition=''; fcard.style.transform=''; }, 10000);
     }
+    fcard.style.transition='transform 0.1s'; var dgInt = setInterval(function(){ fcard.style.transform='translate('+(Math.random()*20-10)+'px, '+(Math.random()*20-10)+'px)'; playSound(100+Math.random()*50, 0.1, 'sawtooth'); }, 100); setTimeout(function(){ clearInterval(dgInt); fcard.style.transition=''; fcard.style.transform=''; }, 10000);
 });
 
 var idleTime = 0;
-setInterval(function(){ idleTime++; if(idleTime === 60 && unlockedAch.indexOf('easter_idle')<0) { unlockedAch.push('easter_idle'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); showToast('\uD83D\uDCA4 Uyudun mu? +500 XP'); addXp(500); var zzz = document.createElement('div'); zzz.innerHTML='Zzz...'; zzz.style.position='fixed'; zzz.style.top='50%'; zzz.style.left='50%'; zzz.style.transform='translate(-50%,-50%)'; zzz.style.fontSize='5rem'; zzz.style.color='#fff'; zzz.style.zIndex='999999'; document.body.appendChild(zzz); var zInt=setInterval(function(){playSound(300, 0.05, 'sine'); setTimeout(function(){playSound(200,0.05,'sine')},500);},1000); setTimeout(function(){ zzz.remove(); clearInterval(zInt); }, 10000); } }, 1000);
+setInterval(function(){ idleTime++; if(idleTime === 60) { if(unlockedAch.indexOf('easter_idle')<0) { unlockedAch.push('easter_idle'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); showToast('\uD83D\uDCA4 Uyudun mu? +500 XP'); addXp(500); } var zzz = document.createElement('div'); zzz.innerHTML='Zzz...'; zzz.style.position='fixed'; zzz.style.top='50%'; zzz.style.left='50%'; zzz.style.transform='translate(-50%,-50%)'; zzz.style.fontSize='5rem'; zzz.style.color='#fff'; zzz.style.zIndex='999999'; document.body.appendChild(zzz); var zInt=setInterval(function(){playSound(300, 0.05, 'sine'); setTimeout(function(){playSound(200,0.05,'sine')},500);},1000); setTimeout(function(){ zzz.remove(); clearInterval(zInt); }, 10000); } }, 1000);
 document.addEventListener('mousemove', function(){ idleTime=0; });
 document.addEventListener('keydown', function(){ idleTime=0; });
 
 document.addEventListener('mouseleave', function(e){
-    if(e.clientY <= 0 && unlockedAch.indexOf('easter_mouse_leave')<0) {
-        unlockedAch.push('easter_mouse_leave'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-        showToast('\uD83D\uDEAA Nereye Gidiyorsun? +300 XP'); addXp(300);
+    if(e.clientY <= 0) {
+        if(unlockedAch.indexOf('easter_mouse_leave')<0) {
+            unlockedAch.push('easter_mouse_leave'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            showToast('\uD83D\uDEAA Nereye Gidiyorsun? +300 XP'); addXp(300);
+        }
         document.body.style.transition = 'filter 1s'; document.body.style.filter='brightness(0.2)';
         var mlInt = setInterval(function(){playSound(400,0.1,'square');}, 1000);
         setTimeout(function(){ document.body.style.filter=''; clearInterval(mlInt); setTimeout(function(){document.body.style.transition='';},1000); }, 10000);
@@ -1954,9 +2016,11 @@ window.addEventListener('scroll', function(){
     scrollCount++;
     clearTimeout(scrollTimer);
     scrollTimer = setTimeout(function(){ scrollCount=0; }, 500);
-    if(scrollCount > 20 && unlockedAch.indexOf('easter_scroll')<0) {
-        unlockedAch.push('easter_scroll'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-        showToast('\uD83D\uDD25 Hiz Tutkunu! +400 XP'); addXp(400);
+    if(scrollCount > 20) {
+        if(unlockedAch.indexOf('easter_scroll')<0) {
+            unlockedAch.push('easter_scroll'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            showToast('\uD83D\uDD25 Hiz Tutkunu! +400 XP'); addXp(400);
+        }
         document.body.style.background = 'linear-gradient(to bottom, #ff0000, #ff7f00)';
         var scInt = setInterval(function(){playSound(100+Math.random()*100,0.1,'sawtooth');},100);
         setTimeout(function(){ document.body.style.background=''; clearInterval(scInt); }, 10000);
@@ -1967,10 +2031,12 @@ window.addEventListener('scroll', function(){
 
 // 1. Logo Spin (Shift+Click on title)
 document.querySelector('.nav-brand').addEventListener('click', function(e){
-    if(e.shiftKey && unlockedAch.indexOf('egg_logo_spin')<0){
+    if(e.shiftKey){
         if(!lockEggAnim(10000)) return;
-        unlockedAch.push('egg_logo_spin'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-        addXp(600); showToast('\uD83C\uDF00 Döndür Beni Bebeğim! +600 XP');
+        if(unlockedAch.indexOf('egg_logo_spin')<0) {
+            unlockedAch.push('egg_logo_spin'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            addXp(600); showToast('\uD83C\uDF00 Döndür Beni Bebeğim! +600 XP');
+        }
         var logo = e.currentTarget; logo.style.transition='transform 2s cubic-bezier(.17,.67,.12,1.2)'; logo.style.transform='rotate(1080deg)';
         for(var i=0;i<20;i++){var s=document.createElement('div');s.textContent='\u2B50';s.style.cssText='position:fixed;font-size:'+(10+Math.random()*20)+'px;left:'+e.clientX+'px;top:'+e.clientY+'px;pointer-events:none;z-index:999999;transition:all 1.5s ease-out;opacity:1;';document.body.appendChild(s);setTimeout(function(el){el.style.left=(parseFloat(el.style.left)+Math.random()*200-100)+'px';el.style.top=(parseFloat(el.style.top)-100-Math.random()*200)+'px';el.style.opacity='0';setTimeout(function(){el.remove();},1500);}.bind(null,s),10);}
         var sInt=setInterval(function(){playSound(600+Math.random()*800,0.08,'sine');},150);
@@ -1983,16 +2049,16 @@ var hiddenPx = document.createElement('div');
 hiddenPx.style.cssText='position:fixed;bottom:3px;right:3px;width:8px;height:8px;z-index:100;cursor:default;opacity:0.01;';
 document.body.appendChild(hiddenPx);
 hiddenPx.addEventListener('click', function(){
+    if(!lockEggAnim(10000)) return;
     if(unlockedAch.indexOf('egg_pixel_hunter')<0){
-        if(!lockEggAnim(10000)) return;
         unlockedAch.push('egg_pixel_hunter'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
         addXp(2000); showToast('\uD83C\uDFAF Piksel Avcısı! +2000 XP');
-        var portal = document.createElement('div');portal.style.cssText='position:fixed;bottom:0;right:0;width:0;height:0;border-radius:50%;background:conic-gradient(#7c3aed,#06b6d4,#ec4899,#7c3aed);z-index:999999;pointer-events:none;transition:all 2s cubic-bezier(.17,.67,.12,1.2);opacity:0.9;';
-        document.body.appendChild(portal);
-        setTimeout(function(){portal.style.width='200vw';portal.style.height='200vw';portal.style.bottom='-50vw';portal.style.right='-50vw';},50);
-        var coinInt=setInterval(function(){var c=document.createElement('div');c.textContent='\uD83E\uDE99';c.style.cssText='position:fixed;left:'+(Math.random()*100)+'vw;top:-30px;font-size:'+(20+Math.random()*20)+'px;z-index:9999999;pointer-events:none;transition:top 2s ease-in;';document.body.appendChild(c);setTimeout(function(){c.style.top='110vh';},50);playSound(800+Math.random()*400,0.05,'sine');setTimeout(function(){c.remove();},2500);},200);
-        setTimeout(function(){portal.style.opacity='0';clearInterval(coinInt);setTimeout(function(){portal.remove();},2000);},10000);
     }
+    var portal = document.createElement('div');portal.style.cssText='position:fixed;bottom:0;right:0;width:0;height:0;border-radius:50%;background:conic-gradient(#7c3aed,#06b6d4,#ec4899,#7c3aed);z-index:999999;pointer-events:none;transition:all 2s cubic-bezier(.17,.67,.12,1.2);opacity:0.9;';
+    document.body.appendChild(portal);
+    setTimeout(function(){portal.style.width='200vw';portal.style.height='200vw';portal.style.bottom='-50vw';portal.style.right='-50vw';},50);
+    var coinInt=setInterval(function(){var c=document.createElement('div');c.textContent='\uD83E\uDE99';c.style.cssText='position:fixed;left:'+(Math.random()*100)+'vw;top:-30px;font-size:'+(20+Math.random()*20)+'px;z-index:9999999;pointer-events:none;transition:top 2s ease-in;';document.body.appendChild(c);setTimeout(function(){c.style.top='110vh';},50);playSound(800+Math.random()*400,0.05,'sine');setTimeout(function(){c.remove();},2500);},200);
+    setTimeout(function(){portal.style.opacity='0';clearInterval(coinInt);setTimeout(function(){portal.remove();},2000);},10000);
 });
 
 // 3. Card Flip (hold emoji 3s)
@@ -2002,10 +2068,10 @@ emojiEl.addEventListener('mousedown', function(){emojiTimer=setTimeout(function(
     if(unlockedAch.indexOf('egg_card_flip')<0){
         unlockedAch.push('egg_card_flip'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
         addXp(500); showToast('\uD83D\uDD04 Ters Köşe! +500 XP');
-        var card=document.getElementById('fact-card');card.style.transition='transform 1s';card.style.transform='rotateY(180deg)';
-        playSound(400,0.3,'triangle');
-        setTimeout(function(){card.style.transform='';setTimeout(function(){card.style.transition='';},1000);},10000);
     }
+    var card=document.getElementById('fact-card');card.style.transition='transform 1s';card.style.transform='rotateY(180deg)';
+    playSound(400,0.3,'triangle');
+    setTimeout(function(){card.style.transform='';setTimeout(function(){card.style.transition='';},1000);},10000);
 },3000);});
 emojiEl.addEventListener('mouseup', function(){clearTimeout(emojiTimer);});
 emojiEl.addEventListener('mouseleave', function(){clearTimeout(emojiTimer);});
@@ -2128,13 +2194,13 @@ document.addEventListener('keydown',function(e){
     if(e.key.toLowerCase()===pianoSeq[pianoIdx]){
         playSound(pianoNotes[pianoIdx],0.2,'sine');
         pianoIdx++;if(pianoIdx===6){pianoIdx=0;
+            if(!lockEggAnim(10000)) return;
             if(unlockedAch.indexOf('egg_piano')<0){
-                if(!lockEggAnim(10000)) return;
                 unlockedAch.push('egg_piano'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
                 addXp(750); showToast('\uD83C\uDFB9 Piyano Virtüözü! +750 XP');
-                var nInt=setInterval(function(){var note=document.createElement('div');note.textContent=['\uD83C\uDFB5','\uD83C\uDFB6','\u266A','\u266B'][Math.floor(Math.random()*4)];note.style.cssText='position:fixed;left:'+(Math.random()*100)+'vw;bottom:-30px;font-size:'+(20+Math.random()*30)+'px;z-index:999999;pointer-events:none;transition:all 3s ease-out;opacity:1;';document.body.appendChild(note);setTimeout(function(){note.style.bottom='110vh';note.style.opacity='0';},50);playSound(pianoNotes[Math.floor(Math.random()*6)],0.1,'sine');setTimeout(function(){note.remove();},3500);},300);
-                setTimeout(function(){clearInterval(nInt);},10000);
             }
+            var nInt=setInterval(function(){var note=document.createElement('div');note.textContent=['\uD83C\uDFB5','\uD83C\uDFB6','\u266A','\u266B'][Math.floor(Math.random()*4)];note.style.cssText='position:fixed;left:'+(Math.random()*100)+'vw;bottom:-30px;font-size:'+(20+Math.random()*30)+'px;z-index:999999;pointer-events:none;transition:all 3s ease-out;opacity:1;';document.body.appendChild(note);setTimeout(function(){note.style.bottom='110vh';note.style.opacity='0';},50);playSound(pianoNotes[Math.floor(Math.random()*6)],0.1,'sine');setTimeout(function(){note.remove();},3500);},300);
+            setTimeout(function(){clearInterval(nInt);},10000);
         }
     }else{pianoIdx=0;}
 });
@@ -2144,14 +2210,14 @@ var ghostSeq=['g','h','o','s','t'],ghostIdx=0;
 document.addEventListener('keydown',function(e){
     if(e.target.tagName==='INPUT') return;
     if(e.key.toLowerCase()===ghostSeq[ghostIdx]){ghostIdx++;if(ghostIdx===5){ghostIdx=0;
+        if(!lockEggAnim(10000)) return;
         if(unlockedAch.indexOf('egg_ghost')<0){
-            if(!lockEggAnim(10000)) return;
             unlockedAch.push('egg_ghost'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
             addXp(600); showToast('\uD83D\uDC7B Hayalet Modu! +600 XP');
-            document.body.style.transition='opacity 1s';document.body.style.opacity='0.3';
-            var gInt=setInterval(function(){var g=document.createElement('div');g.textContent='\uD83D\uDC7B';g.style.cssText='position:fixed;left:'+(Math.random()*100)+'vw;top:'+(Math.random()*100)+'vh;font-size:'+(30+Math.random()*40)+'px;z-index:999999;pointer-events:none;opacity:0.6;transition:all 3s ease;';document.body.appendChild(g);playSound(200+Math.random()*200,0.05,'triangle');setTimeout(function(){g.style.opacity='0';g.style.transform='translateY(-100px)';},50);setTimeout(function(){g.remove();},3500);},500);
-            setTimeout(function(){document.body.style.opacity='1';clearInterval(gInt);setTimeout(function(){document.body.style.transition='';},1000);},10000);
         }
+        document.body.style.transition='opacity 1s';document.body.style.opacity='0.3';
+        var gInt=setInterval(function(){var g=document.createElement('div');g.textContent='\uD83D\uDC7B';g.style.cssText='position:fixed;left:'+(Math.random()*100)+'vw;top:'+(Math.random()*100)+'vh;font-size:'+(30+Math.random()*40)+'px;z-index:999999;pointer-events:none;opacity:0.6;transition:all 3s ease;';document.body.appendChild(g);playSound(200+Math.random()*200,0.05,'triangle');setTimeout(function(){g.style.opacity='0';g.style.transform='translateY(-100px)';},50);setTimeout(function(){g.remove();},3500);},500);
+        setTimeout(function(){document.body.style.opacity='1';clearInterval(gInt);setTimeout(function(){document.body.style.transition='';},1000);},10000);
     }}else{ghostIdx=0;}
 });
 
@@ -2160,10 +2226,12 @@ var spaceCount=0,spaceTimer;
 document.addEventListener('keydown',function(e){
     if(e.target.tagName==='INPUT') return;
     if(e.code==='Space'){e.preventDefault();spaceCount++;clearTimeout(spaceTimer);spaceTimer=setTimeout(function(){spaceCount=0;},2000);
-        if(spaceCount>=10&&unlockedAch.indexOf('egg_fire_dance')<0){
+        if(spaceCount>=10){
             if(!lockEggAnim(10000)) return;
-            unlockedAch.push('egg_fire_dance'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-            addXp(500); showToast('\uD83D\uDD25 Ateş Dansı! +500 XP');
+            if(unlockedAch.indexOf('egg_fire_dance')<0){
+                unlockedAch.push('egg_fire_dance'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(500); showToast('\uD83D\uDD25 Ateş Dansı! +500 XP');
+            }
             var fires=document.createElement('div');fires.style.cssText='position:fixed;bottom:0;left:0;width:100vw;height:0;z-index:999999;pointer-events:none;background:linear-gradient(to top,rgba(255,100,0,0.8),rgba(255,200,0,0.4),transparent);transition:height 2s;';document.body.appendChild(fires);
             setTimeout(function(){fires.style.height='60vh';},50);
             var fInt=setInterval(function(){playSound(50+Math.random()*100,0.1,'sawtooth');fires.style.height=(40+Math.random()*30)+'vh';},300);
@@ -2175,10 +2243,12 @@ document.addEventListener('keydown',function(e){
 // 13. Night Owl (visit between 00:00-04:00)
 (function(){
     var h=new Date().getHours();
-    if(h>=0&&h<4&&unlockedAch.indexOf('egg_night_owl')<0){
+    if(h>=0&&h<4){
         setTimeout(function(){
-            unlockedAch.push('egg_night_owl'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-            addXp(400); showToast('\uD83C\uDF19 Gece Kuşu! +400 XP');
+            if(unlockedAch.indexOf('egg_night_owl')<0){
+                unlockedAch.push('egg_night_owl'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(400); showToast('\uD83C\uDF19 Gece Kuşu! +400 XP');
+            }
             var sky=document.createElement('div');sky.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:999998;pointer-events:none;';
             for(var i=0;i<50;i++){var star=document.createElement('div');star.textContent='\u2B50';star.style.cssText='position:absolute;font-size:'+(5+Math.random()*10)+'px;left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;opacity:'+(0.3+Math.random()*0.7)+';animation:pulse '+(1+Math.random()*2)+'s infinite alternate;';sky.appendChild(star);}
             var moon=document.createElement('div');moon.textContent='\uD83C\uDF19';moon.style.cssText='position:absolute;top:10%;right:15%;font-size:5rem;';sky.appendChild(moon);
@@ -2194,9 +2264,11 @@ document.addEventListener('keydown',function(e){
 (function(){
     if(navigator.getBattery){
         navigator.getBattery().then(function(bat){
-            if(bat.level<=0.2&&!bat.charging&&unlockedAch.indexOf('egg_low_battery')<0){
-                unlockedAch.push('egg_low_battery'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-                addXp(350); showToast('\uD83D\uDD0B Tehlikeli Yaşıyorsun! +350 XP');
+            if(bat.level<=0.2&&!bat.charging){
+                if(unlockedAch.indexOf('egg_low_battery')<0) {
+                    unlockedAch.push('egg_low_battery'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                    addXp(350); showToast('\uD83D\uDD0B Tehlikeli Yaşıyorsun! +350 XP');
+                }
                 var bw=document.createElement('div');bw.innerHTML='\uD83D\uDD0B <span style="color:red;font-weight:900;font-size:2rem">DÜŞÜK PİL!</span>';bw.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:4rem;z-index:999999;pointer-events:none;text-align:center;';document.body.appendChild(bw);
                 var vg=document.createElement('div');vg.style.cssText='position:fixed;inset:0;box-shadow:inset 0 0 150px rgba(255,0,0,0.6);z-index:999998;pointer-events:none;';document.body.appendChild(vg);
                 var bInt=setInterval(function(){bw.style.opacity=bw.style.opacity==='0'?'1':'0';playSound(200,0.1,'square');},500);
@@ -2209,10 +2281,12 @@ document.addEventListener('keydown',function(e){
 // 15. Weekend Warrior
 (function(){
     var day=new Date().getDay();
-    if((day===0||day===6)&&unlockedAch.indexOf('egg_weekend')<0){
+    if(day===0||day===6){
         setTimeout(function(){
-            unlockedAch.push('egg_weekend'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-            addXp(300); showToast('\uD83C\uDF89 Hafta Sonu Savaşçısı! +300 XP');
+            if(unlockedAch.indexOf('egg_weekend')<0){
+                unlockedAch.push('egg_weekend'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(300); showToast('\uD83C\uDF89 Hafta Sonu Savaşçısı! +300 XP');
+            }
             launchConfetti();setTimeout(launchConfetti,500);setTimeout(launchConfetti,1000);
             playSound(523,0.2,'sine');setTimeout(function(){playSound(659,0.2,'sine');},200);setTimeout(function(){playSound(784,0.3,'sine');},400);
         },5000);
@@ -2222,10 +2296,12 @@ document.addEventListener('keydown',function(e){
 // 16. Early Bird (05:00-07:00)
 (function(){
     var h=new Date().getHours();
-    if(h>=5&&h<7&&unlockedAch.indexOf('egg_early_bird')<0){
+    if(h>=5&&h<7){
         setTimeout(function(){
-            unlockedAch.push('egg_early_bird'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-            addXp(400); showToast('\u2600\uFE0F Erken Kuş! +400 XP');
+            if(unlockedAch.indexOf('egg_early_bird')<0){
+                unlockedAch.push('egg_early_bird'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(400); showToast('\u2600\uFE0F Erken Kuş! +400 XP');
+            }
             var sun=document.createElement('div');sun.style.cssText='position:fixed;bottom:-100px;left:50%;transform:translateX(-50%);width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,#ffd700,#ff8c00,transparent);z-index:999999;pointer-events:none;transition:bottom 3s ease-out;box-shadow:0 0 100px #ffd700;';document.body.appendChild(sun);
             setTimeout(function(){sun.style.bottom='30vh';},100);
             document.body.style.transition='background 3s';document.body.style.background='linear-gradient(to top,#ff8c00,#ffb347,#030014)';
@@ -2239,10 +2315,12 @@ document.addEventListener('keydown',function(e){
 var typeCount=0,typeTimer;
 document.getElementById('global-search').addEventListener('input',function(){
     typeCount++;clearTimeout(typeTimer);typeTimer=setTimeout(function(){typeCount=0;},2000);
-    if(typeCount>=15&&unlockedAch.indexOf('egg_speed_typer')<0){
+    if(typeCount>=15){
         if(!lockEggAnim(10000)) return;
-        unlockedAch.push('egg_speed_typer'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-        addXp(500); showToast('\u2328\uFE0F Hız Şeytanı! +500 XP');
+        if(unlockedAch.indexOf('egg_speed_typer')<0){
+            unlockedAch.push('egg_speed_typer'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            addXp(500); showToast('\u2328\uFE0F Hız Şeytanı! +500 XP');
+        }
         var mst=document.createElement('style');mst.innerHTML='@keyframes matfall{0%{top:-10%;opacity:1;}100%{top:110%;opacity:0;}}';document.head.appendChild(mst);
         var mInt=setInterval(function(){var ch=document.createElement('div');ch.textContent=String.fromCharCode(33+Math.floor(Math.random()*93));ch.style.cssText='position:fixed;left:'+(Math.random()*100)+'vw;top:-10%;font-size:'+(14+Math.random()*20)+'px;color:#0f0;font-family:monospace;z-index:999999;pointer-events:none;animation:matfall '+(1+Math.random()*2)+'s linear forwards;';document.body.appendChild(ch);playSound(100+Math.random()*200,0.02,'square');setTimeout(function(){ch.remove();},3000);},50);
         setTimeout(function(){clearInterval(mInt);mst.remove();},10000);
@@ -2252,7 +2330,6 @@ document.getElementById('global-search').addEventListener('input',function(){
 // 18. Scroll Monster (scroll top-bottom 3 times)
 var scrollDir=0,lastScrollY=0,scrollBounces=0,scrollBTimer;
 window.addEventListener('scroll',function(){
-    if(unlockedAch.indexOf('egg_scroll_monster')>=0) return;
     var cur=window.scrollY,maxS=document.body.scrollHeight-window.innerHeight;
     if(cur<=10&&lastScrollY>100){scrollBounces++;scrollDir=1;}
     if(cur>=maxS-10&&lastScrollY<maxS-100){scrollBounces++;scrollDir=2;}
@@ -2260,8 +2337,10 @@ window.addEventListener('scroll',function(){
     clearTimeout(scrollBTimer);scrollBTimer=setTimeout(function(){scrollBounces=0;},10000);
     if(scrollBounces>=6){
         if(!lockEggAnim(10000)) return;
-        unlockedAch.push('egg_scroll_monster'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-        addXp(550); showToast('\uD83D\uDCDC Kaydırma Canavarı! +550 XP');
+        if(unlockedAch.indexOf('egg_scroll_monster')<0) {
+            unlockedAch.push('egg_scroll_monster'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            addXp(550); showToast('\uD83D\uDCDC Kaydırma Canavarı! +550 XP');
+        }
         var elev=document.createElement('div');elev.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:999999;pointer-events:none;overflow:hidden;';
         var doorL=document.createElement('div');doorL.style.cssText='position:absolute;left:0;top:0;width:50%;height:100%;background:linear-gradient(to right,#333,#555);transition:transform 1s;border-right:3px solid #888;';
         var doorR=document.createElement('div');doorR.style.cssText='position:absolute;right:0;top:0;width:50%;height:100%;background:linear-gradient(to left,#333,#555);transition:transform 1s;border-left:3px solid #888;';
@@ -2281,9 +2360,11 @@ var tabLeftTime=0;
 document.addEventListener('visibilitychange',function(){
     if(document.hidden){tabLeftTime=Date.now();}
     else{
-        if(tabLeftTime>0&&Date.now()-tabLeftTime>=30000&&unlockedAch.indexOf('egg_tab_traveler')<0){
-            unlockedAch.push('egg_tab_traveler'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-            addXp(400); showToast('\uD83D\uDD00 Beni Özledin mi? +400 XP');
+        if(tabLeftTime>0&&Date.now()-tabLeftTime>=30000){
+            if(unlockedAch.indexOf('egg_tab_traveler')<0){
+                unlockedAch.push('egg_tab_traveler'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(400); showToast('\uD83D\uDD00 Beni Özledin mi? +400 XP');
+            }
             var hug=document.createElement('div');hug.innerHTML='\uD83E\uDD17<br><span style="font-size:1.5rem;color:#fff">Beni özledin mi?</span>';hug.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:6rem;z-index:999999;pointer-events:none;text-align:center;transition:transform 1s cubic-bezier(.17,.67,.12,1.2);';document.body.appendChild(hug);
             setTimeout(function(){hug.style.transform='translate(-50%,-50%) scale(1)';playSound(523,0.2,'sine');setTimeout(function(){playSound(659,0.2,'sine');},200);},100);
             setTimeout(function(){hug.style.transform='translate(-50%,-50%) scale(0)';setTimeout(function(){hug.remove();},1000);},10000);
@@ -2297,10 +2378,10 @@ document.getElementById('global-search').addEventListener('paste',function(){
     if(unlockedAch.indexOf('egg_paste_master')<0){
         unlockedAch.push('egg_paste_master'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
         addXp(350); showToast('\uD83D\uDCCB Yapıştır Ustası! +350 XP');
-        var pm=document.createElement('div');pm.innerHTML='\uD83D\uDC6E\u200D\u2642\uFE0F<br><span style="font-size:1.2rem;color:#ff5555">Kopya çekmeye mi çalışıyorsun?!</span>';pm.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:5rem;z-index:999999;pointer-events:none;text-align:center;';document.body.appendChild(pm);
-        var pInt2=setInterval(function(){playSound(600,0.1,'square');setTimeout(function(){playSound(400,0.1,'square');},250);},500);
-        setTimeout(function(){pm.style.transition='opacity 2s';pm.style.opacity='0';clearInterval(pInt2);setTimeout(function(){pm.remove();},2000);},10000);
     }
+    var pm=document.createElement('div');pm.innerHTML='\uD83D\uDC6E\u200D\u2642\uFE0F<br><span style="font-size:1.2rem;color:#ff5555">Kopya çekmeye mi çalışıyorsun?!</span>';pm.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:5rem;z-index:999999;pointer-events:none;text-align:center;';document.body.appendChild(pm);
+    var pInt2=setInterval(function(){playSound(600,0.1,'square');setTimeout(function(){playSound(400,0.1,'square');},250);},500);
+    setTimeout(function(){pm.style.transition='opacity 2s';pm.style.opacity='0';clearInterval(pInt2);setTimeout(function(){pm.remove();},2000);},10000);
 });
 
 // 5. DEPREM (Earthquake)
@@ -2310,9 +2391,11 @@ document.addEventListener('click', function(e){
         catBadgeClicks++;
         clearTimeout(catBadgeTimer);
         catBadgeTimer = setTimeout(function(){ catBadgeClicks=0; }, 1000);
-        if(catBadgeClicks === 5 && unlockedAch.indexOf('earthquake')<0) {
-            unlockedAch.push('earthquake'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-            addXp(600); showToast('\u26A0\uFE0F DEPREM OLUYOR! +600 XP');
+        if(catBadgeClicks === 5) {
+            if(unlockedAch.indexOf('earthquake')<0) {
+                unlockedAch.push('earthquake'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(600); showToast('\u26A0\uFE0F DEPREM OLUYOR! +600 XP');
+            }
             var style = document.createElement('style');
             style.innerHTML = '@keyframes shake { 0% { transform: translate(1px, 1px) rotate(0deg); } 10% { transform: translate(-1px, -2px) rotate(-1deg); } 20% { transform: translate(-3px, 0px) rotate(1deg); } 30% { transform: translate(3px, 2px) rotate(0deg); } 40% { transform: translate(1px, -1px) rotate(1deg); } 50% { transform: translate(-1px, 2px) rotate(-1deg); } 60% { transform: translate(-3px, 1px) rotate(0deg); } 70% { transform: translate(3px, 1px) rotate(-1deg); } 80% { transform: translate(-1px, -1px) rotate(1deg); } 90% { transform: translate(1px, 2px) rotate(0deg); } 100% { transform: translate(1px, -2px) rotate(-1deg); } }';
             document.head.appendChild(style);
@@ -2331,14 +2414,14 @@ if(soundBtn) {
         if(unlockedAch.indexOf('secret_song')<0) {
             unlockedAch.push('secret_song'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
             addXp(888); showToast('\uD83C\uDFB5 8-Bit Konser! +888 XP');
-            var notes = [330, 330, 0, 330, 0, 261, 330, 0, 392, 0, 0, 0, 196]; // Mario theme intro
-            var t = 0;
-            notes.forEach(function(freq){
-                if(freq > 0) setTimeout(function(){ playSound(freq, 0.1, 'square'); }, t);
-                t += 150;
-            });
-            for(var i=0;i<5;i++) setTimeout(launchConfetti, i*300);
         }
+        var notes = [330, 330, 0, 330, 0, 261, 330, 0, 392, 0, 0, 0, 196]; // Mario theme intro
+        var t = 0;
+        notes.forEach(function(freq){
+            if(freq > 0) setTimeout(function(){ playSound(freq, 0.1, 'square'); }, t);
+            t += 150;
+        });
+        for(var i=0;i<5;i++) setTimeout(launchConfetti, i*300);
     };
     soundBtn.addEventListener('mousedown', function(){ soundTimer = setTimeout(playSecretMelody, 2000); });
     soundBtn.addEventListener('mouseup', function(){ clearTimeout(soundTimer); });
@@ -2399,12 +2482,12 @@ document.getElementById('global-search').addEventListener('keydown', function(e)
             document.body.style.background = '#000';
             document.querySelector('.container').style.opacity = '0';
             setTimeout(function(){
-                var g = document.createElement('div'); g.innerHTML = '\uD83D\uDC7B'; g.style.position = 'fixed';
+                var g = documenKategorileri GoruntuleHTML = '\uD83D\uDC7B'; g.style.position = 'fixed';
                 g.style.left='50%'; g.style.top='50%'; g.style.transform='translate(-50%,-50%) scale(0.1)';
                 g.style.fontSize='100px'; g.style.zIndex='99999'; g.style.transition='transform 0.1s';
                 document.body.appendChild(g);
-                setTimeout(function(){ g.style.transform='translate(-50%,-50%) scale(15)'; playSound(150, 0.6, 'sawtooth'); }, 100);
-                setTimeout(function(){ g.remove(); document.body.style.background=''; document.querySelector('.container').style.opacity='1'; }, 600);
+                seKategorileri Goruntuleansform='translate(-50%,-50%) scale(15)'; playSound(150, 0.6, 'sawtooth'); }, 100);
+                seKategorileri Goruntuleemove(); document.body.style.background=''; document.querySelector('.container').style.opacity='1'; }, 600);
             }, 1000);
             this.value=''; return;
         }
@@ -2744,8 +2827,8 @@ secretEye.addEventListener('click', function(){
         giantEye.style.transition = 'all 2s';
         document.body.appendChild(giantEye);
         playSound(250, 0.5, 'triangle');
-        setTimeout(function(){ giantEye.style.transform = 'translate(-50%, -50%) scale(5)'; giantEye.style.opacity = '0'; }, 50);
-        setTimeout(function(){ giantEye.remove(); }, 2000);
+        seKategorileri Goruntuleansform = 'translate(-50%, -50%) scale(5)'; giantEye.style.opacity = '0'; }, 50);
+        seKategorileri Goruntuleemove(); }, 2000);
     }
 });
 
@@ -2841,7 +2924,7 @@ nextFact();
   
   if(typeof eggExplanations !== 'undefined') {
     Object.assign(eggExplanations, {
-      '\uD83C\uDFAE Nostalji Aşığı!': 'Neden?: Konami Kodunu (Yukarı Yukarı Aşağı Aşağı Sol Sağ Sol Sağ B A) girdin!',
+      '\uD83C\uDFAE NosKategorileri Goruntuledin!',
       '\uD83D\uDD76\uFE0F Karanlık Madde!': 'Neden?: Arkaplana peş peşe 5 kez tıkladın.',
       '\uD83C\uDFBC Besteci!': 'Neden?: Klavyede C-D-E-F-G notalarına sırayla bastın.',
       '\uD83E\uDD77 Ninja!': 'Neden?: Sitede 10 saniye boyunca hiç hareket etmeden durdun.',
@@ -2852,7 +2935,7 @@ nextFact();
       '\uD83C\uDFB0 Şanslı Yedili!': 'Neden?: Beğen (Kalp) butonuna peş peşe 7 kez bastın.',
       '\uD83D\uDDB1\uFE0F Orta Tuş Gizemi!': 'Neden?: Faredeki tekerlek (orta) tuşuna tıkladın.',
       '\uD83D\uDE97 Geri Vites!': 'Neden?: Tarayıcının Geri (Back) tuşuna bastın.',
-      '\uD83E\uDDD3 Yarım Asırlık Çınar!': 'Neden?: Sitede 50 saniye boyunca zaman geçirdin.',
+      '\uD83E\uDDD3 Yarım Asırlık Çınar!': 'Neden?: SiKategorileri Goruntuledin.',
       '\uD83C\uDFAF Tam İsabet!': 'Neden?: Saatin tam saniyesi 00 iken yeni bilgi istedin.',
       '\uD83D\uDE80 Sabırsız!': 'Neden?: Site açıldıktan hemen 1 saniye içinde butona bastın.',
       '\uD83D\uDDE3\uFE0F Konuşkan!': 'Neden?: Sesli okuma tuşunu peş peşe 5 kez kullandın.',
@@ -2864,8 +2947,8 @@ nextFact();
   }
 
   document.addEventListener('keydown', function(e){
-    if(e.keyCode === kc[kpos]) { kpos++; if(kpos===kc.length && unlockedAch.indexOf('egg_konami')<0){ unlockedAch.push('egg_konami'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(1500); showToast('\uD83C\uDFAE Nostalji Aşığı! +1500 XP'); kpos=0; } } else kpos=0;
-    if(e.code === notes[npos]) { npos++; if(npos===notes.length && unlockedAch.indexOf('egg_composer')<0){ unlockedAch.push('egg_composer'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(800); showToast('\uD83C\uDFBC Besteci! +800 XP'); npos=0; } } else npos=0;
+    if(e.keyCode === kc[kpos]) { kpos++; if(kpos===kc.length){ if(unlockedAch.indexOf('egg_konami')<0){ unlockedAch.push('egg_konami'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(1500); showToast('\uD83C\uDFAE Nostalji Aşığı! +1500 XP'); } kpos=0; } } else kpos=0;
+    if(e.code === notes[npos]) { npos++; if(npos===notes.length){ if(unlockedAch.indexOf('egg_composer')<0){ unlockedAch.push('egg_composer'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(800); showToast('\uD83C\uDFBC Besteci! +800 XP'); } npos=0; } } else npos=0;
     piStr += e.key; if(piStr.length>4) piStr = piStr.slice(1);
     if(piStr==='3.14' && unlockedAch.indexOf('egg_math')<0){ unlockedAch.push('egg_math'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(600); showToast('\uD83E\uDDEE Matematik Dehası! +600 XP'); }
   });
@@ -2883,7 +2966,10 @@ nextFact();
   document.querySelector('.app').addEventListener('click', function(e){
     if(e.target === document.querySelector('.app') || e.target === document.querySelector('.container')){
       bgClicks++;
-      if(bgClicks === 5 && unlockedAch.indexOf('egg_dark_matter')<0){ unlockedAch.push('egg_dark_matter'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(400); showToast('\uD83D\uDD76\uFE0F Karanlık Madde! +400 XP'); document.body.style.background='black'; setTimeout(function(){document.body.style.background='var(--bg)';},2000); }
+      if(bgClicks === 5){
+        if(unlockedAch.indexOf('egg_dark_matter')<0){ unlockedAch.push('egg_dark_matter'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(400); showToast('\uD83D\uDD76\uFE0F Karanlık Madde! +400 XP'); }
+        document.body.style.background='black'; setTimeout(function(){document.body.style.background='var(--bg)';},2000);
+      }
     } else bgClicks = 0;
   });
 
@@ -2908,7 +2994,7 @@ nextFact();
   });
 
   window.addEventListener('popstate', function(){
-    if(unlockedAch.indexOf('egg_back_gear')<0){ unlockedAch.push('egg_back_gear'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); addXp(450); showToast('\uD83D\uDE97 Geri Vites! +450 XP'); }
+    if(unlockedAch.indexOf('egg_back_gear')<0){ unlockedAch.push('egg_back_gear'); localSKategorileri Goruntulei Vites! +450 XP'); }
   });
   
   var initialLoadTime = Date.now();
