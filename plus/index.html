@@ -281,8 +281,15 @@ body.theme-blood { --bg:#110000; --text:#ffcccc; --text2:rgba(255,100,100,0.7); 
     <div class="progress-label" id="progress-label">0% kesfedildi</div>
   </div>
 
-  <div style="text-align:right; font-size:0.6rem; color:var(--text3); margin-top:4px;" id="xp-label">0 / 100 XP</div>
+  <div class="level-wrap animate-in" style="animation-delay:.1s; background:var(--card); padding:10px 16px; border-radius:12px; margin-bottom:12px; border:1px solid var(--card-border);">
+    <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text2); margin-bottom:6px;">
+      <span id="rank-name" style="font-weight:900; color:var(--accent3); text-transform:uppercase; letter-spacing:1px">ACEMI</span>
+      <span id="level-display" style="font-weight:700">Seviye 1</span>
+    </div>
+    <div class="progress-bar" style="height:6px"><div class="progress-fill" id="xp-fill" style="width:0%"></div></div>
+    <div style="text-align:right; font-size:0.6rem; color:var(--text3); margin-top:4px;" id="xp-label">0 / 100 XP</div>
   </div>
+
   <div class="fact-card animate-in" style="animation-delay:.15s" id="fact-card">
     <div class="rarity-badge rarity-common" id="rarity-badge" style="display:none"></div>
     <span class="fact-emoji" id="fact-emoji">&#129504;</span>
@@ -299,22 +306,15 @@ body.theme-blood { --bg:#110000; --text:#ffcccc; --text2:rgba(255,100,100,0.7); 
     <button class="btn btn-sm btn-secondary" onclick="copyFact()" title="Kopyala">&#128203;</button>
     <button class="btn btn-sm btn-secondary" onclick="shareAsImage()" title="Resim Olarak Indir">&#128444;&#65039;</button>
   </div>
-  <div class="actions-row2 animate-in" style="animation-delay:.2s">
+  <div class="actions-row2 animate-in" style="animation-delay:.2s" style="margin-bottom:15px">
     <button class="btn btn-sm btn-secondary" onclick="openModal('fav-modal');openFavModal()">&#11088; Favoriler</button>
     <button class="btn btn-sm btn-secondary" onclick="shareFact()">&#128228; Paylas</button>
     <button class="btn btn-sm btn-secondary" onclick="randomCategory()">&#127920; Rastgele</button>
   </div>
 
-  
-  <div class="categories animate-in" style="animation-delay:.12s" id="categories"></div>
+  <div class="categories animate-in" style="animation-delay:.12s" id="categories" style="margin-top:20px;"></div>
 
-    <div class="level-wrap animate-in" style="animation-delay:.1s; background:var(--card); padding:10px 16px; border-radius:12px; margin-bottom:12px; border:1px solid var(--card-border);">
-    <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text2); margin-bottom:6px;">
-      <span id="rank-name" style="font-weight:900; color:var(--accent3); text-transform:uppercase; letter-spacing:1px">ACEMI</span>
-      <span id="level-display" style="font-weight:700">Seviye 1</span>
-    </div>
-    <div class="progress-bar" style="height:6px"><div class="progress-fill" id="xp-fill" style="width:0%"></div></div>
-    <div class="footer animate-in" style="animation-delay:.22s">
+  <div class="footer animate-in" style="animation-delay:.22s">
     <div class="footer-line"></div>
     <div class="footer-brand">Made with &#10084;&#65039; by <span>THYKE</span></div>
     <div class="footer-sub">Bilgi Hazinesi v3.0</div>
@@ -2015,6 +2015,7 @@ nextFact();
 </script>
 </body>
 </html>
+
 
 
 
