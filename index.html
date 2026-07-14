@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -203,6 +203,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;min-he
   .stat .num{font-size:.9rem}
   .nav-btn{width:34px;height:34px;min-width:34px;font-size:.85rem}
 }
+body.theme-matrix { --bg:#000; --text:#0f0; --text2:rgba(0,255,0,0.7); --text3:rgba(0,255,0,0.4); --accent1:#0f0; --accent2:#0a0; --accent3:#00ff00; --accent4:#005500; --card:rgba(0,255,0,0.05); --card-border:rgba(0,255,0,0.2); }
+body.theme-ocean { --bg:#001220; --text:#fff; --text2:rgba(255,255,255,0.7); --text3:rgba(255,255,255,0.4); --accent1:#00c6ff; --accent2:#0072ff; --accent3:#00f2fe; --accent4:#4facfe; --card:rgba(0,198,255,0.05); --card-border:rgba(0,198,255,0.2); }
+body.theme-sunset { --bg:#1a0b1c; --text:#fff; --text2:rgba(255,255,255,0.7); --text3:rgba(255,255,255,0.4); --accent1:#ff512f; --accent2:#dd2476; --accent3:#ff007f; --accent4:#ff9900; --card:rgba(255,81,47,0.05); --card-border:rgba(255,81,47,0.2); }
+body.theme-hacker { --bg:#0d0221; --text:#0ff; --text2:rgba(0,255,255,0.7); --text3:rgba(0,255,255,0.4); --accent1:#f0f; --accent2:#8a2be2; --accent3:#0ff; --accent4:#ff00ff; --card:rgba(255,0,255,0.05); --card-border:rgba(255,0,255,0.2); }
+body.theme-blood { --bg:#110000; --text:#ffcccc; --text2:rgba(255,100,100,0.7); --text3:rgba(255,100,100,0.4); --accent1:#ff0000; --accent2:#990000; --accent3:#ff3333; --accent4:#cc0000; --card:rgba(255,0,0,0.05); --card-border:rgba(255,0,0,0.2); }
 </style>
 </head>
 <body>
@@ -276,6 +281,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;min-he
 
   <div class="categories animate-in" style="animation-delay:.12s" id="categories"></div>
 
+    <div class="level-wrap animate-in" style="animation-delay:.1s; background:var(--card); padding:10px 16px; border-radius:12px; margin-bottom:12px; border:1px solid var(--card-border);">
+    <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text2); margin-bottom:6px;">
+      <span id="rank-name" style="font-weight:900; color:var(--accent3); text-transform:uppercase; letter-spacing:1px">ACEMI</span>
+      <span id="level-display" style="font-weight:700">Seviye 1</span>
+    </div>
+    <div class="progress-bar" style="height:6px"><div class="progress-fill" id="xp-fill" style="width:0%"></div></div>
+    <div style="text-align:right; font-size:0.6rem; color:var(--text3); margin-top:4px;" id="xp-label">0 / 100 XP</div>
+  </div>
   <div class="fact-card animate-in" style="animation-delay:.15s" id="fact-card">
     <div class="rarity-badge rarity-common" id="rarity-badge" style="display:none"></div>
     <span class="fact-emoji" id="fact-emoji">&#129504;</span>
@@ -885,9 +898,111 @@ var factsDB = {
     "Ilk Facebook kullanicisi Mark Zuckerberg (profil ID: 4).",
     "Discord basta oyuncular icin tasarlandi ama simdi her alanda kullaniliyor."
   ]}
-};
+,"Mitoloji": { emoji: "🏛️", color: "255,215,0", facts: [
+"Yunan mitolojisinde Zeus, kardeşleri Poseidon ve Hades ile dünyayı üçe bölmüştür.",
+"İskandinav mitolojisinde Thor'un çekicinin adı Mjölnir'dir ve sadece o kaldırabilir.",
+"Mısır mitolojisinde Anubis, ölülerin ruhunu tartarak yargılayan çakal başlı tanrıdır.",
+"Medusa'nın gözlerine bakan herkes taşa dönüşürdü, ta ki Perseus onu yenene kadar.",
+"Athena, Zeus'un başından tam zırhlı ve yetişkin bir şekilde doğmuştur.",
+"Loki, İskandinav mitolojisinde kötülük ve hile tanrısıdır, aynı zamanda şekil değiştirebilir.",
+"Yggdrasil, İskandinav mitolojisinde dokuz dünyayı birbirine bağlayan devasa yaşam ağacıdır.",
+"Vampir mitlerinin kökeni, Antik Yunan'daki 'Vrykolakas' efsanelerine kadar uzanır.",
+"Aşil, Truva Savaşı'nın en büyük kahramanıydı, tek zayıf noktası topuğuydu.",
+"Pegasus, Medusa'nın kesilen başından doğan kanatlı beyaz bir attır.",
+"Herakles (Herkül), Hera'nın öfkesini yatıştırmak için 12 zorlu görevi tamamlamak zorundaydı.",
+"Prometheus, tanrılardan ateşi çalıp insanlara verdiği için sonsuz bir işkenceyle cezalandırılmıştır.",
+"Kelt mitolojisinde Morrigan, savaş ve yıkım tanrıçasıdır ve genellikle bir karga formunda görünür.",
+"Japon mitolojisinde Amaterasu, evreni aydınlatan güneş tanrıçasıdır.",
+"Hint mitolojisinde Şiva, yaratılışın ve yıkımın dengesini sağlayan büyük tanrıdır."
+]},
+"Psikoloji": { emoji: "🧠", color: "155,89,182", facts: [
+"Plasebo etkisi, insanların sahte bir tedaviye inanarak gerçekten iyileşme belirtileri göstermesidir.",
+"Mandela Etkisi, büyük bir insan grubunun yaşanmamış bir olayı yaşanmış gibi hatırlamasıdır.",
+"Baader-Meinhof Fenomeni, yeni öğrendiğiniz bir kelimenin veya nesnenin aniden her yerde karşınıza çıkması hissidir.",
+"Dunning-Kruger Etkisi, yetersiz insanların yeteneklerini aşırı abartma eğiliminde olmasıdır.",
+"Bilişsel Çelişki (Cognitive Dissonance), birbiriyle çelişen iki inanca sahip olmanın yarattığı zihinsel rahatsızlıktır.",
+"Hale Etkisi (Halo Effect), bir kişinin tek bir olumlu özelliğinin, onun diğer tüm özelliklerinin de olumlu algılanmasına yol açmasıdır.",
+"Bystander (Seyirci) Etkisi, ortamda ne kadar çok insan varsa, acil bir durumda yardım etme olasılıklarının o kadar düşmesidir.",
+"Pygmalion Etkisi, yüksek beklentilerin insanların performansını artırması durumudur.",
+"Gelişme Korkusu (Jonah Kompleksi), kişinin kendi potansiyelinden ve büyük başarılar elde etmekten korkmasıdır.",
+"Yabancı Dil Etkisi, insanların yabancı bir dilde düşünürken daha mantıklı ve daha az duygusal kararlar almasıdır.",
+"Tetris Etkisi, bir aktiviteye çok fazla zaman ayırdıktan sonra, insanların rüyalarında veya düşüncelerinde o aktiviteyi görmeye devam etmesidir.",
+"Ayna Nöronlar, bir başkasının bir eylemini izlediğimizde, o eylemi biz yapıyormuşuz gibi beynimizde aktifleşen hücrelerdir.",
+"Zeygarnik Etkisi, yarım kalan işlerin, tamamlananlara göre akılda daha fazla yer etmesi durumudur.",
+"Stokholm Sendromu, rehinelerin kendilerini rehin alan kişilere sempati veya şefkat duymaya başlamasıdır.",
+"FOMO (Fear Of Missing Out), başkalarının sizden daha iyi veya eğlenceli şeyler yaşadığı korkusudur."
+]},
+"Gizemli Olaylar": { emoji: "🕵️", color: "52,73,94", facts: [
+"Dyatlov Geçidi Vakası'nda, 9 deneyimli dağcı 1959'da Ural Dağları'nda gizemli bir şekilde hayatını kaybetmiştir.",
+"Bermuda Şeytan Üçgeni, yüzlerce uçak ve geminin pusulalarının bozularak kaybolduğu iddia edilen bölgedir.",
+"Tunguska Olayı, 1908'de Sibirya'da hiçbir çarpma krateri olmadan devasa bir ormanı yok eden dev patlamadır.",
+"Voynich El Yazması, bugüne kadar dünyanın en yetenekli kriptologları tarafından bile çözülememiş, bilinmeyen bir dilde yazılmış bir kitaptır.",
+"Mary Celeste, 1872'de okyanusun ortasında tamamen sağlam ama içinde hiçbir mürettebatı olmadan bulunan hayalet gemidir.",
+"Nazca Çizgileri, Peru'da sadece gökyüzünden bakıldığında ne olduğu anlaşılabilen devasa yer şekilleridir.",
+"Roswell Olayı, 1947'de ABD'nin New Mexico eyaletine düşen ve uzaylı bir UFO olduğuna inanılan en ünlü kazadır.",
+"Zodiac Katili, 1960'larda Kaliforniya'da insanları öldürüp gazetelere şifreli mesajlar gönderen ve asla bulunamayan seri katildir.",
+"Wow! Sinyali, 1977'de uzaydan gelen ve dünya dışı bir zeka tarafından gönderilmiş olabilecek, kaynağı hala belirsiz güçlü radyo sinyalidir.",
+"Jack the Ripper (Karındeşen Jack), 1888'de Londra'da terör estiren ve kimliği hiçbir zaman tespit edilemeyen efsanevi katildir.",
+"Stonehenge, İngiltere'de bulunan devasa taşların binlerce yıl önce o bölgeye nasıl ve neden taşındığı hala tam olarak bilinemeyen bir yapıdır.",
+"Piri Reis Haritası, 1513 yılında çizilmiş olmasına rağmen Antarktika'nın buzsuz halini son derece isabetli bir şekilde göstermektedir.",
+"Roanoke Kolonisi, 1590'da Amerika'ya yerleşen koca bir İngiliz kolonisinin arkalarında sadece bir ağaca kazınmış 'CROATOAN' kelimesini bırakarak yok olmasıdır.",
+"Kayıp Kıta Atlantis, Platon'un bahsettiği ve bir gecede sulara gömüldüğü iddia edilen efsanevi ileri uygarlıktır.",
+"Elisa Lam Vakası, 2013 yılında Cecil Oteli'nin su tankında ölü bulunan kadının asansördeki son anlarının son derece gizemli ve ürkütücü olmasıdır."
+]},
+"Siber Guvenlik": { emoji: "💻", color: "39,174,96", facts: [
+"Dünyanın ilk bilgisayar virüsü 1971'de yazılan 'Creeper' virüsüydü ve ekrana sadece 'Ben Creeper'ım, yakalayabiliyorsan yakala' yazıyordu.",
+"Her gün yaklaşık 300.000 yeni kötü amaçlı yazılım (malware) türü oluşturulmaktadır.",
+"Sosyal mühendislik, insanları manipüle ederek gizli bilgileri vermelerini sağlama sanatıdır ve hack olaylarının %90'ında kullanılır.",
+"Ransomware (Fidye Yazılımı), bilgisayarınızdaki tüm dosyaları şifreleyerek açmak için sizden kripto para ile fidye isteyen yazılımlardır.",
+"Kevin Mitnick, 1990'larda ABD'nin en çok aranan bilgisayar korsanıydı ve FBI, Pentagon ve dev şirketleri hacklemişti.",
+"Dünyadaki e-postaların yaklaşık %45'i spam veya kimlik avı (phishing) postalarıdır.",
+"İki Faktörlü Doğrulama (2FA), şifreniz çalınsa bile hesabınızın ele geçirilmesini %99 oranında engeller.",
+"Stuxnet, İran'ın nükleer tesislerini sabote etmek için özel olarak tasarlanmış, dünyanın bilinen ilk dijital silahıdır.",
+"Sıfır Gün (Zero-Day) açıkları, yazılım geliştiricilerin henüz bilmediği veya yamasını yayınlamadığı güvenlik açıklarına verilen addır.",
+"Dark Web, normal arama motorlarıyla (Google) bulunamayan ve çoğunlukla yasadışı faaliyetlerin yürütüldüğü internetin gizli kısmıdır.",
+"Kaba Kuvvet (Brute Force) saldırısı, bir şifreyi bulmak için milyonlarca farklı kombinasyonun otomatik olarak arka arkaya denenmesidir.",
+"Biyometrik verileriniz (parmak izi, yüz tanıma) çalındığında, şifreniz gibi değiştirilemediği için çok büyük bir risk oluşturur.",
+"Dünyanın en güvenli şifreleme algoritması olan AES-256'yı kırmak, mevcut en güçlü bilgisayarlarla bile milyarlarca yıl sürer.",
+"Hackerlar genellikle ağlara sızmak yerine, şifresi '123456' olan veya güncellenmemiş sistemleri tespit ederek içeri girerler.",
+"IoT (Nesnelerin İnterneti) cihazları olan akıllı buzdolapları veya kameralar, genellikle çok zayıf güvenlikli oldukları için devasa siber saldırılarda 'zombi bot' olarak kullanılırlar."
+]}};
 
 // ===== STATE =====
+var xp=parseInt(localStorage.getItem('bh_xp')||'0');
+var currentTheme=localStorage.getItem('bh_theme')||'theme-default';
+if(currentTheme!=='theme-default') document.body.className=currentTheme;
+
+function setTheme(t) {
+    document.body.className=t==='theme-default'?'':t;
+    localStorage.setItem('bh_theme', t);
+    closeModal('theme-modal');
+    showToast('Tema Degistirildi!');
+}
+
+function getLevel(x) { return Math.floor(Math.sqrt(x/50)) + 1; }
+function getRankName(lvl) {
+    if(lvl<3) return 'Acemi'; if(lvl<6) return 'Ogrenci'; if(lvl<10) return 'Cirak';
+    if(lvl<15) return 'Kasif'; if(lvl<22) return 'Bilgin'; if(lvl<30) return 'Ustad';
+    if(lvl<40) return 'Deha'; if(lvl<50) return 'Efsane'; return 'THYKE VELIAHTI';
+}
+function renderXp() {
+    var lvl=getLevel(xp);
+    var curLvlXp=50*Math.pow(lvl-1,2);
+    var nextLvlXp=50*Math.pow(lvl,2);
+    var pct=Math.min(100, Math.max(0, ((xp-curLvlXp)/(nextLvlXp-curLvlXp))*100));
+    document.getElementById('rank-name').textContent=getRankName(lvl);
+    document.getElementById('level-display').textContent='Seviye '+lvl;
+    document.getElementById('xp-fill').style.width=pct+'%';
+    document.getElementById('xp-label').textContent=xp+' / '+nextLvlXp+' XP';
+}
+function addXp(amt) {
+    var oldLvl=getLevel(xp);
+    xp+=amt; localStorage.setItem('bh_xp',xp);
+    var newLvl=getLevel(xp);
+    if(newLvl>oldLvl) { showMilestone({e:'\uD83C\uDF1F',t:'Seviye Atladi!',m:'Tebrikler, Seviye '+newLvl+' oldun!'}); launchConfetti(); sndMilestone(); }
+    renderXp();
+}
+renderXp();
 var allFacts=[], seenFacts={}, favorites=JSON.parse(localStorage.getItem('bh_fav4')||'[]'), currentFact=null, currentFactIndex=-1, categoryFilter='all', streak=0, bestStreak=parseInt(localStorage.getItem('bh_best2')||'0'), autoInt=null, factHistory=[], quizScore=parseInt(localStorage.getItem('bh_quiz3')||'0'), quizTotal=parseInt(localStorage.getItem('bh_quizT3')||'0'), soundOn=localStorage.getItem('bh_snd')!=='off', totalEverSeen=parseInt(localStorage.getItem('bh_ts2')||'0');
 var unlockedAch=JSON.parse(localStorage.getItem('bh_ach2')||'[]');
 
@@ -946,11 +1061,16 @@ function getDailyFact(){var today=new Date().toISOString().slice(0,10);var seed=
 function showDailyFact(){openModal('daily-modal');var f=getDailyFact();var today=new Date().toLocaleDateString('tr-TR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});document.getElementById('daily-body').innerHTML='<div style="text-align:center;margin-bottom:20px"><div style="font-size:.75rem;color:var(--text3);margin-bottom:8px">'+today+'</div><div style="font-size:3rem;margin-bottom:8px">'+f.emoji+'</div><div class="fact-category-badge" style="background:rgba('+f.color+',.2);color:rgba('+f.color+',1)">'+f.category+'</div></div><div style="font-size:1.1rem;line-height:1.8;text-align:center;padding:20px;background:rgba(255,255,255,.03);border-radius:16px;border:1px solid rgba(255,255,255,.06)">'+f.text+'</div><div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>';setTimeout(launchConfetti,300)}
 
 // ===== SEARCH =====
-function handleSearch(){var q=document.getElementById('global-search').value.trim().toLowerCase();var box=document.getElementById('search-results');if(!q||q.length<2){box.style.display='none';return}var results=allFacts.filter(function(f){return f.text.toLowerCase().indexOf(q)>=0}).slice(0,15);if(!results.length){box.style.display='block';box.innerHTML='<div style="padding:12px;color:var(--text3);text-align:center;font-size:.8rem">Sonuc bulunamadi</div>';return}box.style.display='block';box.innerHTML=results.map(function(f){var idx=allFacts.indexOf(f);var highlighted=f.text.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<strong style="color:var(--accent3)">$1</strong>');return'<div class="sr-item" onclick="jumpToFact('+idx+')"><span style="font-size:1rem;flex-shrink:0">'+f.emoji+'</span><div>'+highlighted+'</div></div>'}).join('')}
+function handleSearch(){var q=document.getElementById('global-search').value.trim().toLowerCase();
+if(q==='thyke' && unlockedAch.indexOf('secret_thyke')<0) {
+    unlockedAch.push('secret_thyke'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+    addXp(1000); launchConfetti(); showToast('\uD83D\uDC51 THYKE GIZMI BULUNDU! +1000 XP');
+    document.getElementById('global-search').value=''; return;
+}var box=document.getElementById('search-results');if(!q||q.length<2){box.style.display='none';return}var results=allFacts.filter(function(f){return f.text.toLowerCase().indexOf(q)>=0}).slice(0,15);if(!results.length){box.style.display='block';box.innerHTML='<div style="padding:12px;color:var(--text3);text-align:center;font-size:.8rem">Sonuc bulunamadi</div>';return}box.style.display='block';box.innerHTML=results.map(function(f){var idx=allFacts.indexOf(f);var highlighted=f.text.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<strong style="color:var(--accent3)">$1</strong>');return'<div class="sr-item" onclick="jumpToFact('+idx+')"><span style="font-size:1rem;flex-shrink:0">'+f.emoji+'</span><div>'+highlighted+'</div></div>'}).join('')}
 function jumpToFact(idx){var f=allFacts[idx];currentFact=f;currentFactIndex=idx;seenFacts[f.text]=true;totalEverSeen++;localStorage.setItem('bh_ts2',totalEverSeen);factHistory.unshift({text:f.text,category:f.category,emoji:f.emoji,color:f.color,time:new Date().toLocaleTimeString('tr-TR')});document.getElementById('global-search').value='';document.getElementById('search-results').style.display='none';renderFactCard();sndClick();checkMS();checkAchievements()}
 
 // ===== NEXT FACT =====
-function nextFact(){if(window.speechSynthesis)window.speechSynthesis.cancel();var pool=getPool();if(!pool.length)return;var unseen=pool.filter(function(f){return!seenFacts[f.text]});var src=unseen.length?unseen:pool;var fact=src[Math.floor(Math.random()*src.length)];if(!seenFacts[fact.text]){streak++;totalEverSeen++;localStorage.setItem('bh_ts2',totalEverSeen)}else{streak=0}if(streak>bestStreak){bestStreak=streak;localStorage.setItem('bh_best2',bestStreak)}currentFact=fact;currentFactIndex=allFacts.indexOf(fact);seenFacts[fact.text]=true;factHistory.unshift({text:fact.text,category:fact.category,emoji:fact.emoji,color:fact.color,time:new Date().toLocaleTimeString('tr-TR')});if(factHistory.length>200)factHistory.pop();renderFactCard();sndClick();checkMS();checkAchievements();if(navigator.vibrate)try{navigator.vibrate(10)}catch(e){}}
+function nextFact(){if(window.speechSynthesis)window.speechSynthesis.cancel();var pool=getPool();if(!pool.length)return;var unseen=pool.filter(function(f){return!seenFacts[f.text]});var src=unseen.length?unseen:pool;var fact=src[Math.floor(Math.random()*src.length)];if(!seenFacts[fact.text]){streak++;totalEverSeen++;localStorage.setItem('bh_ts2',totalEverSeen)}else{streak=0}if(streak>bestStreak){bestStreak=streak;localStorage.setItem('bh_best2',bestStreak)}currentFact=fact;currentFactIndex=allFacts.indexOf(fact);seenFacts[fact.text]=true; addXp(10);factHistory.unshift({text:fact.text,category:fact.category,emoji:fact.emoji,color:fact.color,time:new Date().toLocaleTimeString('tr-TR')});if(factHistory.length>200)factHistory.pop();renderFactCard();sndClick();checkMS();checkAchievements();if(navigator.vibrate)try{navigator.vibrate(10)}catch(e){}}
 function renderFactCard(){var fact=currentFact;if(!fact)return;var t=document.getElementById('fact-text'),em=document.getElementById('fact-emoji'),bg=document.getElementById('fact-badge'),nm=document.getElementById('fact-number'),rb=document.getElementById('rarity-badge');t.style.opacity='0';document.getElementById('speak-btn').style.color='';setTimeout(function(){em.textContent=fact.emoji;em.style.animation='none';em.offsetHeight;em.style.animation='bounceIn .5s ease';bg.textContent=fact.category;bg.style.background='rgba('+fact.color+',.2)';bg.style.color='rgba('+fact.color+',1)';t.textContent=fact.text;t.style.opacity='1';nm.textContent='#'+(currentFactIndex+1)+' / '+allFacts.length;var rarity=getRarity(currentFactIndex);rb.textContent=rarity.name;rb.className='rarity-badge '+rarity.cls;rb.style.display='block';updateLikeBtn();var sc=Object.keys(seenFacts).length;document.getElementById('seen-count').textContent=sc;document.getElementById('streak-count').textContent=streak;document.getElementById('best-streak').textContent=bestStreak;var pct=((sc/allFacts.length)*100).toFixed(1);document.getElementById('progress-fill').style.width=pct+'%';document.getElementById('progress-label').textContent=pct+'% kesfedildi ('+sc+'/'+allFacts.length+')'}, 300)}
 
 // ===== RANDOM CATEGORY =====
@@ -1022,3 +1142,5 @@ nextFact();
 </script>
 </body>
 </html>
+
+
