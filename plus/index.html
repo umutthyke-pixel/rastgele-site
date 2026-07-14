@@ -1503,16 +1503,17 @@ if((q==='karanlik' || q==='siyah') && unlockedAch.indexOf('easter_dark')<0) {
     unlockedAch.push('easter_dark'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
     addXp(750); showToast('\uD83C\uDF11 Zifiri Karanlik! +750 XP');
     document.body.style.filter = 'brightness(0.1)';
-    setTimeout(function(){ document.body.style.filter=''; }, 5000);
+    setTimeout(function(){ document.body.style.filter=''; }, 10000);
     document.getElementById('global-search').value=''; return;
 }
 if((q==='gokkusagi' || q==='rainbow') && unlockedAch.indexOf('easter_rainbow')<0) {
     unlockedAch.push('easter_rainbow'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
     addXp(1100); showToast('\uD83C\uDF08 Renkler Cildirdi! +1100 XP');
     var st = document.createElement('style');
-    st.innerHTML = '@keyframes rainbow { 0%{filter:hue-rotate(0deg);} 100%{filter:hue-rotate(360deg);} } body { animation: rainbow 2s linear infinite; }';
+    st.innerHTML = '@keyframes rainbow { 0%{filter:hue-rotate(0deg);} 100%{filter:hue-rotate(360deg);} } body { animation: rainbow 2s linear 5; }';
     document.head.appendChild(st);
-    document.getElementById('global-search').value=''; return;
+    setTimeout(function(){ st.remove(); }, 10000);
+document.getElementById('global-search').value=''; return;
 }
 if((q==='hiz treni' || q==='rollercoaster') && unlockedAch.indexOf('easter_coaster')<0) {
     unlockedAch.push('easter_coaster'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
@@ -1520,12 +1521,7 @@ if((q==='hiz treni' || q==='rollercoaster') && unlockedAch.indexOf('easter_coast
     var card = document.getElementById('fact-card');
     card.style.transition = 'transform 0.5s ease-in-out';
     var steps = [ {x:100,y:-100,r:15}, {x:-100,y:100,r:-15}, {x:0,y:-200,r:30}, {x:0,y:0,r:0} ];
-    var i=0;
-    var cInt = setInterval(function(){
-        if(i>=steps.length) { clearInterval(cInt); card.style.transition=''; return; }
-        card.style.transform = 'translate('+steps[i].x+'px, '+steps[i].y+'px) rotate('+steps[i].r+'deg)';
-        i++;
-    }, 500);
+    var i=0; var totalSteps=20; var cInt = setInterval(function(){ if(i>=totalSteps) { clearInterval(cInt); card.style.transition=''; card.style.transform=''; return; } var step = steps[i%steps.length]; card.style.transform = 'translate('+step.x+'px, '+step.y+'px) rotate('+step.r+'deg)'; i++; }, 500);
     document.getElementById('global-search').value=''; return;
 }
 if(q==='404' && unlockedAch.indexOf('secret_404')<0) {
@@ -1804,7 +1800,7 @@ document.addEventListener('click', function(e){
             document.head.appendChild(style);
             document.body.style.animation = 'shake 0.2s infinite';
             playSound(50, 0.5, 'sawtooth');
-            setTimeout(function(){ document.body.style.animation=''; playSound(50, 0.5, 'sawtooth'); }, 3000);
+            setTimeout(function(){ document.body.style.animation=''; playSound(50, 0.5, 'sawtooth'); }, 8000);
         }
     }
 });
@@ -2127,7 +2123,7 @@ document.getElementById('global-search').addEventListener('keydown', function(e)
                     drps[i]++;
                 }
             },33);
-            setTimeout(function(){ clearInterval(mxInt); cvs.remove(); document.body.style.background=''; document.body.style.color=''; }, 5000);
+            setTimeout(function(){ clearInterval(mxInt); cvs.remove(); document.body.style.background=''; document.body.style.color=''; }, 10000);
             this.value=''; return;
         }
 
@@ -2169,7 +2165,7 @@ document.getElementById('global-search').addEventListener('keydown', function(e)
         if(v==='barrel roll' || v==='do a barrel roll') {
             document.body.style.transition = 'transform 2s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
             document.body.style.transform = 'rotate(360deg)';
-            setTimeout(function(){ document.body.style.transition=''; document.body.style.transform=''; }, 2000);
+            setTimeout(function(){ document.body.style.transition=''; document.body.style.transform=''; }, 5000);
             if(unlockedAch.indexOf('barrel_roll')<0) {
                 unlockedAch.push('barrel_roll'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
                 addXp(500); showToast('\uD83D\uDD04 Basim dondu! +500 XP');
@@ -2314,6 +2310,7 @@ nextFact();
 </script>
 </body>
 </html>
+
 
 
 
