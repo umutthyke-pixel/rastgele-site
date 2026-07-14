@@ -11,15 +11,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a1a;--card:rgba(255,255,255,.06);--card-border:rgba(255,255,255,.1);--text:rgba(255,255,255,.9);--text2:rgba(255,255,255,.5);--text3:rgba(255,255,255,.25);--accent1:#6c63ff;--accent2:#ff6584;--accent3:#ffc837;--accent4:#00d2ff;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#030014;--card:rgba(255,255,255,.05);--card-border:rgba(255,255,255,.08);--card-hover:rgba(255,255,255,.08);--text:rgba(255,255,255,.92);--text2:rgba(255,255,255,.55);--text3:rgba(255,255,255,.28);--accent1:#7c3aed;--accent2:#ec4899;--accent3:#f59e0b;--accent4:#06b6d4;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}
 body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;min-height:100dvh;color:#fff;overflow-x:hidden;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
 .bg-orbs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.bg-orbs span{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;animation:floatOrb 20s ease-in-out infinite alternate}
+.bg-orbs span{position:absolute;border-radius:50%;filter:blur(100px);opacity:.3;animation:floatOrb 25s ease-in-out infinite alternate}
 .bg-orbs span:nth-child(1){width:600px;height:600px;background:var(--accent1);top:-10%;left:-10%}
 .bg-orbs span:nth-child(2){width:500px;height:500px;background:var(--accent2);bottom:-10%;right:-10%;animation-delay:-5s}
 .bg-orbs span:nth-child(3){width:400px;height:400px;background:var(--accent4);top:50%;left:50%;animation-delay:-10s}
 .bg-orbs span:nth-child(4){width:350px;height:350px;background:var(--accent3);bottom:20%;left:10%;animation-delay:-15s}
-@keyframes floatOrb{0%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,-40px) scale(1.15)}100%{transform:translate(-30px,50px) scale(.95)}}
+@keyframes floatOrb{0%{transform:translate(0,0) scale(1)}33%{transform:translate(80px,-60px) scale(1.2)}66%{transform:translate(-50px,40px) scale(0.9)}100%{transform:translate(30px,-30px) scale(1.1)}}
 #particles{position:fixed;inset:0;z-index:1;pointer-events:none}
 #confetti{position:fixed;inset:0;z-index:999;pointer-events:none}
 
@@ -69,8 +69,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;min-he
 .cat-pill:hover,.cat-pill:active{background:rgba(255,255,255,.08);color:#fff;transform:translateY(-1px)}
 .cat-pill.active{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;border-color:transparent;box-shadow:0 3px 12px rgba(108,99,255,.3)}
 
-.fact-card{background:var(--card);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:24px;border:1px solid var(--card-border);padding:30px 26px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.3);transition:transform .4s,box-shadow .4s;position:relative;overflow:hidden;margin-bottom:14px}
-.fact-card:hover{transform:translateY(-3px);box-shadow:0 14px 50px rgba(0,0,0,.4)}
+.fact-card{background:rgba(255,255,255,.04);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-radius:28px;border:1px solid rgba(255,255,255,.08);padding:34px 28px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.4),0 0 80px rgba(124,58,237,.08);transition:transform .4s,box-shadow .4s;position:relative;overflow:hidden;margin-bottom:18px}
+.fact-card:hover{transform:translateY(-4px);box-shadow:0 16px 60px rgba(0,0,0,.5),0 0 100px rgba(124,58,237,.12)}
 .fact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent2),var(--accent3))}
 
 .rarity-badge{position:absolute;top:12px;right:12px;padding:3px 10px;border-radius:8px;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
@@ -87,8 +87,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;min-he
 
 .actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
 .btn{padding:11px 20px;border-radius:13px;border:none;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent}
-.btn-primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;box-shadow:0 4px 18px rgba(108,99,255,.3)}
-.btn-primary:hover,.btn-primary:active{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 28px rgba(108,99,255,.5)}
+.btn-primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;box-shadow:0 4px 20px rgba(124,58,237,.35);position:relative;overflow:hidden}
+.btn-primary:hover,.btn-primary:active{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 32px rgba(124,58,237,.5)}
 .btn-sm{padding:9px 14px;font-size:.75rem;border-radius:11px}
 .btn-secondary{background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.08)}
 .btn-secondary:hover,.btn-secondary:active{background:rgba(255,255,255,.12);color:#fff;transform:translateY(-2px)}
@@ -1616,10 +1616,10 @@ function generateQuiz(){var seenKeys=Object.keys(seenFacts);if(seenKeys.length<4
 function answerQuiz(btn,ans,correct){if(quizAnswered)return;quizAnswered=true;quizTotal++;var ok=ans===correct;if(ok){quizScore++;playSound(523,.1);setTimeout(function(){playSound(784,.15)},100)}else{playSound(300,.15,'square')}localStorage.setItem('bh_quiz3',quizScore);localStorage.setItem('bh_quizT3',quizTotal);var opts=btn.parentElement.querySelectorAll('.quiz-opt');for(var i=0;i<opts.length;i++){opts[i].classList.add('disabled');if(opts[i].textContent.indexOf(correct)>=0)opts[i].classList.add('correct')}if(!ok)btn.classList.add('wrong');if(ok){showToast('Dogru!');launchConfetti()}else showToast('Yanlis!');checkAchievements()}
 
 // ===== STATS =====
-function renderStats(){var cats=Object.keys(factsDB);var rows='';for(var i=0;i<cats.length;i++){var c=cats[i],cat=factsDB[c],total=cat.facts.length;var seen=cat.facts.filter(function(f){return seenFacts[f]}).length;var pct=total?((seen/total)*100).toFixed(0):0;var faved=favorites.filter(function(f){return f.category===c}).length;rows+='<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:1.2rem">'+cat.emoji+'</span><div style="flex:1"><div style="font-size:.75rem;font-weight:600;margin-bottom:3px">'+c+'</div><div class="progress-bar" style="height:3px;margin-bottom:2px"><div class="progress-fill" style="width:'+pct+'%"></div></div><div style="font-size:.55rem;color:var(--text3)">'+seen+'/'+total+' - '+faved+' fav</div></div><div style="font-size:.75rem;font-weight:700;color:var(--text2)">'+pct+'%</div></div>'}var ts=Object.keys(seenFacts).length,ta=allFacts.length;document.getElementById('stats-body').innerHTML='<div style="text-align:center;margin-bottom:16px"><div style="font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+((ts/ta)*100).toFixed(1)+'%</div><div style="font-size:.7rem;color:var(--text2)">Toplam Kesif</div><div style="font-size:.6rem;color:var(--text3);margin-top:4px">'+ts+'/'+ta+' bilgi - '+favorites.length+' fav - Seri: '+streak+' - En iyi: '+bestStreak+' - Quiz: '+quizScore+'/'+quizTotal+'</div></div><h3 style="font-size:.75rem;font-weight:600;margin-bottom:10px;color:var(--text2)">Kategori Bazli</h3>'+rows+'<div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>'; var eggIds = ['secret_404', 'secret_illu', 'secret_thyke', 'god_mode', 'emoji_master', 'true_love', 'konami', 'time_traveler', 'boss_mode', 'earthquake', 'secret_song', 'barrel_roll', 'cat_paw', 'math_pi', 'hidden_eye', 'matrix_rain', 'zero_gravity', 'disco_mode', 'mirror_world', 'the_vault', 'dexter_blood', 'jumpscare', 'magic_trick', 'retro_gamer', 'invisibility', 'black_hole', 'alien_abduction', 'meteor_strike', 'jackpot_win', 'broken_glass', 'illuminati_conf', 'hacker_mode', 'warp_speed', 'cat_apoc', 'on_fire', 'dev_mode', 'easter_thor', 'easter_zombie', 'easter_dark', 'easter_rainbow', 'easter_coaster', 'easter_thyke_type', 'easter_resize', 'easter_selection', 'easter_double_click', 'easter_sound_spam', 'easter_drag_card', 'easter_idle', 'easter_mouse_leave', 'easter_scroll', 'secret_batman', 'secret_spidey', 'secret_ironman', 'secret_superman'];
+function renderStats(){var cats=Object.keys(factsDB);var rows='';for(var i=0;i<cats.length;i++){var c=cats[i],cat=factsDB[c],total=cat.facts.length;var seen=cat.facts.filter(function(f){return seenFacts[f]}).length;var pct=total?((seen/total)*100).toFixed(0):0;var faved=favorites.filter(function(f){return f.category===c}).length;rows+='<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:1.2rem">'+cat.emoji+'</span><div style="flex:1"><div style="font-size:.75rem;font-weight:600;margin-bottom:3px">'+c+'</div><div class="progress-bar" style="height:3px;margin-bottom:2px"><div class="progress-fill" style="width:'+pct+'%"></div></div><div style="font-size:.55rem;color:var(--text3)">'+seen+'/'+total+' - '+faved+' fav</div></div><div style="font-size:.75rem;font-weight:700;color:var(--text2)">'+pct+'%</div></div>'}var ts=Object.keys(seenFacts).length,ta=allFacts.length;document.getElementById('stats-body').innerHTML='<div style="text-align:center;margin-bottom:16px"><div style="font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+((ts/ta)*100).toFixed(1)+'%</div><div style="font-size:.7rem;color:var(--text2)">Toplam Kesif</div><div style="font-size:.6rem;color:var(--text3);margin-top:4px">'+ts+'/'+ta+' bilgi - '+favorites.length+' fav - Seri: '+streak+' - En iyi: '+bestStreak+' - Quiz: '+quizScore+'/'+quizTotal+'</div></div><h3 style="font-size:.75rem;font-weight:600;margin-bottom:10px;color:var(--text2)">Kategori Bazli</h3>'+rows+'<div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>'; var eggIds = ['secret_404', 'secret_illu', 'secret_thyke', 'god_mode', 'emoji_master', 'true_love', 'konami', 'time_traveler', 'boss_mode', 'earthquake', 'secret_song', 'barrel_roll', 'cat_paw', 'math_pi', 'hidden_eye', 'matrix_rain', 'zero_gravity', 'disco_mode', 'mirror_world', 'the_vault', 'dexter_blood', 'jumpscare', 'magic_trick', 'retro_gamer', 'invisibility', 'black_hole', 'alien_abduction', 'meteor_strike', 'jackpot_win', 'broken_glass', 'illuminati_conf', 'hacker_mode', 'warp_speed', 'cat_apoc', 'on_fire', 'dev_mode', 'easter_thor', 'easter_zombie', 'easter_dark', 'easter_rainbow', 'easter_coaster', 'easter_thyke_type', 'easter_resize', 'easter_selection', 'easter_double_click', 'easter_sound_spam', 'easter_drag_card', 'easter_idle', 'easter_mouse_leave', 'easter_scroll', 'secret_batman', 'secret_spidey', 'secret_ironman', 'secret_superman', 'egg_logo_spin', 'egg_pixel_hunter', 'egg_card_flip', 'egg_painter', 'egg_corner_runner', 'egg_long_press', 'egg_crazy_clicker', 'egg_shake_master', 'egg_sos', 'egg_piano', 'egg_ghost', 'egg_fire_dance', 'egg_night_owl', 'egg_low_battery', 'egg_weekend', 'egg_early_bird', 'egg_speed_typer', 'egg_scroll_monster', 'egg_tab_traveler', 'egg_paste_master'];
 var foundEggs = 0;
 eggIds.forEach(function(id){ if(unlockedAch.indexOf(id)>-1) foundEggs++; });
-document.getElementById('stats-body').innerHTML += '<div style="margin-top:20px;padding:15px;background:var(--card-hover);border-radius:12px;border:1px dashed var(--accent2)"><div style="font-size:1.1rem;font-weight:bold;margin-bottom:10px;">\uD83D\uDD75\uFE0F Gizem Avcisi (Sirlar)</div><div style="font-size:1.8rem;color:var(--accent1);font-weight:900;">' + foundEggs + ' / 54</div><div style="font-size:0.85rem;color:var(--text2);">Sitedeki bulmacalari cozerek tum sirlari bul!</div></div><div style="text-align:center;margin-top:20px"><button class="btn btn-primary" style="background:#e74c3c" onclick="if(confirm(\'DIKKAT! Tum seviyen, XP puanlarin, basarimlarin ve buldugun Easter Eggler tamamen SIFIRLANACAK! Emin misin?\')){localStorage.clear();location.reload();}">\u26A0\uFE0F Tum Ilerlemeyi Sifirla</button></div>';
+document.getElementById('stats-body').innerHTML += '<div style="margin-top:20px;padding:15px;background:var(--card-hover);border-radius:12px;border:1px dashed var(--accent2)"><div style="font-size:1.1rem;font-weight:bold;margin-bottom:10px;">\uD83D\uDD75\uFE0F Gizem Avcisi (Sirlar)</div><div style="font-size:1.8rem;color:var(--accent1);font-weight:900;">' + foundEggs + ' / 74</div><div style="font-size:0.85rem;color:var(--text2);">Sitedeki bulmacalari cozerek tum sirlari bul!</div></div><div style="text-align:center;margin-top:20px"><button class="btn btn-primary" style="background:#e74c3c" onclick="if(confirm(\'DIKKAT! Tum seviyen, XP puanlarin, basarimlarin ve buldugun Easter Eggler tamamen SIFIRLANACAK! Emin misin?\')){localStorage.clear();location.reload();}">\u26A0\uFE0F Tum Ilerlemeyi Sifirla</button></div>';
 }
 
 // ===== COPY / SHARE / SPEAK =====
@@ -1901,7 +1901,345 @@ window.addEventListener('scroll', function(){
     }
 });
 
-// duplicate blocks removed - originals are at lines 1864-1891
+// ===== 20 NEW INTERACTION EASTER EGGS =====
+
+// 1. Logo Spin (Shift+Click on title)
+document.querySelector('.nav-brand').addEventListener('click', function(e){
+    if(e.shiftKey && unlockedAch.indexOf('egg_logo_spin')<0){
+        if(!lockEggAnim(10000)) return;
+        unlockedAch.push('egg_logo_spin'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(600); showToast('\uD83C\uDF00 Döndür Beni Bebeğim! +600 XP');
+        var logo = e.currentTarget; logo.style.transition='transform 2s cubic-bezier(.17,.67,.12,1.2)'; logo.style.transform='rotate(1080deg)';
+        for(var i=0;i<20;i++){var s=document.createElement('div');s.textContent='\u2B50';s.style.cssText='position:fixed;font-size:'+(10+Math.random()*20)+'px;left:'+e.clientX+'px;top:'+e.clientY+'px;pointer-events:none;z-index:999999;transition:all 1.5s ease-out;opacity:1;';document.body.appendChild(s);setTimeout(function(el){el.style.left=(parseFloat(el.style.left)+Math.random()*200-100)+'px';el.style.top=(parseFloat(el.style.top)-100-Math.random()*200)+'px';el.style.opacity='0';setTimeout(function(){el.remove();},1500);}.bind(null,s),10);}
+        var sInt=setInterval(function(){playSound(600+Math.random()*800,0.08,'sine');},150);
+        setTimeout(function(){logo.style.transform='';clearInterval(sInt);setTimeout(function(){logo.style.transition='';},1000);},10000);
+    }
+});
+
+// 2. Hidden Pixel (bottom-right corner)
+var hiddenPx = document.createElement('div');
+hiddenPx.style.cssText='position:fixed;bottom:3px;right:3px;width:8px;height:8px;z-index:100;cursor:default;opacity:0.01;';
+document.body.appendChild(hiddenPx);
+hiddenPx.addEventListener('click', function(){
+    if(unlockedAch.indexOf('egg_pixel_hunter')<0){
+        if(!lockEggAnim(10000)) return;
+        unlockedAch.push('egg_pixel_hunter'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(2000); showToast('\uD83C\uDFAF Piksel Avcısı! +2000 XP');
+        var portal = document.createElement('div');portal.style.cssText='position:fixed;bottom:0;right:0;width:0;height:0;border-radius:50%;background:conic-gradient(#7c3aed,#06b6d4,#ec4899,#7c3aed);z-index:999999;pointer-events:none;transition:all 2s cubic-bezier(.17,.67,.12,1.2);opacity:0.9;';
+        document.body.appendChild(portal);
+        setTimeout(function(){portal.style.width='200vw';portal.style.height='200vw';portal.style.bottom='-50vw';portal.style.right='-50vw';},50);
+        var coinInt=setInterval(function(){var c=document.createElement('div');c.textContent='\uD83E\uDE99';c.style.cssText='position:fixed;left:'+(Math.random()*100)+'vw;top:-30px;font-size:'+(20+Math.random()*20)+'px;z-index:9999999;pointer-events:none;transition:top 2s ease-in;';document.body.appendChild(c);setTimeout(function(){c.style.top='110vh';},50);playSound(800+Math.random()*400,0.05,'sine');setTimeout(function(){c.remove();},2500);},200);
+        setTimeout(function(){portal.style.opacity='0';clearInterval(coinInt);setTimeout(function(){portal.remove();},2000);},10000);
+    }
+});
+
+// 3. Card Flip (hold emoji 3s)
+var emojiEl = document.getElementById('fact-emoji');
+var emojiTimer;
+emojiEl.addEventListener('mousedown', function(){emojiTimer=setTimeout(function(){
+    if(unlockedAch.indexOf('egg_card_flip')<0){
+        unlockedAch.push('egg_card_flip'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(500); showToast('\uD83D\uDD04 Ters Köşe! +500 XP');
+        var card=document.getElementById('fact-card');card.style.transition='transform 1s';card.style.transform='rotateY(180deg)';
+        playSound(400,0.3,'triangle');
+        setTimeout(function(){card.style.transform='';setTimeout(function(){card.style.transition='';},1000);},10000);
+    }
+},3000);});
+emojiEl.addEventListener('mouseup', function(){clearTimeout(emojiTimer);});
+emojiEl.addEventListener('mouseleave', function(){clearTimeout(emojiTimer);});
+
+// 4. Painter (draw circles with mouse)
+var mouseTrail=[];var paintCheck;
+document.addEventListener('mousemove',function(e){
+    mouseTrail.push({x:e.clientX,y:e.clientY,t:Date.now()});
+    if(mouseTrail.length>200) mouseTrail.shift();
+    clearTimeout(paintCheck);
+    paintCheck=setTimeout(function(){
+        if(unlockedAch.indexOf('egg_painter')>=0) return;
+        var recent=mouseTrail.filter(function(p){return Date.now()-p.t<5000;});
+        if(recent.length<50) return;
+        var cx=0,cy=0;recent.forEach(function(p){cx+=p.x;cy+=p.y;});cx/=recent.length;cy/=recent.length;
+        var angles=recent.map(function(p){return Math.atan2(p.y-cy,p.x-cx);});
+        var totalRot=0;for(var i=1;i<angles.length;i++){var d=angles[i]-angles[i-1];if(d>Math.PI)d-=2*Math.PI;if(d<-Math.PI)d+=2*Math.PI;totalRot+=d;}
+        if(Math.abs(totalRot)>Math.PI*6){
+            if(!lockEggAnim(10000)) return;
+            unlockedAch.push('egg_painter'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            addXp(800); showToast('\uD83C\uDFA8 Ressam! +800 XP');
+            var cv=document.createElement('canvas');cv.width=window.innerWidth;cv.height=window.innerHeight;cv.style.cssText='position:fixed;top:0;left:0;z-index:999999;pointer-events:none;';document.body.appendChild(cv);var ctx2=cv.getContext('2d');ctx2.lineWidth=4;ctx2.lineCap='round';
+            var colors=['#7c3aed','#ec4899','#06b6d4','#f59e0b','#10b981'];var ci=0;
+            recent.forEach(function(p,i){if(i===0)return;ctx2.strokeStyle=colors[ci%colors.length];ctx2.beginPath();ctx2.moveTo(recent[i-1].x,recent[i-1].y);ctx2.lineTo(p.x,p.y);ctx2.stroke();ci++;});
+            var pInt=setInterval(function(){playSound(300+Math.random()*500,0.05,'sine');},300);
+            setTimeout(function(){cv.style.transition='opacity 2s';cv.style.opacity='0';clearInterval(pInt);setTimeout(function(){cv.remove();},2000);},10000);
+        }
+    },500);
+});
+
+// 5. Corner Runner (visit all 4 corners)
+var corners={tl:false,tr:false,br:false,bl:false};
+document.addEventListener('mousemove',function(e){
+    if(unlockedAch.indexOf('egg_corner_runner')>=0) return;
+    var w=window.innerWidth,h=window.innerHeight,m=60;
+    if(e.clientX<m&&e.clientY<m) corners.tl=true;
+    if(e.clientX>w-m&&e.clientY<m) corners.tr=true;
+    if(e.clientX>w-m&&e.clientY>h-m) corners.br=true;
+    if(e.clientX<m&&e.clientY>h-m) corners.bl=true;
+    if(corners.tl&&corners.tr&&corners.br&&corners.bl){
+        if(!lockEggAnim(10000)) return;
+        unlockedAch.push('egg_corner_runner'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(650); showToast('\uD83D\uDCD0 Köşe Kaçkını! +650 XP');
+        var kst=document.createElement('style');kst.innerHTML='@keyframes kaleid{0%{filter:hue-rotate(0deg) saturate(2);}100%{filter:hue-rotate(360deg) saturate(2);}} body{animation:kaleid 2s linear 5 !important;}';
+        document.head.appendChild(kst);
+        var kInt=setInterval(function(){playSound(200+Math.random()*600,0.08,'triangle');},400);
+        setTimeout(function(){kst.remove();clearInterval(kInt);},10000);
+    }
+});
+
+// 6. Long Press on Next Button (10s hold)
+var nextBtn=document.getElementById('next-btn');var nextTimer;
+nextBtn.addEventListener('mousedown',function(){nextTimer=setTimeout(function(){
+    if(unlockedAch.indexOf('egg_long_press')<0){
+        if(!lockEggAnim(10000)) return;
+        unlockedAch.push('egg_long_press'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(900); showToast('\uD83D\uDC46 Uzun Basış Ustası! +900 XP');
+        for(var i=0;i<30;i++){setTimeout(function(){var fw=document.createElement('div');fw.textContent=['🎆','🎇','✨','💥','🌟'][Math.floor(Math.random()*5)];fw.style.cssText='position:fixed;font-size:'+(20+Math.random()*40)+'px;left:'+(Math.random()*100)+'vw;top:'+(Math.random()*100)+'vh;pointer-events:none;z-index:999999;animation:bounceIn 0.5s;';document.body.appendChild(fw);playSound(300+Math.random()*700,0.1,'sine');setTimeout(function(){fw.remove();},2000);},i*300);}
+    }
+},10000);});
+nextBtn.addEventListener('mouseup',function(){clearTimeout(nextTimer);});
+nextBtn.addEventListener('mouseleave',function(){clearTimeout(nextTimer);});
+
+// 7. Crazy Clicker (20 clicks in 3s)
+var crazyClicks=0,crazyTimer;
+document.addEventListener('click',function(){
+    if(unlockedAch.indexOf('egg_crazy_clicker')>=0) return;
+    crazyClicks++;clearTimeout(crazyTimer);
+    crazyTimer=setTimeout(function(){crazyClicks=0;},3000);
+    if(crazyClicks>=20){
+        if(!lockEggAnim(10000)) return;
+        unlockedAch.push('egg_crazy_clicker'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(450); showToast('\uD83D\uDCA2 YAVAŞLA! +450 XP');
+        var warn=document.createElement('div');warn.textContent='YAVAŞLA!!!';warn.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:5rem;font-weight:900;color:#ff0000;z-index:999999;pointer-events:none;text-shadow:0 0 30px red;';document.body.appendChild(warn);
+        var wInt=setInterval(function(){warn.style.transform='translate(-50%,-50%) rotate('+(Math.random()*20-10)+'deg) scale('+(0.9+Math.random()*0.2)+')';document.body.style.transform='translate('+(Math.random()*6-3)+'px,'+(Math.random()*6-3)+'px)';playSound(100,0.15,'square');},100);
+        setTimeout(function(){warn.remove();clearInterval(wInt);document.body.style.transform='';},10000);
+    }
+});
+
+// 8. Shake Master (SSS key)
+var sCount=0,sTimer;
+document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT') return;
+    if(e.key.toLowerCase()==='s'){
+        sCount++;clearTimeout(sTimer);sTimer=setTimeout(function(){sCount=0;},1000);
+        if(sCount>=3&&unlockedAch.indexOf('egg_shake_master')<0){
+            if(!lockEggAnim(10000)) return;
+            unlockedAch.push('egg_shake_master'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            addXp(700); showToast('\uD83D\uDCF3 Deprem Ustası! +700 XP');
+            var jst=document.createElement('style');jst.innerHTML='@keyframes jelly{0%{transform:scale(1,1)}25%{transform:scale(0.9,1.1)}50%{transform:scale(1.1,0.9)}75%{transform:scale(0.95,1.05)}100%{transform:scale(1,1)}} .jelly-mode *{animation:jelly 0.5s infinite!important;}';document.head.appendChild(jst);document.body.classList.add('jelly-mode');
+            var crack=document.createElement('div');crack.style.cssText='position:fixed;top:0;left:50%;width:3px;height:100vh;background:linear-gradient(to bottom,transparent,#fff,transparent);z-index:999999;pointer-events:none;box-shadow:0 0 20px white;';document.body.appendChild(crack);
+            var jInt=setInterval(function(){playSound(50+Math.random()*50,0.3,'sawtooth');},200);
+            setTimeout(function(){document.body.classList.remove('jelly-mode');jst.remove();crack.remove();clearInterval(jInt);},10000);
+        }
+    }
+});
+
+// 9. SOS Signal (S-O-S keys)
+var sosSeq=['s','o','s'],sosIdx=0;
+document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT') return;
+    if(e.key.toLowerCase()===sosSeq[sosIdx]){sosIdx++;if(sosIdx===3){sosIdx=0;
+        if(unlockedAch.indexOf('egg_sos')<0){
+            if(!lockEggAnim(10000)) return;
+            unlockedAch.push('egg_sos'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            addXp(550); showToast('\uD83C\uDD98 SOS Çağrısı! +550 XP');
+            var sos=document.createElement('div');sos.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:999999;pointer-events:none;';
+            var beam=document.createElement('div');beam.style.cssText='position:absolute;top:50%;left:50%;width:10px;height:200vh;background:linear-gradient(to bottom,rgba(255,0,0,0.8),transparent);transform-origin:center top;';sos.appendChild(beam);document.body.appendChild(sos);
+            var angle=0;var bInt=setInterval(function(){angle+=3;beam.style.transform='rotate('+angle+'deg)';playSound(600,0.05,'sine');},50);
+            setTimeout(function(){sos.style.transition='opacity 2s';sos.style.opacity='0';clearInterval(bInt);setTimeout(function(){sos.remove();},2000);},10000);
+        }
+    }}else{sosIdx=0;}
+});
+
+// 10. Piano (D-O-R-E-M-I keys)
+var pianoSeq=['d','o','r','e','m','i'],pianoIdx=0;
+var pianoNotes=[262,294,330,349,392,440];
+document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT') return;
+    if(e.key.toLowerCase()===pianoSeq[pianoIdx]){
+        playSound(pianoNotes[pianoIdx],0.2,'sine');
+        pianoIdx++;if(pianoIdx===6){pianoIdx=0;
+            if(unlockedAch.indexOf('egg_piano')<0){
+                if(!lockEggAnim(10000)) return;
+                unlockedAch.push('egg_piano'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(750); showToast('\uD83C\uDFB9 Piyano Virtüözü! +750 XP');
+                var nInt=setInterval(function(){var note=document.createElement('div');note.textContent=['\uD83C\uDFB5','\uD83C\uDFB6','\u266A','\u266B'][Math.floor(Math.random()*4)];note.style.cssText='position:fixed;left:'+(Math.random()*100)+'vw;bottom:-30px;font-size:'+(20+Math.random()*30)+'px;z-index:999999;pointer-events:none;transition:all 3s ease-out;opacity:1;';document.body.appendChild(note);setTimeout(function(){note.style.bottom='110vh';note.style.opacity='0';},50);playSound(pianoNotes[Math.floor(Math.random()*6)],0.1,'sine');setTimeout(function(){note.remove();},3500);},300);
+                setTimeout(function(){clearInterval(nInt);},10000);
+            }
+        }
+    }else{pianoIdx=0;}
+});
+
+// 11. Ghost Mode (G-H-O-S-T keys)
+var ghostSeq=['g','h','o','s','t'],ghostIdx=0;
+document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT') return;
+    if(e.key.toLowerCase()===ghostSeq[ghostIdx]){ghostIdx++;if(ghostIdx===5){ghostIdx=0;
+        if(unlockedAch.indexOf('egg_ghost')<0){
+            if(!lockEggAnim(10000)) return;
+            unlockedAch.push('egg_ghost'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            addXp(600); showToast('\uD83D\uDC7B Hayalet Modu! +600 XP');
+            document.body.style.transition='opacity 1s';document.body.style.opacity='0.3';
+            var gInt=setInterval(function(){var g=document.createElement('div');g.textContent='\uD83D\uDC7B';g.style.cssText='position:fixed;left:'+(Math.random()*100)+'vw;top:'+(Math.random()*100)+'vh;font-size:'+(30+Math.random()*40)+'px;z-index:999999;pointer-events:none;opacity:0.6;transition:all 3s ease;';document.body.appendChild(g);playSound(200+Math.random()*200,0.05,'triangle');setTimeout(function(){g.style.opacity='0';g.style.transform='translateY(-100px)';},50);setTimeout(function(){g.remove();},3500);},500);
+            setTimeout(function(){document.body.style.opacity='1';clearInterval(gInt);setTimeout(function(){document.body.style.transition='';},1000);},10000);
+        }
+    }}else{ghostIdx=0;}
+});
+
+// 12. Fire Dance (Space x10)
+var spaceCount=0,spaceTimer;
+document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT') return;
+    if(e.code==='Space'){e.preventDefault();spaceCount++;clearTimeout(spaceTimer);spaceTimer=setTimeout(function(){spaceCount=0;},2000);
+        if(spaceCount>=10&&unlockedAch.indexOf('egg_fire_dance')<0){
+            if(!lockEggAnim(10000)) return;
+            unlockedAch.push('egg_fire_dance'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            addXp(500); showToast('\uD83D\uDD25 Ateş Dansı! +500 XP');
+            var fires=document.createElement('div');fires.style.cssText='position:fixed;bottom:0;left:0;width:100vw;height:0;z-index:999999;pointer-events:none;background:linear-gradient(to top,rgba(255,100,0,0.8),rgba(255,200,0,0.4),transparent);transition:height 2s;';document.body.appendChild(fires);
+            setTimeout(function(){fires.style.height='60vh';},50);
+            var fInt=setInterval(function(){playSound(50+Math.random()*100,0.1,'sawtooth');fires.style.height=(40+Math.random()*30)+'vh';},300);
+            setTimeout(function(){fires.style.height='0';clearInterval(fInt);setTimeout(function(){fires.remove();},2000);},10000);
+        }
+    }
+});
+
+// 13. Night Owl (visit between 00:00-04:00)
+(function(){
+    var h=new Date().getHours();
+    if(h>=0&&h<4&&unlockedAch.indexOf('egg_night_owl')<0){
+        setTimeout(function(){
+            unlockedAch.push('egg_night_owl'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            addXp(400); showToast('\uD83C\uDF19 Gece Kuşu! +400 XP');
+            var sky=document.createElement('div');sky.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:999998;pointer-events:none;';
+            for(var i=0;i<50;i++){var star=document.createElement('div');star.textContent='\u2B50';star.style.cssText='position:absolute;font-size:'+(5+Math.random()*10)+'px;left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;opacity:'+(0.3+Math.random()*0.7)+';animation:pulse '+(1+Math.random()*2)+'s infinite alternate;';sky.appendChild(star);}
+            var moon=document.createElement('div');moon.textContent='\uD83C\uDF19';moon.style.cssText='position:absolute;top:10%;right:15%;font-size:5rem;';sky.appendChild(moon);
+            var owl=document.createElement('div');owl.textContent='\uD83E\uDD89';owl.style.cssText='position:absolute;bottom:20%;left:20%;font-size:4rem;';sky.appendChild(owl);
+            document.body.appendChild(sky);
+            var nInt=setInterval(function(){playSound(300,0.03,'triangle');setTimeout(function(){playSound(250,0.03,'triangle');},500);},2000);
+            setTimeout(function(){sky.style.transition='opacity 2s';sky.style.opacity='0';clearInterval(nInt);setTimeout(function(){sky.remove();},2000);},10000);
+        },3000);
+    }
+})();
+
+// 14. Battery Hunter (low battery)
+(function(){
+    if(navigator.getBattery){
+        navigator.getBattery().then(function(bat){
+            if(bat.level<=0.2&&!bat.charging&&unlockedAch.indexOf('egg_low_battery')<0){
+                unlockedAch.push('egg_low_battery'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                addXp(350); showToast('\uD83D\uDD0B Tehlikeli Yaşıyorsun! +350 XP');
+                var bw=document.createElement('div');bw.innerHTML='\uD83D\uDD0B <span style="color:red;font-weight:900;font-size:2rem">DÜŞÜK PİL!</span>';bw.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:4rem;z-index:999999;pointer-events:none;text-align:center;';document.body.appendChild(bw);
+                var vg=document.createElement('div');vg.style.cssText='position:fixed;inset:0;box-shadow:inset 0 0 150px rgba(255,0,0,0.6);z-index:999998;pointer-events:none;';document.body.appendChild(vg);
+                var bInt=setInterval(function(){bw.style.opacity=bw.style.opacity==='0'?'1':'0';playSound(200,0.1,'square');},500);
+                setTimeout(function(){bw.remove();vg.remove();clearInterval(bInt);},10000);
+            }
+        });
+    }
+})();
+
+// 15. Weekend Warrior
+(function(){
+    var day=new Date().getDay();
+    if((day===0||day===6)&&unlockedAch.indexOf('egg_weekend')<0){
+        setTimeout(function(){
+            unlockedAch.push('egg_weekend'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            addXp(300); showToast('\uD83C\uDF89 Hafta Sonu Savaşçısı! +300 XP');
+            launchConfetti();setTimeout(launchConfetti,500);setTimeout(launchConfetti,1000);
+            playSound(523,0.2,'sine');setTimeout(function(){playSound(659,0.2,'sine');},200);setTimeout(function(){playSound(784,0.3,'sine');},400);
+        },5000);
+    }
+})();
+
+// 16. Early Bird (05:00-07:00)
+(function(){
+    var h=new Date().getHours();
+    if(h>=5&&h<7&&unlockedAch.indexOf('egg_early_bird')<0){
+        setTimeout(function(){
+            unlockedAch.push('egg_early_bird'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            addXp(400); showToast('\u2600\uFE0F Erken Kuş! +400 XP');
+            var sun=document.createElement('div');sun.style.cssText='position:fixed;bottom:-100px;left:50%;transform:translateX(-50%);width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,#ffd700,#ff8c00,transparent);z-index:999999;pointer-events:none;transition:bottom 3s ease-out;box-shadow:0 0 100px #ffd700;';document.body.appendChild(sun);
+            setTimeout(function(){sun.style.bottom='30vh';},100);
+            document.body.style.transition='background 3s';document.body.style.background='linear-gradient(to top,#ff8c00,#ffb347,#030014)';
+            var bInt=setInterval(function(){playSound(800+Math.random()*400,0.03,'sine');},500);
+            setTimeout(function(){sun.style.opacity='0';document.body.style.background='';clearInterval(bInt);setTimeout(function(){sun.remove();document.body.style.transition='';},2000);},10000);
+        },4000);
+    }
+})();
+
+// 17. Speed Typer (15+ chars in 2s)
+var typeCount=0,typeTimer;
+document.getElementById('global-search').addEventListener('input',function(){
+    typeCount++;clearTimeout(typeTimer);typeTimer=setTimeout(function(){typeCount=0;},2000);
+    if(typeCount>=15&&unlockedAch.indexOf('egg_speed_typer')<0){
+        if(!lockEggAnim(10000)) return;
+        unlockedAch.push('egg_speed_typer'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(500); showToast('\u2328\uFE0F Hız Şeytanı! +500 XP');
+        var mst=document.createElement('style');mst.innerHTML='@keyframes matfall{0%{top:-10%;opacity:1;}100%{top:110%;opacity:0;}}';document.head.appendChild(mst);
+        var mInt=setInterval(function(){var ch=document.createElement('div');ch.textContent=String.fromCharCode(33+Math.floor(Math.random()*93));ch.style.cssText='position:fixed;left:'+(Math.random()*100)+'vw;top:-10%;font-size:'+(14+Math.random()*20)+'px;color:#0f0;font-family:monospace;z-index:999999;pointer-events:none;animation:matfall '+(1+Math.random()*2)+'s linear forwards;';document.body.appendChild(ch);playSound(100+Math.random()*200,0.02,'square');setTimeout(function(){ch.remove();},3000);},50);
+        setTimeout(function(){clearInterval(mInt);mst.remove();},10000);
+    }
+});
+
+// 18. Scroll Monster (scroll top-bottom 3 times)
+var scrollDir=0,lastScrollY=0,scrollBounces=0,scrollBTimer;
+window.addEventListener('scroll',function(){
+    if(unlockedAch.indexOf('egg_scroll_monster')>=0) return;
+    var cur=window.scrollY,maxS=document.body.scrollHeight-window.innerHeight;
+    if(cur<=10&&lastScrollY>100){scrollBounces++;scrollDir=1;}
+    if(cur>=maxS-10&&lastScrollY<maxS-100){scrollBounces++;scrollDir=2;}
+    lastScrollY=cur;
+    clearTimeout(scrollBTimer);scrollBTimer=setTimeout(function(){scrollBounces=0;},10000);
+    if(scrollBounces>=6){
+        if(!lockEggAnim(10000)) return;
+        unlockedAch.push('egg_scroll_monster'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(550); showToast('\uD83D\uDCDC Kaydırma Canavarı! +550 XP');
+        var elev=document.createElement('div');elev.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:999999;pointer-events:none;overflow:hidden;';
+        var doorL=document.createElement('div');doorL.style.cssText='position:absolute;left:0;top:0;width:50%;height:100%;background:linear-gradient(to right,#333,#555);transition:transform 1s;border-right:3px solid #888;';
+        var doorR=document.createElement('div');doorR.style.cssText='position:absolute;right:0;top:0;width:50%;height:100%;background:linear-gradient(to left,#333,#555);transition:transform 1s;border-left:3px solid #888;';
+        elev.appendChild(doorL);elev.appendChild(doorR);document.body.appendChild(elev);
+        playSound(200,0.3,'square');
+        setTimeout(function(){doorL.style.transform='translateX(-100%)';doorR.style.transform='translateX(100%)';playSound(400,0.2,'sine');},1500);
+        var eInt=setInterval(function(){
+            doorL.style.transform='';doorR.style.transform='';playSound(200,0.2,'square');
+            setTimeout(function(){doorL.style.transform='translateX(-100%)';doorR.style.transform='translateX(100%)';playSound(400,0.2,'sine');},1500);
+        },3000);
+        setTimeout(function(){elev.style.transition='opacity 1s';elev.style.opacity='0';clearInterval(eInt);setTimeout(function(){elev.remove();},1500);},10000);
+    }
+});
+
+// 19. Tab Traveler (leave tab 30s, come back)
+var tabLeftTime=0;
+document.addEventListener('visibilitychange',function(){
+    if(document.hidden){tabLeftTime=Date.now();}
+    else{
+        if(tabLeftTime>0&&Date.now()-tabLeftTime>=30000&&unlockedAch.indexOf('egg_tab_traveler')<0){
+            unlockedAch.push('egg_tab_traveler'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+            addXp(400); showToast('\uD83D\uDD00 Beni Özledin mi? +400 XP');
+            var hug=document.createElement('div');hug.innerHTML='\uD83E\uDD17<br><span style="font-size:1.5rem;color:#fff">Beni özledin mi?</span>';hug.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:6rem;z-index:999999;pointer-events:none;text-align:center;transition:transform 1s cubic-bezier(.17,.67,.12,1.2);';document.body.appendChild(hug);
+            setTimeout(function(){hug.style.transform='translate(-50%,-50%) scale(1)';playSound(523,0.2,'sine');setTimeout(function(){playSound(659,0.2,'sine');},200);},100);
+            setTimeout(function(){hug.style.transform='translate(-50%,-50%) scale(0)';setTimeout(function(){hug.remove();},1000);},10000);
+        }
+        tabLeftTime=0;
+    }
+});
+
+// 20. Paste Master (Ctrl+V in search)
+document.getElementById('global-search').addEventListener('paste',function(){
+    if(unlockedAch.indexOf('egg_paste_master')<0){
+        unlockedAch.push('egg_paste_master'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        addXp(350); showToast('\uD83D\uDCCB Yapıştır Ustası! +350 XP');
+        var pm=document.createElement('div');pm.innerHTML='\uD83D\uDC6E\u200D\u2642\uFE0F<br><span style="font-size:1.2rem;color:#ff5555">Kopya çekmeye mi çalışıyorsun?!</span>';pm.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-size:5rem;z-index:999999;pointer-events:none;text-align:center;';document.body.appendChild(pm);
+        var pInt2=setInterval(function(){playSound(600,0.1,'square');setTimeout(function(){playSound(400,0.1,'square');},250);},500);
+        setTimeout(function(){pm.style.transition='opacity 2s';pm.style.opacity='0';clearInterval(pInt2);setTimeout(function(){pm.remove();},2000);},10000);
+    }
+});
 
 // 5. DEPREM (Earthquake)
 var catBadgeClicks = 0, catBadgeTimer;
