@@ -1,326 +1,4 @@
-﻿<!DOCTYPE html>
-<html lang="tr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0a0a1a">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="description" content="Bilgi Hazinesi by THYKE - Binlerce ilginc bilgi kesfet!">
-<title>Bilgi Hazinesi | THYKE</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a1a;--card:rgba(255,255,255,.06);--card-border:rgba(255,255,255,.1);--text:rgba(255,255,255,.9);--text2:rgba(255,255,255,.5);--text3:rgba(255,255,255,.25);--accent1:#6c63ff;--accent2:#ff6584;--accent3:#ffc837;--accent4:#00d2ff;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}
-body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;min-height:100dvh;color:#fff;overflow-x:hidden;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
-.bg-orbs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.bg-orbs span{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;animation:floatOrb 20s ease-in-out infinite alternate}
-.bg-orbs span:nth-child(1){width:600px;height:600px;background:var(--accent1);top:-10%;left:-10%}
-.bg-orbs span:nth-child(2){width:500px;height:500px;background:var(--accent2);bottom:-10%;right:-10%;animation-delay:-5s}
-.bg-orbs span:nth-child(3){width:400px;height:400px;background:var(--accent4);top:50%;left:50%;animation-delay:-10s}
-.bg-orbs span:nth-child(4){width:350px;height:350px;background:var(--accent3);bottom:20%;left:10%;animation-delay:-15s}
-@keyframes floatOrb{0%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,-40px) scale(1.15)}100%{transform:translate(-30px,50px) scale(.95)}}
-#particles{position:fixed;inset:0;z-index:1;pointer-events:none}
-#confetti{position:fixed;inset:0;z-index:999;pointer-events:none}
 
-.app{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:calc(16px + var(--safe-top)) 16px calc(60px + var(--safe-bottom));min-height:100vh;min-height:100dvh}
-.container{width:100%;max-width:600px}
-
-.top-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:8px}
-.nav-brand{font-weight:900;font-size:1.3rem;background:linear-gradient(135deg,var(--accent1),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:flex;flex-direction:column;line-height:1.1}
-.nav-brand-sub{font-size:.55rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;-webkit-text-fill-color:var(--text3);opacity:.7}
-.nav-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.nav-btn{width:38px;height:38px;border-radius:12px;border:1px solid var(--card-border);background:var(--card);color:rgba(255,255,255,.6);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;min-width:38px}
-.nav-btn:hover,.nav-btn:active{background:rgba(255,255,255,.12);color:#fff;transform:translateY(-1px)}
-.nav-btn.active-nav{color:var(--accent3);border-color:rgba(255,200,55,.3);background:rgba(255,200,55,.08)}
-
-.search-bar{position:relative;margin-bottom:14px}
-.search-bar input{width:100%;padding:11px 14px 11px 38px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:#fff;font-size:.85rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .3s}
-.search-bar input::placeholder{color:rgba(255,255,255,.2)}
-.search-bar input:focus{border-color:rgba(108,99,255,.4)}
-.search-bar .s-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:.85rem;color:rgba(255,255,255,.2);pointer-events:none}
-.search-results{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:8px;max-height:260px;overflow-y:auto;margin-bottom:14px;-webkit-overflow-scrolling:touch}
-.search-results::-webkit-scrollbar{width:4px}
-.search-results::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
-.sr-item{padding:10px 12px;border-radius:10px;font-size:.8rem;color:rgba(255,255,255,.6);cursor:pointer;transition:all .2s;display:flex;gap:8px;align-items:flex-start}
-.sr-item:hover,.sr-item:active{background:rgba(255,255,255,.06);color:#fff}
-
-.daily-banner{background:linear-gradient(135deg,rgba(108,99,255,.12),rgba(255,101,132,.12));border:1px solid rgba(108,99,255,.15);border-radius:16px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .3s;-webkit-tap-highlight-color:transparent}
-.daily-banner:hover,.daily-banner:active{transform:translateY(-2px);box-shadow:0 6px 24px rgba(108,99,255,.15)}
-.daily-icon{font-size:1.8rem}
-.daily-info{flex:1}
-.daily-title{font-size:.8rem;font-weight:700;color:var(--accent3)}
-.daily-sub{font-size:.65rem;color:var(--text3);margin-top:2px}
-.daily-arrow{color:var(--text3);font-size:1rem}
-
-.stats-bar{display:flex;justify-content:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-.stat{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:7px 12px;text-align:center;min-width:65px;transition:transform .2s;flex:1}
-.stat:hover{transform:translateY(-2px)}
-.stat .num{font-size:1.1rem;font-weight:800;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat .label{font-size:.55rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-top:1px}
-
-.progress-wrap{margin-bottom:14px}
-.progress-bar{height:4px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
-.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent1),var(--accent2),var(--accent3));border-radius:4px;transition:width .5s;width:0}
-.progress-label{font-size:.6rem;color:var(--text3);text-align:right;margin-top:2px}
-
-.categories{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:14px}
-.cat-pill{padding:6px 12px;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:rgba(255,255,255,.5);font-size:.7rem;cursor:pointer;transition:all .25s;user-select:none;white-space:nowrap;-webkit-tap-highlight-color:transparent}
-.cat-pill:hover,.cat-pill:active{background:rgba(255,255,255,.08);color:#fff;transform:translateY(-1px)}
-.cat-pill.active{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;border-color:transparent;box-shadow:0 3px 12px rgba(108,99,255,.3)}
-
-.fact-card{background:var(--card);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:24px;border:1px solid var(--card-border);padding:30px 26px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.3);transition:transform .4s,box-shadow .4s;position:relative;overflow:hidden;margin-bottom:14px}
-.fact-card:hover{transform:translateY(-3px);box-shadow:0 14px 50px rgba(0,0,0,.4)}
-.fact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent2),var(--accent3))}
-
-.rarity-badge{position:absolute;top:12px;right:12px;padding:3px 10px;border-radius:8px;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
-.rarity-common{background:rgba(255,255,255,.08);color:rgba(255,255,255,.4)}
-.rarity-rare{background:rgba(41,182,246,.15);color:#29b6f6}
-.rarity-epic{background:rgba(186,85,255,.15);color:#ba55ff}
-.rarity-legendary{background:rgba(255,200,55,.15);color:#ffc837}
-
-.fact-emoji{font-size:2.6rem;margin-bottom:10px;display:block;animation:bounceIn .5s ease}
-.fact-category-badge{display:inline-block;padding:3px 10px;border-radius:8px;font-size:.6rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;font-weight:600}
-.fact-text{font-weight:300;font-size:1.05rem;line-height:1.7;min-height:50px;transition:opacity .35s;color:var(--text)}
-.fact-number{margin-top:12px;font-size:.65rem;color:var(--text3)}
-.fact-watermark{position:absolute;bottom:8px;left:14px;font-size:.5rem;color:rgba(255,255,255,.08);font-weight:700;letter-spacing:2px;text-transform:uppercase}
-
-.actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
-.btn{padding:11px 20px;border-radius:13px;border:none;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent}
-.btn-primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;box-shadow:0 4px 18px rgba(108,99,255,.3)}
-.btn-primary:hover,.btn-primary:active{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 28px rgba(108,99,255,.5)}
-.btn-sm{padding:9px 14px;font-size:.75rem;border-radius:11px}
-.btn-secondary{background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.08)}
-.btn-secondary:hover,.btn-secondary:active{background:rgba(255,255,255,.12);color:#fff;transform:translateY(-2px)}
-.btn-secondary.liked{color:var(--accent2);border-color:rgba(255,101,132,.3);background:rgba(255,101,132,.08)}
-.btn-secondary.active-toggle{color:var(--accent3);border-color:rgba(255,200,55,.3);background:rgba(255,200,55,.08)}
-.btn:active{transform:translateY(1px) scale(.97)}
-.actions-row2{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-
-.footer{text-align:center;padding:30px 16px 20px;margin-top:10px}
-.footer-brand{font-size:.65rem;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
-.footer-brand span{background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800;letter-spacing:3px}
-.footer-sub{font-size:.55rem;color:rgba(255,255,255,.12)}
-.footer-line{width:40px;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:8px auto}
-
-.toast{position:fixed;bottom:calc(24px + var(--safe-bottom));left:50%;transform:translateX(-50%) translateY(100px);background:rgba(108,99,255,.92);backdrop-filter:blur(10px);color:#fff;padding:10px 24px;border-radius:13px;font-size:.82rem;font-weight:600;z-index:1000;transition:transform .35s,opacity .35s;opacity:0;pointer-events:none;max-width:90vw;text-align:center}
-.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-
-.milestone{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);z-index:800;background:rgba(15,15,35,.96);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:36px 46px;text-align:center;transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s;opacity:0;pointer-events:none;max-width:90vw}
-.milestone.show{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto}
-.milestone-emoji{font-size:3.5rem;margin-bottom:10px;display:block}
-.milestone h2{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--accent3),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
-.milestone p{color:var(--text2);font-size:.85rem}
-
-.modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.85);display:none;justify-content:center;align-items:flex-start;padding:30px 16px;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.modal-overlay.open{display:flex}
-.modal{background:#111128;border:1px solid rgba(255,255,255,.1);border-radius:22px;width:100%;max-width:620px;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.6);animation:fadeUp .35s ease}
-.modal-header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
-.modal-header h2{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:8px}
-.modal-close{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;min-width:38px}
-.modal-close:hover,.modal-close:active{background:rgba(255,80,80,.2);border-color:rgba(255,80,80,.3)}
-.modal-body{padding:16px 20px 24px;overflow-y:auto;flex:1;-webkit-overflow-scrolling:touch}
-.modal-body::-webkit-scrollbar{width:5px}
-.modal-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
-
-.modal-search{width:100%;padding:11px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:#fff;font-size:.85rem;font-family:'Inter',sans-serif;margin-bottom:14px;outline:none;transition:border-color .3s}
-.modal-search::placeholder{color:rgba(255,255,255,.2)}
-.modal-search:focus{border-color:rgba(108,99,255,.4)}
-
-.fav-item{padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:13px;margin-bottom:8px;font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.6;display:flex;align-items:flex-start;gap:10px;transition:all .25s;position:relative}
-.fav-item:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.1)}
-.fav-emoji-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
-.fav-content{flex:1;padding-right:30px}
-.fav-cat-label{font-size:.6rem;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
-.fav-remove{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03);color:rgba(255,255,255,.3);font-size:.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.fav-remove:hover,.fav-remove:active{background:rgba(255,80,80,.2);border-color:rgba(255,80,80,.3);color:#ff5050}
-.fav-empty{text-align:center;padding:30px 16px;color:var(--text3)}
-.fav-empty-icon{font-size:2.5rem;margin-bottom:10px;display:block}
-.cnt-badge{font-size:.8rem;color:var(--text3);font-weight:400}
-
-.quiz-card{background:var(--card);backdrop-filter:blur(20px);border-radius:24px;border:1px solid var(--card-border);padding:24px 20px;text-align:center;margin-bottom:14px;position:relative;overflow:hidden}
-.quiz-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ffc837,#ff6584)}
-.quiz-q{font-size:1rem;font-weight:400;line-height:1.6;margin-bottom:20px;color:var(--text)}
-.quiz-options{display:flex;flex-direction:column;gap:8px}
-.quiz-opt{padding:14px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:rgba(255,255,255,.7);font-size:.85rem;cursor:pointer;transition:all .25s;text-align:left;font-family:'Inter',sans-serif;-webkit-tap-highlight-color:transparent}
-.quiz-opt:hover,.quiz-opt:active{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.2);transform:translateX(4px)}
-.quiz-opt.correct{background:rgba(0,230,118,.15);border-color:rgba(0,230,118,.4);color:#69f0ae}
-.quiz-opt.wrong{background:rgba(255,82,82,.15);border-color:rgba(255,82,82,.4);color:#ff5252}
-.quiz-opt.disabled{pointer-events:none}
-.quiz-score{display:flex;justify-content:center;gap:16px;margin-bottom:16px}
-.quiz-stat{text-align:center}
-.quiz-stat .q-num{font-size:1.6rem;font-weight:800}
-.quiz-stat .q-label{font-size:.55rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
-
-.hist-item{padding:10px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.04);border-radius:11px;margin-bottom:6px;font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.5;display:flex;gap:8px;align-items:flex-start}
-.hist-item .h-emoji{font-size:1.1rem;flex-shrink:0}
-.hist-time{font-size:.6rem;color:var(--text3);margin-top:2px}
-
-.ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
-.ach-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:14px 10px;text-align:center;transition:all .3s}
-.ach-card.unlocked{border-color:rgba(255,200,55,.2);background:rgba(255,200,55,.05)}
-.ach-card.locked{opacity:.35;filter:grayscale(1)}
-.ach-icon{font-size:1.8rem;margin-bottom:4px;display:block}
-.ach-name{font-size:.7rem;font-weight:700;margin-bottom:2px}
-.ach-desc{font-size:.55rem;color:var(--text3);line-height:1.3}
-
-#share-canvas{display:none}
-
-@keyframes bounceIn{0%{transform:scale(.3);opacity:0}50%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.animate-in{animation:fadeUp .5s ease forwards}
-
-@media(max-width:500px){
-  .top-nav{flex-wrap:wrap}
-  .nav-brand{font-size:1.1rem}
-  .nav-actions{gap:5px}
-  .nav-btn{width:36px;height:36px;min-width:36px;font-size:.9rem}
-  .stats-bar{gap:5px}
-  .stat{padding:6px 8px;min-width:55px}
-  .stat .num{font-size:1rem}
-  .stat .label{font-size:.5rem}
-  .fact-card{padding:22px 16px;border-radius:20px}
-  .fact-text{font-size:.95rem}
-  .fact-emoji{font-size:2.2rem}
-  .btn{padding:10px 16px;font-size:.78rem}
-  .btn-sm{padding:9px 12px;font-size:.72rem}
-  .actions{gap:6px}
-  .actions-row2{gap:6px}
-  .modal{border-radius:18px;max-height:90vh}
-  .modal-header{padding:16px 18px 12px}
-  .modal-header h2{font-size:1rem}
-  .modal-body{padding:14px 16px 20px}
-  .categories{gap:4px}
-  .cat-pill{padding:5px 10px;font-size:.65rem}
-  .daily-banner{padding:12px 14px}
-  .search-bar input{padding:10px 14px 10px 36px;font-size:.82rem}
-  .ach-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px}
-  .ach-card{padding:10px 8px}
-  .quiz-opt{padding:12px 14px;font-size:.82rem}
-}
-@media(max-width:360px){
-  .stat{min-width:48px;padding:5px 6px}
-  .stat .num{font-size:.9rem}
-  .nav-btn{width:34px;height:34px;min-width:34px;font-size:.85rem}
-}
-body.theme-matrix { --bg:#000; --text:#0f0; --text2:rgba(0,255,0,0.7); --text3:rgba(0,255,0,0.4); --accent1:#0f0; --accent2:#0a0; --accent3:#00ff00; --accent4:#005500; --card:rgba(0,255,0,0.05); --card-border:rgba(0,255,0,0.2); }
-body.theme-ocean { --bg:#001220; --text:#fff; --text2:rgba(255,255,255,0.7); --text3:rgba(255,255,255,0.4); --accent1:#00c6ff; --accent2:#0072ff; --accent3:#00f2fe; --accent4:#4facfe; --card:rgba(0,198,255,0.05); --card-border:rgba(0,198,255,0.2); }
-body.theme-sunset { --bg:#1a0b1c; --text:#fff; --text2:rgba(255,255,255,0.7); --text3:rgba(255,255,255,0.4); --accent1:#ff512f; --accent2:#dd2476; --accent3:#ff007f; --accent4:#ff9900; --card:rgba(255,81,47,0.05); --card-border:rgba(255,81,47,0.2); }
-body.theme-hacker { --bg:#0d0221; --text:#0ff; --text2:rgba(0,255,255,0.7); --text3:rgba(0,255,255,0.4); --accent1:#f0f; --accent2:#8a2be2; --accent3:#0ff; --accent4:#ff00ff; --card:rgba(255,0,255,0.05); --card-border:rgba(255,0,255,0.2); }
-body.theme-blood { --bg:#110000; --text:#ffcccc; --text2:rgba(255,100,100,0.7); --text3:rgba(255,100,100,0.4); --accent1:#ff0000; --accent2:#990000; --accent3:#ff3333; --accent4:#cc0000; --card:rgba(255,0,0,0.05); --card-border:rgba(255,0,0,0.2); }
-</style>
-</head>
-<body>
-<div class="bg-orbs"><span></span><span></span><span></span><span></span></div>
-<canvas id="particles"></canvas>
-<canvas id="confetti"></canvas>
-<canvas id="share-canvas" width="600" height="400"></canvas>
-
-<div class="toast" id="toast"></div>
-<div class="milestone" id="milestone">
-  <span class="milestone-emoji" id="ms-emoji"></span>
-  <h2 id="ms-title"></h2>
-  <p id="ms-text"></p>
-</div>
-
-<!-- MODALS -->
-<div class="modal-overlay" id="fav-modal"><div class="modal"><div class="modal-header"><h2>&#11088; Favorilerim <span class="cnt-badge" id="fav-modal-count"></span></h2><button class="modal-close" onclick="closeModal('fav-modal')">&#10005;</button></div><div class="modal-body"><input type="text" class="modal-search" id="fav-search" placeholder="Favorilerde ara..." oninput="renderFavList()"><div style="margin-bottom:10px;text-align:right"><button class="btn btn-sm btn-secondary" onclick="exportFavorites()">&#128229; Disa Aktar</button></div><div id="fav-list"></div></div></div></div>
-
-<div class="modal-overlay" id="hist-modal"><div class="modal"><div class="modal-header"><h2>&#128336; Gecmis <span class="cnt-badge" id="hist-count"></span></h2><button class="modal-close" onclick="closeModal('hist-modal')">&#10005;</button></div><div class="modal-body" id="hist-list"></div></div></div>
-
-<div class="modal-overlay" id="quiz-modal"><div class="modal"><div class="modal-header"><h2>&#129513; Bilgi Yarismasi</h2><button class="modal-close" onclick="closeModal('quiz-modal')">&#10005;</button></div><div class="modal-body" id="quiz-body"></div></div></div>
-
-<div class="modal-overlay" id="stats-modal"><div class="modal"><div class="modal-header"><h2>&#128202; Istatistikler</h2><button class="modal-close" onclick="closeModal('stats-modal')">&#10005;</button></div><div class="modal-body" id="stats-body"></div></div></div>
-
-<div class="modal-overlay" id="ach-modal"><div class="modal"><div class="modal-header"><h2>&#127941; Basarimlar <span class="cnt-badge" id="ach-count"></span></h2><button class="modal-close" onclick="closeModal('ach-modal')">&#10005;</button></div><div class="modal-body" id="ach-body"></div></div></div>
-
-<div class="modal-overlay" id="daily-modal"><div class="modal"><div class="modal-header"><h2>&#128197; Gunun Bilgisi</h2><button class="modal-close" onclick="closeModal('daily-modal')">&#10005;</button></div><div class="modal-body" id="daily-body"></div></div></div>
-
-<div class="app">
-<div class="container">
-
-  <div class="top-nav animate-in">
-    <div class="nav-brand">
-      &#10024; Bilgi Hazinesi
-      <span class="nav-brand-sub">by THYKE</span>
-    </div>
-    <div class="nav-actions">
-      <button class="nav-btn" onclick="openModal('ach-modal');renderAchievements()" title="Basarimlar">&#127941;</button>
-      <button class="nav-btn" onclick="openModal('stats-modal');renderStats()" title="Istatistikler">&#128202;</button>
-      <button class="nav-btn" onclick="openModal('hist-modal');renderHistoryModal()" title="Gecmis">&#128336;</button>
-      <button class="nav-btn" onclick="openModal('quiz-modal');generateQuiz()" title="Quiz">&#129513;</button>
-      <button class="nav-btn" id="sound-btn" onclick="toggleSound()" title="Ses">&#128266;</button>
-      <button class="nav-btn" id="auto-nav" onclick="toggleAutoPlay()" title="Otomatik">&#9654;&#65039;</button>
-    </div>
-  </div>
-
-  <div class="daily-banner animate-in" style="animation-delay:.03s" onclick="showDailyFact()">
-    <span class="daily-icon">&#128197;</span>
-    <div class="daily-info"><div class="daily-title">Gunun Bilgisi</div><div class="daily-sub">Her gun yeni bir ozel bilgi! Tikla ve kesfet.</div></div>
-    <span class="daily-arrow">&#8250;</span>
-  </div>
-
-  <div class="search-bar animate-in" style="animation-delay:.06s">
-    <span class="s-icon">&#128269;</span>
-    <input type="text" id="global-search" placeholder="Tum bilgilerde ara..." oninput="handleSearch()">
-  </div>
-  <div class="search-results" id="search-results" style="display:none"></div>
-
-  <div class="stats-bar animate-in" style="animation-delay:.08s">
-    <div class="stat"><div class="num" id="seen-count">0</div><div class="label">Gorulen</div></div>
-    <div class="stat"><div class="num" id="total-count">0</div><div class="label">Toplam</div></div>
-    <div class="stat"><div class="num" id="fav-count">0</div><div class="label">Favori</div></div>
-    <div class="stat"><div class="num" id="streak-count">0</div><div class="label">Seri</div></div>
-    <div class="stat"><div class="num" id="best-streak">0</div><div class="label">En Iyi</div></div>
-  </div>
-
-  <div class="progress-wrap animate-in" style="animation-delay:.1s">
-    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-    <div class="progress-label" id="progress-label">0% kesfedildi</div>
-  </div>
-
-  <div class="categories animate-in" style="animation-delay:.12s" id="categories"></div>
-
-    <div class="level-wrap animate-in" style="animation-delay:.1s; background:var(--card); padding:10px 16px; border-radius:12px; margin-bottom:12px; border:1px solid var(--card-border);">
-    <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text2); margin-bottom:6px;">
-      <span id="rank-name" style="font-weight:900; color:var(--accent3); text-transform:uppercase; letter-spacing:1px">ACEMI</span>
-      <span id="level-display" style="font-weight:700">Seviye 1</span>
-    </div>
-    <div class="progress-bar" style="height:6px"><div class="progress-fill" id="xp-fill" style="width:0%"></div></div>
-    <div style="text-align:right; font-size:0.6rem; color:var(--text3); margin-top:4px;" id="xp-label">0 / 100 XP</div>
-  </div>
-  <div class="fact-card animate-in" style="animation-delay:.15s" id="fact-card">
-    <div class="rarity-badge rarity-common" id="rarity-badge" style="display:none"></div>
-    <span class="fact-emoji" id="fact-emoji">&#129504;</span>
-    <div class="fact-category-badge" id="fact-badge" style="background:rgba(108,99,255,.2);color:#a29bfe">HAZIR MISIN?</div>
-    <p class="fact-text" id="fact-text">Butona bas ve binlerce ilginc bilginin dunyasina dal!</p>
-    <div class="fact-number" id="fact-number"></div>
-    <div class="fact-watermark">THYKE</div>
-  </div>
-
-  <div class="actions animate-in" style="animation-delay:.18s">
-    <button class="btn btn-primary" onclick="nextFact()" id="next-btn">&#127922; Yeni Bilgi</button>
-    <button class="btn btn-sm btn-secondary" id="like-btn" onclick="toggleLike()">&#10084;&#65039; Begen</button>
-    <button class="btn btn-sm btn-secondary" onclick="speakFact()" id="speak-btn" title="Sesli Oku">&#128226;</button>
-    <button class="btn btn-sm btn-secondary" onclick="copyFact()" title="Kopyala">&#128203;</button>
-    <button class="btn btn-sm btn-secondary" onclick="shareAsImage()" title="Resim Olarak Indir">&#128444;&#65039;</button>
-  </div>
-  <div class="actions-row2 animate-in" style="animation-delay:.2s">
-    <button class="btn btn-sm btn-secondary" onclick="openModal('fav-modal');openFavModal()">&#11088; Favoriler</button>
-    <button class="btn btn-sm btn-secondary" onclick="shareFact()">&#128228; Paylas</button>
-    <button class="btn btn-sm btn-secondary" onclick="randomCategory()">&#127920; Rastgele</button>
-  </div>
-
-  <div class="footer animate-in" style="animation-delay:.22s">
-    <div class="footer-line"></div>
-    <div class="footer-brand">Made with &#10084;&#65039; by <span>THYKE</span></div>
-    <div class="footer-sub">Bilgi Hazinesi v3.0</div>
-  </div>
-
-</div>
-</div>
-
-<script>
 var factsDB = {
   "Hayvanlar": { emoji: "\uD83D\uDC3E", color: "0,210,255", facts: [
     "Ahtapotlarin uc kalbi vardir ve kanlari bakir bazli oldugu icin mavidir.",
@@ -898,111 +576,9 @@ var factsDB = {
     "Ilk Facebook kullanicisi Mark Zuckerberg (profil ID: 4).",
     "Discord basta oyuncular icin tasarlandi ama simdi her alanda kullaniliyor."
   ]}
-,"Mitoloji": { emoji: "🏛️", color: "255,215,0", facts: [
-"Yunan mitolojisinde Zeus, kardeşleri Poseidon ve Hades ile dünyayı üçe bölmüştür.",
-"İskandinav mitolojisinde Thor'un çekicinin adı Mjölnir'dir ve sadece o kaldırabilir.",
-"Mısır mitolojisinde Anubis, ölülerin ruhunu tartarak yargılayan çakal başlı tanrıdır.",
-"Medusa'nın gözlerine bakan herkes taşa dönüşürdü, ta ki Perseus onu yenene kadar.",
-"Athena, Zeus'un başından tam zırhlı ve yetişkin bir şekilde doğmuştur.",
-"Loki, İskandinav mitolojisinde kötülük ve hile tanrısıdır, aynı zamanda şekil değiştirebilir.",
-"Yggdrasil, İskandinav mitolojisinde dokuz dünyayı birbirine bağlayan devasa yaşam ağacıdır.",
-"Vampir mitlerinin kökeni, Antik Yunan'daki 'Vrykolakas' efsanelerine kadar uzanır.",
-"Aşil, Truva Savaşı'nın en büyük kahramanıydı, tek zayıf noktası topuğuydu.",
-"Pegasus, Medusa'nın kesilen başından doğan kanatlı beyaz bir attır.",
-"Herakles (Herkül), Hera'nın öfkesini yatıştırmak için 12 zorlu görevi tamamlamak zorundaydı.",
-"Prometheus, tanrılardan ateşi çalıp insanlara verdiği için sonsuz bir işkenceyle cezalandırılmıştır.",
-"Kelt mitolojisinde Morrigan, savaş ve yıkım tanrıçasıdır ve genellikle bir karga formunda görünür.",
-"Japon mitolojisinde Amaterasu, evreni aydınlatan güneş tanrıçasıdır.",
-"Hint mitolojisinde Şiva, yaratılışın ve yıkımın dengesini sağlayan büyük tanrıdır."
-]},
-"Psikoloji": { emoji: "🧠", color: "155,89,182", facts: [
-"Plasebo etkisi, insanların sahte bir tedaviye inanarak gerçekten iyileşme belirtileri göstermesidir.",
-"Mandela Etkisi, büyük bir insan grubunun yaşanmamış bir olayı yaşanmış gibi hatırlamasıdır.",
-"Baader-Meinhof Fenomeni, yeni öğrendiğiniz bir kelimenin veya nesnenin aniden her yerde karşınıza çıkması hissidir.",
-"Dunning-Kruger Etkisi, yetersiz insanların yeteneklerini aşırı abartma eğiliminde olmasıdır.",
-"Bilişsel Çelişki (Cognitive Dissonance), birbiriyle çelişen iki inanca sahip olmanın yarattığı zihinsel rahatsızlıktır.",
-"Hale Etkisi (Halo Effect), bir kişinin tek bir olumlu özelliğinin, onun diğer tüm özelliklerinin de olumlu algılanmasına yol açmasıdır.",
-"Bystander (Seyirci) Etkisi, ortamda ne kadar çok insan varsa, acil bir durumda yardım etme olasılıklarının o kadar düşmesidir.",
-"Pygmalion Etkisi, yüksek beklentilerin insanların performansını artırması durumudur.",
-"Gelişme Korkusu (Jonah Kompleksi), kişinin kendi potansiyelinden ve büyük başarılar elde etmekten korkmasıdır.",
-"Yabancı Dil Etkisi, insanların yabancı bir dilde düşünürken daha mantıklı ve daha az duygusal kararlar almasıdır.",
-"Tetris Etkisi, bir aktiviteye çok fazla zaman ayırdıktan sonra, insanların rüyalarında veya düşüncelerinde o aktiviteyi görmeye devam etmesidir.",
-"Ayna Nöronlar, bir başkasının bir eylemini izlediğimizde, o eylemi biz yapıyormuşuz gibi beynimizde aktifleşen hücrelerdir.",
-"Zeygarnik Etkisi, yarım kalan işlerin, tamamlananlara göre akılda daha fazla yer etmesi durumudur.",
-"Stokholm Sendromu, rehinelerin kendilerini rehin alan kişilere sempati veya şefkat duymaya başlamasıdır.",
-"FOMO (Fear Of Missing Out), başkalarının sizden daha iyi veya eğlenceli şeyler yaşadığı korkusudur."
-]},
-"Gizemli Olaylar": { emoji: "🕵️", color: "52,73,94", facts: [
-"Dyatlov Geçidi Vakası'nda, 9 deneyimli dağcı 1959'da Ural Dağları'nda gizemli bir şekilde hayatını kaybetmiştir.",
-"Bermuda Şeytan Üçgeni, yüzlerce uçak ve geminin pusulalarının bozularak kaybolduğu iddia edilen bölgedir.",
-"Tunguska Olayı, 1908'de Sibirya'da hiçbir çarpma krateri olmadan devasa bir ormanı yok eden dev patlamadır.",
-"Voynich El Yazması, bugüne kadar dünyanın en yetenekli kriptologları tarafından bile çözülememiş, bilinmeyen bir dilde yazılmış bir kitaptır.",
-"Mary Celeste, 1872'de okyanusun ortasında tamamen sağlam ama içinde hiçbir mürettebatı olmadan bulunan hayalet gemidir.",
-"Nazca Çizgileri, Peru'da sadece gökyüzünden bakıldığında ne olduğu anlaşılabilen devasa yer şekilleridir.",
-"Roswell Olayı, 1947'de ABD'nin New Mexico eyaletine düşen ve uzaylı bir UFO olduğuna inanılan en ünlü kazadır.",
-"Zodiac Katili, 1960'larda Kaliforniya'da insanları öldürüp gazetelere şifreli mesajlar gönderen ve asla bulunamayan seri katildir.",
-"Wow! Sinyali, 1977'de uzaydan gelen ve dünya dışı bir zeka tarafından gönderilmiş olabilecek, kaynağı hala belirsiz güçlü radyo sinyalidir.",
-"Jack the Ripper (Karındeşen Jack), 1888'de Londra'da terör estiren ve kimliği hiçbir zaman tespit edilemeyen efsanevi katildir.",
-"Stonehenge, İngiltere'de bulunan devasa taşların binlerce yıl önce o bölgeye nasıl ve neden taşındığı hala tam olarak bilinemeyen bir yapıdır.",
-"Piri Reis Haritası, 1513 yılında çizilmiş olmasına rağmen Antarktika'nın buzsuz halini son derece isabetli bir şekilde göstermektedir.",
-"Roanoke Kolonisi, 1590'da Amerika'ya yerleşen koca bir İngiliz kolonisinin arkalarında sadece bir ağaca kazınmış 'CROATOAN' kelimesini bırakarak yok olmasıdır.",
-"Kayıp Kıta Atlantis, Platon'un bahsettiği ve bir gecede sulara gömüldüğü iddia edilen efsanevi ileri uygarlıktır.",
-"Elisa Lam Vakası, 2013 yılında Cecil Oteli'nin su tankında ölü bulunan kadının asansördeki son anlarının son derece gizemli ve ürkütücü olmasıdır."
-]},
-"Siber Guvenlik": { emoji: "💻", color: "39,174,96", facts: [
-"Dünyanın ilk bilgisayar virüsü 1971'de yazılan 'Creeper' virüsüydü ve ekrana sadece 'Ben Creeper'ım, yakalayabiliyorsan yakala' yazıyordu.",
-"Her gün yaklaşık 300.000 yeni kötü amaçlı yazılım (malware) türü oluşturulmaktadır.",
-"Sosyal mühendislik, insanları manipüle ederek gizli bilgileri vermelerini sağlama sanatıdır ve hack olaylarının %90'ında kullanılır.",
-"Ransomware (Fidye Yazılımı), bilgisayarınızdaki tüm dosyaları şifreleyerek açmak için sizden kripto para ile fidye isteyen yazılımlardır.",
-"Kevin Mitnick, 1990'larda ABD'nin en çok aranan bilgisayar korsanıydı ve FBI, Pentagon ve dev şirketleri hacklemişti.",
-"Dünyadaki e-postaların yaklaşık %45'i spam veya kimlik avı (phishing) postalarıdır.",
-"İki Faktörlü Doğrulama (2FA), şifreniz çalınsa bile hesabınızın ele geçirilmesini %99 oranında engeller.",
-"Stuxnet, İran'ın nükleer tesislerini sabote etmek için özel olarak tasarlanmış, dünyanın bilinen ilk dijital silahıdır.",
-"Sıfır Gün (Zero-Day) açıkları, yazılım geliştiricilerin henüz bilmediği veya yamasını yayınlamadığı güvenlik açıklarına verilen addır.",
-"Dark Web, normal arama motorlarıyla (Google) bulunamayan ve çoğunlukla yasadışı faaliyetlerin yürütüldüğü internetin gizli kısmıdır.",
-"Kaba Kuvvet (Brute Force) saldırısı, bir şifreyi bulmak için milyonlarca farklı kombinasyonun otomatik olarak arka arkaya denenmesidir.",
-"Biyometrik verileriniz (parmak izi, yüz tanıma) çalındığında, şifreniz gibi değiştirilemediği için çok büyük bir risk oluşturur.",
-"Dünyanın en güvenli şifreleme algoritması olan AES-256'yı kırmak, mevcut en güçlü bilgisayarlarla bile milyarlarca yıl sürer.",
-"Hackerlar genellikle ağlara sızmak yerine, şifresi '123456' olan veya güncellenmemiş sistemleri tespit ederek içeri girerler.",
-"IoT (Nesnelerin İnterneti) cihazları olan akıllı buzdolapları veya kameralar, genellikle çok zayıf güvenlikli oldukları için devasa siber saldırılarda 'zombi bot' olarak kullanılırlar."
-]}};
+};
 
 // ===== STATE =====
-var xp=parseInt(localStorage.getItem('bh_xp')||'0');
-var currentTheme=localStorage.getItem('bh_theme')||'theme-default';
-if(currentTheme!=='theme-default') document.body.className=currentTheme;
-
-function setTheme(t) {
-    document.body.className=t==='theme-default'?'':t;
-    localStorage.setItem('bh_theme', t);
-    closeModal('theme-modal');
-    showToast('Tema Degistirildi!');
-}
-
-function getLevel(x) { return Math.floor(Math.sqrt(x/50)) + 1; }
-function getRankName(lvl) {
-    if(lvl<3) return 'Acemi'; if(lvl<6) return 'Ogrenci'; if(lvl<10) return 'Cirak';
-    if(lvl<15) return 'Kasif'; if(lvl<22) return 'Bilgin'; if(lvl<30) return 'Ustad';
-    if(lvl<40) return 'Deha'; if(lvl<50) return 'Efsane'; return 'THYKE VELIAHTI';
-}
-function renderXp() {
-    var lvl=getLevel(xp);
-    var curLvlXp=50*Math.pow(lvl-1,2);
-    var nextLvlXp=50*Math.pow(lvl,2);
-    var pct=Math.min(100, Math.max(0, ((xp-curLvlXp)/(nextLvlXp-curLvlXp))*100));
-    document.getElementById('rank-name').textContent=getRankName(lvl);
-    document.getElementById('level-display').textContent='Seviye '+lvl;
-    document.getElementById('xp-fill').style.width=pct+'%';
-    document.getElementById('xp-label').textContent=xp+' / '+nextLvlXp+' XP';
-}
-function addXp(amt) {
-    var oldLvl=getLevel(xp);
-    xp+=amt; localStorage.setItem('bh_xp',xp);
-    var newLvl=getLevel(xp);
-    if(newLvl>oldLvl) { showMilestone({e:'\uD83C\uDF1F',t:'Seviye Atladi!',m:'Tebrikler, Seviye '+newLvl+' oldun!'}); launchConfetti(); sndMilestone(); }
-    renderXp();
-}
-renderXp();
 var allFacts=[], seenFacts={}, favorites=JSON.parse(localStorage.getItem('bh_fav4')||'[]'), currentFact=null, currentFactIndex=-1, categoryFilter='all', streak=0, bestStreak=parseInt(localStorage.getItem('bh_best2')||'0'), autoInt=null, factHistory=[], quizScore=parseInt(localStorage.getItem('bh_quiz3')||'0'), quizTotal=parseInt(localStorage.getItem('bh_quizT3')||'0'), soundOn=localStorage.getItem('bh_snd')!=='off', totalEverSeen=parseInt(localStorage.getItem('bh_ts2')||'0');
 var unlockedAch=JSON.parse(localStorage.getItem('bh_ach2')||'[]');
 
@@ -1058,20 +634,15 @@ function showMilestone(m){var el=document.getElementById('milestone');document.g
 
 // ===== DAILY FACT =====
 function getDailyFact(){var today=new Date().toISOString().slice(0,10);var seed=0;for(var i=0;i<today.length;i++)seed+=today.charCodeAt(i);return allFacts[seed%allFacts.length]}
-function showDailyFact(){openModal('daily-modal');var f=getDailyFact();var today=new Date().toLocaleDateString('tr-TR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});document.getElementById('daily-body').innerHTML='<div style="text-align:center;margin-bottom:20px"><div style="font-size:.75rem;color:var(--text3);margin-bottom:8px">'+today+'</div><div style="font-size:3rem;margin-bottom:8px">'+f.emoji+'</div><div class="fact-category-badge" style="background:rgba('+f.color+',.2);color:rgba('+f.color+',1)">'+f.category+'</div></div><div style="font-size:1.1rem;line-height:1.8;text-align:center;padding:20px;background:rgba(255,255,255,.03);border-radius:16px;border:1px solid rgba(255,255,255,.06)">'+f.text+'</div><div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>';setTimeout(launchConfetti,300)}
+function showDailyFact(){openModal('daily-modal');var f=getDailyFact();var today=new Date().toLocaleDateString('tr-TR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});document.getElementById('daily-body').innerHTML='<div style="text-align:center;margin-bottom:20px"><div style="font-size:.75rem;color:var(--text3);margin-bottom:8px">'+today+'</div><div style="font-size:3rem;margin-bottom:8px">'+f.emoji+'</div><div class="fact-category-badge" style="background:rgba('+f.color+',.2);color:rgba('+f.color+',1)">'+f.category+'</div></div><div style="font-size:1.1rem;line-height:1.8;text-align:center;padding:20px;background:rgba(255,255,255,.03);border-radius:16px;border:1px solid rgba(255,255,255,.06)">'+f.text+'</div><div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>'}
 
 // ===== SEARCH =====
-function handleSearch(){var q=document.getElementById('global-search').value.trim().toLowerCase();
-if(q==='thyke' && unlockedAch.indexOf('secret_thyke')<0) {
-    unlockedAch.push('secret_thyke'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-    addXp(1000); launchConfetti(); showToast('\uD83D\uDC51 THYKE GIZMI BULUNDU! +1000 XP');
-    document.getElementById('global-search').value=''; return;
-}var box=document.getElementById('search-results');if(!q||q.length<2){box.style.display='none';return}var results=allFacts.filter(function(f){return f.text.toLowerCase().indexOf(q)>=0}).slice(0,15);if(!results.length){box.style.display='block';box.innerHTML='<div style="padding:12px;color:var(--text3);text-align:center;font-size:.8rem">Sonuc bulunamadi</div>';return}box.style.display='block';box.innerHTML=results.map(function(f){var idx=allFacts.indexOf(f);var highlighted=f.text.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<strong style="color:var(--accent3)">$1</strong>');return'<div class="sr-item" onclick="jumpToFact('+idx+')"><span style="font-size:1rem;flex-shrink:0">'+f.emoji+'</span><div>'+highlighted+'</div></div>'}).join('')}
+function handleSearch(){var q=document.getElementById('global-search').value.trim().toLowerCase();var box=document.getElementById('search-results');if(!q||q.length<2){box.style.display='none';return}var results=allFacts.filter(function(f){return f.text.toLowerCase().indexOf(q)>=0}).slice(0,15);if(!results.length){box.style.display='block';box.innerHTML='<div style="padding:12px;color:var(--text3);text-align:center;font-size:.8rem">Sonuc bulunamadi</div>';return}box.style.display='block';box.innerHTML=results.map(function(f){var idx=allFacts.indexOf(f);var highlighted=f.text.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<strong style="color:var(--accent3)">$1</strong>');return'<div class="sr-item" onclick="jumpToFact('+idx+')"><span style="font-size:1rem;flex-shrink:0">'+f.emoji+'</span><div>'+highlighted+'</div></div>'}).join('')}
 function jumpToFact(idx){var f=allFacts[idx];currentFact=f;currentFactIndex=idx;seenFacts[f.text]=true;totalEverSeen++;localStorage.setItem('bh_ts2',totalEverSeen);factHistory.unshift({text:f.text,category:f.category,emoji:f.emoji,color:f.color,time:new Date().toLocaleTimeString('tr-TR')});document.getElementById('global-search').value='';document.getElementById('search-results').style.display='none';renderFactCard();sndClick();checkMS();checkAchievements()}
 
 // ===== NEXT FACT =====
-function nextFact(){if(window.speechSynthesis)window.speechSynthesis.cancel();var pool=getPool();if(!pool.length)return;var unseen=pool.filter(function(f){return!seenFacts[f.text]});var src=unseen.length?unseen:pool;var fact=src[Math.floor(Math.random()*src.length)];if(!seenFacts[fact.text]){streak++;totalEverSeen++;localStorage.setItem('bh_ts2',totalEverSeen)}else{streak=0}if(streak>bestStreak){bestStreak=streak;localStorage.setItem('bh_best2',bestStreak)}currentFact=fact;currentFactIndex=allFacts.indexOf(fact);seenFacts[fact.text]=true; addXp(10);factHistory.unshift({text:fact.text,category:fact.category,emoji:fact.emoji,color:fact.color,time:new Date().toLocaleTimeString('tr-TR')});if(factHistory.length>200)factHistory.pop();renderFactCard();sndClick();checkMS();checkAchievements();if(navigator.vibrate)try{navigator.vibrate(10)}catch(e){}}
-function renderFactCard(){var fact=currentFact;if(!fact)return;var t=document.getElementById('fact-text'),em=document.getElementById('fact-emoji'),bg=document.getElementById('fact-badge'),nm=document.getElementById('fact-number'),rb=document.getElementById('rarity-badge');t.style.opacity='0';document.getElementById('speak-btn').style.color='';setTimeout(function(){em.textContent=fact.emoji;em.style.animation='none';em.offsetHeight;em.style.animation='bounceIn .5s ease';bg.textContent=fact.category;bg.style.background='rgba('+fact.color+',.2)';bg.style.color='rgba('+fact.color+',1)';t.textContent=fact.text;t.style.opacity='1';nm.textContent='#'+(currentFactIndex+1)+' / '+allFacts.length;var rarity=getRarity(currentFactIndex);rb.textContent=rarity.name;rb.className='rarity-badge '+rarity.cls;rb.style.display='block';updateLikeBtn();var sc=Object.keys(seenFacts).length;document.getElementById('seen-count').textContent=sc;document.getElementById('streak-count').textContent=streak;document.getElementById('best-streak').textContent=bestStreak;var pct=((sc/allFacts.length)*100).toFixed(1);document.getElementById('progress-fill').style.width=pct+'%';document.getElementById('progress-label').textContent=pct+'% kesfedildi ('+sc+'/'+allFacts.length+')'}, 300)}
+function nextFact(){var pool=getPool();if(!pool.length)return;var unseen=pool.filter(function(f){return!seenFacts[f.text]});var src=unseen.length?unseen:pool;var fact=src[Math.floor(Math.random()*src.length)];if(!seenFacts[fact.text]){streak++;totalEverSeen++;localStorage.setItem('bh_ts2',totalEverSeen)}else{streak=0}if(streak>bestStreak){bestStreak=streak;localStorage.setItem('bh_best2',bestStreak)}currentFact=fact;currentFactIndex=allFacts.indexOf(fact);seenFacts[fact.text]=true;factHistory.unshift({text:fact.text,category:fact.category,emoji:fact.emoji,color:fact.color,time:new Date().toLocaleTimeString('tr-TR')});if(factHistory.length>200)factHistory.pop();renderFactCard();sndClick();checkMS();checkAchievements();if(navigator.vibrate)try{navigator.vibrate(10)}catch(e){}}
+function renderFactCard(){var fact=currentFact;if(!fact)return;var t=document.getElementById('fact-text'),em=document.getElementById('fact-emoji'),bg=document.getElementById('fact-badge'),nm=document.getElementById('fact-number'),rb=document.getElementById('rarity-badge');t.style.opacity='0';setTimeout(function(){em.textContent=fact.emoji;em.style.animation='none';em.offsetHeight;em.style.animation='bounceIn .5s ease';bg.textContent=fact.category;bg.style.background='rgba('+fact.color+',.2)';bg.style.color='rgba('+fact.color+',1)';t.textContent=fact.text;t.style.opacity='1';nm.textContent='#'+(currentFactIndex+1)+' / '+allFacts.length;var rarity=getRarity(currentFactIndex);rb.textContent=rarity.name;rb.className='rarity-badge '+rarity.cls;rb.style.display='block';updateLikeBtn();var sc=Object.keys(seenFacts).length;document.getElementById('seen-count').textContent=sc;document.getElementById('streak-count').textContent=streak;document.getElementById('best-streak').textContent=bestStreak;var pct=((sc/allFacts.length)*100).toFixed(1);document.getElementById('progress-fill').style.width=pct+'%';document.getElementById('progress-label').textContent=pct+'% kesfedildi ('+sc+'/'+allFacts.length+')'}, 300)}
 
 // ===== RANDOM CATEGORY =====
 function randomCategory(){var cats=Object.keys(factsDB);var r=cats[Math.floor(Math.random()*cats.length)];setCat(r);renderCats();nextFact();showToast(factsDB[r].emoji+' '+r)}
@@ -1106,8 +677,7 @@ function answerQuiz(btn,ans,correct){if(quizAnswered)return;quizAnswered=true;qu
 // ===== STATS =====
 function renderStats(){var cats=Object.keys(factsDB);var rows='';for(var i=0;i<cats.length;i++){var c=cats[i],cat=factsDB[c],total=cat.facts.length;var seen=cat.facts.filter(function(f){return seenFacts[f]}).length;var pct=total?((seen/total)*100).toFixed(0):0;var faved=favorites.filter(function(f){return f.category===c}).length;rows+='<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:1.2rem">'+cat.emoji+'</span><div style="flex:1"><div style="font-size:.75rem;font-weight:600;margin-bottom:3px">'+c+'</div><div class="progress-bar" style="height:3px;margin-bottom:2px"><div class="progress-fill" style="width:'+pct+'%"></div></div><div style="font-size:.55rem;color:var(--text3)">'+seen+'/'+total+' - '+faved+' fav</div></div><div style="font-size:.75rem;font-weight:700;color:var(--text2)">'+pct+'%</div></div>'}var ts=Object.keys(seenFacts).length,ta=allFacts.length;document.getElementById('stats-body').innerHTML='<div style="text-align:center;margin-bottom:16px"><div style="font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+((ts/ta)*100).toFixed(1)+'%</div><div style="font-size:.7rem;color:var(--text2)">Toplam Kesif</div><div style="font-size:.6rem;color:var(--text3);margin-top:4px">'+ts+'/'+ta+' bilgi - '+favorites.length+' fav - Seri: '+streak+' - En iyi: '+bestStreak+' - Quiz: '+quizScore+'/'+quizTotal+'</div></div><h3 style="font-size:.75rem;font-weight:600;margin-bottom:10px;color:var(--text2)">Kategori Bazli</h3>'+rows+'<div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>'}
 
-// ===== COPY / SHARE / SPEAK =====
-function speakFact(){if(!currentFact||!window.speechSynthesis)return;window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(currentFact.text);u.lang='tr-TR';u.rate=0.95;document.getElementById('speak-btn').style.color='var(--accent3)';u.onend=function(){document.getElementById('speak-btn').style.color=''};window.speechSynthesis.speak(u)}
+// ===== COPY / SHARE =====
 function copyFact(){if(!currentFact)return;navigator.clipboard.writeText(currentFact.text+' - Bilgi Hazinesi by THYKE').then(function(){showToast('Kopyalandi!')}).catch(function(){showToast('Hata')})}
 function shareFact(){if(!currentFact)return;if(navigator.share)navigator.share({title:'Bilgi Hazinesi by THYKE',text:currentFact.text+'\n\n- Bilgi Hazinesi by THYKE'}).catch(function(){});else{copyFact();showToast('Kopyalandi!')}}
 function shareAsImage(){if(!currentFact)return;var c=document.getElementById('share-canvas'),ctx=c.getContext('2d');c.width=600;c.height=400;var g=ctx.createLinearGradient(0,0,600,400);g.addColorStop(0,'#1a1a3e');g.addColorStop(1,'#0a0a1a');ctx.fillStyle=g;ctx.fillRect(0,0,600,400);var g2=ctx.createLinearGradient(0,0,600,0);g2.addColorStop(0,'#6c63ff');g2.addColorStop(.5,'#ff6584');g2.addColorStop(1,'#ffc837');ctx.fillStyle=g2;ctx.fillRect(0,0,600,4);ctx.font='600 14px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.4)';ctx.textAlign='center';ctx.fillText(currentFact.emoji+' '+currentFact.category,300,50);ctx.font='300 18px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.9)';var words=currentFact.text.split(' '),lines=[],line='';words.forEach(function(w){if(ctx.measureText(line+w).width>480){lines.push(line.trim());line=''}line+=w+' '});lines.push(line.trim());lines.forEach(function(l,i){ctx.fillText(l,300,150+i*28)});ctx.font='800 11px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.2)';ctx.fillText('Bilgi Hazinesi by THYKE',300,375);c.toBlob(function(blob){var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='bilgi_thyke.png';a.click();URL.revokeObjectURL(url);showToast('Indirildi!')})}
@@ -1126,7 +696,7 @@ document.addEventListener('keydown',function(e){if(e.target.tagName==='INPUT')re
 var pCv=document.getElementById('particles'),pCx=pCv.getContext('2d'),pts=[];
 function rC(){pCv.width=innerWidth;pCv.height=innerHeight}rC();addEventListener('resize',rC);
 function Particle(){this.reset()}Particle.prototype.reset=function(){this.x=Math.random()*pCv.width;this.y=Math.random()*pCv.height;this.s=Math.random()*1.5+.5;this.sx=(Math.random()-.5)*.3;this.sy=(Math.random()-.5)*.3;this.o=Math.random()*.3+.05};Particle.prototype.update=function(){this.x+=this.sx;this.y+=this.sy;if(this.x<0||this.x>pCv.width||this.y<0||this.y>pCv.height)this.reset()};Particle.prototype.draw=function(){pCx.beginPath();pCx.arc(this.x,this.y,this.s,0,Math.PI*2);pCx.fillStyle='rgba(255,255,255,'+this.o+')';pCx.fill()};
-for(var i=0;i<20;i++)pts.push(new Particle());
+for(var i=0;i<50;i++)pts.push(new Particle());
 function aP(){pCx.clearRect(0,0,pCv.width,pCv.height);for(var i=0;i<pts.length;i++){pts[i].update();pts[i].draw()}for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<90){pCx.beginPath();pCx.strokeStyle='rgba(255,255,255,'+(0.04*(1-d/90))+')';pCx.lineWidth=.5;pCx.moveTo(pts[i].x,pts[i].y);pCx.lineTo(pts[j].x,pts[j].y);pCx.stroke()}}requestAnimationFrame(aP)}aP();
 
 // ===== CONFETTI =====
@@ -1138,10 +708,4 @@ function aCf(){cx.clearRect(0,0,cC.width,cC.height);var alive=false;for(var i=0;
 var touchX=0;
 document.addEventListener('touchstart',function(e){touchX=e.touches[0].clientX},{passive:true});
 document.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-touchX;if(Math.abs(d)>80)nextFact()},{passive:true});
-nextFact();
-</script>
-</body>
-</html>
-
-
 
