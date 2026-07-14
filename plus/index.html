@@ -224,6 +224,7 @@ body.theme-blood { --bg:#110000; --text:#ffcccc; --text2:rgba(255,100,100,0.7); 
 </div>
 
 <!-- MODALS -->
+<div class="modal-overlay" id="tm-modal"><div class="modal"><div class="modal-header"><h2>&#9201;&#65039; Zaman Makinesi</h2><button class="modal-close" onclick="closeModal('tm-modal')">&#10005;</button></div><div class="modal-body" style="text-align:center;padding:40px 20px"><div id="tm-year" style="font-size:4rem;font-weight:900;font-family:monospace;margin-bottom:20px;color:var(--accent3)">2026</div><div id="tm-fact" style="font-size:1.1rem;color:var(--text);margin-bottom:20px;min-height:80px">Gecmise yolculuk basliyor...</div><button class="btn btn-primary" onclick="spinTimeMachine()">Zamani Geri Sar</button></div></div></div>
 <div class="modal-overlay" id="fav-modal"><div class="modal"><div class="modal-header"><h2>&#11088; Favorilerim <span class="cnt-badge" id="fav-modal-count"></span></h2><button class="modal-close" onclick="closeModal('fav-modal')">&#10005;</button></div><div class="modal-body"><input type="text" class="modal-search" id="fav-search" placeholder="Favorilerde ara..." oninput="renderFavList()"><div style="margin-bottom:10px;text-align:right"><button class="btn btn-sm btn-secondary" onclick="exportFavorites()">&#128229; Disa Aktar</button></div><div id="fav-list"></div></div></div></div>
 
 <div class="modal-overlay" id="hist-modal"><div class="modal"><div class="modal-header"><h2>&#128336; Gecmis <span class="cnt-badge" id="hist-count"></span></h2><button class="modal-close" onclick="closeModal('hist-modal')">&#10005;</button></div><div class="modal-body" id="hist-list"></div></div></div>
@@ -249,6 +250,7 @@ body.theme-blood { --bg:#110000; --text:#ffcccc; --text2:rgba(255,100,100,0.7); 
       <button class="nav-btn" onclick="openModal('stats-modal');renderStats()" title="Istatistikler">&#128202;</button>
       <button class="nav-btn" onclick="openModal('hist-modal');renderHistoryModal()" title="Gecmis">&#128336;</button>
       <button class="nav-btn" onclick="openModal('quiz-modal');generateQuiz()" title="Quiz">&#129513;</button>
+      <button class="nav-btn" onclick="openTimeMachine()" title="Zaman Makinesi">&#9201;&#65039;</button>
       <button class="nav-btn" id="sound-btn" onclick="toggleSound()" title="Ses">&#128266;</button>
       <button class="nav-btn" id="auto-nav" onclick="toggleAutoPlay()" title="Otomatik">&#9654;&#65039;</button>
     </div>
@@ -1161,6 +1163,127 @@ var cC=document.getElementById('confetti'),cx=cC.getContext('2d');function rCC()
 function launchConfetti(){cPs=[];var cols=['#6c63ff','#ff6584','#ffc837','#00d2ff','#ff9a9e','#a29bfe','#55efc4','#fd79a8'];for(var i=0;i<100;i++)cPs.push({x:cC.width/2+(Math.random()-.5)*200,y:cC.height/2,vx:(Math.random()-.5)*14,vy:Math.random()*-16-5,sz:Math.random()*7+3,c:cols[Math.floor(Math.random()*cols.length)],rot:Math.random()*360,rs:(Math.random()-.5)*10,l:1});aCf()}
 function aCf(){cx.clearRect(0,0,cC.width,cC.height);var alive=false;for(var i=0;i<cPs.length;i++){var p=cPs[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.35;p.rot+=p.rs;p.l-=.009;if(p.l>0){alive=true;cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot*Math.PI/180);cx.fillStyle=p.c;cx.globalAlpha=p.l;cx.fillRect(-p.sz/2,-p.sz/2,p.sz,p.sz);cx.restore()}}if(alive)requestAnimationFrame(aCf);else cx.clearRect(0,0,cC.width,cC.height)}
 
+// ===== ZAMAN MAKINESI =====
+var tmInterval;
+function openTimeMachine(){
+    openModal('tm-modal');
+    document.getElementById('tm-fact').textContent = 'Gecmise yolculuk basliyor...';
+    document.getElementById('tm-year').textContent = new Date().getFullYear();
+}
+function spinTimeMachine(){
+    if(window.speechSynthesis) window.speechSynthesis.cancel();
+    playSound(100, 0.1, 'square');
+    var yearEl = document.getElementById('tm-year');
+    var factEl = document.getElementById('tm-fact');
+    var ticks = 0;
+    document.body.style.transition = 'filter 2s';
+    document.body.style.filter = 'sepia(0.8) contrast(1.2)';
+    clearInterval(tmInterval);
+    tmInterval = setInterval(function(){
+        ticks++;
+        yearEl.textContent = Math.floor(Math.random()*(2024 + 3000)) - 3000;
+        if(ticks%3===0) playSound(150, 0.05, 'square');
+        if(ticks > 30) {
+            clearInterval(tmInterval);
+            var historicalPool = [];
+            if(factsDB['Dunya Tarihi']) historicalPool=historicalPool.concat(factsDB['Dunya Tarihi'].facts);
+            if(factsDB['Mitoloji']) historicalPool=historicalPool.concat(factsDB['Mitoloji'].facts);
+            if(!historicalPool.length) historicalPool=allFacts.map(function(f){return f.text});
+            var rf = historicalPool[Math.floor(Math.random()*historicalPool.length)];
+            var targetYear = (rf.match(/\b\d{3,4}\b/) || [Math.floor(Math.random()*(1990 - 1000))+1000])[0];
+            yearEl.textContent = targetYear;
+            factEl.textContent = typeof rf === 'string' ? rf : rf.text;
+            playSound(600, 0.5, 'sine');
+            launchConfetti();
+            addXp(25);
+            setTimeout(function(){document.body.style.filter = '';}, 4000);
+            if(unlockedAch.indexOf('time_traveler')<0){
+                unlockedAch.push('time_traveler'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                showToast('\u23F3 Zaman Yolcusu Basarimi! +100 XP'); addXp(100);
+            }
+        }
+    }, 50);
+}
+
+// ===== EASTER EGGS (INTERACTIONS) =====
+
+// 1. Emoji Click Explosion
+var emojiClicks = 0, emojiTimer = null;
+document.addEventListener('DOMContentLoaded', function(){
+    var em = document.getElementById('fact-emoji');
+    if(em) {
+        em.style.cursor = 'pointer';
+        em.addEventListener('click', function(){
+            emojiClicks++;
+            clearTimeout(emojiTimer);
+            emojiTimer = setTimeout(function(){emojiClicks=0;}, 1000);
+            if(emojiClicks === 5) {
+                em.style.transform = 'scale(3) rotate(360deg)';
+                em.style.transition = 'transform 0.5s';
+                setTimeout(function(){em.style.transform='';em.style.transition='';}, 600);
+                launchConfetti();
+                if(unlockedAch.indexOf('emoji_master')<0){
+                    unlockedAch.push('emoji_master'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                    showToast('\uD83D\uDE32 Emoji Patlamasi! +150 XP'); addXp(150);
+                }
+            }
+        });
+    }
+    
+    // 2. Long Press Like
+    var likeBtn = document.getElementById('like-btn');
+    var likePressTimer;
+    if(likeBtn) {
+        likeBtn.addEventListener('mousedown', function(){
+            likePressTimer = setTimeout(function(){
+                var heart = document.createElement('div');
+                heart.innerHTML = '\u2764\uFE0F';
+                heart.style.position = 'fixed'; heart.style.left='50%'; heart.style.top='50%';
+                heart.style.transform = 'translate(-50%,-50%) scale(10)'; heart.style.opacity='0';
+                heart.style.fontSize = '50px'; heart.style.zIndex='9999'; heart.style.transition='all 1s';
+                document.body.appendChild(heart);
+                setTimeout(function(){ heart.style.opacity='0.8'; heart.style.transform='translate(-50%,-50%) scale(1)'; }, 50);
+                setTimeout(function(){ heart.remove(); }, 1500);
+                if(unlockedAch.indexOf('true_love')<0){
+                    unlockedAch.push('true_love'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                    showToast('\uD83D\uDC96 Gercek Ask! +200 XP'); addXp(200);
+                }
+            }, 1500);
+        });
+        likeBtn.addEventListener('mouseup', function(){clearTimeout(likePressTimer);});
+        likeBtn.addEventListener('mouseleave', function(){clearTimeout(likePressTimer);});
+        likeBtn.addEventListener('touchstart', function(){
+            likePressTimer = setTimeout(function(){
+                if(unlockedAch.indexOf('true_love')<0){
+                    unlockedAch.push('true_love'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                    showToast('\uD83D\uDC96 Gercek Ask! +200 XP'); addXp(200);
+                }
+            }, 1500);
+        }, {passive:true});
+        likeBtn.addEventListener('touchend', function(){clearTimeout(likePressTimer);});
+    }
+});
+
+// 3. Konami Code (Up Up Down Down Left Right Left Right B A)
+var konamiCode = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+var konamiIdx = 0;
+document.addEventListener('keydown', function(e){
+    if(e.key.toLowerCase() === konamiCode[konamiIdx].toLowerCase() || e.key === konamiCode[konamiIdx]) {
+        konamiIdx++;
+        if(konamiIdx === konamiCode.length) {
+            konamiIdx = 0;
+            if(unlockedAch.indexOf('konami')<0){
+                unlockedAch.push('konami'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                showToast('\uD83D\uDD79\uFE0F Hile Kodu Etkin! +1337 XP'); addXp(1337);
+                document.body.className='theme-hacker'; localStorage.setItem('bh_theme','theme-hacker');
+                for(var i=0;i<5;i++) setTimeout(launchConfetti, i*300);
+            }
+        }
+    } else {
+        konamiIdx = 0;
+    }
+});
+
 // ===== TOUCH =====
 var touchX=0;
 document.addEventListener('touchstart',function(e){touchX=e.touches[0].clientX},{passive:true});
@@ -1169,6 +1292,7 @@ nextFact();
 </script>
 </body>
 </html>
+
 
 
 
