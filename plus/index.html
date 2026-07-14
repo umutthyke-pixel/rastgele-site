@@ -281,17 +281,6 @@ body.theme-blood { --bg:#110000; --text:#ffcccc; --text2:rgba(255,100,100,0.7); 
   </div>
   <div class="search-results" id="search-results" style="display:none"></div>
 
-  <div class="stats-bar animate-in" style="animation-delay:.08s">
-    <div class="stat"><div class="num" id="seen-count">0</div><div class="label">Gorulen</div></div>
-    <div class="stat"><div class="num" id="total-count">0</div><div class="label">Toplam</div></div>
-    <div class="stat"><div class="num" id="fav-count">0</div><div class="label">Favori</div></div>
-    <div class="stat"><div class="num" id="streak-count">0</div><div class="label">Seri</div></div>
-    <div class="stat"><div class="num" id="best-streak">0</div><div class="label">En Iyi</div></div>
-  </div>
-
-  <div class="progress-wrap animate-in" style="animation-delay:.1s">
-    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-    <div class="progress-label" id="progress-label">0% kesfedildi</div>
   </div>
 
   <div class="level-wrap animate-in" onclick="openModal('lvl-modal'); openLvlModal()" style="cursor:pointer; animation-delay:.1s; background:var(--card); padding:12px 20px; border-radius:16px; margin-bottom:16px; border:1px solid var(--card-border); transition: transform 0.2s, background 0.2s;">
@@ -1593,7 +1582,7 @@ function nextFact(){if(window.speechSynthesis)window.speechSynthesis.cancel();
     } else { comboCount = 0; if(document.getElementById('combo-badge')) document.getElementById('combo-badge').classList.remove('active'); }
     lastFactTime = now;
     var pool=getPool();if(!pool.length)return;var unseen=pool.filter(function(f){return!seenFacts[f.text]});var src=unseen.length?unseen:pool;var fact=src[Math.floor(Math.random()*src.length)];if(!seenFacts[fact.text]){streak++;totalEverSeen++;localStorage.setItem('bh_ts2',totalEverSeen)}else{streak=0}if(streak>bestStreak){bestStreak=streak;localStorage.setItem('bh_best2',bestStreak)}currentFact=fact;currentFactIndex=allFacts.indexOf(fact);seenFacts[fact.text]=true; addXp(10);factHistory.unshift({text:fact.text,category:fact.category,emoji:fact.emoji,color:fact.color,time:new Date().toLocaleTimeString('tr-TR')});if(factHistory.length>200)factHistory.pop();renderFactCard();sndClick();checkMS();checkAchievements();if(navigator.vibrate)try{navigator.vibrate(10)}catch(e){}}
-function renderFactCard(){var fact=currentFact;if(!fact)return;var t=document.getElementById('fact-text'),em=document.getElementById('fact-emoji'),bg=document.getElementById('fact-badge'),nm=document.getElementById('fact-number'),rb=document.getElementById('rarity-badge');t.style.opacity='0';document.getElementById('speak-btn').style.color='';setTimeout(function(){em.textContent=fact.emoji;em.style.animation='none';em.offsetHeight;em.style.animation='bounceIn .5s ease';bg.textContent=fact.category;bg.style.background='rgba('+fact.color+',.2)';bg.style.color='rgba('+fact.color+',1)';t.textContent=fact.text;t.style.opacity='1';nm.textContent='#'+(currentFactIndex+1)+' / '+allFacts.length;var rarity=getRarity(currentFactIndex);rb.textContent=rarity.name;rb.className='rarity-badge '+rarity.cls;rb.style.display='block';updateLikeBtn();var sc=Object.keys(seenFacts).length;document.getElementById('seen-count').textContent=sc;document.getElementById('streak-count').textContent=streak;document.getElementById('best-streak').textContent=bestStreak;var pct=((sc/allFacts.length)*100).toFixed(1);document.getElementById('progress-fill').style.width=pct+'%';document.getElementById('progress-label').textContent=pct+'% kesfedildi ('+sc+'/'+allFacts.length+')'}, 300)}
+function renderFactCard(){var fact=currentFact;if(!fact)return;var t=document.getElementById('fact-text'),em=document.getElementById('fact-emoji'),bg=document.getElementById('fact-badge'),nm=document.getElementById('fact-number'),rb=document.getElementById('rarity-badge');t.style.opacity='0';document.getElementById('speak-btn').style.color='';setTimeout(function(){em.textContent=fact.emoji;em.style.animation='none';em.offsetHeight;em.style.animation='bounceIn .5s ease';bg.textContent=fact.category;bg.style.background='rgba('+fact.color+',.2)';bg.style.color='rgba('+fact.color+',1)';t.textContent=fact.text;t.style.opacity='1';nm.textContent='#'+(currentFactIndex+1)+' / '+allFacts.length;var rarity=getRarity(currentFactIndex);rb.textContent=rarity.name;rb.className='rarity-badge '+rarity.cls;rb.style.display='block';updateLikeBtn();var sc=Object.keys(seenFacts).length;if(document.getElementById('seen-count'))document.getElementById('seen-count').textContent=sc;if(document.getElementById('streak-count'))document.getElementById('streak-count').textContent=streak;if(document.getElementById('best-streak'))document.getElementById('best-streak').textContent=bestStreak;var pct=((sc/allFacts.length)*100).toFixed(1);if(document.getElementById('progress-fill'))document.getElementById('progress-fill').style.width=pct+'%';if(document.getElementById('progress-label'))document.getElementById('progress-label').textContent=pct+'% kesfedildi ('+sc+'/'+allFacts.length+')'}, 300)}
 
 // ===== RANDOM CATEGORY =====
 function randomCategory(){var cats=Object.keys(factsDB);var r=cats[Math.floor(Math.random()*cats.length)];setCat(r);renderCats();nextFact();showToast(factsDB[r].emoji+' '+r)}
