@@ -1635,8 +1635,50 @@ function shareAsImage(){if(!currentFact)return;var c=document.getElementById('sh
 function toggleAutoPlay(){var b=document.getElementById('auto-nav');if(autoInt){clearInterval(autoInt);autoInt=null;b.classList.remove('active-nav');b.textContent='\u25B6\uFE0F';showToast('Durduruldu')}else{nextFact();autoInt=setInterval(nextFact,4000);b.classList.add('active-nav');b.textContent='\u23F8\uFE0F';showToast('Otomatik mod!');checkAchievements()}}
 
 // ===== TOAST =====
+var eggExplanations = {
+  '\uD83C\uDF00 Döndür Beni Bebeğim!': 'Neden?: Logoya Shift ile tıkladın.',
+  '\uD83C\uDFAF Piksel Avcısı!': 'Neden?: Sağ alt köşedeki görünmez pikseli buldun.',
+  '\uD83D\uDD04 Ters Köşe!': 'Neden?: Ana emojiye 3 saniye basılı tuttun.',
+  '\uD83C\uDFA8 Ressam!': 'Neden?: Fareyle hızlıca daireler çizdin.',
+  '\uD83D\uDCD0 Köşe Kaçkını!': 'Neden?: Fareyi 4 farklı köşeye sırayla götürdün.',
+  '\uD83D\uDC46 Uzun Basış Ustası!': 'Neden?: Sonraki butonuna 10 sn basılı tuttun.',
+  '\uD83D\uDCA2 YAVAŞLA!': 'Neden?: 3 saniyede 20\'den fazla tıkladın.',
+  '\uD83D\uDCF3 Deprem Ustası!': 'Neden?: Klavyede peş peşe S-S-S yazdın.',
+  '\uD83C\uDD98 SOS Çağrısı!': 'Neden?: Klavyede S-O-S yazdın.',
+  '\uD83C\uDFB9 Piyano Virtüözü!': 'Neden?: Klavyede D-O-R-E-M-I yazdın.',
+  '\uD83D\uDC7B Hayalet Modu!': 'Neden?: Klavyede G-H-O-S-T yazdın.',
+  '\uD83D\uDD25 Ateş Dansı!': 'Neden?: Boşluk (Space) tuşuna 10 kez bastın.',
+  '\uD83C\uDF19 Gece Kuşu!': 'Neden?: Siteye gece 00:00 ile 04:00 arasında girdin.',
+  '\uD83D\uDD0B Tehlikeli Yaşıyorsun!': 'Neden?: Şarjın %20\'nin altındayken girdin.',
+  '\uD83C\uDF89 Hafta Sonu Savaşçısı!': 'Neden?: Siteye hafta sonu giriş yaptın.',
+  '\u2600\uFE0F Erken Kuş!': 'Neden?: Siteye sabah 05:00 ile 07:00 arasında girdin.',
+  '\u2328\uFE0F Hız Şeytanı!': 'Neden?: Çok hızlı yazı yazdın (2 sn\'de 15 harf).',
+  '\uD83D\uDCDC Kaydırma Canavarı!': 'Neden?: Sayfayı 3 kez aşağı-yukarı kaydırdın.',
+  '\uD83D\uDD00 Beni Özledin mi?': 'Neden?: Başka sekmede 30 saniye bekleyip döndün.',
+  '\uD83D\uDCCB Yapıştır Ustası!': 'Neden?: Arama kutusuna kopyala-yapıştır yaptın.'
+};
+
 var toastTimer;
-function showToast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.classList.remove('show')},2200)}
+function showToast(m){
+  if(m.indexOf('XP')>-1 && m.indexOf('!')>-1 && m.charCodeAt(0)>200){
+    var xpMatch = m.match(/\+\d+ XP/);
+    var xpStr = xpMatch ? xpMatch[0] : '';
+    var parts = m.split(' ');
+    var em = parts[0];
+    var title = parts.slice(1).join(' ').replace(/ \+\d+ XP/,'').trim();
+    var exp = eggExplanations[em+' '+title] || 'Neden?: Gizli bir etkileşimi tetikledin!';
+    
+    var mEl = document.getElementById('milestone');
+    document.getElementById('ms-emoji').textContent = em;
+    document.getElementById('ms-title').textContent = title;
+    document.getElementById('ms-text').innerHTML = '<div style="color:var(--accent3);margin-bottom:12px;font-size:0.9rem">'+exp+'</div><div style="font-size:1.1rem;color:var(--accent4);font-weight:900">'+xpStr+'</div>';
+    
+    mEl.classList.add('show');
+    setTimeout(function(){mEl.classList.remove('show')}, 5000);
+    return;
+  }
+  var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.classList.remove('show')},2200);
+}
 
 // ===== KEYBOARD =====
 document.addEventListener('keydown',function(e){if(e.target.tagName==='INPUT')return;if(e.code==='Space'){e.preventDefault();nextFact()}if(e.code==='KeyL')toggleLike();if(e.code==='KeyC')copyFact();if(e.code==='KeyF'){openModal('fav-modal');openFavModal()}if(e.code==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open')});if(e.code==='KeyH'){openModal('hist-modal');renderHistoryModal()}if(e.code==='KeyQ'){openModal('quiz-modal');generateQuiz()}if(e.code==='KeyR')randomCategory();if(e.code==='KeyA'){openModal('ach-modal');renderAchievements()}if(e.code==='KeyD')showDailyFact()});
