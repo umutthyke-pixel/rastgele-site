@@ -2,13 +2,17 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bilgi Hazinesi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Bilgi Hazinesi by THYKE - Binlerce ilginc bilgi kesfet!">
+<title>Bilgi Hazinesi | THYKE</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a1a;--card:rgba(255,255,255,.06);--card-border:rgba(255,255,255,.1);--text:rgba(255,255,255,.9);--text2:rgba(255,255,255,.5);--text3:rgba(255,255,255,.25);--accent1:#6c63ff;--accent2:#ff6584;--accent3:#ffc837;--accent4:#00d2ff}
-body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:#fff;overflow-x:hidden}
+:root{--bg:#0a0a1a;--card:rgba(255,255,255,.06);--card-border:rgba(255,255,255,.1);--text:rgba(255,255,255,.9);--text2:rgba(255,255,255,.5);--text3:rgba(255,255,255,.25);--accent1:#6c63ff;--accent2:#ff6584;--accent3:#ffc837;--accent4:#00d2ff;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}
+body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;min-height:100dvh;color:#fff;overflow-x:hidden;-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased}
 .bg-orbs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .bg-orbs span{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;animation:floatOrb 20s ease-in-out infinite alternate}
 .bg-orbs span:nth-child(1){width:600px;height:600px;background:var(--accent1);top:-10%;left:-10%}
@@ -19,21 +23,41 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
 #particles{position:fixed;inset:0;z-index:1;pointer-events:none}
 #confetti{position:fixed;inset:0;z-index:999;pointer-events:none}
 
-.app{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:16px 16px 60px;min-height:100vh}
+.app{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:calc(16px + var(--safe-top)) 16px calc(60px + var(--safe-bottom));min-height:100vh;min-height:100dvh}
 .container{width:100%;max-width:600px}
 
 .top-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:8px}
-.nav-brand{font-weight:900;font-size:1.3rem;background:linear-gradient(135deg,var(--accent1),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-actions{display:flex;gap:6px}
-.nav-btn{width:38px;height:38px;border-radius:12px;border:1px solid var(--card-border);background:var(--card);color:rgba(255,255,255,.6);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s}
-.nav-btn:hover{background:rgba(255,255,255,.12);color:#fff;transform:translateY(-1px)}
+.nav-brand{font-weight:900;font-size:1.3rem;background:linear-gradient(135deg,var(--accent1),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:flex;flex-direction:column;line-height:1.1}
+.nav-brand-sub{font-size:.55rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;-webkit-text-fill-color:var(--text3);opacity:.7}
+.nav-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.nav-btn{width:38px;height:38px;border-radius:12px;border:1px solid var(--card-border);background:var(--card);color:rgba(255,255,255,.6);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;min-width:38px}
+.nav-btn:hover,.nav-btn:active{background:rgba(255,255,255,.12);color:#fff;transform:translateY(-1px)}
 .nav-btn.active-nav{color:var(--accent3);border-color:rgba(255,200,55,.3);background:rgba(255,200,55,.08)}
 
-.stats-bar{display:flex;justify-content:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
-.stat{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:7px 14px;text-align:center;min-width:75px;transition:transform .2s}
+.search-bar{position:relative;margin-bottom:14px}
+.search-bar input{width:100%;padding:11px 14px 11px 38px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:#fff;font-size:.85rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .3s}
+.search-bar input::placeholder{color:rgba(255,255,255,.2)}
+.search-bar input:focus{border-color:rgba(108,99,255,.4)}
+.search-bar .s-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:.85rem;color:rgba(255,255,255,.2);pointer-events:none}
+.search-results{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:8px;max-height:260px;overflow-y:auto;margin-bottom:14px;-webkit-overflow-scrolling:touch}
+.search-results::-webkit-scrollbar{width:4px}
+.search-results::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+.sr-item{padding:10px 12px;border-radius:10px;font-size:.8rem;color:rgba(255,255,255,.6);cursor:pointer;transition:all .2s;display:flex;gap:8px;align-items:flex-start}
+.sr-item:hover,.sr-item:active{background:rgba(255,255,255,.06);color:#fff}
+
+.daily-banner{background:linear-gradient(135deg,rgba(108,99,255,.12),rgba(255,101,132,.12));border:1px solid rgba(108,99,255,.15);border-radius:16px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .3s;-webkit-tap-highlight-color:transparent}
+.daily-banner:hover,.daily-banner:active{transform:translateY(-2px);box-shadow:0 6px 24px rgba(108,99,255,.15)}
+.daily-icon{font-size:1.8rem}
+.daily-info{flex:1}
+.daily-title{font-size:.8rem;font-weight:700;color:var(--accent3)}
+.daily-sub{font-size:.65rem;color:var(--text3);margin-top:2px}
+.daily-arrow{color:var(--text3);font-size:1rem}
+
+.stats-bar{display:flex;justify-content:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.stat{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:7px 12px;text-align:center;min-width:65px;transition:transform .2s;flex:1}
 .stat:hover{transform:translateY(-2px)}
-.stat .num{font-size:1.2rem;font-weight:800;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat .label{font-size:.6rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-top:1px}
+.stat .num{font-size:1.1rem;font-weight:800;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat .label{font-size:.55rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-top:1px}
 
 .progress-wrap{margin-bottom:14px}
 .progress-bar{height:4px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
@@ -41,8 +65,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
 .progress-label{font-size:.6rem;color:var(--text3);text-align:right;margin-top:2px}
 
 .categories{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:14px}
-.cat-pill{padding:5px 12px;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:rgba(255,255,255,.5);font-size:.7rem;cursor:pointer;transition:all .25s;user-select:none;white-space:nowrap}
-.cat-pill:hover{background:rgba(255,255,255,.08);color:#fff;transform:translateY(-1px)}
+.cat-pill{padding:6px 12px;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:rgba(255,255,255,.5);font-size:.7rem;cursor:pointer;transition:all .25s;user-select:none;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.cat-pill:hover,.cat-pill:active{background:rgba(255,255,255,.08);color:#fff;transform:translateY(-1px)}
 .cat-pill.active{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;border-color:transparent;box-shadow:0 3px 12px rgba(108,99,255,.3)}
 
 .fact-card{background:var(--card);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:24px;border:1px solid var(--card-border);padding:30px 26px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.3);transition:transform .4s,box-shadow .4s;position:relative;overflow:hidden;margin-bottom:14px}
@@ -59,85 +83,125 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
 .fact-category-badge{display:inline-block;padding:3px 10px;border-radius:8px;font-size:.6rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;font-weight:600}
 .fact-text{font-weight:300;font-size:1.05rem;line-height:1.7;min-height:50px;transition:opacity .35s;color:var(--text)}
 .fact-number{margin-top:12px;font-size:.65rem;color:var(--text3)}
+.fact-watermark{position:absolute;bottom:8px;left:14px;font-size:.5rem;color:rgba(255,255,255,.08);font-weight:700;letter-spacing:2px;text-transform:uppercase}
 
 .actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
-.btn{padding:11px 20px;border-radius:13px;border:none;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px}
+.btn{padding:11px 20px;border-radius:13px;border:none;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .25s;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent}
 .btn-primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;box-shadow:0 4px 18px rgba(108,99,255,.3)}
-.btn-primary:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 28px rgba(108,99,255,.5)}
+.btn-primary:hover,.btn-primary:active{transform:translateY(-2px) scale(1.03);box-shadow:0 8px 28px rgba(108,99,255,.5)}
 .btn-sm{padding:9px 14px;font-size:.75rem;border-radius:11px}
 .btn-secondary{background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.08)}
-.btn-secondary:hover{background:rgba(255,255,255,.12);color:#fff;transform:translateY(-2px)}
+.btn-secondary:hover,.btn-secondary:active{background:rgba(255,255,255,.12);color:#fff;transform:translateY(-2px)}
 .btn-secondary.liked{color:var(--accent2);border-color:rgba(255,101,132,.3);background:rgba(255,101,132,.08)}
 .btn-secondary.active-toggle{color:var(--accent3);border-color:rgba(255,200,55,.3);background:rgba(255,200,55,.08)}
 .btn:active{transform:translateY(1px) scale(.97)}
 .actions-row2{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:rgba(108,99,255,.92);backdrop-filter:blur(10px);color:#fff;padding:10px 24px;border-radius:13px;font-size:.82rem;font-weight:600;z-index:1000;transition:transform .35s,opacity .35s;opacity:0;pointer-events:none}
+.footer{text-align:center;padding:30px 16px 20px;margin-top:10px}
+.footer-brand{font-size:.65rem;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.footer-brand span{background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800;letter-spacing:3px}
+.footer-sub{font-size:.55rem;color:rgba(255,255,255,.12)}
+.footer-line{width:40px;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:8px auto}
+
+.toast{position:fixed;bottom:calc(24px + var(--safe-bottom));left:50%;transform:translateX(-50%) translateY(100px);background:rgba(108,99,255,.92);backdrop-filter:blur(10px);color:#fff;padding:10px 24px;border-radius:13px;font-size:.82rem;font-weight:600;z-index:1000;transition:transform .35s,opacity .35s;opacity:0;pointer-events:none;max-width:90vw;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 
-.milestone{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);z-index:800;background:rgba(15,15,35,.96);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:36px 46px;text-align:center;transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s;opacity:0;pointer-events:none}
+.milestone{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);z-index:800;background:rgba(15,15,35,.96);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:36px 46px;text-align:center;transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s;opacity:0;pointer-events:none;max-width:90vw}
 .milestone.show{transform:translate(-50%,-50%) scale(1);opacity:1;pointer-events:auto}
 .milestone-emoji{font-size:3.5rem;margin-bottom:10px;display:block}
 .milestone h2{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--accent3),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
 .milestone p{color:var(--text2);font-size:.85rem}
 
-.modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:none;justify-content:center;align-items:flex-start;padding:30px 16px;overflow-y:auto}
+.modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:none;justify-content:center;align-items:flex-start;padding:30px 16px;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .modal-overlay.open{display:flex}
 .modal{background:#111128;border:1px solid rgba(255,255,255,.1);border-radius:22px;width:100%;max-width:620px;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.6);animation:fadeUp .35s ease}
 .modal-header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
-.modal-header h2{font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:8px}
-.modal-close{width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.modal-close:hover{background:rgba(255,80,80,.2);border-color:rgba(255,80,80,.3)}
-.modal-body{padding:16px 24px 24px;overflow-y:auto;flex:1}
+.modal-header h2{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:8px}
+.modal-close{width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;min-width:38px}
+.modal-close:hover,.modal-close:active{background:rgba(255,80,80,.2);border-color:rgba(255,80,80,.3)}
+.modal-body{padding:16px 20px 24px;overflow-y:auto;flex:1;-webkit-overflow-scrolling:touch}
 .modal-body::-webkit-scrollbar{width:5px}
 .modal-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
 
-.modal-search{width:100%;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:#fff;font-size:.85rem;font-family:'Inter',sans-serif;margin-bottom:14px;outline:none;transition:border-color .3s}
+.modal-search{width:100%;padding:11px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:#fff;font-size:.85rem;font-family:'Inter',sans-serif;margin-bottom:14px;outline:none;transition:border-color .3s}
 .modal-search::placeholder{color:rgba(255,255,255,.2)}
 .modal-search:focus{border-color:rgba(108,99,255,.4)}
 
 .fav-item{padding:12px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:13px;margin-bottom:8px;font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.6;display:flex;align-items:flex-start;gap:10px;transition:all .25s;position:relative}
 .fav-item:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.1)}
 .fav-emoji-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
-.fav-content{flex:1}
+.fav-content{flex:1;padding-right:30px}
 .fav-cat-label{font-size:.6rem;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
-.fav-remove{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:7px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03);color:rgba(255,255,255,.25);font-size:.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;opacity:0}
-.fav-item:hover .fav-remove{opacity:1}
-.fav-remove:hover{background:rgba(255,80,80,.2);border-color:rgba(255,80,80,.3);color:#ff5050}
+.fav-remove{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03);color:rgba(255,255,255,.3);font-size:.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.fav-remove:hover,.fav-remove:active{background:rgba(255,80,80,.2);border-color:rgba(255,80,80,.3);color:#ff5050}
 .fav-empty{text-align:center;padding:30px 16px;color:var(--text3)}
 .fav-empty-icon{font-size:2.5rem;margin-bottom:10px;display:block}
 .cnt-badge{font-size:.8rem;color:var(--text3);font-weight:400}
 
-.quiz-card{background:var(--card);backdrop-filter:blur(20px);border-radius:24px;border:1px solid var(--card-border);padding:30px 26px;text-align:center;margin-bottom:14px;position:relative;overflow:hidden}
+.quiz-card{background:var(--card);backdrop-filter:blur(20px);border-radius:24px;border:1px solid var(--card-border);padding:24px 20px;text-align:center;margin-bottom:14px;position:relative;overflow:hidden}
 .quiz-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ffc837,#ff6584)}
-.quiz-q{font-size:1.05rem;font-weight:400;line-height:1.6;margin-bottom:20px;color:var(--text)}
+.quiz-q{font-size:1rem;font-weight:400;line-height:1.6;margin-bottom:20px;color:var(--text)}
 .quiz-options{display:flex;flex-direction:column;gap:8px}
-.quiz-opt{padding:14px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:rgba(255,255,255,.7);font-size:.88rem;cursor:pointer;transition:all .25s;text-align:left;font-family:'Inter',sans-serif}
-.quiz-opt:hover{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.2);transform:translateX(4px)}
+.quiz-opt{padding:14px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:rgba(255,255,255,.7);font-size:.85rem;cursor:pointer;transition:all .25s;text-align:left;font-family:'Inter',sans-serif;-webkit-tap-highlight-color:transparent}
+.quiz-opt:hover,.quiz-opt:active{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.2);transform:translateX(4px)}
 .quiz-opt.correct{background:rgba(0,230,118,.15);border-color:rgba(0,230,118,.4);color:#69f0ae}
 .quiz-opt.wrong{background:rgba(255,82,82,.15);border-color:rgba(255,82,82,.4);color:#ff5252}
 .quiz-opt.disabled{pointer-events:none}
-.quiz-score{display:flex;justify-content:center;gap:20px;margin-bottom:16px}
+.quiz-score{display:flex;justify-content:center;gap:16px;margin-bottom:16px}
 .quiz-stat{text-align:center}
-.quiz-stat .q-num{font-size:1.8rem;font-weight:800}
-.quiz-stat .q-label{font-size:.6rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
+.quiz-stat .q-num{font-size:1.6rem;font-weight:800}
+.quiz-stat .q-label{font-size:.55rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
 
 .hist-item{padding:10px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.04);border-radius:11px;margin-bottom:6px;font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.5;display:flex;gap:8px;align-items:flex-start}
 .hist-item .h-emoji{font-size:1.1rem;flex-shrink:0}
 .hist-time{font-size:.6rem;color:var(--text3);margin-top:2px}
+
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.ach-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:14px 10px;text-align:center;transition:all .3s}
+.ach-card.unlocked{border-color:rgba(255,200,55,.2);background:rgba(255,200,55,.05)}
+.ach-card.locked{opacity:.35;filter:grayscale(1)}
+.ach-icon{font-size:1.8rem;margin-bottom:4px;display:block}
+.ach-name{font-size:.7rem;font-weight:700;margin-bottom:2px}
+.ach-desc{font-size:.55rem;color:var(--text3);line-height:1.3}
 
 #share-canvas{display:none}
 
 @keyframes bounceIn{0%{transform:scale(.3);opacity:0}50%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .animate-in{animation:fadeUp .5s ease forwards}
+
 @media(max-width:500px){
-.nav-brand{font-size:1.1rem}
-.fact-card{padding:22px 16px}
-.fact-text{font-size:.95rem}
-.btn{padding:9px 14px;font-size:.78rem}
-.btn-sm{padding:8px 12px;font-size:.72rem}
-.modal{border-radius:16px}
+  .top-nav{flex-wrap:wrap}
+  .nav-brand{font-size:1.1rem}
+  .nav-actions{gap:5px}
+  .nav-btn{width:36px;height:36px;min-width:36px;font-size:.9rem}
+  .stats-bar{gap:5px}
+  .stat{padding:6px 8px;min-width:55px}
+  .stat .num{font-size:1rem}
+  .stat .label{font-size:.5rem}
+  .fact-card{padding:22px 16px;border-radius:20px}
+  .fact-text{font-size:.95rem}
+  .fact-emoji{font-size:2.2rem}
+  .btn{padding:10px 16px;font-size:.78rem}
+  .btn-sm{padding:9px 12px;font-size:.72rem}
+  .actions{gap:6px}
+  .actions-row2{gap:6px}
+  .modal{border-radius:18px;max-height:90vh}
+  .modal-header{padding:16px 18px 12px}
+  .modal-header h2{font-size:1rem}
+  .modal-body{padding:14px 16px 20px}
+  .categories{gap:4px}
+  .cat-pill{padding:5px 10px;font-size:.65rem}
+  .daily-banner{padding:12px 14px}
+  .search-bar input{padding:10px 14px 10px 36px;font-size:.82rem}
+  .ach-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px}
+  .ach-card{padding:10px 8px}
+  .quiz-opt{padding:12px 14px;font-size:.82rem}
+}
+@media(max-width:360px){
+  .stat{min-width:48px;padding:5px 6px}
+  .stat .num{font-size:.9rem}
+  .nav-btn{width:34px;height:34px;min-width:34px;font-size:.85rem}
 }
 </style>
 </head>
@@ -154,71 +218,55 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
   <p id="ms-text"></p>
 </div>
 
-<!-- FAV MODAL -->
-<div class="modal-overlay" id="fav-modal">
-  <div class="modal">
-    <div class="modal-header">
-      <h2>&#11088; Favorilerim <span class="cnt-badge" id="fav-modal-count"></span></h2>
-      <button class="modal-close" onclick="closeModal('fav-modal')">&#10005;</button>
-    </div>
-    <div class="modal-body">
-      <input type="text" class="modal-search" id="fav-search" placeholder="Favorilerde ara..." oninput="renderFavList()">
-      <div id="fav-list"></div>
-    </div>
-  </div>
-</div>
+<!-- MODALS -->
+<div class="modal-overlay" id="fav-modal"><div class="modal"><div class="modal-header"><h2>&#11088; Favorilerim <span class="cnt-badge" id="fav-modal-count"></span></h2><button class="modal-close" onclick="closeModal('fav-modal')">&#10005;</button></div><div class="modal-body"><input type="text" class="modal-search" id="fav-search" placeholder="Favorilerde ara..." oninput="renderFavList()"><div style="margin-bottom:10px;text-align:right"><button class="btn btn-sm btn-secondary" onclick="exportFavorites()">&#128229; Disa Aktar</button></div><div id="fav-list"></div></div></div></div>
 
-<!-- HISTORY MODAL -->
-<div class="modal-overlay" id="hist-modal">
-  <div class="modal">
-    <div class="modal-header">
-      <h2>&#128336; Gecmis <span class="cnt-badge" id="hist-count"></span></h2>
-      <button class="modal-close" onclick="closeModal('hist-modal')">&#10005;</button>
-    </div>
-    <div class="modal-body" id="hist-list"></div>
-  </div>
-</div>
+<div class="modal-overlay" id="hist-modal"><div class="modal"><div class="modal-header"><h2>&#128336; Gecmis <span class="cnt-badge" id="hist-count"></span></h2><button class="modal-close" onclick="closeModal('hist-modal')">&#10005;</button></div><div class="modal-body" id="hist-list"></div></div></div>
 
-<!-- QUIZ MODAL -->
-<div class="modal-overlay" id="quiz-modal">
-  <div class="modal">
-    <div class="modal-header">
-      <h2>&#129513; Bilgi Yarismasi</h2>
-      <button class="modal-close" onclick="closeModal('quiz-modal')">&#10005;</button>
-    </div>
-    <div class="modal-body" id="quiz-body"></div>
-  </div>
-</div>
+<div class="modal-overlay" id="quiz-modal"><div class="modal"><div class="modal-header"><h2>&#129513; Bilgi Yarismasi</h2><button class="modal-close" onclick="closeModal('quiz-modal')">&#10005;</button></div><div class="modal-body" id="quiz-body"></div></div></div>
 
-<!-- STATS MODAL -->
-<div class="modal-overlay" id="stats-modal">
-  <div class="modal">
-    <div class="modal-header">
-      <h2>&#128202; Istatistikler</h2>
-      <button class="modal-close" onclick="closeModal('stats-modal')">&#10005;</button>
-    </div>
-    <div class="modal-body" id="stats-body"></div>
-  </div>
-</div>
+<div class="modal-overlay" id="stats-modal"><div class="modal"><div class="modal-header"><h2>&#128202; Istatistikler</h2><button class="modal-close" onclick="closeModal('stats-modal')">&#10005;</button></div><div class="modal-body" id="stats-body"></div></div></div>
+
+<div class="modal-overlay" id="ach-modal"><div class="modal"><div class="modal-header"><h2>&#127941; Basarimlar <span class="cnt-badge" id="ach-count"></span></h2><button class="modal-close" onclick="closeModal('ach-modal')">&#10005;</button></div><div class="modal-body" id="ach-body"></div></div></div>
+
+<div class="modal-overlay" id="daily-modal"><div class="modal"><div class="modal-header"><h2>&#128197; Gunun Bilgisi</h2><button class="modal-close" onclick="closeModal('daily-modal')">&#10005;</button></div><div class="modal-body" id="daily-body"></div></div></div>
 
 <div class="app">
 <div class="container">
 
   <div class="top-nav animate-in">
-    <div class="nav-brand">&#10024; Bilgi Hazinesi</div>
+    <div class="nav-brand">
+      &#10024; Bilgi Hazinesi
+      <span class="nav-brand-sub">by THYKE</span>
+    </div>
     <div class="nav-actions">
+      <button class="nav-btn" onclick="openModal('ach-modal');renderAchievements()" title="Basarimlar">&#127941;</button>
       <button class="nav-btn" onclick="openModal('stats-modal');renderStats()" title="Istatistikler">&#128202;</button>
       <button class="nav-btn" onclick="openModal('hist-modal');renderHistoryModal()" title="Gecmis">&#128336;</button>
       <button class="nav-btn" onclick="openModal('quiz-modal');generateQuiz()" title="Quiz">&#129513;</button>
+      <button class="nav-btn" id="sound-btn" onclick="toggleSound()" title="Ses">&#128266;</button>
       <button class="nav-btn" id="auto-nav" onclick="toggleAutoPlay()" title="Otomatik">&#9654;&#65039;</button>
     </div>
   </div>
+
+  <div class="daily-banner animate-in" style="animation-delay:.03s" onclick="showDailyFact()">
+    <span class="daily-icon">&#128197;</span>
+    <div class="daily-info"><div class="daily-title">Gunun Bilgisi</div><div class="daily-sub">Her gun yeni bir ozel bilgi! Tikla ve kesfet.</div></div>
+    <span class="daily-arrow">&#8250;</span>
+  </div>
+
+  <div class="search-bar animate-in" style="animation-delay:.06s">
+    <span class="s-icon">&#128269;</span>
+    <input type="text" id="global-search" placeholder="Tum bilgilerde ara..." oninput="handleSearch()">
+  </div>
+  <div class="search-results" id="search-results" style="display:none"></div>
 
   <div class="stats-bar animate-in" style="animation-delay:.08s">
     <div class="stat"><div class="num" id="seen-count">0</div><div class="label">Gorulen</div></div>
     <div class="stat"><div class="num" id="total-count">0</div><div class="label">Toplam</div></div>
     <div class="stat"><div class="num" id="fav-count">0</div><div class="label">Favori</div></div>
     <div class="stat"><div class="num" id="streak-count">0</div><div class="label">Seri</div></div>
+    <div class="stat"><div class="num" id="best-streak">0</div><div class="label">En Iyi</div></div>
   </div>
 
   <div class="progress-wrap animate-in" style="animation-delay:.1s">
@@ -234,6 +282,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
     <div class="fact-category-badge" id="fact-badge" style="background:rgba(108,99,255,.2);color:#a29bfe">HAZIR MISIN?</div>
     <p class="fact-text" id="fact-text">Butona bas ve binlerce ilginc bilginin dunyasina dal!</p>
     <div class="fact-number" id="fact-number"></div>
+    <div class="fact-watermark">THYKE</div>
   </div>
 
   <div class="actions animate-in" style="animation-delay:.18s">
@@ -245,6 +294,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
   <div class="actions-row2 animate-in" style="animation-delay:.2s">
     <button class="btn btn-sm btn-secondary" onclick="openModal('fav-modal');openFavModal()">&#11088; Favoriler</button>
     <button class="btn btn-sm btn-secondary" onclick="shareFact()">&#128228; Paylas</button>
+    <button class="btn btn-sm btn-secondary" onclick="randomCategory()">&#127920; Rastgele</button>
+  </div>
+
+  <div class="footer animate-in" style="animation-delay:.22s">
+    <div class="footer-line"></div>
+    <div class="footer-brand">Made with &#10084;&#65039; by <span>THYKE</span></div>
+    <div class="footer-sub">Bilgi Hazinesi v3.0</div>
   </div>
 
 </div>
@@ -252,1010 +308,714 @@ body{font-family:'Inter',sans-serif;background:var(--bg);min-height:100vh;color:
 
 <script>
 var factsDB = {
-  "Hayvanlar": {
-    emoji: "\uD83D\uDC3E",
-    color: "0,210,255",
-    facts: [
-      "Ahtapotlarin uc kalbi vardir ve kanlari bakir bazli oldugu icin mavidir.",
-      "Deniz atlarinda hamile kalan erkektir, disi degil.",
-      "Kelebekler tatlari ayaklariyla alir.",
-      "Bir sumuklubocegin dort burnu vardir.",
-      "Penguenler eslerine cakil tasi hediye ederek evlilik teklif eder.",
-      "Yunuslar uyurken beyinlerinin sadece yarisini kapatir.",
-      "Flamingolar dogduklarinda beyazdir; yedikleri onlari pembe yapar.",
-      "Koalalar gunde 22 saat uyuyabilir.",
-      "Timsahlar 100 milyon yildan fazladir Dunya'da yasiyor.",
-      "Arilar dans ederek yiyecek kaynaginin yerini anlatir.",
-      "Denizyildizlarinin beyni yoktur.",
-      "Su aygirlarin teri kirmizidir ve gunes kremi gorevi gorur.",
-      "Ineklerin en yakin arkadaslari vardir; ayrilinca strese girerler.",
-      "Zurafalarin dili 50 cm'dir ve rengi siyahimsi mordur.",
-      "Karincalar vucut agirliklarinin 50 katini tasiyabilir.",
-      "Kopekbaliklari dinozorlardan 200 milyon yil once ortaya cikti.",
-      "Papganlar birbirlerine isim verir ve o isimle cagirir.",
-      "Kaplanlarin derisi de tipki kurkleri gibi cizgilidir.",
-      "Bir kedi hayatinin %70'ini uyuyarak gecirir.",
-      "Deve kusunun gozu beyninden buyuktur.",
-      "Denizanalari %95 oraninda sudan olusur.",
-      "Filler atlayamaz; atlayamayan tek memeli hayvandir.",
-      "Hamam bocegi kafasi olmadan haftalarca yasayabilir.",
-      "Kargalar insan yuzlerini hatirlar ve yillarca unutmaz.",
-      "Kolibri kusu geriye dogru ucabilen tek kustur.",
-      "Deniz kaplumbagalari 150 yildan fazla yasayabilir.",
-      "Bir balarisi hayatinda sadece bir cay kasiginin 12'de biri kadar bal uretir.",
-      "Aslanlar gunde 20 saate kadar uyuyabilir.",
-      "Bir kanguru dogdugunda bir ari kadar kucuktur.",
-      "Ahtapotlar stres altinda kendi kollarini yiyebilir.",
-      "Delfin yavrularina anneleri isim isligi verir.",
-      "Bukalemunlar dillerini vucutlarinin iki kati uzunlugunda firlatabilir.",
-      "Bir salyangoz uc yil boyunca uyuyabilir.",
-      "Kopekler 1.000 kata kadar daha iyi koku alabilir.",
-      "Baykuslar gozlerini oynatamaz; kafalarini 270 derece cevirirler.",
-      "Disi kangurular uc farkli yavruyu ayni anda tasiyabilir.",
-      "Fil hortumunda yaklasik 40.000 kas bulunur.",
-      "Deniz samurlari uyurken el ele tutusur.",
-      "Karides kalbi kafasinda bulunur.",
-      "Turritopsis dohrnii denizanasi biyolojik olarak olumszdur.",
-      "Kurt suruleri gunde 50 km'den fazla yol kat edebilir.",
-      "Okapi diliyle kendi kulagini temizleyebilir.",
-      "Tavus kuslari 11 farkli ses cikarabilir.",
-      "Yengeclerin disleri midelerinin icindedir.",
-      "Bir inek gunde yaklasik 200 litre tukuruk uretir.",
-      "Sincaplar findiklari gomer ama cogunun yerini unutarak ormanlara agac eker.",
-      "Yarasalar ucabilen tek memelidir.",
-      "Kutup ayilarinin kurkleri aslinda saydamdir, beyaz degil.",
-      "Bir arinin kanatlari saniyede 200 kez cirpar.",
-      "Penguenler sualtinda saatte 36 km hiza ulasabilir."
-    ]
-  },
-  "Uzay": {
-    emoji: "\uD83C\uDF0C",
-    color: "108,99,255",
-    facts: [
-      "Venus'te bir gun, Venus'te bir yildan daha uzundur.",
-      "Uzayda iki metal birbirine degerse kalici olarak kaynasir (soguk kaynama).",
-      "Gunes isiginin Dunya'ya ulasmasi 8 dakika 20 saniye surer.",
-      "Uzay tamamen sessizdir cunku ses tasiyacak hava yoktur.",
-      "Jupiter'in Buyuk Kirmizi Lekesi Dunya'dan buyuktur.",
-      "Ay her yil 3.8 cm Dunya'dan uzaklasiyor.",
-      "Gozlemlenebilir evrende yaklasik 2 trilyon galaksi var.",
-      "Bir cay kasigi notron yildizi maddesi 6 milyar ton agirligindadir.",
-      "ISS saatte 27.600 km hizla Dunya etrafinda doner.",
-      "Mars'taki gun batimi mavi renktedir.",
-      "Saturn suya birakilsa yuzerdi.",
-      "Samanyolu'nda 100-400 milyar yildiz var.",
-      "Pluton henuz Gunes etrafinda tam bir tur atmadi.",
-      "Uzayda aglarsaniz gozyaslari yuzunuzden akmaz.",
-      "Neptun ve Uranus'te elmas yagmuru yagiyor olabilir.",
-      "Gunes, Gunes Sistemi kutlesinin %99.86'sidir.",
-      "Merkur'de gunduz 430 derece, gece -180 derece olur.",
-      "Astronotlar uzayda boy uzar.",
-      "Kara deliklerden isik bile kacamaz.",
-      "Voyager 1 insanligin en uzak yapay nesnesidir.",
-      "Ay'da ayak izleri milyonlarca yil bozulmadan kalabilir.",
-      "Gunes 5 milyar yil sonra kirmizi dev olacak.",
-      "Uzay istasyonunda her 90 dk bir gun dogumu gorulur.",
-      "Jupiter'in 95 bilinen uydusu var.",
-      "Andromeda 4.5 milyar yil sonra Samanyolu ile carpisacak.",
-      "Gunes saniyede 600 milyon ton hidrojeni helyuma donusturur.",
-      "Olympus Mons Mars'taki yanardagdir; Everest'in 3 kati.",
-      "ISS futbol sahasi buyuklugundedir.",
-      "Uzay 100 km yukseklikte baslar (Karman cizgisi).",
-      "Saturn halkalarinin kalinligi sadece 10 m, capi 282.000 km.",
-      "Bir notron yildizi saniyede 716 kez donebilir.",
-      "Evren yaklasik 13.8 milyar yasindadir.",
-      "Dunya'nin Gunes etrafindaki hizi saatte 107.000 km.",
-      "Jupiter'de bir gun sadece 10 saat surer.",
-      "Karanlik madde evrenin %27'sini olusturur ama gorunmez.",
-      "Hubble teleskobu 13 milyar isik yili uzaktaki galaksileri gorebilir.",
-      "Mars atmosferi %96 karbondioksittir.",
-      "Io Gunes Sistemi'nin en aktif volkanik govdesidir.",
-      "Uzayda pizza siparis eden ilk kisi bir Rus kozmonauttu (2001)."
-    ]
-  },
-  "Bilim": {
-    emoji: "\uD83D\uDD2C",
-    color: "0,230,118",
-    facts: [
-      "Insan vucudunda yaklasik 37.2 trilyon hucre bulunur.",
-      "DNA cozulse Gunes'e gidip geri donecek kadar uzun olur.",
-      "Insan beyni gunde yaklasik 70.000 dusunce uretir.",
-      "Atomlarinizin cogu milyarlarca yil once patlayan yildizlardan gelir.",
-      "Insan gozu 10 milyon renk tonu ayirt edebilir.",
-      "Sicak su bazi kosullarda soguk sudan daha hizli donar (Mpemba etkisi).",
-      "Insan vucudu cok az da olsa biyoluminesans isik yayar.",
-      "Beyin %75 oraninda sudan olusur.",
-      "Insan burnu 1 trilyon farkli kokuyu ayirt edebilir.",
-      "Yildirim Gunes yuzeyinden 5 kat daha sicaktir.",
-      "Tum kan damarlari uc uca 100.000 km eder.",
-      "Insan iskeleti her 10 yilda bir tamamen yenilenir.",
-      "Ses celikte havadan 15 kat hizli yayilir.",
-      "Insan beyni 86 milyar noron icerir.",
-      "Vucuttaki demir atomlariyla 7.5 cm'lik civi yapilabilir.",
-      "Elmas ve grafit ayni elementten (karbon) olusur.",
-      "Insan kalbi omur boyu 2.5 milyar kez atar.",
-      "Mutlak sifir -273.15 derecedir.",
-      "Insanlar ve muzlar DNA'nin %60'ini paylasir.",
-      "Gokkusagi tam daire ama yerden yarisini goruruz.",
-      "Insan gozu karanlikta 48 km uzaktaki mum isigini gorebilir.",
-      "Atomun %99.9'u bos alandan olusur.",
-      "Insan teni yaklasik her 27 gunde bir yenilenir.",
-      "1 gram madde 21.5 kiloton TNT enerjisi uretebilir (E=mc2).",
-      "Beyindeki elektrik kucuk bir ampulu yakabilir.",
-      "Vucuttaki bakteri sayisi insan hucre sayisindan fazladir.",
-      "Cam amorf bir katidir, yavas akan sivi degil.",
-      "Vucuttaki karbon 9.000 kursun kalem yapmaya yeter.",
-      "Insan DNA'sinin %8'i eski virus kalintilarindan olusur.",
-      "Plazma maddenin dorduncu halidir."
-    ]
-  },
-  "Dunya": {
-    emoji: "\uD83C\uDF0D",
-    color: "76,175,80",
-    facts: [
-      "Dunyadaki insanlarin %50'si hic kar gormemistir.",
-      "Okyanuslarin sadece %5'i kesfedilmistir.",
-      "Dunya'da 3 trilyon agac var - galaksimizdeki yildizlardan fazla.",
-      "Everest her yil 4 mm yukseliyor.",
-      "Rusya yuzolcumu Pluton'dan buyuktur.",
-      "Dunya cekirdegi yaklasik 6.000 derece sicaktir.",
-      "Atacama Colu'nde hic yagmur kaydedilmemis bolgeler var.",
-      "Izlanda'da sivrisinek yoktur.",
-      "Finlandiya'da 3.3 milyon sauna var.",
-      "Pasifik Okyanusu tum kitalarin toplamindan buyuktur.",
-      "Avustralya'da insanlardan cok kanguru yasar.",
-      "Kanada'da gol sayisi diger ulkelerin toplamindan fazladir.",
-      "Mariana Cukuru yaklasik 11.034 m derinligindedir.",
-      "Antarktika aslinda bir coldur.",
-      "Istanbul iki kitaya yayilan tek sehirdir.",
-      "Sili 4.300 km ile dunyanin en uzun ulkesidir.",
-      "Amazon'da 3.000'den fazla balik turu yasar.",
-      "Gronland dunyanin en buyuk adasidir.",
-      "Buyuk Set Resifi uzaydan gorulebilir.",
-      "Volkanlarin %75'i Pasifik Ates Cemberi'ndedir.",
-      "Baykal Golu tatli suyun %20'sini barindirir.",
-      "Hawaii yilda 7.5 cm Asya'ya kayiyor.",
-      "Gotthard Tuneli 57 km ile en uzun tunel.",
-      "Tum buz erise deniz seviyesi 65 m yukselir.",
-      "Afrika; ABD, Cin ve Avrupa'nin cogunu kaplar.",
-      "En eski agac 'Methuselah': 4.850 yasinda.",
-      "Dunya'nin manyetik kutbu yilda 55 km kayiyor."
-    ]
-  },
-  "Tarih": {
-    emoji: "\uD83D\uDCDA",
-    color: "255,183,77",
-    facts: [
-      "Kleopatra piramitlerden cok bize daha yakin yasamistir.",
-      "Oxford Universitesi Aztek Imparatorlugu'ndan eskidir.",
-      "Vikinglerin kasklari boynuzsuzdu.",
-      "Ilk bilgisayar programcisi Ada Lovelace (1843).",
-      "Buyuk Cin Seddi'nin harcinda pirinc unu var.",
-      "Napolyon aslinda kisa degildi; 1.70 m.",
-      "Antik Misir'da kedileri oldurmenin cezasi olumdu.",
-      "Ilk fotograf 1826'da cekildi; pozlama 8 saat.",
-      "Osmanli Imparatorlugu 6 kitada toprak sahibi oldu.",
-      "Havuc-gece gorusu yalani radari gizlemek icindi.",
-      "Gutenberg matbaayi 1440'ta icat etti.",
-      "Ilk emoji 1999'da Shigetaka Kurita tasarladi.",
-      "1914 Noel'inde cephede askerler futbol oynadi.",
-      "Titanik batarken orkestra calmaya devam etti.",
-      "Ilk metro 1863'te Londra'da acildi.",
-      "Ilk e-posta 1971'de Ray Tomlinson gonderdi.",
-      "Stonehenge Misir piramitlerinden 500 yil eskidir.",
-      "Muttefikler 2. Dunya Savasi'nda sisme tanklar kullandi.",
-      "Sumerler MO 3500'de civi yazisini icat etti.",
-      "Vikingler Amerika'yi Kolomb'dan 500 yil once kesfetti.",
-      "Ilk cep telefonu aramasi 1973'te yapildi.",
-      "Antik Roma'da beton kullaniliyordu; bazi yapilar hala ayakta."
-    ]
-  },
-  "Yiyecek": {
-    emoji: "\uD83C\uDF55",
-    color: "255,101,132",
-    facts: [
-      "Bal asla bozulmaz; 3.000 yillik bal yenilebilir bulundu.",
-      "Muzlar radyasyon yayar (potasyum-40).",
-      "Cikolata Aztek ve Maya'da para birimiydi.",
-      "Safran kilosu 10.000$+ en pahali baharat.",
-      "Fistik ezmesi yuksek basincta elmasa donusturulebilir.",
-      "Carolina Reaper 2.2 milyon Scoville en aci biber.",
-      "Domates botanik olarak meyvedir.",
-      "Vanilya orkide ailesinden elde edilir.",
-      "Brokoli portakaldan daha fazla C vitamini icerir.",
-      "En eski makarna 4.000 yasinda, Cin'de.",
-      "Hindistan cevizi suyu acilde serum olarak kullanilabilir.",
-      "Kaju kabugu zehirlidir, islenmeden yenmez.",
-      "Cilek aslinda meyve degil; tohumlari gercek meyve.",
-      "1 litre bal icin arilar 2 milyon cicegi ziyaret eder.",
-      "Beyaz cikolata teknik olarak cikolata degil.",
-      "Kopi Luwak dunyanin en pahali kahvesi.",
-      "Havuc aslen mordu; turuncu 17. yy Hollanda'sinda gelistirildi.",
-      "Peynir dunyanin en cok calinan gidasidir.",
-      "Cikolata kopekler icin zehirli (teobromin).",
-      "Umami Japonca'da besinci tat.",
-      "Tarcin bir agac kabugudur.",
-      "Avokado botanik olarak bir 'berry'dir.",
-      "Ilk dondurma MO 200'de Cin'de yapildi."
-    ]
-  },
-  "Teknoloji": {
-    emoji: "\uD83D\uDCA1",
-    color: "41,182,246",
-    facts: [
-      "Ilk iPhone'da kopyala-yapistir yoktu.",
-      "Google'in ilk depolama alani Lego kasasiydi.",
-      "YouTube'un ilk videosu 'Me at the zoo' (18 sn).",
-      "QWERTY daktilo kollarinin takilmasini onlemek icin tasarlandi.",
-      "Internetteki sitelerin %90'i hic ziyaretci almaz.",
-      "Nintendo 1889'da oyun kagidi sirketiydi.",
-      "Ilk bilgisayar virusu 1986 Pakistan (Brain).",
-      "E-posta World Wide Web'den once icat edildi.",
-      "Akilli telefon sayisi dis fircasi sayisindan fazladir.",
-      "Ilk 1 GB sabit disk 1980'de 250 kg.",
-      "Wi-Fi bir kisaltma degildir.",
-      "SpaceX roketleri Linux ile calisir.",
-      "GPS gorelilik kuramina gore duzeltme yapar.",
-      "Ilk web sitesi 1991'de Tim Berners-Lee olusturdu.",
-      "Amazon basta sadece kitap satan siteydi.",
-      "Bluetooth Viking Krali Harald Bluetooth'tan gelir.",
-      "Ilk SMS 1992: 'Merry Christmas'.",
-      "Netflix basta DVD kiralama hizmetiydi.",
-      "Bitcoin yaraticisi Satoshi Nakamoto'nun kimligi bilinmiyor.",
-      "Ilk Apple bilgisayari garajda yapildi; 666.66$.",
-      "Internet trafigininin %60'indan fazlasi botlardan.",
-      "Ilk video oyunu Pong (1972, Atari)."
-    ]
-  },
-  "Psikoloji": {
-    emoji: "\uD83E\uDDE0",
-    color: "186,85,255",
-    facts: [
-      "Insanlar 7 arti eksi 2 bilgiyi kisa sureli bellekte tutar.",
-      "Gulmek bagisiklik sistemini guclendirir.",
-      "Muzik dopamin salgilatir; yemekle ayni odul yolu.",
-      "Ilk izlenim 7 saniyede olusur.",
-      "Insanlar gunde 35.000 karar verir.",
-      "Yalnizlik fiziksel agriyla ayni beyin bolgesini aktive eder.",
-      "Mavi sakinlestirir; kirmizi kalp atisini hizlandirir.",
-      "Beyin olumsuz deneyimleri daha guclu hatirlar.",
-      "Yardim etmek yardim edenin mutluluk hormonlarini artirir.",
-      "Insanlar simetrik yuzleri daha cekici bulur.",
-      "Multitasking beyni yavaslatir.",
-      "Esnemek bulasicidir ve empati ile iliskili.",
-      "Insanlar kendi adlarini gurultude bile duyar (kokteyl etkisi).",
-      "Korkutucu anlarda zaman yavasmis hissedilir.",
-      "Nostalji psikolojik olarak yararlidir.",
-      "Sicak icecek tutarken karsidakini daha sicakkanli algalariz.",
-      "Beyin gercek ve hayali olayi ayirt etmekte zorlanir.",
-      "Elle not almak dijitalden daha iyi ogretir.",
-      "Merak dopamin salgilatir ve ogrenmeyi kolaylastirir.",
-      "Orman yuruyusu stres hormonlarini olculebilir azaltir.",
-      "Insanlar gunde 200 kez yuzlerine dokunur."
-    ]
-  },
-  "Sanat": {
-    emoji: "\uD83C\uDFA8",
-    color: "255,138,101",
-    facts: [
-      "Mona Lisa'nin kaslari yoktur; Ronesans modasi.",
-      "Van Gogh hayattayken sadece bir tablo satti.",
-      "Shakespeare Ingilizceye 1.700 yeni kelime kazandirdi.",
-      "Yildizli Gece akil hastanesinde cizildi.",
-      "Eiffel Kulesi yazin 15 cm uzar.",
-      "Leonardo da Vinci iki eliyle ayni anda yazabilirdi.",
-      "Beethoven sagir olduktan sonra en unlu eserlerini besteledi.",
-      "Hermitage muzesine 1 dk baksa 11 yil surer.",
-      "Mozart 5 yasinda ilk bestesini yapti.",
-      "Kintsugi'de kirik seramikler altinla onarilir.",
-      "Banksy'nin kimligi hala bilinmiyor.",
-      "Antik Yunan heykelleri aslinda rengarenk boyaliydi.",
-      "Harry Potter 80'den fazla dile cevrildi.",
-      "Bob Ross 30.000'den fazla agac boyamistir.",
-      "Michelangelo Sistine Sapeli tavanini 4 yil boyamisti.",
-      "LEGO dunyanin en buyuk lastik ureticisi (minyatur).",
-      "Hollywood tabelasi ilk 'Hollywoodland' yaziyordu.",
-      "Antik Misir hiyeroglifleri 700+ sembol icerir."
-    ]
-  },
-  "Spor": {
-    emoji: "\u26BD",
-    color: "129,199,132",
-    facts: [
-      "Olimpiyat altin madalyalari %92.5 gumusten yapilir.",
-      "Basketbol seftali sepeti ve futbol topuyla basladi.",
-      "Usain Bolt 100m rekoru 9.58 sn.",
-      "FIFA kupasi saf 18 ayar altin, 6.1 kg.",
-      "Golf Ay'da oynanan tek spor (1971).",
-      "Maratonda 2.600 kalori yakilir.",
-      "F1 direksiyonunda 20+ dugme var.",
-      "Sumo gurescileri gunde 7-8.000 kalori tuketir.",
-      "Tenis toplari TV icin beyazdan sariya degisti.",
-      "Dunyanin en cok izlenen etkinligi FIFA finali.",
-      "Tour de France'ta gunde 8.000 kalori yakilabilir.",
-      "Ilk FIFA 1930'da Uruguay'da duzenlendi.",
-      "En eski spor gurestir (MO 3000).",
-      "Voleybol basta 'mintonette' idi.",
-      "Jai alai en hizli spor; top saatte 300 km."
-    ]
-  },
-  "Muzik": {
-    emoji: "\uD83C\uDFB5",
-    color: "233,30,99",
-    facts: [
-      "'Happy Birthday' 2016'ya kadar telif hakliydi.",
-      "Piyano 88 tus ve 230 tele sahip.",
-      "Metallica her kitada (Antarktika dahil) konser verdi.",
-      "Elvis Presley hicbir sarkisini kendisi yazmadi.",
-      "Beatles nota okuyamazdi.",
-      "En eski enstruman 40.000 yillik kemik flut.",
-      "Freddie Mercury'nin ses araligi 4 oktav.",
-      "Bach 1.100'den fazla eser besteledi.",
-      "Beethoven'in 9. Senfonisi CD uzunlugunu belirledi: 74 dk.",
-      "En pahali gitar 3.9 milyon$'a satildi.",
-      "Gitar dunyanin en populer enstrumani.",
-      "Kulaklikla yuksek ses 30 dk'da kalici isitme kaybi yapabilir.",
-      "Ilk kaydedilen ses 1860'ta yapildi.",
-      "Autotune 1997'de Cher'in Believe'iyle populer oldu."
-    ]
-  },
-  "Matematik": {
-    emoji: "\uD83D\uDD22",
-    color: "38,198,218",
-    facts: [
-      "Pi sonsuzdur ve tekrar etmeyen ondaliktir.",
-      "Fibonacci: her sayi onceki ikisinin toplami.",
-      "Googol 10 uzeri 100'dur; Google'in adi buradan.",
-      "Rubik kupunun 43 kentilyondan fazla dizilimi var.",
-      "111.111.111 x 111.111.111 = 12.345.678.987.654.321",
-      "0.999... matematiksel olarak 1'e esittir.",
-      "52 kartlik deste 52! farkli karilabilir - evrendeki atomlardan fazla.",
-      "Altin oran (phi) yaklasik 1.618 dogada surekli karsimiza cikar.",
-      "Mobius seridinin tek yuzeyi ve tek kenari var.",
-      "Graham sayisi evrendeki atomlarla yazilamaz.",
-      "Euler sayisi e yaklasik 2.718 surekli buyumeyi modeller.",
-      "Sonsuz otel paradoksu: dolu sonsuz otele hep yer acilir.",
-      "Fermat'in son teoremi 350 yil sonra kanitlandi (1995)."
-    ]
-  },
-  "Saglik": {
-    emoji: "\uD83C\uDFE5",
-    color: "102,187,106",
-    facts: [
-      "Gulmek 15 dk'da 10-40 kalori yaktirir.",
-      "Vucut gunde 1-1.5 litre tukuruk uretir.",
-      "Ortalama insan 25 yil uyur.",
-      "Hapsirma sirasinda kalp durmaz; efsane.",
-      "Insan kemikleri agirlik oranina gore celikten guclu.",
-      "Omur boyu 100.000 km yururuz.",
-      "Dil izi parmak izi gibi benzersiz.",
-      "Bebeklerin 300 kemigi var; yetiskinde 206.",
-      "Aksirik saatte 160 km hiza ulasir.",
-      "Vucut her saniye 3.8 milyon hucre uretir.",
-      "Kafein en cok tuketilen psikoaktif madde.",
-      "Stres beyni fiziksel olarak kucultebilir.",
-      "Uyku eksikligi sarhosluga benzer bozulma yaratir.",
-      "Kalp omur boyu 200 milyon litre kan pompalar."
-    ]
-  },
-  "Sinema": {
-    emoji: "\uD83C\uDFAC",
-    color: "255,167,38",
-    facts: [
-      "Ilk film Lumiere Kardesler 'Trenin Varisi' (1895).",
-      "Titanic filmi geminin insasindan pahaliya mal oldu.",
-      "Star Wars isin kilici sesi TV arizasindan esinlenildi.",
-      "Matrix yesil kodu susi tariflerinin Japonca karakterleri.",
-      "Avatar (2009) 2.9 milyar$ hasilat yapti.",
-      "Hitchcock kendi filmlerinde kisa sure gorunurdu.",
-      "James Bond 6 farkli aktor canlandirdi.",
-      "Rocky senaryosu 3 gunde yazildi.",
-      "Pixar her filminde Pizza Planet kamyonu gizler.",
-      "Ilk Oscar toreni 1929'da 15 dakika surdu.",
-      "Jaws kopekbaligi korkusunu dunya capinda artirdi.",
-      "Wilhelm Scream 200+ filmde kullanildi.",
-      "Ilk tamamen CGI film Toy Story (1995).",
-      "Shrek basta korku filmi olarak tasarlandi.",
-      "E.T.'nin yuzu Einstein'dan esinlenildi."
-    ]
-  },
-  "Dil": {
-    emoji: "\uD83D\uDDE3\uFE0F",
-    color: "77,208,225",
-    facts: [
-      "Dunya'da 7.000'den fazla dil konusulur.",
-      "'Set' Ingilizce'de en fazla anlama sahip kelime (430+).",
-      "Mandarin en cok konusulan ana dili.",
-      "Khmer dunyanin en uzun alfabesi (74 harf).",
-      "Baskca bilinen hicbir dille akraba degil.",
-      "Esperanto 1887'de yaratilan yapay dil.",
-      "Japonca'da yagmur icin 50+ kelime var.",
-      "Turkce sondan eklemeli (aglutinatif) bir dil.",
-      "'Typewriter' klavye ust satiriyla yazilabilir.",
-      "'Saudade' Portekizce'de derin ozlem anlamina gelir.",
-      "Papua Yeni Gine 840+ dille en cok dilli ulke.",
-      "Her 14 gunde bir dil yok oluyor.",
-      "'OK' dunyanin en yaygin anilasilan kelimesi.",
-      "Braille 1824'te Louis Braille icat etti."
-    ]
-  },
-  "Ekonomi": {
-    emoji: "\uD83D\uDCB0",
-    color: "255,215,64",
-    facts: [
-      "En eski bilinen para Lidya sikkesi (MO 600).",
-      "Apple piyasa degeri bircok ulkenin GDP'sinden buyuk.",
-      "Monopoly parasi her yil gercek dolardan fazla basilir.",
-      "Japonya'da 'yen' 'yuvarlak nesne' demek.",
-      "Zimbabwe 100 trilyon dolarlik banknot basti.",
-      "Insanlik tarihinde yaklasik 190.000 ton altin cikarildi.",
-      "Ilk kredi karti 1950 Diners Club.",
-      "Amazon adi 'dunyanin en buyuk nehri'nden.",
-      "Ilk ATM 1967 Londra'da kuruldu.",
-      "Ilk borsa 1602 Amsterdam.",
-      "Norvec varlik fonu 1 trilyon$+ dunyanin en buyugu.",
-      "Kripto paralarin piyasa degeri trilyon dolarlari asti.",
-      "Warren Buffett ilk hissesini 11 yasinda aldi.",
-      "1 dolarlik banknotun omru ortalama 6.6 yil."
-    ]
-  },
-  "Oyunlar": {
-    emoji: "\uD83C\uDFAE",
-    color: "156,39,176",
-    facts: [
-      "Minecraft 300M kopya ile en cok satan oyun.",
-      "Ilk video oyunu 'Tennis for Two' (1958).",
-      "Mario'nun adi Nintendo'nun ABD depo sahibinden.",
-      "Pac-Man pizza diliminden esinlenildi.",
-      "Tetris 1984'te Sovyet bilim insani yaratti.",
-      "GTA V ilk 3 gunde 1 milyar$ gelir elde etti.",
-      "Pokemon yaraticisi bocek toplamaktan ilham aldi.",
-      "Fortnite konserini 12 milyon kisi canli izledi.",
-      "Zelda'nin adi F. Scott Fitzgerald'in esinden.",
-      "Space Invaders 1978'de Japonya'da madeni para kitligi yaratti.",
-      "E-spor milyar dolarlik endustri.",
-      "Dunya'daki aktif oyuncu sayisi 3 milyari asti.",
-      "Counter-Strike bir Half-Life mod'u olarak basladi.",
-      "Doom (1993) FPS turunun oncusu.",
-      "Oyun endustrisi film+muzik endusrisinden buyuk."
-    ]
-  },
-  "Okyanus": {
-    emoji: "\uD83C\uDF0A",
-    color: "0,150,136",
-    facts: [
-      "Okyanuslarin %95'i henuz kesfedilmedi.",
-      "En derin nokta Mariana Cukuru: 11.034 m.",
-      "Okyanuslar oksijenin %50-80'ini uretir.",
-      "Okyanus tabaninda tahminen 3 milyon batik var.",
-      "En buyuk canli mavi balina: 30 m, 180 ton.",
-      "Deniz yuzeyinin altinda tuzlu goller var (brine havuzlari).",
-      "Mercan resifleri %1 alanla turlerin %25'ine ev sahipligi yapar.",
-      "Orta Atlantik Sirti 65.000 km ile en uzun dag sirasi.",
-      "Derin deniz canlilarinin cogu kendi isigini uretir.",
-      "Deniz suyundaki tuz cikarilsa karalari 150 m kaplardi.",
-      "Buyuk Mavi Delik 300 m cap, 125 m derinlik.",
-      "Gulf Stream Avrupa'yi isitir.",
-      "Kraken efsanesi dev murekkep baligindan esinlenildi."
-    ]
-  },
-  "Evrim": {
-    emoji: "\uD83E\uDDEC",
-    color: "139,195,74",
-    facts: [
-      "Yasam yaklasik 3.8 milyar yil once basladi.",
-      "Insanlar ve sempanzeler DNA'nin %98.7'sini paylasir.",
-      "Gozler bagimsiz olarak 40+ kez evrimlesti.",
-      "Balinalar karada yasayan memelilerden evrimlesti.",
-      "Antibiyotik direnci hizli evrim ornegi.",
-      "Apandis eski bitki sindirme kalintisi.",
-      "Kuslar dinozorlardan evrimlesti; teknik olarak dinozor.",
-      "Kambriyen Patlamasi 540M yil once canli cesitliligini patlatti.",
-      "Tum kopek irklari kurttan evrimlesti (15.000 yil).",
-      "Kuyruk sokumu kemigi eski kuyruk kalintisi.",
-      "Bazi magara baliklari karanlikta gozlerini kaybetti.",
-      "Laktoz toleransi yaklasik 10.000 yil once evrimlesti.",
-      "Mitokondri bir zamanlar bagimsiz bakteriydi."
-    ]
-  }
+  "Hayvanlar": { emoji: "\uD83D\uDC3E", color: "0,210,255", facts: [
+    "Ahtapotlarin uc kalbi vardir ve kanlari bakir bazli oldugu icin mavidir.",
+    "Deniz atlarinda hamile kalan erkektir, disi degil.",
+    "Kelebekler tatlari ayaklariyla alir.",
+    "Bir sumuklubocegin dort burnu vardir.",
+    "Penguenler eslerine cakil tasi hediye ederek evlilik teklif eder.",
+    "Yunuslar uyurken beyinlerinin sadece yarisini kapatir.",
+    "Flamingolar dogduklarinda beyazdir; yedikleri onlari pembe yapar.",
+    "Koalalar gunde 22 saat uyuyabilir.",
+    "Timsahlar 100 milyon yildan fazladir Dunya'da yasiyor.",
+    "Arilar dans ederek yiyecek kaynaginin yerini anlatir.",
+    "Denizyildizlarinin beyni yoktur.",
+    "Su aygirlarin teri kirmizidir ve gunes kremi gorevi gorur.",
+    "Ineklerin en yakin arkadaslari vardir; ayrilinca strese girerler.",
+    "Zurafalarin dili 50 cm'dir ve rengi siyahimsi mordur.",
+    "Karincalar vucut agirliklarinin 50 katini tasiyabilir.",
+    "Kopekbaliklari dinozorlardan 200 milyon yil once ortaya cikti.",
+    "Papganlar birbirlerine isim verir ve o isimle cagirir.",
+    "Kaplanlarin derisi de tipki kurkleri gibi cizgilidir.",
+    "Bir kedi hayatinin %70'ini uyuyarak gecirir.",
+    "Deve kusunun gozu beyninden buyuktur.",
+    "Denizanalari %95 oraninda sudan olusur.",
+    "Filler atlayamaz; atlayamayan tek memeli hayvandir.",
+    "Hamam bocegi kafasi olmadan haftalarca yasayabilir.",
+    "Kargalar insan yuzlerini hatirlar ve yillarca unutmaz.",
+    "Kolibri kusu geriye dogru ucabilen tek kustur.",
+    "Deniz kaplumbagalari 150 yildan fazla yasayabilir.",
+    "Bir balarisi hayatinda sadece bir cay kasiginin 12'de biri kadar bal uretir.",
+    "Aslanlar gunde 20 saate kadar uyuyabilir.",
+    "Bir kanguru dogdugunda bir ari kadar kucuktur.",
+    "Ahtapotlar stres altinda kendi kollarini yiyebilir.",
+    "Delfin yavrularina anneleri isim isligi verir.",
+    "Bukalemunlar dillerini vucutlarinin iki kati uzunlugunda firlatabilir.",
+    "Bir salyangoz uc yil boyunca uyuyabilir.",
+    "Kopekler 1.000 kata kadar daha iyi koku alabilir.",
+    "Baykuslar gozlerini oynatamaz; kafalarini 270 derece cevirirler.",
+    "Fil hortumunda yaklasik 40.000 kas bulunur.",
+    "Deniz samurlari uyurken el ele tutusur.",
+    "Karides kalbi kafasinda bulunur.",
+    "Turritopsis dohrnii denizanasi biyolojik olarak olumsuzdur.",
+    "Kurt suruleri gunde 50 km'den fazla yol kat edebilir.",
+    "Okapi diliyle kendi kulagini temizleyebilir.",
+    "Tavus kuslari 11 farkli ses cikarabilir.",
+    "Sincaplar findiklari gomer ama cogunun yerini unutarak ormanlara agac eker.",
+    "Yarasalar ucabilen tek memelidir.",
+    "Kutup ayilarinin kurkleri aslinda saydamdir, beyaz degil.",
+    "Bir arinin kanatlari saniyede 200 kez cirpar.",
+    "Penguenler sualtinda saatte 36 km hiza ulasabilir.",
+    "Murekkep baliklarinin uc kalbi ve mavi kani vardir.",
+    "Kopekler sahiplerinin duygularini koklayarak anlayabilir.",
+    "Bir papagan 800'den fazla kelime ogrenebilir.",
+    "Mantis karidesinin yumrugu bir mermi kadar hizlidir.",
+    "Tardigradlar uzay boslugunda bile hayatta kalabilir.",
+    "Albatroslar uyurken ucabilir.",
+    "Pistol karidesi suyu o kadar hizli sikistirir ki kucuk bir gunes kadar sicaklik olusur."
+  ]},
+  "Uzay": { emoji: "\uD83C\uDF0C", color: "108,99,255", facts: [
+    "Venus'te bir gun, Venus'te bir yildan daha uzundur.",
+    "Uzayda iki metal birbirine degerse kalici olarak kaynasir.",
+    "Gunes isiginin Dunya'ya ulasmasi 8 dakika 20 saniye surer.",
+    "Uzay tamamen sessizdir cunku ses tasiyacak hava yoktur.",
+    "Jupiter'in Buyuk Kirmizi Lekesi Dunya'dan buyuktur.",
+    "Ay her yil 3.8 cm Dunya'dan uzaklasiyor.",
+    "Gozlemlenebilir evrende yaklasik 2 trilyon galaksi var.",
+    "Bir cay kasigi notron yildizi maddesi 6 milyar ton agirligindadir.",
+    "ISS saatte 27.600 km hizla Dunya etrafinda doner.",
+    "Mars'taki gun batimi mavi renktedir.",
+    "Saturn suya birakilsa yuzerdi.",
+    "Samanyolu'nda 100-400 milyar yildiz var.",
+    "Pluton henuz Gunes etrafinda tam bir tur atmadi.",
+    "Uzayda aglarsaniz gozyaslari yuzunuzden akmaz.",
+    "Neptun ve Uranus'te elmas yagmuru yagiyor olabilir.",
+    "Gunes, Gunes Sistemi kutlesinin %99.86'sidir.",
+    "Astronotlar uzayda boy uzar.",
+    "Kara deliklerden isik bile kacamaz.",
+    "Voyager 1 insanligin en uzak yapay nesnesidir.",
+    "Ay'da ayak izleri milyonlarca yil bozulmadan kalabilir.",
+    "Gunes 5 milyar yil sonra kirmizi dev olacak.",
+    "Uzay istasyonunda her 90 dk bir gun dogumu gorulur.",
+    "Jupiter'in 95 bilinen uydusu var.",
+    "Andromeda 4.5 milyar yil sonra Samanyolu ile carpisacak.",
+    "Gunes saniyede 600 milyon ton hidrojeni helyuma donusturur.",
+    "Olympus Mons Mars'taki yanardagdir; Everest'in 3 kati.",
+    "ISS futbol sahasi buyuklugundedir.",
+    "Uzay 100 km yukseklikte baslar (Karman cizgisi).",
+    "Saturn halkalarinin kalinligi sadece 10 m, capi 282.000 km.",
+    "Evren yaklasik 13.8 milyar yasindadir.",
+    "Dunya'nin Gunes etrafindaki hizi saatte 107.000 km.",
+    "Karanlik madde evrenin %27'sini olusturur ama gorunmez.",
+    "Hubble teleskobu 13 milyar isik yili uzaktaki galaksileri gorebilir.",
+    "Mars atmosferi %96 karbondioksittir.",
+    "Uzayda pizza siparis eden ilk kisi bir Rus kozmonauttu (2001).",
+    "Gunes'in icine 1.3 milyon Dunya sigar.",
+    "Bir kara deligin olay ufkuna yaklastikca zaman yavaslar.",
+    "Titan (Saturn uydusu) Dunya disinda yuzeyinde sivi golu olan tek gokcismi.",
+    "Betelgeuse yildizi yakinda (kozmik olcekte) supernova olabilir.",
+    "Venus'un atmosferi sulfurik asit bulutlariyla kaplidir.",
+    "Bir notron yildizi saniyede 716 kez donebilir."
+  ]},
+  "Bilim": { emoji: "\uD83D\uDD2C", color: "0,230,118", facts: [
+    "Insan vucudunda yaklasik 37.2 trilyon hucre bulunur.",
+    "DNA cozulse Gunes'e gidip geri donecek kadar uzun olur.",
+    "Insan beyni gunde yaklasik 70.000 dusunce uretir.",
+    "Atomlarinizin cogu milyarlarca yil once patlayan yildizlardan gelir.",
+    "Insan gozu 10 milyon renk tonu ayirt edebilir.",
+    "Sicak su bazi kosullarda soguk sudan daha hizli donar (Mpemba).",
+    "Insan vucudu cok az da olsa biyoluminesans isik yayar.",
+    "Beyin %75 oraninda sudan olusur.",
+    "Insan burnu 1 trilyon farkli kokuyu ayirt edebilir.",
+    "Yildirim Gunes yuzeyinden 5 kat daha sicaktir.",
+    "Tum kan damarlari uc uca 100.000 km eder.",
+    "Insan iskeleti her 10 yilda bir tamamen yenilenir.",
+    "Ses celikte havadan 15 kat hizli yayilir.",
+    "Insan beyni 86 milyar noron icerir.",
+    "Vucuttaki demir atomlariyla 7.5 cm'lik civi yapilabilir.",
+    "Elmas ve grafit ayni elementten (karbon) olusur.",
+    "Insan kalbi omur boyu 2.5 milyar kez atar.",
+    "Mutlak sifir -273.15 derecedir.",
+    "Insanlar ve muzlar DNA'nin %60'ini paylasir.",
+    "Gokkusagi tam daire ama yerden yarisini goruruz.",
+    "Insan gozu karanlikta 48 km uzaktaki mum isigini gorebilir.",
+    "Atomun %99.9'u bos alandan olusur.",
+    "1 gram madde 21.5 kiloton TNT enerjisi uretebilir (E=mc2).",
+    "Beyindeki elektrik kucuk bir ampulu yakabilir.",
+    "Vucuttaki bakteri sayisi insan hucre sayisindan fazladir.",
+    "Cam amorf bir katidir, yavas akan sivi degil.",
+    "Insan DNA'sinin %8'i eski virus kalintilarindan olusur.",
+    "Plazma maddenin dorduncu halidir.",
+    "Kuantum tunelleme sayesinde parcaciklar duvarlari gecebilir.",
+    "Suyun 4 derecede en yogun olmasi gollerin alttan donmamasini saglar.",
+    "Lazer isigi Ay'a 1.3 saniyede ulasir.",
+    "Bir bardak suda yaklasik 8 septilyon atom var.",
+    "Superiletkeler mutlak sifira yakin sicakliklarda elektrigi direncsiz iletir."
+  ]},
+  "Dunya": { emoji: "\uD83C\uDF0D", color: "76,175,80", facts: [
+    "Dunyadaki insanlarin %50'si hic kar gormemistir.",
+    "Okyanuslarin sadece %5'i kesfedilmistir.",
+    "Dunya'da 3 trilyon agac var - galaksimizdeki yildizlardan fazla.",
+    "Everest her yil 4 mm yukseliyor.",
+    "Rusya yuzolcumu Pluton'dan buyuktur.",
+    "Dunya cekirdegi yaklasik 6.000 derece sicaktir.",
+    "Atacama Colu'nde hic yagmur kaydedilmemis bolgeler var.",
+    "Izlanda'da sivrisinek yoktur.",
+    "Finlandiya'da 3.3 milyon sauna var.",
+    "Pasifik Okyanusu tum kitalarin toplamindan buyuktur.",
+    "Avustralya'da insanlardan cok kanguru yasar.",
+    "Kanada'da gol sayisi diger ulkelerin toplamindan fazladir.",
+    "Mariana Cukuru yaklasik 11.034 m derinligindedir.",
+    "Antarktika aslinda bir coldur.",
+    "Istanbul iki kitaya yayilan tek sehirdir.",
+    "Amazon'da 3.000'den fazla balik turu yasar.",
+    "Gronland dunyanin en buyuk adasidir.",
+    "Buyuk Set Resifi uzaydan gorulebilir.",
+    "Volkanlarin %75'i Pasifik Ates Cemberi'ndedir.",
+    "Baykal Golu tatli suyun %20'sini barindirir.",
+    "Hawaii yilda 7.5 cm Asya'ya kayiyor.",
+    "Tum buz erise deniz seviyesi 65 m yukselir.",
+    "En eski agac 'Methuselah': 4.850 yasinda.",
+    "Dunya'nin manyetik kutbu yilda 55 km kayiyor.",
+    "Amazon yagmur ormani 55 milyon yasinda.",
+    "Gunes isigi okyanusun sadece ilk 200 metresine ulasir.",
+    "Sahara'da bazen kar yagar.",
+    "Dunya'nin eksen egiligi olmasaydi mevsimler olmazdi.",
+    "Olu Deniz deniz seviyesinin 430 m altindadir.",
+    "Dunyadaki altin eritilse 20 metrelik bir kup olusur.",
+    "Ates Cemberi depremlerin %90'ini olusturur."
+  ]},
+  "Tarih": { emoji: "\uD83D\uDCDA", color: "255,183,77", facts: [
+    "Kleopatra piramitlerden cok bize daha yakin yasamistir.",
+    "Oxford Universitesi Aztek Imparatorlugu'ndan eskidir.",
+    "Vikinglerin kasklari boynuzsuzdu.",
+    "Ilk bilgisayar programcisi Ada Lovelace (1843).",
+    "Buyuk Cin Seddi'nin harcinda pirinc unu var.",
+    "Napolyon aslinda kisa degildi; 1.70 m.",
+    "Antik Misir'da kedileri oldurmenin cezasi olumdu.",
+    "Ilk fotograf 1826'da cekildi; pozlama 8 saat.",
+    "Osmanli Imparatorlugu 6 kitada toprak sahibi oldu.",
+    "Gutenberg matbaayi 1440'ta icat etti.",
+    "1914 Noel'inde cephede askerler futbol oynadi.",
+    "Titanik batarken orkestra calmaya devam etti.",
+    "Ilk metro 1863'te Londra'da acildi.",
+    "Ilk e-posta 1971'de Ray Tomlinson gonderdi.",
+    "Stonehenge Misir piramitlerinden 500 yil eskidir.",
+    "Sumerler MO 3500'de civi yazisini icat etti.",
+    "Vikingler Amerika'yi Kolomb'dan 500 yil once kesfetti.",
+    "Ilk cep telefonu aramasi 1973'te yapildi.",
+    "Antik Roma'da beton kullaniliyordu; bazi yapilar hala ayakta.",
+    "Buyuk Iskender 30 yasinda dunyanin buyuk kismini fethetmisti.",
+    "Napolyon konserve kutuyu icat ettirdi ama acacak 48 yil sonra geldi.",
+    "Abraham Lincoln 300+ gures maci kazandi.",
+    "Ilk selfie 1839'da Robert Cornelius cekti.",
+    "Ilk kadin astronot Valentina Tereshkova (1963).",
+    "Aztek'te kakao cekirdekleri para birimiydi.",
+    "Antik Yunan Olimpiyatlari'nda sporcular ciplak yarisiirdi.",
+    "Ilk modern olimpiyatlar 1896'da Atina'da duzenlendi.",
+    "Cin barutu havai fisek icin icat etti.",
+    "ENIAC ilk bilgisayar 27 ton agirligindaydi.",
+    "Leonardo da Vinci aynada yazi yazardi."
+  ]},
+  "Yiyecek": { emoji: "\uD83C\uDF55", color: "255,101,132", facts: [
+    "Bal asla bozulmaz; 3.000 yillik bal yenilebilir bulundu.",
+    "Muzlar radyasyon yayar (potasyum-40).",
+    "Cikolata Aztek ve Maya'da para birimiydi.",
+    "Safran kilosu 10.000$+ en pahali baharat.",
+    "Fistik ezmesi yuksek basincta elmasa donusturulebilir.",
+    "Carolina Reaper 2.2 milyon Scoville en aci biber.",
+    "Domates botanik olarak meyvedir.",
+    "Vanilya orkide ailesinden elde edilir.",
+    "Brokoli portakaldan daha fazla C vitamini icerir.",
+    "Hindistan cevizi suyu acilde serum olarak kullanilabilir.",
+    "Kaju kabugu zehirlidir, islenmeden yenmez.",
+    "Cilek aslinda meyve degil; tohumlari gercek meyve.",
+    "1 litre bal icin arilar 2 milyon cicegi ziyaret eder.",
+    "Beyaz cikolata teknik olarak cikolata degil.",
+    "Havuc aslen mordu; turuncu 17. yy Hollanda'sinda gelistirildi.",
+    "Peynir dunyanin en cok calinan gidasidir.",
+    "Cikolata kopekler icin zehirli (teobromin).",
+    "Umami Japonca'da besinci tat.",
+    "Avokado botanik olarak bir 'berry'dir.",
+    "Sogan keserken gozu yasartan syn-propanethial-S-oxide.",
+    "Pizza Margherita Italyan bayragi renklerini temsil eder.",
+    "Patates MO 8000'e dayanan en eski kultur bitkisi.",
+    "Ilk cikolata bar 1847'de Ingiltere'de uretildi.",
+    "Wasabi cogu restoranda boyali yaban turpudur.",
+    "Elma sabah kahveden daha fazla enerji verebilir.",
+    "En eski bira tarifi MO 1800 Sumer tabletinde.",
+    "Bir fincan kahvede 1.000 farkli kimyasal bilesik var.",
+    "Soya sosu 2.000 yillik fermantasyon geleneg ine dayanir."
+  ]},
+  "Teknoloji": { emoji: "\uD83D\uDCA1", color: "41,182,246", facts: [
+    "Ilk iPhone'da kopyala-yapistir yoktu.",
+    "Google'in ilk depolama alani Lego kasasiydi.",
+    "YouTube'un ilk videosu 'Me at the zoo' (18 sn).",
+    "QWERTY daktilo kollarinin takilmasini onlemek icin tasarlandi.",
+    "Internetteki sitelerin %90'i hic ziyaretci almaz.",
+    "Nintendo 1889'da oyun kagidi sirketiydi.",
+    "Ilk bilgisayar virusu 1986 Pakistan (Brain).",
+    "E-posta World Wide Web'den once icat edildi.",
+    "Akilli telefon sayisi dis fircasi sayisindan fazladir.",
+    "Ilk 1 GB sabit disk 1980'de 250 kg.",
+    "Wi-Fi bir kisaltma degildir.",
+    "SpaceX roketleri Linux ile calisir.",
+    "GPS gorelilik kuramina gore duzeltme yapar.",
+    "Ilk web sitesi 1991'de Tim Berners-Lee olusturdu.",
+    "Amazon basta sadece kitap satan siteydi.",
+    "Bluetooth Viking Krali Harald Bluetooth'tan gelir.",
+    "Ilk SMS 1992: 'Merry Christmas'.",
+    "Netflix basta DVD kiralama hizmetiydi.",
+    "Bitcoin yaraticisi Satoshi Nakamoto'nun kimligi bilinmiyor.",
+    "Ilk Apple bilgisayari garajda yapildi; 666.66$.",
+    "Internet trafigininin %60'indan fazlasi botlardan.",
+    "Ilk video oyunu Pong (1972, Atari).",
+    "Moore Yasasi: transistor sayisi 2 yilda ikiye katlanir.",
+    "Ilk bilgisayar bug'i gercek bir bocekti (Harvard, 1947).",
+    "Linux cekirdegi 30M+ satir kod icerir.",
+    "QR kod 1994'te Japonya'da icat edildi.",
+    "5 milyardan fazla internet kullanicisi var.",
+    "USB standardi 1996'da Intel tarafindan gelistirildi.",
+    "Yapay zeka terimi 1956'da John McCarthy tarafindan olusturuldu.",
+    "Her dakika YouTube'a 500+ saat video yukleniyor.",
+    "Internet kablolarinin %97'si deniz altindan gecer."
+  ]},
+  "Psikoloji": { emoji: "\uD83E\uDDE0", color: "186,85,255", facts: [
+    "Insanlar 7 arti eksi 2 bilgiyi kisa sureli bellekte tutar.",
+    "Gulmek bagisiklik sistemini guclendirir.",
+    "Muzik dopamin salgilatir; yemekle ayni odul yolu.",
+    "Ilk izlenim 7 saniyede olusur.",
+    "Insanlar gunde 35.000 karar verir.",
+    "Yalnizlik fiziksel agriyla ayni beyin bolgesini aktive eder.",
+    "Mavi sakinlestirir; kirmizi kalp atisini hizlandirir.",
+    "Beyin olumsuz deneyimleri daha guclu hatirlar.",
+    "Yardim etmek yardim edenin mutluluk hormonlarini artirir.",
+    "Insanlar simetrik yuzleri daha cekici bulur.",
+    "Multitasking beyni yavaslatir.",
+    "Esnemek bulasicidir ve empati ile iliskili.",
+    "Insanlar kendi adlarini gurultude bile duyar (kokteyl etkisi).",
+    "Korkutucu anlarda zaman yavasmis hissedilir.",
+    "Nostalji psikolojik olarak yararlidir.",
+    "Beyin gercek ve hayali olayi ayirt etmekte zorlanir.",
+    "Elle not almak dijitalden daha iyi ogretir.",
+    "Merak dopamin salgilatir ve ogrenmeyi kolaylastirir.",
+    "Orman yuruyusu stres hormonlarini olculebilir azaltir.",
+    "Insanlar gunde 200 kez yuzlerine dokunur.",
+    "Sari renk aclik hissini tetikler (fast food logolari).",
+    "Plasebo etkisi gercek fiziksel degisiklik yaratir.",
+    "Sosyal medya dopamin dongusu yaratir.",
+    "Dunning-Kruger: bilgisi az olanlar yetkinliklerini abartir.",
+    "Duzunli uyku eksikligi IQ'yu olculebilir dusurur.",
+    "Bebek kokusu annelerde dopamin salgilatir.",
+    "Zor elde edilen seyler daha degerli algilanir."
+  ]},
+  "Sanat": { emoji: "\uD83C\uDFA8", color: "255,138,101", facts: [
+    "Mona Lisa'nin kaslari yoktur; Ronesans modasi.",
+    "Van Gogh hayattayken sadece bir tablo satti.",
+    "Shakespeare Ingilizceye 1.700 yeni kelime kazandirdi.",
+    "Yildizli Gece akil hastanesinde cizildi.",
+    "Eiffel Kulesi yazin 15 cm uzar.",
+    "Leonardo da Vinci iki eliyle ayni anda yazabilirdi.",
+    "Beethoven sagir olduktan sonra en unlu eserlerini besteledi.",
+    "Hermitage muzesine 1 dk baksa 11 yil surer.",
+    "Mozart 5 yasinda ilk bestesini yapti.",
+    "Kintsugi'de kirik seramikler altinla onarilir.",
+    "Banksy'nin kimligi hala bilinmiyor.",
+    "Antik Yunan heykelleri aslinda rengarenk boyaliydi.",
+    "Harry Potter 80'den fazla dile cevrildi.",
+    "Bob Ross 30.000'den fazla agac boyamistir.",
+    "Michelangelo Sistine Sapeli tavanini 4 yil boyamisti.",
+    "LEGO dunyanin en buyuk lastik ureticisi (minyatur).",
+    "Hollywood tabelasi ilk 'Hollywoodland' yaziyordu.",
+    "Picasso'nun tam adi 23 kelimeden olusur.",
+    "Frida Kahlo 55 tablosunun 33'unde kendini resmetmistir.",
+    "Oscar heykeli 24 ayar altin kaplama.",
+    "Ilk animasyon film 1908'de yapildi.",
+    "En eski magara resimleri 40.000 yasinda.",
+    "Dunya'da 7.000'den fazla dil konusulur."
+  ]},
+  "Spor": { emoji: "\u26BD", color: "129,199,132", facts: [
+    "Olimpiyat altin madalyalari %92.5 gumusten yapilir.",
+    "Basketbol seftali sepeti ve futbol topuyla basladi.",
+    "Usain Bolt 100m rekoru 9.58 sn.",
+    "FIFA kupasi saf 18 ayar altin, 6.1 kg.",
+    "Golf Ay'da oynanan tek spor (1971).",
+    "Maratonda 2.600 kalori yakilir.",
+    "F1 direksiyonunda 20+ dugme var.",
+    "Sumo gurescileri gunde 7-8.000 kalori tuketir.",
+    "Tenis toplari TV icin beyazdan sariya degisti.",
+    "Dunyanin en cok izlenen etkinligi FIFA finali.",
+    "Tour de France'ta gunde 8.000 kalori yakilabilir.",
+    "En eski spor gurestir (MO 3000).",
+    "Voleybol basta 'mintonette' idi.",
+    "Jai alai en hizli spor; top saatte 300 km.",
+    "Michael Jordan 6 kez NBA sampiyonu.",
+    "Bir boksorun yumrugu 400 kg kuvvetle vurabilir.",
+    "Kriket maclari 5 gun surebilir.",
+    "Buz hokeyi diski dondurucuda saklanir.",
+    "Golf topunda 300-500 cukur var.",
+    "En uzun tenis maci 11 saat 5 dakika."
+  ]},
+  "Muzik": { emoji: "\uD83C\uDFB5", color: "233,30,99", facts: [
+    "'Happy Birthday' 2016'ya kadar telif hakliydi.",
+    "Piyano 88 tus ve 230 tele sahip.",
+    "Metallica her kitada (Antarktika dahil) konser verdi.",
+    "Elvis Presley hicbir sarkisini kendisi yazmadi.",
+    "Beatles nota okuyamazdi.",
+    "En eski enstruman 40.000 yillik kemik flut.",
+    "Freddie Mercury'nin ses araligi 4 oktav.",
+    "Bach 1.100'den fazla eser besteledi.",
+    "Beethoven'in 9. Senfonisi CD uzunlugunu belirledi: 74 dk.",
+    "En pahali gitar 3.9 milyon$'a satildi.",
+    "Gitar dunyanin en populer enstrumani.",
+    "Ilk kaydedilen ses 1860'ta yapildi.",
+    "Autotune 1997'de Cher'in Believe'iyle populer oldu.",
+    "En cok satilan album Michael Jackson Thriller.",
+    "Rap 'Rhythm and Poetry' kisaltmasi.",
+    "Caz New Orleans'ta 19. yy sonlarinda dogdu.",
+    "Muzik terapi Alzheimer'da hafiza geri cagirmayi iyilestirir.",
+    "Bir keman 70 farkli ahsap parcadan olusur.",
+    "Insanlar 20 Hz - 20.000 Hz arasi duyabilir."
+  ]},
+  "Matematik": { emoji: "\uD83D\uDD22", color: "38,198,218", facts: [
+    "Pi sonsuzdur ve tekrar etmeyen ondaliktir.",
+    "Fibonacci: her sayi onceki ikisinin toplami.",
+    "Googol 10 uzeri 100'dur; Google'in adi buradan.",
+    "Rubik kupunun 43 kentilyondan fazla dizilimi var.",
+    "111.111.111 x 111.111.111 = 12.345.678.987.654.321",
+    "0.999... matematiksel olarak 1'e esittir.",
+    "52 kartlik deste 52! farkli karilabilir - evrendeki atomlardan fazla.",
+    "Altin oran yaklasik 1.618 dogada surekli karsimiza cikar.",
+    "Mobius seridinin tek yuzeyi ve tek kenari var.",
+    "Graham sayisi evrendeki atomlarla yazilamaz.",
+    "Euler sayisi e yaklasik 2.718 surekli buyumeyi modeller.",
+    "Sonsuz otel paradoksu: dolu sonsuz otele hep yer acilir.",
+    "Fermat'in son teoremi 350 yil sonra kanitlandi (1995).",
+    "Sifir ne pozitif ne negatif.",
+    "Roma rakamlarinda sifir yoktur.",
+    "Bir yilda 31.536.000 saniye var."
+  ]},
+  "Saglik": { emoji: "\uD83C\uDFE5", color: "102,187,106", facts: [
+    "Gulmek 15 dk'da 10-40 kalori yaktirir.",
+    "Vucut gunde 1-1.5 litre tukuruk uretir.",
+    "Ortalama insan 25 yil uyur.",
+    "Hapsirma sirasinda kalp durmaz; efsane.",
+    "Insan kemikleri agirlik oranina gore celikten guclu.",
+    "Omur boyu 100.000 km yururuz.",
+    "Dil izi parmak izi gibi benzersiz.",
+    "Bebeklerin 300 kemigi var; yetiskinde 206.",
+    "Aksirik saatte 160 km hiza ulasir.",
+    "Vucut her saniye 3.8 milyon hucre uretir.",
+    "Kafein en cok tuketilen psikoaktif madde.",
+    "Stres beyni fiziksel olarak kucultebilir.",
+    "Uyku eksikligi sarhosluga benzer bozulma yaratir.",
+    "Kalp omur boyu 200 milyon litre kan pompalar.",
+    "D vitamini aslinda hormon gibi davranir.",
+    "Duzenli egzersiz antidepresan kadar etkili olabilir.",
+    "Mide ic zari 3-4 gunde tamamen yenilenir.",
+    "Meditasyon beyinde gri madde artirir.",
+    "Bagirsak mikrobiyomu ruh halini etkiler (ikinci beyin).",
+    "Vucut geceleri 1 cm kisalir (omurga basinci)."
+  ]},
+  "Sinema": { emoji: "\uD83C\uDFAC", color: "255,167,38", facts: [
+    "Ilk film Lumiere Kardesler 'Trenin Varisi' (1895).",
+    "Titanic filmi geminin insasindan pahaliya mal oldu.",
+    "Star Wars isin kilici sesi TV arizasindan esinlenildi.",
+    "Matrix yesil kodu susi tariflerinin Japonca karakterleri.",
+    "Avatar (2009) 2.9 milyar$ hasilat yapti.",
+    "Hitchcock kendi filmlerinde kisa sure gorunurdu.",
+    "James Bond 6 farkli aktor canlandirdi.",
+    "Rocky senaryosu 3 gunde yazildi.",
+    "Pixar her filminde Pizza Planet kamyonu gizler.",
+    "Jaws kopekbaligi korkusunu dunya capinda artirdi.",
+    "Wilhelm Scream 200+ filmde kullanildi.",
+    "Ilk tamamen CGI film Toy Story (1995).",
+    "Shrek basta korku filmi olarak tasarlandi.",
+    "E.T.'nin yuzu Einstein'dan esinlenildi.",
+    "Lord of the Rings 17 Oscar kazandi.",
+    "Marvel Cinematic Universe 30+ filmle en buyuk seri.",
+    "Inception finalindeki topac kasitli olarak belirsiz birakildi.",
+    "Ilk 3D film 1922'de gosterildi."
+  ]},
+  "Ekonomi": { emoji: "\uD83D\uDCB0", color: "255,215,64", facts: [
+    "En eski bilinen para Lidya sikkesi (MO 600).",
+    "Apple piyasa degeri bircok ulkenin GDP'sinden buyuk.",
+    "Monopoly parasi her yil gercek dolardan fazla basilir.",
+    "Japonya'da 'yen' 'yuvarlak nesne' demek.",
+    "Zimbabwe 100 trilyon dolarlik banknot basti.",
+    "Insanlik tarihinde yaklasik 190.000 ton altin cikarildi.",
+    "Ilk kredi karti 1950 Diners Club.",
+    "Amazon adi dunyanin en buyuk nehrinden.",
+    "Ilk ATM 1967 Londra'da kuruldu.",
+    "Ilk borsa 1602 Amsterdam.",
+    "Norvec varlik fonu 1 trilyon dolardan buyuk.",
+    "Warren Buffett ilk hissesini 11 yasinda aldi.",
+    "1 dolarlik banknotun omru ortalama 6.6 yil.",
+    "Ilk kagit para 7. yuzyilda Cin'de kullanildi.",
+    "Bitcoin whitepaper'i 2008'de yayimlandi."
+  ]},
+  "Oyunlar": { emoji: "\uD83C\uDFAE", color: "156,39,176", facts: [
+    "Minecraft 300M kopya ile en cok satan oyun.",
+    "Ilk video oyunu 'Tennis for Two' (1958).",
+    "Mario'nun adi Nintendo'nun ABD depo sahibinden.",
+    "Pac-Man pizza diliminden esinlenildi.",
+    "Tetris 1984'te Sovyet bilim insani yaratti.",
+    "GTA V ilk 3 gunde 1 milyar$ gelir elde etti.",
+    "Pokemon yaraticisi bocek toplamaktan ilham aldi.",
+    "Fortnite konserini 12 milyon kisi canli izledi.",
+    "Space Invaders 1978'de Japonya'da madeni para kitligi yaratti.",
+    "E-spor milyar dolarlik endustri.",
+    "Dunya'daki aktif oyuncu sayisi 3 milyari asti.",
+    "Counter-Strike bir Half-Life mod'u olarak basladi.",
+    "Doom (1993) FPS turunun oncusu.",
+    "Oyun endustrisi film+muzik endusrisinden buyuk.",
+    "Roblox'ta 40M+ kullanici yapimi oyun var.",
+    "Ilk PlayStation 1994'te Japonya'da cikti.",
+    "Sonic basta tavsan olarak tasarlanmisti.",
+    "Atari Japonca'da 'hedef' demek.",
+    "Ilk MMORPG Ultima Online (1997)."
+  ]},
+  "Okyanus": { emoji: "\uD83C\uDF0A", color: "0,150,136", facts: [
+    "Okyanuslarin %95'i henuz kesfedilmedi.",
+    "En derin nokta Mariana Cukuru: 11.034 m.",
+    "Okyanuslar oksijenin %50-80'ini uretir.",
+    "Okyanus tabaninda tahminen 3 milyon batik var.",
+    "En buyuk canli mavi balina: 30 m, 180 ton.",
+    "Deniz yuzeyinin altinda tuzlu goller var (brine havuzlari).",
+    "Mercan resifleri %1 alanla turlerin %25'ine ev sahipligi yapar.",
+    "Orta Atlantik Sirti 65.000 km ile en uzun dag sirasi.",
+    "Derin deniz canlilarinin cogu kendi isigini uretir.",
+    "Deniz suyundaki tuz cikarilsa karalari 150 m kaplardi.",
+    "Gulf Stream Avrupa'yi isitir.",
+    "Kraken efsanesi dev murekkep baligindan esinlenildi.",
+    "Aslan yelesi denizanasi tentakulleri 37 m uzunlukta.",
+    "Okyanus ortalama derinligi 3.688 m.",
+    "Pasifik tum karalarin toplamindan genis."
+  ]},
+  "Evrim": { emoji: "\uD83E\uDDEC", color: "139,195,74", facts: [
+    "Yasam yaklasik 3.8 milyar yil once basladi.",
+    "Insanlar ve sempanzeler DNA'nin %98.7'sini paylasir.",
+    "Gozler bagimsiz olarak 40+ kez evrimlesti.",
+    "Balinalar karada yasayan memelilerden evrimlesti.",
+    "Antibiyotik direnci hizli evrim ornegi.",
+    "Kuslar dinozorlardan evrimlesti; teknik olarak dinozor.",
+    "Kambriyen Patlamasi 540M yil once canli cesitliligini patlatti.",
+    "Tum kopek irklari kurttan evrimlesti (15.000 yil).",
+    "Kuyruk sokumu kemigi eski kuyruk kalintisi.",
+    "Laktoz toleransi yaklasik 10.000 yil once evrimlesti.",
+    "Mitokondri bir zamanlar bagimsiz bakteriydi.",
+    "Canli turlerinin %99'undan fazlasi tukenmistir.",
+    "Insan embriyosu gelisimde kuyruk olusturur sonra kaybolur.",
+    "Viral DNA genomumuzun %8'ini olusturur."
+  ]},
+  "Mitoloji": { emoji: "\uD83C\uDFDB\uFE0F", color: "255,112,67", facts: [
+    "Zeus'un simgesi yildirimdir ve Olimpos'un kralidir.",
+    "Medusa'ya bakan herkes tasa donerdi.",
+    "Truva Savasi 10 yil surdu ve bir tahta atla bitti.",
+    "Odin bilgelik icin bir gozunu feda etti.",
+    "Feniks ateste yanip kullerinden yeniden dogan efsanevi kus.",
+    "Herakles (Herkul) 12 imkansiz gorevi tamamladi.",
+    "Anubis, Misir mitolojisinde olum ve mumyalama tanrisidir.",
+    "Thor'un cekici Mjolnir sadece layik olan tarafindan kaldirilabilir.",
+    "Minotaur yari insan yari boga bir yaratikti ve labirentte yasardi.",
+    "Pandora'nin kutusu acildiginda tum kotulukler dunyaya yayildi.",
+    "Poseidon denizlerin tanrisiydi ve trident tasirdi.",
+    "Prometheus insanlara atesi caldigi icin Zeus tarafindan cezalandirildi.",
+    "Sisifos sonsuza dek tepeden yuvarlanan kayayi yukari itmekle cezalandirildi.",
+    "Ikarus balmumu kanatlariyla gunese cok yaklasinca denize dustu.",
+    "Loki Iskandinav mitolojisinde hem yardimsever hem duzenbaz.",
+    "Cerberos yeralti dunyasinin uc basli kopegiydi."
+  ]},
+  "Doga": { emoji: "\uD83C\uDF3F", color: "56,142,60", facts: [
+    "Bambu gunde 91 cm buyuyebilir - dunyanin en hizli buyuyen bitkisi.",
+    "Bir mese agaci yilda yaklasik 70.000 palamut uretir.",
+    "Dunyada yaklasik 80.000 yenilebilir bitki turu var ama sadece 30 kadari yaygin kullanilir.",
+    "Sequoia agaclari 100 metreden fazla buyuyebilir.",
+    "Mantarlar bitkiden cok hayvana yakin genetik yapidadir.",
+    "Bir agac gunde yaklasik 100 litre suyu havaya birakir.",
+    "Dunyanin en buyuk canli organizmi Oregon'daki bal mantaridir: 9 km kare.",
+    "Rafflesia dunyanin en buyuk cicegi dir ve les gibi kokar.",
+    "Bitkiler birbiriyle kok mantar agi uzerinden iletisim kurar (Wood Wide Web).",
+    "Bir aycicegi gunun saatine gore gunesi takip eder.",
+    "Kaktusler govdelerinde su depolar ve bazilari 200 yil yasar.",
+    "Venus sinek kapani bocekleri sindirerek azot elde eder.",
+    "Ginkgo biloba 270 milyon yildir degismeden yasayan canli fosil.",
+    "Lavanta stresi azaltici aromaterapi etkisine sahiptir.",
+    "Bir gunes cicegi alani nukleer atik bolgesini temizlemek icin kullanilmistir (Cernobil)."
+  ]},
+  "Ulasim": { emoji: "\u2708\uFE0F", color: "121,134,203", facts: [
+    "Wright Kardesler'in ilk ucusu sadece 12 saniye surdu (1903).",
+    "Dunyanin en uzun ticari ucusu Singapur-New York: 18+ saat.",
+    "Bir Boeing 747'de yaklasik 6 milyon parca var.",
+    "Ilk tren 1804'te Ingiltere'de calisti.",
+    "Dunyanin en uzun koprusu Danyang-Kunshan (164.8 km, Cin).",
+    "Ilk otomobil Karl Benz tarafindan 1886'da icat edildi.",
+    "Ucaklar her yil dunya nufusunun yarisindan fazlasini tasir.",
+    "Dunyanin en hizli treni Maglev: 603 km/s (Japonya).",
+    "Ilk bisiklet 1817'de icat edildi.",
+    "Titanik batarken gemi 269 m uzunlugundaydi.",
+    "Otomobillerin %95'i omurlerinin cogunu park halinde gecirir.",
+    "Elektrikli arabalar benzinli arabalardan once icat edildi (1832).",
+    "Ilk trafik lambasi 1868'de Londra'da kuruldu.",
+    "Airbus A380 dunyanin en buyuk yolcu ucagi: 853 kisilik.",
+    "Ucak kara kutulari aslinda turuncu renklidir."
+  ]},
+  "Garip": { emoji: "\uD83E\uDDCA", color: "224,64,251", facts: [
+    "Kleopatra Ay'a inis zamanina piramitlerden daha yakin yasadi.",
+    "Bir insan omrunde yaklasik 2 yilini kuyrukta bekleyerek gecirir.",
+    "Oxford Universitesi Aztek Imparatorlugu'ndan eski.",
+    "Bir bulutun ortalama agirligi 500 tondur.",
+    "Rusya'nin 11 saat dilimi var.",
+    "Tum gezegenler Dunya ile Ay arasina sigar.",
+    "Insanlar karanlikta cok hafif bir sekilde parlar.",
+    "Dunyadaki tum bakterilerin toplam agirligi tum insanlardan fazla.",
+    "Bir denizanasi %95 su oldugu icin buhaslasabilir.",
+    "Dunyanin en kisa savasi 38-45 dakika surdu (Ingiltere-Zanzibar, 1896).",
+    "Nintendo, Osmanli Imparatorlugu cokmeden once kuruldu.",
+    "Istatistiksel olarak bir hindistan cevizi size kopekbaligindan daha tehlikeli.",
+    "Insanlar omurlerinin yaklasik 6 ayini kirmizi isikta bekleyerek gecirir.",
+    "Dunyadaki tum karincalarin toplam agirligi tum insanlarinkine yakin.",
+    "Dunya'dan bakildiginda Gunes ve Ay neredeyse ayni boyutta gorunur (kozmik tesaduf)."
+  ]},
+  "Sosyal Medya": { emoji: "\uD83D\uDCF1", color: "29,161,242", facts: [
+    "Facebook'un 3 milyardan fazla aylik aktif kullanicisi var.",
+    "Ilk Instagram fotograffi bir kopek ve ayak fotografiydi.",
+    "TikTok 2022'de dunyanin en cok indirilen uygulamasi oldu.",
+    "Twitter'in (X) karakter limiti basta 140'ti, sonra 280'e cikti.",
+    "YouTube'da gunde 1 milyar saatten fazla video izleniyor.",
+    "LinkedIn'de 900 milyondan fazla profesyonel profil var.",
+    "Reddit'te 100.000'den fazla aktif topluluk var.",
+    "WhatsApp'ta gunde 100 milyardan fazla mesaj gonderiliyor.",
+    "Ilk hashtag (#) 2007'de Twitter'da Chris Messina tarafindan onerildi.",
+    "Sosyal medya kullanicilari gunde ortalama 2.5 saat harciyor.",
+    "Ortalama bir kisi hayatinda 5+ yilini sosyal medyada gecirir.",
+    "En cok begenilen Instagram fotografi bir yumurta fotografiydi.",
+    "TikTok'un algoritmasi icerigi izleme surenize gore onerir.",
+    "Ilk Facebook kullanicisi Mark Zuckerberg (profil ID: 4).",
+    "Discord basta oyuncular icin tasarlandi ama simdi her alanda kullaniliyor."
+  ]}
 };
 
 // ===== STATE =====
-var allFacts = [];
-var seenFacts = {};
-var favorites = JSON.parse(localStorage.getItem('bh_fav3') || '[]');
-var currentFact = null;
-var currentFactIndex = -1;
-var categoryFilter = 'all';
-var streak = 0;
-var autoInt = null;
-var history = [];
-var quizScore = parseInt(localStorage.getItem('bh_quiz2') || '0');
-var quizTotal = parseInt(localStorage.getItem('bh_quizT2') || '0');
+var allFacts=[], seenFacts={}, favorites=JSON.parse(localStorage.getItem('bh_fav4')||'[]'), currentFact=null, currentFactIndex=-1, categoryFilter='all', streak=0, bestStreak=parseInt(localStorage.getItem('bh_best2')||'0'), autoInt=null, history=[], quizScore=parseInt(localStorage.getItem('bh_quiz3')||'0'), quizTotal=parseInt(localStorage.getItem('bh_quizT3')||'0'), soundOn=localStorage.getItem('bh_snd')!=='off', totalEverSeen=parseInt(localStorage.getItem('bh_ts2')||'0');
+var unlockedAch=JSON.parse(localStorage.getItem('bh_ach2')||'[]');
 
-function buildFacts() {
-  allFacts = [];
-  for (var catName in factsDB) {
-    var cat = factsDB[catName];
-    for (var i = 0; i < cat.facts.length; i++) {
-      allFacts.push({text: cat.facts[i], category: catName, emoji: cat.emoji, color: cat.color});
-    }
-  }
-}
+function buildFacts(){allFacts=[];for(var k in factsDB){var c=factsDB[k];for(var i=0;i<c.facts.length;i++)allFacts.push({text:c.facts[i],category:k,emoji:c.emoji,color:c.color})}}
 buildFacts();
 
-function getRarity(idx) {
-  var h = (idx * 2654435761) >>> 0;
-  var r = h % 100;
-  if (r < 45) return {name: 'Siradan', cls: 'rarity-common'};
-  if (r < 75) return {name: 'Nadir', cls: 'rarity-rare'};
-  if (r < 93) return {name: 'Epik', cls: 'rarity-epic'};
-  return {name: 'Efsanevi', cls: 'rarity-legendary'};
-}
+function getRarity(idx){var h=(idx*2654435761)>>>0,r=h%100;if(r<45)return{name:'Siradan',cls:'rarity-common'};if(r<75)return{name:'Nadir',cls:'rarity-rare'};if(r<93)return{name:'Epik',cls:'rarity-epic'};return{name:'Efsanevi',cls:'rarity-legendary'}}
 
-document.getElementById('total-count').textContent = allFacts.length;
-document.getElementById('fav-count').textContent = favorites.length;
+// ===== SOUND =====
+var audioCtx;
+try{audioCtx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}
+function playSound(freq,dur,type){if(!soundOn||!audioCtx)return;try{var o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type||'sine';o.frequency.value=freq;g.gain.setValueAtTime(.06,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur)}catch(e){}}
+function sndClick(){playSound(800,.08);playSound(1200,.06)}
+function sndLike(){playSound(523,.1);setTimeout(function(){playSound(659,.1)},80);setTimeout(function(){playSound(784,.15)},160)}
+function sndMilestone(){for(var i=0;i<5;i++){(function(j){setTimeout(function(){playSound(400+j*150,.12)},j*80)})(i)}}
+function toggleSound(){soundOn=!soundOn;localStorage.setItem('bh_snd',soundOn?'on':'off');document.getElementById('sound-btn').textContent=soundOn?'\uD83D\uDD0A':'\uD83D\uDD07';showToast(soundOn?'Ses acildi':'Ses kapatildi')}
+document.getElementById('sound-btn').textContent=soundOn?'\uD83D\uDD0A':'\uD83D\uDD07';
 
-function renderCats() {
-  var el = document.getElementById('categories');
-  var cats = Object.keys(factsDB);
-  var html = '<div class="cat-pill ' + (categoryFilter === 'all' ? 'active' : '') + '" onclick="setCat(\'all\')">' + allFacts.length + ' Tumu</div>';
-  for (var i = 0; i < cats.length; i++) {
-    var c = cats[i];
-    var cat = factsDB[c];
-    html += '<div class="cat-pill ' + (categoryFilter === c ? 'active' : '') + '" onclick="setCat(\'' + c + '\')">' + cat.emoji + ' ' + c + ' (' + cat.facts.length + ')</div>';
-  }
-  el.innerHTML = html;
-}
+// ===== INIT =====
+document.getElementById('total-count').textContent=allFacts.length;
+document.getElementById('fav-count').textContent=favorites.length;
+document.getElementById('best-streak').textContent=bestStreak;
+
+function renderCats(){var el=document.getElementById('categories');var cats=Object.keys(factsDB);var html='<div class="cat-pill '+(categoryFilter==='all'?'active':'')+'" onclick="setCat(\'all\')">'+allFacts.length+' Tumu</div>';for(var i=0;i<cats.length;i++){var c=cats[i],cat=factsDB[c];html+='<div class="cat-pill '+(categoryFilter===c?'active':'')+'" onclick="setCat(\''+c+'\')">'+cat.emoji+' '+c+' ('+cat.facts.length+')</div>'}el.innerHTML=html}
 renderCats();
+function setCat(c){categoryFilter=c;renderCats()}
+function getPool(){if(categoryFilter==='all')return allFacts;return allFacts.filter(function(f){return f.category===categoryFilter})}
 
-function setCat(c) { categoryFilter = c; renderCats(); }
-
-function getPool() {
-  if (categoryFilter === 'all') return allFacts;
-  return allFacts.filter(function(f) { return f.category === categoryFilter; });
-}
+// ===== ACHIEVEMENTS =====
+var achievements=[
+  {id:'first',icon:'\uD83C\uDF31',name:'Ilk Adim',desc:'Ilk bilgini gor',check:function(){return totalEverSeen>=1}},
+  {id:'ten',icon:'\u2B50',name:'Merakli',desc:'10 bilgi gor',check:function(){return totalEverSeen>=10}},
+  {id:'fifty',icon:'\uD83D\uDD25',name:'Ates Topu',desc:'50 bilgi gor',check:function(){return totalEverSeen>=50}},
+  {id:'hundred',icon:'\uD83D\uDC8E',name:'Elmas Kafa',desc:'100 bilgi gor',check:function(){return totalEverSeen>=100}},
+  {id:'twohundred',icon:'\uD83D\uDE80',name:'Roket',desc:'200 bilgi gor',check:function(){return totalEverSeen>=200}},
+  {id:'fivehundred',icon:'\uD83C\uDF0C',name:'Galaktik',desc:'500 bilgi gor',check:function(){return totalEverSeen>=500}},
+  {id:'fav5',icon:'\u2764\uFE0F',name:'Koleksiyoncu',desc:'5 favori ekle',check:function(){return favorites.length>=5}},
+  {id:'fav20',icon:'\uD83D\uDC96',name:'Super Fan',desc:'20 favori ekle',check:function(){return favorites.length>=20}},
+  {id:'streak5',icon:'\uD83D\uDD17',name:'Seri Baslangici',desc:'5 seri yap',check:function(){return bestStreak>=5}},
+  {id:'streak15',icon:'\u26D3\uFE0F',name:'Zincir Ustasi',desc:'15 seri yap',check:function(){return bestStreak>=15}},
+  {id:'quiz10',icon:'\uD83E\uDDE9',name:'Quiz Ciragi',desc:'10 quiz dogru cevapla',check:function(){return quizScore>=10}},
+  {id:'quiz50',icon:'\uD83C\uDF93',name:'Quiz Ustasi',desc:'50 quiz dogru cevapla',check:function(){return quizScore>=50}},
+  {id:'speed',icon:'\u26A1',name:'Hiz Seytani',desc:'Otomatik modu kullan',check:function(){return autoInt!==null}}
+];
+function checkAchievements(){var newU=false;achievements.forEach(function(a){if(unlockedAch.indexOf(a.id)<0&&a.check()){unlockedAch.push(a.id);newU=true;showToast('\uD83C\uDFC5 Basarim: '+a.name+'!');sndMilestone()}});if(newU)localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch))}
+function renderAchievements(){var u=unlockedAch.length,t=achievements.length;document.getElementById('ach-count').textContent='('+u+'/'+t+')';document.getElementById('ach-body').innerHTML='<div style="text-align:center;margin-bottom:16px"><div style="font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent3),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+u+'/'+t+'</div><div style="font-size:.75rem;color:var(--text2)">Basarim Acildi</div></div><div class="ach-grid">'+achievements.map(function(a){var ul=unlockedAch.indexOf(a.id)>=0;return'<div class="ach-card '+(ul?'unlocked':'locked')+'"><span class="ach-icon">'+a.icon+'</span><div class="ach-name">'+a.name+'</div><div class="ach-desc">'+a.desc+'</div></div>'}).join('')+'</div>'}
 
 // ===== MILESTONES =====
-var MS = [
-  {n:10, e:'\u2B50', t:'Ilk Adim!', m:'10 bilgi gordun!'},
-  {n:25, e:'\uD83D\uDD25', t:'Ateslisin!', m:'25 bilgi!'},
-  {n:50, e:'\uD83C\uDFC6', t:'Yari Yol!', m:'50 bilgi!'},
-  {n:100, e:'\uD83D\uDC8E', t:'Yuzuncu!', m:'100 bilgi!'},
-  {n:200, e:'\uD83D\uDE80', t:'Roket!', m:'200 bilgi!'},
-  {n:300, e:'\uD83D\uDC51', t:'Kral!', m:'300 bilgi!'},
-  {n:500, e:'\uD83C\uDF0C', t:'Efsane!', m:'500 bilgi!'}
-];
-var shownMS = {};
+var MS=[{n:10,e:'\u2B50',t:'Ilk Adim!',m:'10 bilgi!'},{n:25,e:'\uD83D\uDD25',t:'Ateslisin!',m:'25!'},{n:50,e:'\uD83C\uDFC6',t:'Yari Yol!',m:'50!'},{n:100,e:'\uD83D\uDC8E',t:'Yuzuncu!',m:'100!'},{n:200,e:'\uD83D\uDE80',t:'Roket!',m:'200!'},{n:300,e:'\uD83D\uDC51',t:'Kral!',m:'300!'},{n:500,e:'\uD83C\uDF0C',t:'Efsane!',m:'500!'},{n:750,e:'\uD83C\uDF20',t:'Galaktik!',m:'750!'}];
+var shownMS={};
+function checkMS(){var n=Object.keys(seenFacts).length;for(var i=0;i<MS.length;i++){var m=MS[i];if(n===m.n&&!shownMS[m.n]){shownMS[m.n]=true;showMilestone(m);launchConfetti();sndMilestone();break}}}
+function showMilestone(m){var el=document.getElementById('milestone');document.getElementById('ms-emoji').textContent=m.e;document.getElementById('ms-title').textContent=m.t;document.getElementById('ms-text').textContent=m.m;el.classList.add('show');setTimeout(function(){el.classList.remove('show')},3500)}
 
-function checkMS() {
-  var n = Object.keys(seenFacts).length;
-  for (var i = 0; i < MS.length; i++) {
-    var m = MS[i];
-    if (n === m.n && !shownMS[m.n]) {
-      shownMS[m.n] = true;
-      showMilestone(m);
-      launchConfetti();
-      break;
-    }
-  }
-}
+// ===== DAILY FACT =====
+function getDailyFact(){var today=new Date().toISOString().slice(0,10);var seed=0;for(var i=0;i<today.length;i++)seed+=today.charCodeAt(i);return allFacts[seed%allFacts.length]}
+function showDailyFact(){openModal('daily-modal');var f=getDailyFact();var today=new Date().toLocaleDateString('tr-TR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});document.getElementById('daily-body').innerHTML='<div style="text-align:center;margin-bottom:20px"><div style="font-size:.75rem;color:var(--text3);margin-bottom:8px">'+today+'</div><div style="font-size:3rem;margin-bottom:8px">'+f.emoji+'</div><div class="fact-category-badge" style="background:rgba('+f.color+',.2);color:rgba('+f.color+',1)">'+f.category+'</div></div><div style="font-size:1.1rem;line-height:1.8;text-align:center;padding:20px;background:rgba(255,255,255,.03);border-radius:16px;border:1px solid rgba(255,255,255,.06)">'+f.text+'</div><div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>'}
 
-function showMilestone(m) {
-  var el = document.getElementById('milestone');
-  document.getElementById('ms-emoji').textContent = m.e;
-  document.getElementById('ms-title').textContent = m.t;
-  document.getElementById('ms-text').textContent = m.m;
-  el.classList.add('show');
-  setTimeout(function() { el.classList.remove('show'); }, 3500);
-}
+// ===== SEARCH =====
+function handleSearch(){var q=document.getElementById('global-search').value.trim().toLowerCase();var box=document.getElementById('search-results');if(!q||q.length<2){box.style.display='none';return}var results=allFacts.filter(function(f){return f.text.toLowerCase().indexOf(q)>=0}).slice(0,15);if(!results.length){box.style.display='block';box.innerHTML='<div style="padding:12px;color:var(--text3);text-align:center;font-size:.8rem">Sonuc bulunamadi</div>';return}box.style.display='block';box.innerHTML=results.map(function(f){var idx=allFacts.indexOf(f);var highlighted=f.text.replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi'),'<strong style="color:var(--accent3)">$1</strong>');return'<div class="sr-item" onclick="jumpToFact('+idx+')"><span style="font-size:1rem;flex-shrink:0">'+f.emoji+'</span><div>'+highlighted+'</div></div>'}).join('')}
+function jumpToFact(idx){var f=allFacts[idx];currentFact=f;currentFactIndex=idx;seenFacts[f.text]=true;totalEverSeen++;localStorage.setItem('bh_ts2',totalEverSeen);history.unshift({text:f.text,category:f.category,emoji:f.emoji,color:f.color,time:new Date().toLocaleTimeString('tr-TR')});document.getElementById('global-search').value='';document.getElementById('search-results').style.display='none';renderFactCard();sndClick();checkMS();checkAchievements()}
 
 // ===== NEXT FACT =====
-function nextFact() {
-  var pool = getPool();
-  if (!pool.length) return;
-  var unseen = pool.filter(function(f) { return !seenFacts[f.text]; });
-  var src = unseen.length ? unseen : pool;
-  var fact = src[Math.floor(Math.random() * src.length)];
-  if (!seenFacts[fact.text]) { streak++; } else { streak = 0; }
-  currentFact = fact;
-  currentFactIndex = allFacts.indexOf(fact);
-  seenFacts[fact.text] = true;
-  history.unshift({text: fact.text, category: fact.category, emoji: fact.emoji, color: fact.color, time: new Date().toLocaleTimeString('tr-TR')});
-  if (history.length > 100) history.pop();
-  renderFactCard();
-  checkMS();
-}
+function nextFact(){var pool=getPool();if(!pool.length)return;var unseen=pool.filter(function(f){return!seenFacts[f.text]});var src=unseen.length?unseen:pool;var fact=src[Math.floor(Math.random()*src.length)];if(!seenFacts[fact.text]){streak++;totalEverSeen++;localStorage.setItem('bh_ts2',totalEverSeen)}else{streak=0}if(streak>bestStreak){bestStreak=streak;localStorage.setItem('bh_best2',bestStreak)}currentFact=fact;currentFactIndex=allFacts.indexOf(fact);seenFacts[fact.text]=true;history.unshift({text:fact.text,category:fact.category,emoji:fact.emoji,color:fact.color,time:new Date().toLocaleTimeString('tr-TR')});if(history.length>200)history.pop();renderFactCard();sndClick();checkMS();checkAchievements();if(navigator.vibrate)try{navigator.vibrate(10)}catch(e){}}
+function renderFactCard(){var fact=currentFact;if(!fact)return;var t=document.getElementById('fact-text'),em=document.getElementById('fact-emoji'),bg=document.getElementById('fact-badge'),nm=document.getElementById('fact-number'),rb=document.getElementById('rarity-badge');t.style.opacity='0';setTimeout(function(){em.textContent=fact.emoji;em.style.animation='none';em.offsetHeight;em.style.animation='bounceIn .5s ease';bg.textContent=fact.category;bg.style.background='rgba('+fact.color+',.2)';bg.style.color='rgba('+fact.color+',1)';t.textContent=fact.text;t.style.opacity='1';nm.textContent='#'+(currentFactIndex+1)+' / '+allFacts.length;var rarity=getRarity(currentFactIndex);rb.textContent=rarity.name;rb.className='rarity-badge '+rarity.cls;rb.style.display='block';updateLikeBtn();var sc=Object.keys(seenFacts).length;document.getElementById('seen-count').textContent=sc;document.getElementById('streak-count').textContent=streak;document.getElementById('best-streak').textContent=bestStreak;var pct=((sc/allFacts.length)*100).toFixed(1);document.getElementById('progress-fill').style.width=pct+'%';document.getElementById('progress-label').textContent=pct+'% kesfedildi ('+sc+'/'+allFacts.length+')'}, 300)}
 
-function renderFactCard() {
-  var fact = currentFact;
-  if (!fact) return;
-  var t = document.getElementById('fact-text');
-  var em = document.getElementById('fact-emoji');
-  var bg = document.getElementById('fact-badge');
-  var nm = document.getElementById('fact-number');
-  var rb = document.getElementById('rarity-badge');
-
-  t.style.opacity = '0';
-  setTimeout(function() {
-    em.textContent = fact.emoji;
-    em.style.animation = 'none';
-    em.offsetHeight;
-    em.style.animation = 'bounceIn .5s ease';
-    bg.textContent = fact.category;
-    bg.style.background = 'rgba(' + fact.color + ',.2)';
-    bg.style.color = 'rgba(' + fact.color + ',1)';
-    t.textContent = fact.text;
-    t.style.opacity = '1';
-    nm.textContent = '#' + (currentFactIndex + 1) + ' / ' + allFacts.length;
-    var rarity = getRarity(currentFactIndex);
-    rb.textContent = rarity.name;
-    rb.className = 'rarity-badge ' + rarity.cls;
-    rb.style.display = 'block';
-    updateLikeBtn();
-
-    var seenCount = Object.keys(seenFacts).length;
-    document.getElementById('seen-count').textContent = seenCount;
-    document.getElementById('streak-count').textContent = streak;
-    var pct = ((seenCount / allFacts.length) * 100).toFixed(1);
-    document.getElementById('progress-fill').style.width = pct + '%';
-    document.getElementById('progress-label').textContent = pct + '% kesfedildi (' + seenCount + '/' + allFacts.length + ')';
-  }, 300);
-}
+// ===== RANDOM CATEGORY =====
+function randomCategory(){var cats=Object.keys(factsDB);var r=cats[Math.floor(Math.random()*cats.length)];setCat(r);renderCats();nextFact();showToast(factsDB[r].emoji+' '+r)}
 
 // ===== LIKE =====
-function toggleLike() {
-  if (!currentFact) return;
-  var i = favorites.findIndex(function(f) { return f.text === currentFact.text; });
-  if (i >= 0) { favorites.splice(i, 1); showToast('Kaldirildi'); }
-  else { favorites.push({text: currentFact.text, category: currentFact.category, emoji: currentFact.emoji, color: currentFact.color}); showToast('Favorilere eklendi!'); }
-  saveFav();
-  updateLikeBtn();
-}
-
-function saveFav() {
-  localStorage.setItem('bh_fav3', JSON.stringify(favorites));
-  document.getElementById('fav-count').textContent = favorites.length;
-}
-
-function updateLikeBtn() {
-  var b = document.getElementById('like-btn');
-  if (!currentFact) { b.classList.remove('liked'); return; }
-  var l = favorites.some(function(f) { return f.text === currentFact.text; });
-  b.classList.toggle('liked', l);
-  b.innerHTML = l ? '&#128150; Begenildi' : '&#10084;&#65039; Begen';
-}
+function toggleLike(){if(!currentFact)return;var i=favorites.findIndex(function(f){return f.text===currentFact.text});if(i>=0){favorites.splice(i,1);showToast('Kaldirildi')}else{favorites.push({text:currentFact.text,category:currentFact.category,emoji:currentFact.emoji,color:currentFact.color});showToast('Favorilere eklendi!');sndLike()}saveFav();updateLikeBtn();checkAchievements()}
+function saveFav(){localStorage.setItem('bh_fav4',JSON.stringify(favorites));document.getElementById('fav-count').textContent=favorites.length}
+function updateLikeBtn(){var b=document.getElementById('like-btn');if(!currentFact){b.classList.remove('liked');return}var l=favorites.some(function(f){return f.text===currentFact.text});b.classList.toggle('liked',l);b.innerHTML=l?'&#128150; Begenildi':'&#10084;&#65039; Begen'}
 
 // ===== MODALS =====
-function openModal(id) { document.getElementById(id).classList.add('open'); }
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-
-document.querySelectorAll('.modal-overlay').forEach(function(m) {
-  m.addEventListener('click', function(e) {
-    if (e.target === e.currentTarget) e.target.classList.remove('open');
-  });
-});
+function openModal(id){document.getElementById(id).classList.add('open');if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume()}
+function closeModal(id){document.getElementById(id).classList.remove('open')}
+document.querySelectorAll('.modal-overlay').forEach(function(m){m.addEventListener('click',function(e){if(e.target===e.currentTarget)e.target.classList.remove('open')})});
 
 // ===== FAV MODAL =====
-function openFavModal() {
-  document.getElementById('fav-modal-count').textContent = '(' + favorites.length + ')';
-  renderFavList();
-}
+function openFavModal(){document.getElementById('fav-modal-count').textContent='('+favorites.length+')';renderFavList()}
+function renderFavList(){var c=document.getElementById('fav-list'),q=(document.getElementById('fav-search').value||'').toLowerCase();var list=favorites;if(q)list=list.filter(function(f){return f.text.toLowerCase().indexOf(q)>=0||f.category.toLowerCase().indexOf(q)>=0});if(!list.length){c.innerHTML='<div class="fav-empty"><span class="fav-empty-icon">'+(q?'\uD83D\uDD0D':'\u2B50')+'</span><p>'+(q?'Eslesen favori yok.':'Henuz favori eklemedin!')+'</p></div>';return}c.innerHTML=list.map(function(f){var ri=favorites.indexOf(f);return'<div class="fav-item"><span class="fav-emoji-icon">'+f.emoji+'</span><div class="fav-content"><div class="fav-cat-label">'+f.category+'</div>'+f.text+'</div><button class="fav-remove" onclick="removeFav('+ri+')">&#10005;</button></div>'}).join('')}
+function removeFav(i){favorites.splice(i,1);saveFav();renderFavList();document.getElementById('fav-modal-count').textContent='('+favorites.length+')';updateLikeBtn()}
 
-function renderFavList() {
-  var c = document.getElementById('fav-list');
-  var q = (document.getElementById('fav-search').value || '').toLowerCase();
-  var list = favorites;
-  if (q) list = list.filter(function(f) { return f.text.toLowerCase().indexOf(q) >= 0 || f.category.toLowerCase().indexOf(q) >= 0; });
-  if (!list.length) {
-    c.innerHTML = '<div class="fav-empty"><span class="fav-empty-icon">' + (q ? '\uD83D\uDD0D' : '\u2B50') + '</span><p>' + (q ? 'Eslesen favori yok.' : 'Henuz favori eklenmedin!') + '</p></div>';
-    return;
-  }
-  c.innerHTML = list.map(function(f) {
-    var ri = favorites.indexOf(f);
-    return '<div class="fav-item"><span class="fav-emoji-icon">' + f.emoji + '</span><div class="fav-content"><div class="fav-cat-label">' + f.category + '</div>' + f.text + '</div><button class="fav-remove" onclick="removeFav(' + ri + ')">&#10005;</button></div>';
-  }).join('');
-}
-
-function removeFav(i) {
-  favorites.splice(i, 1);
-  saveFav();
-  renderFavList();
-  document.getElementById('fav-modal-count').textContent = '(' + favorites.length + ')';
-  updateLikeBtn();
-}
+// ===== EXPORT FAVORITES =====
+function exportFavorites(){if(!favorites.length){showToast('Favori yok');return}var txt='Bilgi Hazinesi by THYKE - Favorilerim\n'+'='.repeat(40)+'\n\n';favorites.forEach(function(f,i){txt+=(i+1)+'. ['+f.category+']\n   '+f.text+'\n\n'});txt+='\nToplam: '+favorites.length+' favori bilgi\nTarih: '+new Date().toLocaleDateString('tr-TR')+'\n\nBilgi Hazinesi by THYKE';var blob=new Blob([txt],{type:'text/plain;charset=utf-8'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='bilgi_hazinesi_favoriler.txt';a.click();URL.revokeObjectURL(url);showToast('Favoriler indirildi!')}
 
 // ===== HISTORY =====
-function renderHistoryModal() {
-  document.getElementById('hist-count').textContent = '(' + history.length + ')';
-  renderHistory();
-}
-
-function renderHistory() {
-  var c = document.getElementById('hist-list');
-  if (!history.length) {
-    c.innerHTML = '<div class="fav-empty"><span class="fav-empty-icon">&#128336;</span><p>Henuz bilgi gormedin!</p></div>';
-    return;
-  }
-  c.innerHTML = history.map(function(f) {
-    return '<div class="hist-item"><span class="h-emoji">' + f.emoji + '</span><div><div style="margin-bottom:2px">' + f.text + '</div><div class="hist-time">' + f.time + '</div></div></div>';
-  }).join('');
-}
+function renderHistoryModal(){document.getElementById('hist-count').textContent='('+history.length+')';renderHistory()}
+function renderHistory(){var c=document.getElementById('hist-list');if(!history.length){c.innerHTML='<div class="fav-empty"><span class="fav-empty-icon">&#128336;</span><p>Henuz bilgi gormedin!</p></div>';return}c.innerHTML=history.map(function(f){return'<div class="hist-item"><span class="h-emoji">'+f.emoji+'</span><div><div style="margin-bottom:2px">'+f.text+'</div><div class="hist-time">'+f.time+'</div></div></div>'}).join('')}
 
 // ===== QUIZ =====
-var quizAnswered = false;
-
-function generateQuiz() {
-  var seenKeys = Object.keys(seenFacts);
-  if (seenKeys.length < 4) {
-    document.getElementById('quiz-body').innerHTML = '<div class="fav-empty"><span class="fav-empty-icon">&#129513;</span><p>Quiz icin en az 4 bilgi gor!</p></div>';
-    return;
-  }
-  var ct = seenKeys[Math.floor(Math.random() * seenKeys.length)];
-  var cf = allFacts.find(function(f) { return f.text === ct; });
-  if (!cf) { generateQuiz(); return; }
-  var wrongCats = Object.keys(factsDB).filter(function(c) { return c !== cf.category; }).sort(function() { return Math.random() - 0.5; }).slice(0, 3);
-  var options = [cf.category].concat(wrongCats).sort(function() { return Math.random() - 0.5; });
-  quizAnswered = false;
-
-  var successPct = quizTotal ? ((quizScore / quizTotal) * 100).toFixed(0) : 0;
-  var html = '<div class="quiz-score">' +
-    '<div class="quiz-stat"><div class="q-num" style="color:#69f0ae">' + quizScore + '</div><div class="q-label">Dogru</div></div>' +
-    '<div class="quiz-stat"><div class="q-num" style="color:#ff5252">' + (quizTotal - quizScore) + '</div><div class="q-label">Yanlis</div></div>' +
-    '<div class="quiz-stat"><div class="q-num" style="color:var(--accent4)">' + successPct + '%</div><div class="q-label">Basari</div></div>' +
-    '</div>';
-  html += '<div class="quiz-card"><div class="quiz-q">Bu bilgi hangi kategoriye ait?<br><br><em>"' + cf.text + '"</em></div>';
-  html += '<div class="quiz-options">';
-  for (var i = 0; i < options.length; i++) {
-    var o = options[i];
-    html += '<button class="quiz-opt" onclick="answerQuiz(this,\'' + o.replace(/'/g, "\\'") + '\',\'' + cf.category.replace(/'/g, "\\'") + '\')">' + factsDB[o].emoji + ' ' + o + '</button>';
-  }
-  html += '</div></div>';
-  html += '<div style="text-align:center;margin-top:12px"><button class="btn btn-secondary btn-sm" onclick="generateQuiz()">Sonraki Soru</button></div>';
-  document.getElementById('quiz-body').innerHTML = html;
-}
-
-function answerQuiz(btn, ans, correct) {
-  if (quizAnswered) return;
-  quizAnswered = true;
-  quizTotal++;
-  var ok = ans === correct;
-  if (ok) quizScore++;
-  localStorage.setItem('bh_quiz2', quizScore);
-  localStorage.setItem('bh_quizT2', quizTotal);
-
-  var opts = btn.parentElement.querySelectorAll('.quiz-opt');
-  for (var i = 0; i < opts.length; i++) {
-    opts[i].classList.add('disabled');
-    if (opts[i].textContent.indexOf(correct) >= 0) opts[i].classList.add('correct');
-  }
-  if (!ok) btn.classList.add('wrong');
-  if (ok) { showToast('Dogru!'); launchConfetti(); }
-  else showToast('Yanlis!');
-}
+var quizAnswered=false;
+function generateQuiz(){var seenKeys=Object.keys(seenFacts);if(seenKeys.length<4){document.getElementById('quiz-body').innerHTML='<div class="fav-empty"><span class="fav-empty-icon">&#129513;</span><p>Quiz icin en az 4 bilgi gor!</p></div>';return}var ct=seenKeys[Math.floor(Math.random()*seenKeys.length)];var cf=allFacts.find(function(f){return f.text===ct});if(!cf){generateQuiz();return}var wrongCats=Object.keys(factsDB).filter(function(c){return c!==cf.category}).sort(function(){return Math.random()-.5}).slice(0,3);var options=[cf.category].concat(wrongCats).sort(function(){return Math.random()-.5});quizAnswered=false;var sp=quizTotal?((quizScore/quizTotal)*100).toFixed(0):0;var html='<div class="quiz-score"><div class="quiz-stat"><div class="q-num" style="color:#69f0ae">'+quizScore+'</div><div class="q-label">Dogru</div></div><div class="quiz-stat"><div class="q-num" style="color:#ff5252">'+(quizTotal-quizScore)+'</div><div class="q-label">Yanlis</div></div><div class="quiz-stat"><div class="q-num" style="color:var(--accent4)">'+sp+'%</div><div class="q-label">Basari</div></div></div>';html+='<div class="quiz-card"><div class="quiz-q">Bu bilgi hangi kategoriye ait?<br><br><em>"'+cf.text+'"</em></div><div class="quiz-options">';for(var i=0;i<options.length;i++){var o=options[i];html+='<button class="quiz-opt" onclick="answerQuiz(this,\''+o.replace(/'/g,"\\'")+'\',\''+cf.category.replace(/'/g,"\\'")+'\')">'+factsDB[o].emoji+' '+o+'</button>'}html+='</div></div><div style="text-align:center;margin-top:12px"><button class="btn btn-secondary btn-sm" onclick="generateQuiz()">Sonraki Soru</button></div>';document.getElementById('quiz-body').innerHTML=html}
+function answerQuiz(btn,ans,correct){if(quizAnswered)return;quizAnswered=true;quizTotal++;var ok=ans===correct;if(ok){quizScore++;playSound(523,.1);setTimeout(function(){playSound(784,.15)},100)}else{playSound(300,.15,'square')}localStorage.setItem('bh_quiz3',quizScore);localStorage.setItem('bh_quizT3',quizTotal);var opts=btn.parentElement.querySelectorAll('.quiz-opt');for(var i=0;i<opts.length;i++){opts[i].classList.add('disabled');if(opts[i].textContent.indexOf(correct)>=0)opts[i].classList.add('correct')}if(!ok)btn.classList.add('wrong');if(ok){showToast('Dogru!');launchConfetti()}else showToast('Yanlis!');checkAchievements()}
 
 // ===== STATS =====
-function renderStats() {
-  var cats = Object.keys(factsDB);
-  var rows = '';
-  for (var i = 0; i < cats.length; i++) {
-    var c = cats[i];
-    var cat = factsDB[c];
-    var total = cat.facts.length;
-    var seen = cat.facts.filter(function(f) { return seenFacts[f]; }).length;
-    var pct = total ? ((seen / total) * 100).toFixed(0) : 0;
-    var faved = favorites.filter(function(f) { return f.category === c; }).length;
-    rows += '<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)">' +
-      '<span style="font-size:1.3rem">' + cat.emoji + '</span>' +
-      '<div style="flex:1"><div style="font-size:.8rem;font-weight:600;margin-bottom:3px">' + c + '</div>' +
-      '<div class="progress-bar" style="height:3px;margin-bottom:2px"><div class="progress-fill" style="width:' + pct + '%"></div></div>' +
-      '<div style="font-size:.6rem;color:var(--text3)">' + seen + '/' + total + ' - ' + faved + ' fav</div></div>' +
-      '<div style="font-size:.8rem;font-weight:700;color:var(--text2)">' + pct + '%</div></div>';
-  }
-  var ts = Object.keys(seenFacts).length;
-  var ta = allFacts.length;
-  document.getElementById('stats-body').innerHTML =
-    '<div style="text-align:center;margin-bottom:16px">' +
-    '<div style="font-size:3rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">' + ((ts / ta) * 100).toFixed(1) + '%</div>' +
-    '<div style="font-size:.75rem;color:var(--text2)">Toplam Kesif</div>' +
-    '<div style="font-size:.65rem;color:var(--text3);margin-top:4px">' + ts + '/' + ta + ' bilgi - ' + favorites.length + ' fav - Seri: ' + streak + ' - Quiz: ' + quizScore + '/' + quizTotal + '</div></div>' +
-    '<h3 style="font-size:.8rem;font-weight:600;margin-bottom:10px;color:var(--text2)">Kategori Bazli</h3>' + rows;
-}
+function renderStats(){var cats=Object.keys(factsDB);var rows='';for(var i=0;i<cats.length;i++){var c=cats[i],cat=factsDB[c],total=cat.facts.length;var seen=cat.facts.filter(function(f){return seenFacts[f]}).length;var pct=total?((seen/total)*100).toFixed(0):0;var faved=favorites.filter(function(f){return f.category===c}).length;rows+='<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:1.2rem">'+cat.emoji+'</span><div style="flex:1"><div style="font-size:.75rem;font-weight:600;margin-bottom:3px">'+c+'</div><div class="progress-bar" style="height:3px;margin-bottom:2px"><div class="progress-fill" style="width:'+pct+'%"></div></div><div style="font-size:.55rem;color:var(--text3)">'+seen+'/'+total+' - '+faved+' fav</div></div><div style="font-size:.75rem;font-weight:700;color:var(--text2)">'+pct+'%</div></div>'}var ts=Object.keys(seenFacts).length,ta=allFacts.length;document.getElementById('stats-body').innerHTML='<div style="text-align:center;margin-bottom:16px"><div style="font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+((ts/ta)*100).toFixed(1)+'%</div><div style="font-size:.7rem;color:var(--text2)">Toplam Kesif</div><div style="font-size:.6rem;color:var(--text3);margin-top:4px">'+ts+'/'+ta+' bilgi - '+favorites.length+' fav - Seri: '+streak+' - En iyi: '+bestStreak+' - Quiz: '+quizScore+'/'+quizTotal+'</div></div><h3 style="font-size:.75rem;font-weight:600;margin-bottom:10px;color:var(--text2)">Kategori Bazli</h3>'+rows+'<div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>'}
 
 // ===== COPY / SHARE =====
-function copyFact() {
-  if (!currentFact) return;
-  navigator.clipboard.writeText(currentFact.text).then(function() { showToast('Kopyalandi!'); }).catch(function() { showToast('Hata'); });
-}
-
-function shareFact() {
-  if (!currentFact) return;
-  if (navigator.share) navigator.share({title: 'Bilgi Hazinesi', text: currentFact.text}).catch(function() {});
-  else { copyFact(); showToast('Kopyalandi!'); }
-}
-
-function shareAsImage() {
-  if (!currentFact) return;
-  var c = document.getElementById('share-canvas'), ctx = c.getContext('2d');
-  c.width = 600; c.height = 400;
-  var g = ctx.createLinearGradient(0, 0, 600, 400);
-  g.addColorStop(0, '#1a1a3e'); g.addColorStop(1, '#0a0a1a');
-  ctx.fillStyle = g; ctx.fillRect(0, 0, 600, 400);
-  var g2 = ctx.createLinearGradient(0, 0, 600, 0);
-  g2.addColorStop(0, '#6c63ff'); g2.addColorStop(0.5, '#ff6584'); g2.addColorStop(1, '#ffc837');
-  ctx.fillStyle = g2; ctx.fillRect(0, 0, 600, 4);
-  ctx.font = '600 14px Inter,sans-serif';
-  ctx.fillStyle = 'rgba(255,255,255,.4)';
-  ctx.textAlign = 'center';
-  ctx.fillText(currentFact.emoji + ' ' + currentFact.category, 300, 50);
-  ctx.font = '300 18px Inter,sans-serif';
-  ctx.fillStyle = 'rgba(255,255,255,.9)';
-  var words = currentFact.text.split(' '), lines = [], line = '';
-  words.forEach(function(w) {
-    if (ctx.measureText(line + w).width > 480) { lines.push(line.trim()); line = ''; }
-    line += w + ' ';
-  });
-  lines.push(line.trim());
-  lines.forEach(function(l, i) { ctx.fillText(l, 300, 160 + i * 30); });
-  ctx.font = '800 12px Inter,sans-serif';
-  ctx.fillStyle = 'rgba(255,255,255,.3)';
-  ctx.fillText('Bilgi Hazinesi', 300, 370);
-  c.toBlob(function(blob) {
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url; a.download = 'bilgi.png'; a.click();
-    URL.revokeObjectURL(url);
-    showToast('Indirildi!');
-  });
-}
+function copyFact(){if(!currentFact)return;navigator.clipboard.writeText(currentFact.text+' - Bilgi Hazinesi by THYKE').then(function(){showToast('Kopyalandi!')}).catch(function(){showToast('Hata')})}
+function shareFact(){if(!currentFact)return;if(navigator.share)navigator.share({title:'Bilgi Hazinesi by THYKE',text:currentFact.text+'\n\n- Bilgi Hazinesi by THYKE'}).catch(function(){});else{copyFact();showToast('Kopyalandi!')}}
+function shareAsImage(){if(!currentFact)return;var c=document.getElementById('share-canvas'),ctx=c.getContext('2d');c.width=600;c.height=400;var g=ctx.createLinearGradient(0,0,600,400);g.addColorStop(0,'#1a1a3e');g.addColorStop(1,'#0a0a1a');ctx.fillStyle=g;ctx.fillRect(0,0,600,400);var g2=ctx.createLinearGradient(0,0,600,0);g2.addColorStop(0,'#6c63ff');g2.addColorStop(.5,'#ff6584');g2.addColorStop(1,'#ffc837');ctx.fillStyle=g2;ctx.fillRect(0,0,600,4);ctx.font='600 14px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.4)';ctx.textAlign='center';ctx.fillText(currentFact.emoji+' '+currentFact.category,300,50);ctx.font='300 18px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.9)';var words=currentFact.text.split(' '),lines=[],line='';words.forEach(function(w){if(ctx.measureText(line+w).width>480){lines.push(line.trim());line=''}line+=w+' '});lines.push(line.trim());lines.forEach(function(l,i){ctx.fillText(l,300,150+i*28)});ctx.font='800 11px Inter,sans-serif';ctx.fillStyle='rgba(255,255,255,.2)';ctx.fillText('Bilgi Hazinesi by THYKE',300,375);c.toBlob(function(blob){var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='bilgi_thyke.png';a.click();URL.revokeObjectURL(url);showToast('Indirildi!')})}
 
 // ===== AUTO PLAY =====
-function toggleAutoPlay() {
-  var b = document.getElementById('auto-nav');
-  if (autoInt) {
-    clearInterval(autoInt); autoInt = null;
-    b.classList.remove('active-nav');
-    b.innerHTML = '&#9654;&#65039;';
-    showToast('Durduruldu');
-  } else {
-    nextFact();
-    autoInt = setInterval(nextFact, 4000);
-    b.classList.add('active-nav');
-    b.innerHTML = '&#9208;&#65039;';
-    showToast('Otomatik mod!');
-  }
-}
+function toggleAutoPlay(){var b=document.getElementById('auto-nav');if(autoInt){clearInterval(autoInt);autoInt=null;b.classList.remove('active-nav');b.textContent='\u25B6\uFE0F';showToast('Durduruldu')}else{nextFact();autoInt=setInterval(nextFact,4000);b.classList.add('active-nav');b.textContent='\u23F8\uFE0F';showToast('Otomatik mod!');checkAchievements()}}
 
 // ===== TOAST =====
 var toastTimer;
-function showToast(m) {
-  var t = document.getElementById('toast');
-  t.textContent = m;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(function() { t.classList.remove('show'); }, 2200);
-}
+function showToast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.classList.remove('show')},2200)}
 
 // ===== KEYBOARD =====
-document.addEventListener('keydown', function(e) {
-  if (e.target.tagName === 'INPUT') return;
-  if (e.code === 'Space') { e.preventDefault(); nextFact(); }
-  if (e.code === 'KeyL') toggleLike();
-  if (e.code === 'KeyC') copyFact();
-  if (e.code === 'KeyF') { openModal('fav-modal'); openFavModal(); }
-  if (e.code === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(function(m) { m.classList.remove('open'); });
-  if (e.code === 'KeyH') { openModal('hist-modal'); renderHistoryModal(); }
-  if (e.code === 'KeyQ') { openModal('quiz-modal'); generateQuiz(); }
-});
+document.addEventListener('keydown',function(e){if(e.target.tagName==='INPUT')return;if(e.code==='Space'){e.preventDefault();nextFact()}if(e.code==='KeyL')toggleLike();if(e.code==='KeyC')copyFact();if(e.code==='KeyF'){openModal('fav-modal');openFavModal()}if(e.code==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(function(m){m.classList.remove('open')});if(e.code==='KeyH'){openModal('hist-modal');renderHistoryModal()}if(e.code==='KeyQ'){openModal('quiz-modal');generateQuiz()}if(e.code==='KeyR')randomCategory();if(e.code==='KeyA'){openModal('ach-modal');renderAchievements()}if(e.code==='KeyD')showDailyFact()});
 
 // ===== PARTICLES =====
-var pCv = document.getElementById('particles');
-var pCx = pCv.getContext('2d');
-var pts = [];
-
-function rC() { pCv.width = innerWidth; pCv.height = innerHeight; }
-rC();
-addEventListener('resize', rC);
-
-function Particle() { this.reset(); }
-Particle.prototype.reset = function() {
-  this.x = Math.random() * pCv.width;
-  this.y = Math.random() * pCv.height;
-  this.s = Math.random() * 1.5 + 0.5;
-  this.sx = (Math.random() - 0.5) * 0.3;
-  this.sy = (Math.random() - 0.5) * 0.3;
-  this.o = Math.random() * 0.3 + 0.05;
-};
-Particle.prototype.update = function() {
-  this.x += this.sx; this.y += this.sy;
-  if (this.x < 0 || this.x > pCv.width || this.y < 0 || this.y > pCv.height) this.reset();
-};
-Particle.prototype.draw = function() {
-  pCx.beginPath();
-  pCx.arc(this.x, this.y, this.s, 0, Math.PI * 2);
-  pCx.fillStyle = 'rgba(255,255,255,' + this.o + ')';
-  pCx.fill();
-};
-
-for (var i = 0; i < 60; i++) pts.push(new Particle());
-
-function animateParticles() {
-  pCx.clearRect(0, 0, pCv.width, pCv.height);
-  for (var i = 0; i < pts.length; i++) { pts[i].update(); pts[i].draw(); }
-  for (var i = 0; i < pts.length; i++) {
-    for (var j = i + 1; j < pts.length; j++) {
-      var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
-      var d = Math.sqrt(dx * dx + dy * dy);
-      if (d < 90) {
-        pCx.beginPath();
-        pCx.strokeStyle = 'rgba(255,255,255,' + (0.04 * (1 - d / 90)) + ')';
-        pCx.lineWidth = 0.5;
-        pCx.moveTo(pts[i].x, pts[i].y);
-        pCx.lineTo(pts[j].x, pts[j].y);
-        pCx.stroke();
-      }
-    }
-  }
-  requestAnimationFrame(animateParticles);
-}
-animateParticles();
+var pCv=document.getElementById('particles'),pCx=pCv.getContext('2d'),pts=[];
+function rC(){pCv.width=innerWidth;pCv.height=innerHeight}rC();addEventListener('resize',rC);
+function Particle(){this.reset()}Particle.prototype.reset=function(){this.x=Math.random()*pCv.width;this.y=Math.random()*pCv.height;this.s=Math.random()*1.5+.5;this.sx=(Math.random()-.5)*.3;this.sy=(Math.random()-.5)*.3;this.o=Math.random()*.3+.05};Particle.prototype.update=function(){this.x+=this.sx;this.y+=this.sy;if(this.x<0||this.x>pCv.width||this.y<0||this.y>pCv.height)this.reset()};Particle.prototype.draw=function(){pCx.beginPath();pCx.arc(this.x,this.y,this.s,0,Math.PI*2);pCx.fillStyle='rgba(255,255,255,'+this.o+')';pCx.fill()};
+for(var i=0;i<50;i++)pts.push(new Particle());
+function aP(){pCx.clearRect(0,0,pCv.width,pCv.height);for(var i=0;i<pts.length;i++){pts[i].update();pts[i].draw()}for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<90){pCx.beginPath();pCx.strokeStyle='rgba(255,255,255,'+(0.04*(1-d/90))+')';pCx.lineWidth=.5;pCx.moveTo(pts[i].x,pts[i].y);pCx.lineTo(pts[j].x,pts[j].y);pCx.stroke()}}requestAnimationFrame(aP)}aP();
 
 // ===== CONFETTI =====
-var cC = document.getElementById('confetti');
-var cx = cC.getContext('2d');
-function rCC() { cC.width = innerWidth; cC.height = innerHeight; }
-rCC();
-addEventListener('resize', rCC);
+var cC=document.getElementById('confetti'),cx=cC.getContext('2d');function rCC(){cC.width=innerWidth;cC.height=innerHeight}rCC();addEventListener('resize',rCC);var cPs=[];
+function launchConfetti(){cPs=[];var cols=['#6c63ff','#ff6584','#ffc837','#00d2ff','#ff9a9e','#a29bfe','#55efc4','#fd79a8'];for(var i=0;i<100;i++)cPs.push({x:cC.width/2+(Math.random()-.5)*200,y:cC.height/2,vx:(Math.random()-.5)*14,vy:Math.random()*-16-5,sz:Math.random()*7+3,c:cols[Math.floor(Math.random()*cols.length)],rot:Math.random()*360,rs:(Math.random()-.5)*10,l:1});aCf()}
+function aCf(){cx.clearRect(0,0,cC.width,cC.height);var alive=false;for(var i=0;i<cPs.length;i++){var p=cPs[i];p.x+=p.vx;p.y+=p.vy;p.vy+=.35;p.rot+=p.rs;p.l-=.009;if(p.l>0){alive=true;cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot*Math.PI/180);cx.fillStyle=p.c;cx.globalAlpha=p.l;cx.fillRect(-p.sz/2,-p.sz/2,p.sz,p.sz);cx.restore()}}if(alive)requestAnimationFrame(aCf);else cx.clearRect(0,0,cC.width,cC.height)}
 
-var cPs = [];
-function launchConfetti() {
-  cPs = [];
-  var cols = ['#6c63ff', '#ff6584', '#ffc837', '#00d2ff', '#ff9a9e', '#a29bfe', '#55efc4', '#fd79a8'];
-  for (var i = 0; i < 120; i++) {
-    cPs.push({
-      x: cC.width / 2 + (Math.random() - 0.5) * 200,
-      y: cC.height / 2,
-      vx: (Math.random() - 0.5) * 14,
-      vy: Math.random() * -16 - 5,
-      sz: Math.random() * 7 + 3,
-      c: cols[Math.floor(Math.random() * cols.length)],
-      rot: Math.random() * 360,
-      rs: (Math.random() - 0.5) * 10,
-      l: 1
-    });
-  }
-  animateConfetti();
-}
-
-function animateConfetti() {
-  cx.clearRect(0, 0, cC.width, cC.height);
-  var alive = false;
-  for (var i = 0; i < cPs.length; i++) {
-    var p = cPs[i];
-    p.x += p.vx; p.y += p.vy; p.vy += 0.35;
-    p.rot += p.rs; p.l -= 0.009;
-    if (p.l > 0) {
-      alive = true;
-      cx.save();
-      cx.translate(p.x, p.y);
-      cx.rotate(p.rot * Math.PI / 180);
-      cx.fillStyle = p.c;
-      cx.globalAlpha = p.l;
-      cx.fillRect(-p.sz / 2, -p.sz / 2, p.sz, p.sz);
-      cx.restore();
-    }
-  }
-  if (alive) requestAnimationFrame(animateConfetti);
-  else cx.clearRect(0, 0, cC.width, cC.height);
-}
-
-// ===== TOUCH SWIPE =====
-var touchX = 0;
-document.addEventListener('touchstart', function(e) { touchX = e.touches[0].clientX; }, {passive: true});
-document.addEventListener('touchend', function(e) {
-  var d = e.changedTouches[0].clientX - touchX;
-  if (Math.abs(d) > 80) nextFact();
-}, {passive: true});
+// ===== TOUCH =====
+var touchX=0;
+document.addEventListener('touchstart',function(e){touchX=e.touches[0].clientX},{passive:true});
+document.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-touchX;if(Math.abs(d)>80)nextFact()},{passive:true});
 </script>
 </body>
 </html>
