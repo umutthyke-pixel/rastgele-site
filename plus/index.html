@@ -1527,7 +1527,7 @@ if((q==='hiz treni' || q==='rollercoaster') && unlockedAch.indexOf('easter_coast
 if(q==='404' && unlockedAch.indexOf('secret_404')<0) {
     unlockedAch.push('secret_404'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
     addXp(404); showToast('\u26A0\uFE0F Hata 404: Bilgi Bulunamadi! Saka saka +404 XP');
-    document.body.style.filter='invert(1) hue-rotate(180deg)'; setTimeout(function(){document.body.style.filter=''}, 2000);
+    var st = document.createElement('style'); st.innerHTML='@keyframes glitch { 0% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 2px); } 20% { clip-path: inset(80% 0 5% 0); transform: translate(2px, -2px); } 40% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 2px); } 60% { clip-path: inset(5% 0 80% 0); transform: translate(2px, -2px); } 80% { clip-path: inset(20% 0 50% 0); transform: translate(-2px, 2px); } 100% { clip-path: inset(40% 0 40% 0); transform: translate(2px, -2px); } } .glitched { animation: glitch 0.2s linear infinite, glitch-color 0.3s steps(2) infinite; filter: contrast(2) saturate(0) sepia(1) hue-rotate(180deg); }'; document.head.appendChild(st); document.body.classList.add('glitched'); var sndInt = setInterval(function(){playSound(100,0.1,'sawtooth');}, 50); setTimeout(function(){ document.body.classList.remove('glitched'); st.remove(); clearInterval(sndInt); }, 10000);
     document.getElementById('global-search').value=''; return;
 }
 if((q==='illuminati' || q==='uzayli') && unlockedAch.indexOf('secret_illu')<0) {
@@ -1601,7 +1601,7 @@ function generateQuiz(){var seenKeys=Object.keys(seenFacts);if(seenKeys.length<4
 function answerQuiz(btn,ans,correct){if(quizAnswered)return;quizAnswered=true;quizTotal++;var ok=ans===correct;if(ok){quizScore++;playSound(523,.1);setTimeout(function(){playSound(784,.15)},100)}else{playSound(300,.15,'square')}localStorage.setItem('bh_quiz3',quizScore);localStorage.setItem('bh_quizT3',quizTotal);var opts=btn.parentElement.querySelectorAll('.quiz-opt');for(var i=0;i<opts.length;i++){opts[i].classList.add('disabled');if(opts[i].textContent.indexOf(correct)>=0)opts[i].classList.add('correct')}if(!ok)btn.classList.add('wrong');if(ok){showToast('Dogru!');launchConfetti()}else showToast('Yanlis!');checkAchievements()}
 
 // ===== STATS =====
-function renderStats(){var cats=Object.keys(factsDB);var rows='';for(var i=0;i<cats.length;i++){var c=cats[i],cat=factsDB[c],total=cat.facts.length;var seen=cat.facts.filter(function(f){return seenFacts[f]}).length;var pct=total?((seen/total)*100).toFixed(0):0;var faved=favorites.filter(function(f){return f.category===c}).length;rows+='<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:1.2rem">'+cat.emoji+'</span><div style="flex:1"><div style="font-size:.75rem;font-weight:600;margin-bottom:3px">'+c+'</div><div class="progress-bar" style="height:3px;margin-bottom:2px"><div class="progress-fill" style="width:'+pct+'%"></div></div><div style="font-size:.55rem;color:var(--text3)">'+seen+'/'+total+' - '+faved+' fav</div></div><div style="font-size:.75rem;font-weight:700;color:var(--text2)">'+pct+'%</div></div>'}var ts=Object.keys(seenFacts).length,ta=allFacts.length;document.getElementById('stats-body').innerHTML='<div style="text-align:center;margin-bottom:16px"><div style="font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+((ts/ta)*100).toFixed(1)+'%</div><div style="font-size:.7rem;color:var(--text2)">Toplam Kesif</div><div style="font-size:.6rem;color:var(--text3);margin-top:4px">'+ts+'/'+ta+' bilgi - '+favorites.length+' fav - Seri: '+streak+' - En iyi: '+bestStreak+' - Quiz: '+quizScore+'/'+quizTotal+'</div></div><h3 style="font-size:.75rem;font-weight:600;margin-bottom:10px;color:var(--text2)">Kategori Bazli</h3>'+rows+'<div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>'; var eggIds = ['secret_404', 'secret_illu', 'secret_thyke', 'god_mode', 'emoji_master', 'true_love', 'konami', 'time_traveler', 'boss_mode', 'earthquake', 'secret_song', 'barrel_roll', 'cat_paw', 'math_pi', 'hidden_eye', 'matrix_rain', 'zero_gravity', 'disco_mode', 'mirror_world', 'the_vault', 'dexter_blood', 'jumpscare', 'magic_trick', 'retro_gamer', 'invisibility', 'black_hole', 'alien_abduction', 'meteor_strike', 'jackpot_win', 'broken_glass', 'illuminati_conf', 'hacker_mode', 'warp_speed', 'cat_apoc', 'on_fire', 'dev_mode', 'easter_thor', 'easter_zombie', 'easter_dark', 'easter_rainbow', 'easter_coaster', 'easter_thyke_type', 'easter_resize', 'easter_selection', 'easter_double_click', 'easter_sound_spam', 'easter_drag_card', 'easter_idle', 'easter_mouse_leave', 'easter_scroll'];
+var eggIds = ['secret_404', 'secret_illu', 'secret_thyke', 'god_mode', 'emoji_master', 'true_love', 'konami', 'time_traveler', 'boss_mode', 'earthquake', 'secret_song', 'barrel_roll', 'cat_paw', 'math_pi', 'hidden_eye', 'matrix_rain', 'zero_gravity', 'disco_mode', 'mirror_world', 'the_vault', 'dexter_blood', 'jumpscare', 'magic_trick', 'retro_gamer', 'invisibility', 'black_hole', 'alien_abduction', 'meteor_strike', 'jackpot_win', 'broken_glass', 'illuminati_conf', 'hacker_mode', 'warp_speed', 'cat_apoc', 'on_fire', 'dev_mode', 'easter_thor', 'easter_zombie', 'easter_dark', 'easter_rainbow', 'easter_coaster', 'easter_thyke_type', 'easter_resize', 'easter_selection', 'easter_double_click', 'easter_sound_spam', 'easter_drag_card', 'easter_idle', 'easter_mouse_leave', 'easter_scroll'];
 var foundEggs = 0;
 eggIds.forEach(function(id){ if(unlockedAch.indexOf(id)>-1) foundEggs++; });
 document.getElementById('stats-body').innerHTML += '<div style="margin-top:20px;padding:15px;background:var(--card-hover);border-radius:12px;border:1px dashed var(--accent2)"><div style="font-size:1.1rem;font-weight:bold;margin-bottom:10px;">\uD83D\uDD75\uFE0F Gizem Avcisi (Sirlar)</div><div style="font-size:1.8rem;color:var(--accent1);font-weight:900;">' + foundEggs + ' / 50</div><div style="font-size:0.85rem;color:var(--text2);">Sitedeki bulmacalari cozerek tum sirlari bul!</div></div><div style="text-align:center;margin-top:20px"><button class="btn btn-primary" style="background:#e74c3c" onclick="if(confirm(\'DIKKAT! Tum seviyen, XP puanlarin, basarimlarin ve buldugun Easter Eggler tamamen SIFIRLANACAK! Emin misin?\')){localStorage.clear();location.reload();}">\u26A0\uFE0F Tum Ilerlemeyi Sifirla</button></div>';
@@ -1672,6 +1672,7 @@ function spinTimeMachine(){
             if(unlockedAch.indexOf('time_traveler')<0){
                 unlockedAch.push('time_traveler'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
                 showToast('\u23F3 Zaman Yolcusu Basarimi! +100 XP'); addXp(100);
+                document.body.style.transition = 'filter 2s'; document.body.style.filter = 'grayscale(1) contrast(1.2) sepia(0.2)'; var tInt = setInterval(function(){playSound(800,0.1,'sawtooth'); setTimeout(function(){playSound(700,0.1,'sawtooth')},50);}, 200); setTimeout(function(){ document.body.style.filter=''; clearInterval(tInt); setTimeout(function(){document.body.style.transition='';}, 2000); }, 10000);
             }
         }
     }, 50);
@@ -1697,6 +1698,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 if(unlockedAch.indexOf('emoji_master')<0){
                     unlockedAch.push('emoji_master'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
                     showToast('\uD83D\uDE32 Emoji Patlamasi! +150 XP'); addXp(150);
+                var emInt = setInterval(function(){ var em = document.createElement('div'); em.textContent = factsDB[Object.keys(factsDB)[Math.floor(Math.random()*Object.keys(factsDB).length)]].emoji; em.style.position = 'fixed'; em.style.fontSize = (Math.random()*3+2)+'rem'; em.style.left = Math.random()*100+'vw'; em.style.top = '-50px'; em.style.zIndex='99999'; document.body.appendChild(em); var y=-50, vy=0; var anim = setInterval(function(){ vy+=0.5; y+=vy; em.style.top = y+'px'; if(y>window.innerHeight) { clearInterval(anim); em.remove(); } else if(y>window.innerHeight-100 && vy>0) { vy *= -0.7; playSound(600+Math.random()*400, 0.05, 'triangle'); } }, 20); }, 200); setTimeout(function(){ clearInterval(emInt); }, 10000);
                 }
             }
         });
@@ -1715,7 +1717,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 heart.style.fontSize = '50px'; heart.style.zIndex='9999'; heart.style.transition='all 1s';
                 document.body.appendChild(heart);
                 setTimeout(function(){ heart.style.opacity='0.8'; heart.style.transform='translate(-50%,-50%) scale(1)'; }, 50);
-                setTimeout(function(){ heart.remove(); }, 1500);
+                var hInt = setInterval(function(){ heart.style.transform='translate(-50%,-50%) scale(1.2)'; playSound(200, 0.1, 'sine'); setTimeout(function(){heart.style.transform='translate(-50%,-50%) scale(1)';}, 200); }, 800); setTimeout(function(){ clearInterval(hInt); heart.remove(); }, 10000);
                 if(unlockedAch.indexOf('true_love')<0){
                     unlockedAch.push('true_love'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
                     showToast('\uD83D\uDC96 Gercek Ask! +200 XP'); addXp(200);
@@ -1796,6 +1798,7 @@ document.addEventListener('keydown', function(e){
             if(unlockedAch.indexOf('easter_thyke_type')<0){
                 unlockedAch.push('easter_thyke_type'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
                 showToast('\uD83D\uDCA5 Ismimi Yazdin! +1500 XP'); addXp(1500);
+                var ov = document.createElement('div'); ov.innerHTML = 'T H Y K E'; ov.style.position='fixed'; ov.style.top='50%'; ov.style.left='50%'; ov.style.transform='translate(-50%,-50%)'; ov.style.fontSize='10rem'; ov.style.fontWeight='900'; ov.style.color='#FFD700'; ov.style.textShadow='0 0 50px #B8860B'; ov.style.zIndex='999999'; ov.style.pointerEvents='none'; ov.style.animation='pulse 1s infinite alternate'; document.body.appendChild(ov); var sInt = setInterval(function(){playSound(400,0.1,'triangle'); playSound(600,0.1,'sine');}, 500); setTimeout(function(){ ov.remove(); clearInterval(sInt); }, 10000);
             }
         }
     } else { thykeIdx = 0; }
@@ -1809,6 +1812,7 @@ window.addEventListener('resize', function() {
     if(resizeCount === 5 && unlockedAch.indexOf('easter_resize')<0) {
         unlockedAch.push('easter_resize'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
         showToast('\uD83D\uDDBC\uFE0F Pencereyi Rahat Birak! +350 XP'); addXp(350);
+        document.body.style.transition = 'transform 1s ease-in-out'; var sc = 1; var rsInt = setInterval(function(){ sc = sc === 1 ? 0.95 : 1; document.body.style.transform = 'scale('+sc+'); playSound(sc===1?300:200, 0.1, 'sine'); }, 1000); setTimeout(function(){ clearInterval(rsInt); document.body.style.transform=''; setTimeout(function(){document.body.style.transition='';},1000); }, 10000);
     }
 });
 
@@ -1817,6 +1821,7 @@ document.addEventListener('selectionchange', function() {
     if(selection.length > 10 && unlockedAch.indexOf('easter_selection')<0) {
         unlockedAch.push('easter_selection'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
         showToast('\uD83D\uDCCB Kopyaci! +400 XP'); addXp(400);
+        var st2 = document.createElement('style'); st2.innerHTML='@keyframes siren { 0%{box-shadow:inset 0 0 200px red;} 50%{box-shadow:inset 0 0 200px blue;} 100%{box-shadow:inset 0 0 200px red;} } .siren-mode { animation: siren 0.5s infinite; }'; document.head.appendChild(st2); document.body.classList.add('siren-mode'); var sirInt = setInterval(function(){ playSound(800,0.1,'square'); setTimeout(function(){playSound(600,0.1,'square')},250); }, 500); setTimeout(function(){ document.body.classList.remove('siren-mode'); st2.remove(); clearInterval(sirInt); }, 10000);
     }
 });
 
@@ -1825,6 +1830,7 @@ document.body.addEventListener('dblclick', function(e){
         if(unlockedAch.indexOf('easter_double_click')<0){
             unlockedAch.push('easter_double_click'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
             showToast('\uD83D\uDC46 Nereye tikliyorsun? +250 XP'); addXp(250);
+            var rip = document.createElement('div'); rip.style.position='fixed'; rip.style.left=e.clientX+'px'; rip.style.top=e.clientY+'px'; rip.style.width='10px'; rip.style.height='10px'; rip.style.borderRadius='50%'; rip.style.border='5px solid #00d2ff'; rip.style.transform='translate(-50%,-50%) scale(1)'; rip.style.transition='transform 10s ease-out, opacity 10s ease-out'; rip.style.opacity='1'; rip.style.pointerEvents='none'; rip.style.zIndex='999999'; document.body.appendChild(rip); setTimeout(function(){ rip.style.transform='translate(-50%,-50%) scale(200)'; rip.style.opacity='0'; }, 50); var ripInt = setInterval(function(){playSound(800-Math.random()*400, 0.1, 'sine');}, 500); setTimeout(function(){ rip.remove(); clearInterval(ripInt); }, 10000);
         }
     }
 });
@@ -1847,6 +1853,36 @@ fcard.addEventListener('dragstart', function(e){
     if(unlockedAch.indexOf('easter_drag_card')<0){
         unlockedAch.push('easter_drag_card'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
         showToast('\uD83D\uDE45 Bilgiyi Calamazsin! +450 XP'); addXp(450);
+        fcard.style.transition='transform 0.1s'; var dgInt = setInterval(function(){ fcard.style.transform='translate('+(Math.random()*20-10)+'px, '+(Math.random()*20-10)+'px)'; playSound(100+Math.random()*50, 0.1, 'sawtooth'); }, 100); setTimeout(function(){ clearInterval(dgInt); fcard.style.transition=''; fcard.style.transform=''; }, 10000);
+    }
+});
+
+var idleTime = 0;
+setInterval(function(){ idleTime++; if(idleTime === 60 && unlockedAch.indexOf('easter_idle')<0) { unlockedAch.push('easter_idle'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch)); showToast('\uD83D\uDCA4 Uyudun mu? +500 XP'); addXp(500); var zzz = document.createElement('div'); zzz.innerHTML='Zzz...'; zzz.style.position='fixed'; zzz.style.top='50%'; zzz.style.left='50%'; zzz.style.transform='translate(-50%,-50%)'; zzz.style.fontSize='5rem'; zzz.style.color='#fff'; zzz.style.zIndex='999999'; document.body.appendChild(zzz); var zInt=setInterval(function(){playSound(300, 0.05, 'sine'); setTimeout(function(){playSound(200,0.05,'sine')},500);},1000); setTimeout(function(){ zzz.remove(); clearInterval(zInt); }, 10000); } }, 1000);
+document.addEventListener('mousemove', function(){ idleTime=0; });
+document.addEventListener('keydown', function(){ idleTime=0; });
+
+document.addEventListener('mouseleave', function(e){
+    if(e.clientY <= 0 && unlockedAch.indexOf('easter_mouse_leave')<0) {
+        unlockedAch.push('easter_mouse_leave'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        showToast('\uD83D\uDEAA Nereye Gidiyorsun? +300 XP'); addXp(300);
+        document.body.style.transition = 'filter 1s'; document.body.style.filter='brightness(0.2)';
+        var mlInt = setInterval(function(){playSound(400,0.1,'square');}, 1000);
+        setTimeout(function(){ document.body.style.filter=''; clearInterval(mlInt); setTimeout(function(){document.body.style.transition='';},1000); }, 10000);
+    }
+});
+
+var scrollCount = 0, scrollTimer;
+window.addEventListener('scroll', function(){
+    scrollCount++;
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function(){ scrollCount=0; }, 500);
+    if(scrollCount > 20 && unlockedAch.indexOf('easter_scroll')<0) {
+        unlockedAch.push('easter_scroll'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+        showToast('\uD83D\uDD25 Hiz Tutkunu! +400 XP'); addXp(400);
+        document.body.style.background = 'linear-gradient(to bottom, #ff0000, #ff7f00)';
+        var scInt = setInterval(function(){playSound(100+Math.random()*100,0.1,'sawtooth');},100);
+        setTimeout(function(){ document.body.style.background=''; clearInterval(scInt); }, 10000);
     }
 });
 
@@ -1937,6 +1973,7 @@ document.getElementById('global-search').addEventListener('keydown', function(e)
             }
             document.getElementById('fact-emoji').textContent = '\uD83E\uDDEE';
             document.getElementById('fact-text').textContent = '3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679... (Pi Sayisi)';
+            var cvs = document.createElement('canvas'); cvs.style.position='fixed'; cvs.style.top='0'; cvs.style.left='0'; cvs.style.width='100vw'; cvs.style.height='100vh'; cvs.style.zIndex='9999'; cvs.style.pointerEvents='none'; document.body.appendChild(cvs); var ctx = cvs.getContext('2d'); cvs.width = window.innerWidth; cvs.height = window.innerHeight; var chars = '31415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679'; var drops = []; for(var x=0; x<cvs.width/20; x++) drops[x]=1; var mxInt = setInterval(function(){ ctx.fillStyle = 'rgba(0,0,0,0.1)'; ctx.fillRect(0,0,cvs.width,cvs.height); ctx.fillStyle = '#0f0'; ctx.font = '15px monospace'; for(var i=0; i<drops.length; i++) { var txt = chars[Math.floor(Math.random()*chars.length)]; ctx.fillText(txt, i*20, drops[i]*20); if(drops[i]*20 > cvs.height && Math.random()>0.975) drops[i]=0; drops[i]++; } playSound(400+Math.random()*400, 0.05, 'square'); }, 50); setTimeout(function(){ clearInterval(mxInt); cvs.remove(); }, 10000);
             document.getElementById('fact-card').style.background = 'linear-gradient(135deg, #2c3e50, #3498db)';
             document.getElementById('global-search').value='';
             return;
