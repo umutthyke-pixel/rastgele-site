@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -1379,6 +1379,7 @@ function setTheme(t) {
     showToast('Tema Degistirildi!');
 }
 
+function getLevel(x) { return Math.floor(Math.sqrt(x/50)) + 1; }
 function getRankName(lvl) {
     if(lvl<3) return 'Acemi'; if(lvl<6) return 'Ogrenci'; if(lvl<10) return 'Cirak';
     if(lvl<15) return 'Kasif'; if(lvl<22) return 'Bilgin'; if(lvl<30) return 'Ustad';
@@ -1693,15 +1694,13 @@ document.addEventListener('keydown', function(e){
     if(statsBtn) {
         var triggerCreator = function() {
             if(unlockedAch.indexOf('boss_mode')<0) {
-                var ans = prompt("Sistemin Yaratıcısı Kim?");
-                if(ans && ans.trim().toLowerCase() === 'thyke') {
+                var ans = prompt("ATATURK kurucu liderimizdir?");
+                if(ans && ans.trim().toLowerCase() === 'evet') {
                     unlockedAch.push('boss_mode'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-                    addXp(1000000); 
-                    showToast('\uD83D\uDC51 KURUCU ONAYLANDI! MAKSIMUM SEVIYEYE ULASTIN! \uD83D\uDC51');
+                    addXp(9999999999); 
+                    showToast('\uD83D\uDC51 ATATURK SEVGISI ONAYLANDI! \uD83D\uDC51');
                     for(var i=0;i<10;i++) setTimeout(launchConfetti, i*200);
-                    document.body.style.background = 'linear-gradient(135deg, #FFD700, #B8860B)';
-                    document.body.style.color = '#fff';
-                    document.querySelector('.container').style.boxShadow = '0 0 50px #FFD700';
+                    document.body.style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
                 }
             }
         };
@@ -2213,11 +2212,11 @@ if(fb) {
         footerTimer = setTimeout(function(){ footerClicks=0; }, 2000);
         if(footerClicks === 7) {
             if(unlockedAch.indexOf('boss_mode')<0) {
-                var ans = prompt("Sistemin sahibi kim?");
-                if(ans && ans.trim().toLowerCase() === 'thyke') {
+                var ans = prompt("ATATURK kurucu liderimizdir?");
+                if(ans && ans.trim().toLowerCase() === 'evet') {
                     unlockedAch.push('boss_mode'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
-                    addXp(1000000000); 
-                    showToast('\uD83D\uDC51 ADMIN YETKISI ONAYLANDI! \uD83D\uDC51');
+                    addXp(9999999999); 
+                    showToast('\uD83D\uDC51 ATATURK SEVGISI ONAYLANDI! \uD83D\uDC51');
                     for(var i=0;i<10;i++) setTimeout(launchConfetti, i*200);
                     document.body.style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
                 } else {
@@ -2239,6 +2238,7 @@ nextFact();
 </script>
 </body>
 </html>
+
 
 
 
