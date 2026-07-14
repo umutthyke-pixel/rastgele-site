@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
@@ -1812,7 +1812,7 @@ window.addEventListener('resize', function() {
     if(resizeCount === 5 && unlockedAch.indexOf('easter_resize')<0) {
         unlockedAch.push('easter_resize'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
         showToast('\uD83D\uDDBC\uFE0F Pencereyi Rahat Birak! +350 XP'); addXp(350);
-        document.body.style.transition = 'transform 1s ease-in-out'; var sc = 1; var rsInt = setInterval(function(){ sc = sc === 1 ? 0.95 : 1; document.body.style.transform = 'scale('+sc+'); playSound(sc===1?300:200, 0.1, 'sine'); }, 1000); setTimeout(function(){ clearInterval(rsInt); document.body.style.transform=''; setTimeout(function(){document.body.style.transition='';},1000); }, 10000);
+        document.body.style.transition = 'transform 1s ease-in-out'; var sc = 1; var rsInt = setInterval(function(){ sc = sc === 1 ? 0.95 : 1; document.body.style.transform = 'scale('+sc+')'; playSound(sc===1?300:200, 0.1, 'sine'); }, 1000); setTimeout(function(){ clearInterval(rsInt); document.body.style.transform=''; setTimeout(function(){document.body.style.transition='';},1000); }, 10000);
     }
 });
 
