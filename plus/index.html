@@ -968,6 +968,7 @@ var factsDB = {
 "Hackerlar genellikle ağlara sızmak yerine, şifresi '123456' olan veya güncellenmemiş sistemleri tespit ederek içeri girerler.",
 "IoT (Nesnelerin İnterneti) cihazları olan akıllı buzdolapları veya kameralar, genellikle çok zayıf güvenlikli oldukları için devasa siber saldırılarda 'zombi bot' olarak kullanılırlar."
 ]},"Futbol": { emoji: "\u26BD", color: "39,174,96", facts: [
+// ESKILER
 "Futbol maclarinda kullanilan topun cevresinin uzunlugu yaklasik 68-70 cm'dir.",
 "Dunya Kupasi'ni en cok kazanan ulke 5 kez ile Brezilya'dir.",
 "Pele, Dunya Kupasi'ni 3 kez kazanan tek futbolcudur.",
@@ -997,7 +998,32 @@ var factsDB = {
 "Tarihteki en yasli profesyonel futbolcu, 56 yasinda hala aktif futbol oynayan Japon oyuncu Kazuyoshi Miura'dir.",
 "Futbol sahasinin cimleri, goz yanilsamasi yaratmak degil, hakemlerin ofsayt cizgisini daha rahat gormesi icin iki farkli yone bicilir.",
 "Pele'nin gercek tam adi Edson Arantes do Nascimento'dur ve adini unlu mucit Thomas Edison'dan almistir.",
-"Avrupa Futbol Sampiyonasi (EURO) kupasi, kupanin fikir babasi olan Henri Delaunay'in adini tasir."
+"Avrupa Futbol Sampiyonasi (EURO) kupasi, kupanin fikir babasi olan Henri Delaunay'in adini tasir.",
+// YENILER
+"Sampiyonlar Ligi'nin efsanevi muzigi aslinda unlu besteci Handel'in 'Zadok the Priest' adli eserinin uyarlamasidir.",
+"Gianluigi Buffon, Italya milli takimi formasiyla 176 maca cikarak Avrupa'da milli formayi en cok giyen kaleci olmustur.",
+"Futbol maclarinda oyuncu degisikligi kurali ilk kez 1958 yilinda uygulanmaya baslamistir.",
+"Brezilyali efsane Ronaldinho, futbol kariyeri boyunca oynadigi takimlarda ve milli takimda hem Dunya Kupasi, hem Copa America, hem de Sampiyonlar Ligi kazanabilen nadir oyunculardan biridir.",
+"Turk derbilerinden Galatasaray-Fenerbahce rekabetinde, ilk karsilasma 1909 yilinda oynanmis ve Galatasaray'in 2-0 ustunlugu ile bitmistir.",
+"Futbolda 10 numara formasi genellikle takimin en yaratici ve oyun kurucu oyuncusuna verilir; bu gelenek Pele ile populerlesmistir.",
+"Dunya Kupasi kupasi aslinda iki tanedir. Ilki olan 'Jules Rimet Kupasi' 1970'de ucuncu kez sampiyon olan Brezilya'ya kalici olarak verilmis, ancak 1983'te calinmistir.",
+"Tarihin en gollu gecen Dunya Kupasi maci, 1954'te Isvicre ile Avusturya arasinda oynanmis ve 7-5 Avusturya'nin galibiyetiyle (toplam 12 gol) sonuclanmistir.",
+"Futbol sahalarindaki korner direkleri en az 1.5 metre boyunda olmalidir ki oyuncular uzerine dustugunde yaralanmasinlar.",
+"Cristiano Ronaldo, hem Sampiyonlar Ligi, hem Avrupa Sampiyonasi, hem Ingiltere, Ispanya ve Italya liglerinde sampiyonluk yasayan tek oyuncudur.",
+"Norvec Milli Takimi, dunya futbol tarihinde Brezilya ile karsilasip hic yenilmemiş (2 galibiyet, 2 beraberlik) tek milli takimdir.",
+"Dunya Kupasi maclarinda atilan en uzak mesafe golu, 2010 yilinda İspanyol David Villa tarafindan Şili'ye yaklasik 45 metreden atilmistir.",
+"Futbolda 'Hat-trick' terimi, aslinda kriket sporundan gelmis olup, art arda uc vurusu basaran oyuncuya hediye edilen sapkadan (hat) turer.",
+"1998 Dunya Kupasi'na kadar ev sahibi ulkenin milli takimi otomatik olarak turnuvaya katilma hakkina sahip degildi.",
+"Lev Yasin, 'Kara Orumcek' lakabiyla bilinir ve Ballon d'Or (Altin Top) odulunu kazanan tarihteki ilk ve tek kalecidir.",
+"Futbol kalesinin direkleri arasindaki genislik tam olarak 7.32 metre, yuksekligi ise 2.44 metredir.",
+"Bayer Leverkusen, Almanya liginde hic sampiyon olamayip surekli 2. oldugu icin yillarca 'Neverkusen' adiyla anilmistir.",
+"Premier Lig tarihinde namağlup (yenilgisiz) sampiyon olan tek takim 2003-2004 sezonunda Arsenal (Invincibles) takimidi r.",
+"Ibrahimovic, Sampiyonlar Ligi tarihinde alti farkli takimla gol atan ilk futbolcudur.",
+"Lionel Messi, 13 yasinda Barcelona ile imzaladigi ilk sozlesmesini resmi bir kagit bulunamadigi icin bir pecete uzerine imzalamistir.",
+"Dunya Kupasi muzesinde yer alan en ilginc objelerden biri, 2010 Dunya Kupasi kuralarini dogru bilen 'Ahtapot Paul'un minyaturudur.",
+"Milli takimlar duzeyinde arka arkaya 3 buyuk turnuva kazanan tek takim, 2008-2010-2012 yillarindaki inanilmaz serisiyle Ispanya'dir.",
+"Bir futbolcu takim degistirdiginde eski takimina karsi gol atip sevinmemesi, yazili olmayan bir saygi kuralidir.",
+"Ingiltere'nin Sheffield FC kulubu, 1857 yilinda kurulmus olup dunya uzerindeki en eski futbol kulubu unvanini tasir."
 ]},
 "Tarih": { emoji: "\uD83C\uDFDB\uFE0F", color: "230,126,34", facts: [
 "1071 Malazgirt Meydan Muharebesi ile Anadolu'nun kapilari Turklere acilmistir.",
@@ -1460,6 +1486,31 @@ document.addEventListener('keydown', function(e){
     }
 });
 
+    // 4. THE ULTIMATE EASTER EGG (Creator's Password)
+    var statsBtn = document.querySelector('button[title="Istatistikler"]');
+    var creatorTimer;
+    if(statsBtn) {
+        var triggerCreator = function() {
+            if(unlockedAch.indexOf('boss_mode')<0) {
+                var ans = prompt("Sistemin Yaratıcısı Kim?");
+                if(ans && ans.trim().toLowerCase() === 'thyke') {
+                    unlockedAch.push('boss_mode'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+                    addXp(1000000); 
+                    showToast('\uD83D\uDC51 KURUCU ONAYLANDI! MAKSIMUM SEVIYEYE ULASTIN! \uD83D\uDC51');
+                    for(var i=0;i<10;i++) setTimeout(launchConfetti, i*200);
+                    document.body.style.background = 'linear-gradient(135deg, #FFD700, #B8860B)';
+                    document.body.style.color = '#fff';
+                    document.querySelector('.container').style.boxShadow = '0 0 50px #FFD700';
+                }
+            }
+        };
+        statsBtn.addEventListener('mousedown', function(){ creatorTimer = setTimeout(triggerCreator, 3000); });
+        statsBtn.addEventListener('mouseup', function(){ clearTimeout(creatorTimer); });
+        statsBtn.addEventListener('mouseleave', function(){ clearTimeout(creatorTimer); });
+        statsBtn.addEventListener('touchstart', function(){ creatorTimer = setTimeout(triggerCreator, 3000); }, {passive:true});
+        statsBtn.addEventListener('touchend', function(){ clearTimeout(creatorTimer); });
+    }
+
 // ===== TOUCH =====
 var touchX=0;
 document.addEventListener('touchstart',function(e){touchX=e.touches[0].clientX},{passive:true});
@@ -1468,6 +1519,8 @@ nextFact();
 </script>
 </body>
 </html>
+
+
 
 
 
