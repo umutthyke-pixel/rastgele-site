@@ -1004,7 +1004,7 @@ document.addEventListener('keydown',function(e){if(e.target.tagName==='INPUT')re
 var pCv=document.getElementById('particles'),pCx=pCv.getContext('2d'),pts=[];
 function rC(){pCv.width=innerWidth;pCv.height=innerHeight}rC();addEventListener('resize',rC);
 function Particle(){this.reset()}Particle.prototype.reset=function(){this.x=Math.random()*pCv.width;this.y=Math.random()*pCv.height;this.s=Math.random()*1.5+.5;this.sx=(Math.random()-.5)*.3;this.sy=(Math.random()-.5)*.3;this.o=Math.random()*.3+.05};Particle.prototype.update=function(){this.x+=this.sx;this.y+=this.sy;if(this.x<0||this.x>pCv.width||this.y<0||this.y>pCv.height)this.reset()};Particle.prototype.draw=function(){pCx.beginPath();pCx.arc(this.x,this.y,this.s,0,Math.PI*2);pCx.fillStyle='rgba(255,255,255,'+this.o+')';pCx.fill()};
-for(var i=0;i<50;i++)pts.push(new Particle());
+for(var i=0;i<20;i++)pts.push(new Particle());
 function aP(){pCx.clearRect(0,0,pCv.width,pCv.height);for(var i=0;i<pts.length;i++){pts[i].update();pts[i].draw()}for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<90){pCx.beginPath();pCx.strokeStyle='rgba(255,255,255,'+(0.04*(1-d/90))+')';pCx.lineWidth=.5;pCx.moveTo(pts[i].x,pts[i].y);pCx.lineTo(pts[j].x,pts[j].y);pCx.stroke()}}requestAnimationFrame(aP)}aP();
 
 // ===== CONFETTI =====
@@ -1016,6 +1016,7 @@ function aCf(){cx.clearRect(0,0,cC.width,cC.height);var alive=false;for(var i=0;
 var touchX=0;
 document.addEventListener('touchstart',function(e){touchX=e.touches[0].clientX},{passive:true});
 document.addEventListener('touchend',function(e){var d=e.changedTouches[0].clientX-touchX;if(Math.abs(d)>80)nextFact()},{passive:true});
+nextFact();
 </script>
 </body>
 </html>
