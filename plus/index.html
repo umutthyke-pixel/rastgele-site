@@ -281,7 +281,7 @@ body.theme-blood { --bg:#110000; --text:#ffcccc; --text2:rgba(255,100,100,0.7); 
     <div class="progress-label" id="progress-label">0% kesfedildi</div>
   </div>
 
-  <div class="level-wrap animate-in" style="animation-delay:.1s; background:var(--card); padding:10px 16px; border-radius:12px; margin-bottom:12px; border:1px solid var(--card-border);">
+  <div class="level-wrap animate-in" onclick="openModal('lvl-modal'); openLvlModal()" style="cursor:pointer;  style="animation-delay:.1s; background:var(--card); padding:10px 16px; border-radius:12px; margin-bottom:12px; border:1px solid var(--card-border);">
     <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text2); margin-bottom:6px;">
       <span id="rank-name" style="font-weight:900; color:var(--accent3); text-transform:uppercase; letter-spacing:1px">ACEMI</span>
       <span id="level-display" style="font-weight:700">Seviye 1</span>
@@ -1483,6 +1483,51 @@ if(q==='thyke' && unlockedAch.indexOf('secret_thyke')<0) {
     addXp(1000); launchConfetti(); showToast('\uD83D\uDC51 THYKE GIZEMI BULUNDU! +1000 XP');
     document.getElementById('global-search').value=''; return;
 }
+if((q==='yildirim' || q==='thor') && unlockedAch.indexOf('easter_thor')<0) {
+    unlockedAch.push('easter_thor'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+    addXp(1200); showToast('\u26A1 Thor un Cekici! +1200 XP');
+    document.body.style.transition = 'background 0.1s';
+    document.body.style.background = '#fff';
+    playSound(150, 0.8, 'sawtooth'); setTimeout(function(){ playSound(100, 1.2, 'square'); }, 100);
+    setTimeout(function(){ document.body.style.background = ''; }, 150);
+    document.getElementById('global-search').value=''; return;
+}
+if((q==='zombi' || q==='vampir') && unlockedAch.indexOf('easter_zombie')<0) {
+    unlockedAch.push('easter_zombie'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+    addXp(850); showToast('\uD83E\uDDDF Zombi Istilasi! +850 XP');
+    document.body.style.filter = 'sepia(1) hue-rotate(90deg) saturate(3)';
+    playSound(200, 1, 'triangle');
+    document.getElementById('global-search').value=''; return;
+}
+if((q==='karanlik' || q==='siyah') && unlockedAch.indexOf('easter_dark')<0) {
+    unlockedAch.push('easter_dark'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+    addXp(750); showToast('\uD83C\uDF11 Zifiri Karanlik! +750 XP');
+    document.body.style.filter = 'brightness(0.1)';
+    setTimeout(function(){ document.body.style.filter=''; }, 5000);
+    document.getElementById('global-search').value=''; return;
+}
+if((q==='gokkusagi' || q==='rainbow') && unlockedAch.indexOf('easter_rainbow')<0) {
+    unlockedAch.push('easter_rainbow'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+    addXp(1100); showToast('\uD83C\uDF08 Renkler Cildirdi! +1100 XP');
+    var st = document.createElement('style');
+    st.innerHTML = '@keyframes rainbow { 0%{filter:hue-rotate(0deg);} 100%{filter:hue-rotate(360deg);} } body { animation: rainbow 2s linear infinite; }';
+    document.head.appendChild(st);
+    document.getElementById('global-search').value=''; return;
+}
+if((q==='hiz treni' || q==='rollercoaster') && unlockedAch.indexOf('easter_coaster')<0) {
+    unlockedAch.push('easter_coaster'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
+    addXp(950); showToast('\uD83C\uDFA2 Sikica Tutun! +950 XP');
+    var card = document.getElementById('fact-card');
+    card.style.transition = 'transform 0.5s ease-in-out';
+    var steps = [ {x:100,y:-100,r:15}, {x:-100,y:100,r:-15}, {x:0,y:-200,r:30}, {x:0,y:0,r:0} ];
+    var i=0;
+    var cInt = setInterval(function(){
+        if(i>=steps.length) { clearInterval(cInt); card.style.transition=''; return; }
+        card.style.transform = 'translate('+steps[i].x+'px, '+steps[i].y+'px) rotate('+steps[i].r+'deg)';
+        i++;
+    }, 500);
+    document.getElementById('global-search').value=''; return;
+}
 if(q==='404' && unlockedAch.indexOf('secret_404')<0) {
     unlockedAch.push('secret_404'); localStorage.setItem('bh_ach2',JSON.stringify(unlockedAch));
     addXp(404); showToast('\u26A0\uFE0F Hata 404: Bilgi Bulunamadi! Saka saka +404 XP');
@@ -1523,6 +1568,33 @@ function removeFav(i){favorites.splice(i,1);saveFav();renderFavList();document.g
 // ===== EXPORT FAVORITES =====
 function exportFavorites(){if(!favorites.length){showToast('Favori yok');return}var txt='Bilgi Hazinesi by THYKE - Favorilerim\n'+'='.repeat(40)+'\n\n';favorites.forEach(function(f,i){txt+=(i+1)+'. ['+f.category+']\n   '+f.text+'\n\n'});txt+='\nToplam: '+favorites.length+' favori bilgi\nTarih: '+new Date().toLocaleDateString('tr-TR')+'\n\nBilgi Hazinesi by THYKE';var blob=new Blob([txt],{type:'text/plain;charset=utf-8'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='bilgi_hazinesi_favoriler.txt';a.click();URL.revokeObjectURL(url);showToast('Favoriler indirildi!')}
 
+// ===== LEVEL MODAL =====
+function openLvlModal() {
+    var b = document.getElementById('lvl-body');
+    var html = '<div style="margin-bottom:15px; font-size:0.8rem; color:var(--text3); text-align:center;">Seviyeni yukseltmek icin bilgi oku, gizemleri coz ve aktif kal!</div>';
+    html += '<div style="display:flex; flex-direction:column; gap:8px;">';
+    var ranks = [
+        {l:1, n:'Acemi'}, {l:3, n:'Ogrenci'}, {l:6, n:'Cirak'}, 
+        {l:10, n:'Kasif'}, {l:15, n:'Bilgin'}, {l:22, n:'Ustad'}, 
+        {l:30, n:'Deha'}, {l:40, n:'Efsane'}, {l:50, n:'THYKE VELIAHTI'}, 
+        {l:14142, n:'SONSUZ LIDER \u221E'}
+    ];
+    var currentLvl = getLevel(xp);
+    for(var i=0; i<ranks.length; i++) {
+        var r = ranks[i];
+        var rxp = 50 * Math.pow(r.l - 1, 2);
+        var active = currentLvl >= r.l && (i === ranks.length-1 || currentLvl < ranks[i+1].l) ? 'border:1px solid var(--accent3); background:rgba(108,99,255,0.1);' : 'background:rgba(255,255,255,0.03);';
+        var done = currentLvl >= r.l ? '<span style="color:var(--accent4)">&#10004;</span>' : '<span style="color:var(--text3)">&#128274;</span>';
+        
+        html += '<div style="padding:12px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; ' + active + '">';
+        html += '<div><div style="font-size:1rem; font-weight:800; color:var(--text1)">' + r.n + '</div><div style="font-size:0.7rem; color:var(--text3)">Seviye ' + r.l + '+</div></div>';
+        html += '<div style="text-align:right"><div style="font-weight:900; color:var(--accent1)">' + rxp.toLocaleString('tr-TR') + ' XP</div>' + done + '</div>';
+        html += '</div>';
+    }
+    html += '</div>';
+    b.innerHTML = html;
+}
+
 // ===== HISTORY =====
 function renderHistoryModal(){document.getElementById('hist-count').textContent='('+factHistory.length+')';renderHistory()}
 function renderHistory(){var c=document.getElementById('hist-list');if(!factHistory.length){c.innerHTML='<div class="fav-empty"><span class="fav-empty-icon">&#128336;</span><p>Henuz bilgi gormedin!</p></div>';return}c.innerHTML=factHistory.map(function(f){return'<div class="hist-item"><span class="h-emoji">'+f.emoji+'</span><div><div style="margin-bottom:2px">'+f.text+'</div><div class="hist-time">'+f.time+'</div></div></div>'}).join('')}
@@ -1533,10 +1605,10 @@ function generateQuiz(){var seenKeys=Object.keys(seenFacts);if(seenKeys.length<4
 function answerQuiz(btn,ans,correct){if(quizAnswered)return;quizAnswered=true;quizTotal++;var ok=ans===correct;if(ok){quizScore++;playSound(523,.1);setTimeout(function(){playSound(784,.15)},100)}else{playSound(300,.15,'square')}localStorage.setItem('bh_quiz3',quizScore);localStorage.setItem('bh_quizT3',quizTotal);var opts=btn.parentElement.querySelectorAll('.quiz-opt');for(var i=0;i<opts.length;i++){opts[i].classList.add('disabled');if(opts[i].textContent.indexOf(correct)>=0)opts[i].classList.add('correct')}if(!ok)btn.classList.add('wrong');if(ok){showToast('Dogru!');launchConfetti()}else showToast('Yanlis!');checkAchievements()}
 
 // ===== STATS =====
-function renderStats(){var cats=Object.keys(factsDB);var rows='';for(var i=0;i<cats.length;i++){var c=cats[i],cat=factsDB[c],total=cat.facts.length;var seen=cat.facts.filter(function(f){return seenFacts[f]}).length;var pct=total?((seen/total)*100).toFixed(0):0;var faved=favorites.filter(function(f){return f.category===c}).length;rows+='<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:1.2rem">'+cat.emoji+'</span><div style="flex:1"><div style="font-size:.75rem;font-weight:600;margin-bottom:3px">'+c+'</div><div class="progress-bar" style="height:3px;margin-bottom:2px"><div class="progress-fill" style="width:'+pct+'%"></div></div><div style="font-size:.55rem;color:var(--text3)">'+seen+'/'+total+' - '+faved+' fav</div></div><div style="font-size:.75rem;font-weight:700;color:var(--text2)">'+pct+'%</div></div>'}var ts=Object.keys(seenFacts).length,ta=allFacts.length;document.getElementById('stats-body').innerHTML='<div style="text-align:center;margin-bottom:16px"><div style="font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+((ts/ta)*100).toFixed(1)+'%</div><div style="font-size:.7rem;color:var(--text2)">Toplam Kesif</div><div style="font-size:.6rem;color:var(--text3);margin-top:4px">'+ts+'/'+ta+' bilgi - '+favorites.length+' fav - Seri: '+streak+' - En iyi: '+bestStreak+' - Quiz: '+quizScore+'/'+quizTotal+'</div></div><h3 style="font-size:.75rem;font-weight:600;margin-bottom:10px;color:var(--text2)">Kategori Bazli</h3>'+rows+'<div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>'; var eggIds = ['secret_404', 'secret_illu', 'secret_thyke', 'god_mode', 'emoji_master', 'true_love', 'konami', 'time_traveler', 'boss_mode', 'earthquake', 'secret_song', 'barrel_roll', 'cat_paw', 'math_pi', 'hidden_eye', 'matrix_rain', 'zero_gravity', 'disco_mode', 'mirror_world', 'the_vault', 'dexter_blood', 'jumpscare', 'magic_trick', 'retro_gamer', 'invisibility', 'black_hole', 'alien_abduction', 'meteor_strike', 'jackpot_win', 'broken_glass', 'illuminati_conf', 'hacker_mode', 'warp_speed', 'cat_apoc', 'on_fire', 'dev_mode'];
+function renderStats(){var cats=Object.keys(factsDB);var rows='';for(var i=0;i<cats.length;i++){var c=cats[i],cat=factsDB[c],total=cat.facts.length;var seen=cat.facts.filter(function(f){return seenFacts[f]}).length;var pct=total?((seen/total)*100).toFixed(0):0;var faved=favorites.filter(function(f){return f.category===c}).length;rows+='<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:1.2rem">'+cat.emoji+'</span><div style="flex:1"><div style="font-size:.75rem;font-weight:600;margin-bottom:3px">'+c+'</div><div class="progress-bar" style="height:3px;margin-bottom:2px"><div class="progress-fill" style="width:'+pct+'%"></div></div><div style="font-size:.55rem;color:var(--text3)">'+seen+'/'+total+' - '+faved+' fav</div></div><div style="font-size:.75rem;font-weight:700;color:var(--text2)">'+pct+'%</div></div>'}var ts=Object.keys(seenFacts).length,ta=allFacts.length;document.getElementById('stats-body').innerHTML='<div style="text-align:center;margin-bottom:16px"><div style="font-size:2.5rem;font-weight:900;background:linear-gradient(135deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+((ts/ta)*100).toFixed(1)+'%</div><div style="font-size:.7rem;color:var(--text2)">Toplam Kesif</div><div style="font-size:.6rem;color:var(--text3);margin-top:4px">'+ts+'/'+ta+' bilgi - '+favorites.length+' fav - Seri: '+streak+' - En iyi: '+bestStreak+' - Quiz: '+quizScore+'/'+quizTotal+'</div></div><h3 style="font-size:.75rem;font-weight:600;margin-bottom:10px;color:var(--text2)">Kategori Bazli</h3>'+rows+'<div style="text-align:center;margin-top:16px;font-size:.5rem;color:var(--text3);letter-spacing:2px">THYKE</div>'; var eggIds = ['secret_404', 'secret_illu', 'secret_thyke', 'god_mode', 'emoji_master', 'true_love', 'konami', 'time_traveler', 'boss_mode', 'earthquake', 'secret_song', 'barrel_roll', 'cat_paw', 'math_pi', 'hidden_eye', 'matrix_rain', 'zero_gravity', 'disco_mode', 'mirror_world', 'the_vault', 'dexter_blood', 'jumpscare', 'magic_trick', 'retro_gamer', 'invisibility', 'black_hole', 'alien_abduction', 'meteor_strike', 'jackpot_win', 'broken_glass', 'illuminati_conf', 'hacker_mode', 'warp_speed', 'cat_apoc', 'on_fire', 'dev_mode', 'easter_thor', 'easter_zombie', 'easter_dark', 'easter_rainbow', 'easter_coaster'];
 var foundEggs = 0;
 eggIds.forEach(function(id){ if(unlockedAch.indexOf(id)>-1) foundEggs++; });
-document.getElementById('stats-body').innerHTML += '<div style="margin-top:20px;padding:15px;background:var(--card-hover);border-radius:12px;border:1px dashed var(--accent2)"><div style="font-size:1.1rem;font-weight:bold;margin-bottom:10px;">\uD83D\uDD75\uFE0F Gizem Avcisi (Sirlar)</div><div style="font-size:1.8rem;color:var(--accent1);font-weight:900;">' + foundEggs + ' / 36</div><div style="font-size:0.85rem;color:var(--text2);">Sitedeki bulmacalari cozerek tum sirlari bul!</div></div><div style="text-align:center;margin-top:20px"><button class="btn btn-primary" style="background:#e74c3c" onclick="if(confirm(\'DIKKAT! Tum seviyen, XP puanlarin, basarimlarin ve buldugun Easter Eggler tamamen SIFIRLANACAK! Emin misin?\')){localStorage.clear();location.reload();}">\u26A0\uFE0F Tum Ilerlemeyi Sifirla</button></div>';
+document.getElementById('stats-body').innerHTML += '<div style="margin-top:20px;padding:15px;background:var(--card-hover);border-radius:12px;border:1px dashed var(--accent2)"><div style="font-size:1.1rem;font-weight:bold;margin-bottom:10px;">\uD83D\uDD75\uFE0F Gizem Avcisi (Sirlar)</div><div style="font-size:1.8rem;color:var(--accent1);font-weight:900;">' + foundEggs + ' / 41</div><div style="font-size:0.85rem;color:var(--text2);">Sitedeki bulmacalari cozerek tum sirlari bul!</div></div><div style="text-align:center;margin-top:20px"><button class="btn btn-primary" style="background:#e74c3c" onclick="if(confirm(\'DIKKAT! Tum seviyen, XP puanlarin, basarimlarin ve buldugun Easter Eggler tamamen SIFIRLANACAK! Emin misin?\')){localStorage.clear();location.reload();}">\u26A0\uFE0F Tum Ilerlemeyi Sifirla</button></div>';
 }
 
 // ===== COPY / SHARE / SPEAK =====
@@ -2242,6 +2314,8 @@ nextFact();
 </script>
 </body>
 </html>
+
+
 
 
 
